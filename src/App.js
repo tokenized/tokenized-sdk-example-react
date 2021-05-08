@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { useIsLoggedIn } from '@tokenized/sdk-js-private';
+import { useIsLoggedIn } from '@tokenized/sdk-react-private';
 import LoginScreen from './screens/LoginScreen';
 import DashboardScreen from './screens/DashboardScreen';
 
