@@ -18,7 +18,6 @@ function LoginScreen() {
   const isLoggingIn = useIsLoggingIn();
   const needsMfa = useLoginNeedsMfa();
   const isLoggedIn = useIsLoggedIn();
-  const loginError = useLoginError();
   const fullName = useUserFullName();
 
   const [handle, setHandle] = useState('');
@@ -41,6 +40,12 @@ function LoginScreen() {
     },
     [handle, passphrase, tokenizedApi],
   );
+
+  const loginError = useLoginError();
+  const [hideError, setHideError] = useState(null);
+  const onDismissError = useCallback(() => setHideError(loginError), [
+    loginError,
+  ]);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -72,10 +77,15 @@ function LoginScreen() {
           )}
           {!needsMfa && (
             <form className="box" onSubmit={onSignIn}>
-              {loginError && (
+              {loginError && loginError !== hideError && (
                 <article className="message is-danger">
                   <div className="message-header">
                     <p>Unable to sign in</p>
+                    <button
+                      className="delete"
+                      aria-label="delete"
+                      onClick={onDismissError}
+                    ></button>
                   </div>
                   <div className="message-body">{`${loginError}`}</div>
                 </article>
