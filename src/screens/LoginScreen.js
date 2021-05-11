@@ -98,6 +98,7 @@ function LoginScreen() {
                   <input
                     className="input"
                     type="text"
+                    autoComplete="username"
                     value={handle}
                     onInput={onHandleInput}
                   />
@@ -112,6 +113,7 @@ function LoginScreen() {
                   <input
                     className="input"
                     type="password"
+                    autoComplete="current-password"
                     value={passphrase}
                     onInput={onPassphraseInput}
                   />
