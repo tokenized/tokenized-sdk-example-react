@@ -3,7 +3,7 @@ import {
   useTokenizedApi,
   useIsLoading,
   useUserFullName,
-} from '@tokenized/sdk-js-private';
+} from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 
 function DashboardScreen() {
