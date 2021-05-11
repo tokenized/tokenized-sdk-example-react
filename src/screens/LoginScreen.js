@@ -77,7 +77,7 @@ function LoginScreen() {
           )}
           {!needsMfa && (
             <form className="box" onSubmit={onSignIn}>
-              {loginError && loginError !== hideError && (
+              {loginError?.formattedErrorMessage && loginError !== hideError && (
                 <article className="message is-danger">
                   <div className="message-header">
                     <p>Unable to sign in</p>
@@ -87,7 +87,9 @@ function LoginScreen() {
                       onClick={onDismissError}
                     ></button>
                   </div>
-                  <div className="message-body">{`${loginError}`}</div>
+                  <div className="message-body">
+                    {loginError.formattedErrorMessage}
+                  </div>
                 </article>
               )}
               <label className="label">Handle</label>
