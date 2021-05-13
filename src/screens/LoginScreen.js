@@ -8,7 +8,7 @@ import {
   useLoginNeedsMfa,
   useIsLoggedIn,
   useLoginError,
-  useUserFullName,
+  useOwnFullName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 
@@ -18,12 +18,13 @@ function LoginScreen() {
   const isLoggingIn = useIsLoggingIn();
   const needsMfa = useLoginNeedsMfa();
   const isLoggedIn = useIsLoggedIn();
-  const fullName = useUserFullName();
+  const fullName = useOwnFullName();
 
   const [handle, setHandle] = useState('');
-  const onHandleInput = useCallback((event) => setHandle(event.target.value), [
-    setHandle,
-  ]);
+  const onHandleInput = useCallback(
+    (event) => setHandle(event.target.value),
+    [setHandle],
+  );
   const handlePostfix = tokenizedApi.getUserHandlePostfix();
   const [passphrase, setPassphrase] = useState('');
   const onPassphraseInput = useCallback(
@@ -43,9 +44,10 @@ function LoginScreen() {
 
   const loginError = useLoginError();
   const [hideError, setHideError] = useState(null);
-  const onDismissError = useCallback(() => setHideError(loginError), [
-    loginError,
-  ]);
+  const onDismissError = useCallback(
+    () => setHideError(loginError),
+    [loginError],
+  );
 
   if (isLoading) {
     return <LoadingScreen />;

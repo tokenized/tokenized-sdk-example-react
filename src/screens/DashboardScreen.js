@@ -2,14 +2,14 @@ import React, { useCallback } from 'react';
 import {
   useTokenizedApi,
   useIsLoading,
-  useUserFullName,
+  useOwnFullName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 
 function DashboardScreen() {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
-  const fullName = useUserFullName();
+  const fullName = useOwnFullName();
 
   const onLogOut = useCallback(
     (event) => {
