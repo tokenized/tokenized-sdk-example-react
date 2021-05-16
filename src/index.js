@@ -4,6 +4,8 @@ import 'bulma/css/bulma.min.css';
 import App from './App';
 import { TokenizedApi } from '@tokenized/sdk-js-private';
 import { TokenizedApiProvider } from '@tokenized/sdk-react-private';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { QueryClientProvider } from 'react-query/react';
 
 const tokenizedApi = new TokenizedApi({
   tokenizedBackend: 'development',
@@ -12,6 +14,9 @@ const tokenizedApi = new TokenizedApi({
 
 ReactDOM.render(
   <TokenizedApiProvider tokenizedApi={tokenizedApi}>
+    <QueryClientProvider client={tokenizedApi.getQueryClient()}>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
     <App />
   </TokenizedApiProvider>,
   document.getElementById('root'),
