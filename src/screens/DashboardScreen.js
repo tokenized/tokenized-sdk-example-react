@@ -1,10 +1,13 @@
-import React, { useCallback } from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useCallback, useState } from 'react';
+import classNames from 'classnames';
 import {
   useTokenizedApi,
   useIsLoading,
   useOwnFullName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
+import TreasuryPage from '../pages/TreasuryPage';
 
 function DashboardScreen() {
   const tokenizedApi = useTokenizedApi();
@@ -18,25 +21,93 @@ function DashboardScreen() {
     [tokenizedApi],
   );
 
+  const [currentPage] = useState('treasury');
+
   if (isLoading) {
     return <LoadingScreen />;
   }
 
   return (
-    <div className="m-3">
-      <article className="message is-success">
-        <div className="message-header">
-          <p>Success</p>
+    <div>
+      <nav
+        className="navbar is-dark"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
+          <strong className="navbar-item">Tokenized SDK demo</strong>
+          <a
+            role="button"
+            className="navbar-burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbar"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-        <div className="message-body">
-          Welcome <strong>{fullName}</strong>. You have been successfully signed
-          in to the Tokenized platform, and your wallet is unlocked and ready
-          for use.
+        <div id="navbar" className="navbar-menu">
+          <div className="navbar-start">
+            <a className="navbar-item">
+              <span
+                className={classNames(
+                  currentPage === 'activity' && ['tag', 'is-medium', 'is-link'],
+                )}
+              >
+                Activity
+              </span>
+            </a>
+            <a className="navbar-item">
+              <span
+                className={classNames(
+                  currentPage === 'treasury' && ['tag', 'is-medium', 'is-link'],
+                )}
+              >
+                Treasury
+              </span>
+            </a>
+            <a className="navbar-item">
+              <span
+                className={classNames(
+                  currentPage === 'contracts' && [
+                    'tag',
+                    'is-medium',
+                    'is-link',
+                  ],
+                )}
+              >
+                Contracts
+              </span>
+            </a>
+            <a className="navbar-item">
+              <span
+                className={classNames(
+                  currentPage === 'relationships' && [
+                    'tag',
+                    'is-medium',
+                    'is-link',
+                  ],
+                )}
+              >
+                Relationships
+              </span>
+            </a>
+          </div>
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+                <a className="button is-primary" onClick={onLogOut}>
+                  <strong>Sign out</strong>&nbsp;{fullName}
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </article>
-      <button type="button" className="button is-primary" onClick={onLogOut}>
-        Sign out
-      </button>
+      </nav>
+
+      {currentPage === 'treasury' && <TreasuryPage />}
     </div>
   );
 }
