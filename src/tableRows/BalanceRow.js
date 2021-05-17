@@ -21,7 +21,7 @@ function BalanceRow({ isHeader, balance }) {
     );
   }
   return (
-    <tr key={balance.assetId}>
+    <tr>
       <th>{assetDetails?.name || balance?.assetId}</th>
       <td>{faceValue}</td>
       <td>{balance?.availableUnits}</td>

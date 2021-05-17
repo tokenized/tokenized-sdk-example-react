@@ -8,6 +8,7 @@ import {
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 import TreasuryPage from '../pages/TreasuryPage';
+import ContractsPage from '../pages/ContractsPage';
 
 function DashboardScreen() {
   const tokenizedApi = useTokenizedApi();
@@ -21,7 +22,14 @@ function DashboardScreen() {
     [tokenizedApi],
   );
 
-  const [currentPage] = useState('treasury');
+  const [currentPage, setCurrentPage] = useState('treasury');
+  const onSelectActivity = useCallback(() => setCurrentPage('activity'), []);
+  const onSelectTreasury = useCallback(() => setCurrentPage('treasury'), []);
+  const onSelectContracts = useCallback(() => setCurrentPage('contracts'), []);
+  const onSelectRelationships = useCallback(
+    () => setCurrentPage('relationships'),
+    [],
+  );
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -50,49 +58,41 @@ function DashboardScreen() {
         </div>
         <div id="navbar" className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item">
-              <span
-                className={classNames(
-                  currentPage === 'activity' && ['tag', 'is-medium', 'is-link'],
-                )}
-              >
-                Activity
-              </span>
+            <a
+              className={classNames(
+                'navbar-item',
+                currentPage === 'activity' && ['is-tab', 'is-active'],
+              )}
+              onClick={onSelectActivity}
+            >
+              <span>Activity</span>
             </a>
-            <a className="navbar-item">
-              <span
-                className={classNames(
-                  currentPage === 'treasury' && ['tag', 'is-medium', 'is-link'],
-                )}
-              >
-                Treasury
-              </span>
+            <a
+              className={classNames(
+                'navbar-item',
+                currentPage === 'treasury' && ['is-tab', 'is-active'],
+              )}
+              onClick={onSelectTreasury}
+            >
+              <span>Treasury</span>
             </a>
-            <a className="navbar-item">
-              <span
-                className={classNames(
-                  currentPage === 'contracts' && [
-                    'tag',
-                    'is-medium',
-                    'is-link',
-                  ],
-                )}
-              >
-                Contracts
-              </span>
+            <a
+              className={classNames(
+                'navbar-item',
+                currentPage === 'contracts' && ['is-tab', 'is-active'],
+              )}
+              onClick={onSelectContracts}
+            >
+              <span>Contracts</span>
             </a>
-            <a className="navbar-item">
-              <span
-                className={classNames(
-                  currentPage === 'relationships' && [
-                    'tag',
-                    'is-medium',
-                    'is-link',
-                  ],
-                )}
-              >
-                Relationships
-              </span>
+            <a
+              className={classNames(
+                'navbar-item',
+                currentPage === 'relationships' && ['is-tab', 'is-active'],
+              )}
+              onClick={onSelectRelationships}
+            >
+              <span>Relationships</span>
             </a>
           </div>
           <div className="navbar-end">
@@ -108,6 +108,7 @@ function DashboardScreen() {
       </nav>
 
       {currentPage === 'treasury' && <TreasuryPage />}
+      {currentPage === 'contracts' && <ContractsPage />}
     </div>
   );
 }
