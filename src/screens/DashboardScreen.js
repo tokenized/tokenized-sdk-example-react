@@ -1,16 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useCallback, useState } from 'react';
-import classNames from 'classnames';
+import React, { useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   useTokenizedApi,
   useIsLoading,
   useOwnFullName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
-import TreasuryPage from '../pages/TreasuryPage';
-import ContractsPage from '../pages/ContractsPage';
 
-function DashboardScreen() {
+function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
   const fullName = useOwnFullName();
@@ -22,15 +20,6 @@ function DashboardScreen() {
     [tokenizedApi],
   );
 
-  const [currentPage, setCurrentPage] = useState('treasury');
-  const onSelectActivity = useCallback(() => setCurrentPage('activity'), []);
-  const onSelectTreasury = useCallback(() => setCurrentPage('treasury'), []);
-  const onSelectContracts = useCallback(() => setCurrentPage('contracts'), []);
-  const onSelectRelationships = useCallback(
-    () => setCurrentPage('relationships'),
-    [],
-  );
-
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -38,7 +27,7 @@ function DashboardScreen() {
   return (
     <div>
       <nav
-        className="navbar is-dark"
+        className="navbar is-light"
         role="navigation"
         aria-label="main navigation"
       >
@@ -56,59 +45,61 @@ function DashboardScreen() {
             <span aria-hidden="true"></span>
           </a>
         </div>
-        <div id="navbar" className="navbar-menu">
+        <div id="navbar" className="navbar-menu is-active">
           <div className="navbar-start">
-            <a
-              className={classNames(
-                'navbar-item',
-                currentPage === 'activity' && ['is-tab', 'is-active'],
-              )}
-              onClick={onSelectActivity}
+            <NavLink
+              to="/activity"
+              className="navbar-item"
+              activeClassName="is-tab is-active"
             >
               <span>Activity</span>
-            </a>
-            <a
-              className={classNames(
-                'navbar-item',
-                currentPage === 'treasury' && ['is-tab', 'is-active'],
-              )}
-              onClick={onSelectTreasury}
+            </NavLink>
+            <NavLink
+              to="/treasury"
+              className="navbar-item"
+              activeClassName="is-tab is-active"
             >
               <span>Treasury</span>
-            </a>
-            <a
-              className={classNames(
-                'navbar-item',
-                currentPage === 'contracts' && ['is-tab', 'is-active'],
-              )}
-              onClick={onSelectContracts}
+            </NavLink>
+            <NavLink
+              to="/contracts"
+              className="navbar-item"
+              activeClassName="is-tab is-active"
             >
               <span>Contracts</span>
-            </a>
-            <a
-              className={classNames(
-                'navbar-item',
-                currentPage === 'relationships' && ['is-tab', 'is-active'],
-              )}
-              onClick={onSelectRelationships}
+            </NavLink>
+            <NavLink
+              to="/relationships"
+              className="navbar-item"
+              activeClassName="is-tab is-active"
             >
               <span>Relationships</span>
-            </a>
+            </NavLink>
           </div>
           <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">
-                <a className="button is-primary" onClick={onLogOut}>
-                  <strong>Sign out</strong>&nbsp;{fullName}
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">
+                <span className="icon">
+                  <i className="fas fa-user"></i>
+                </span>
+              </a>
+              <div className="navbar-dropdown is-right">
+                <div className="navbar-item">
+                  <strong>{fullName}</strong>
+                </div>
+                <hr className="navbar-divider" />
+                <a className="navbar-item" onClick={onLogOut}>
+                  <span className="icon">
+                    <i className="fas fa-sign-out-alt"></i>
+                  </span>
+                  <span>Sign out</span>
                 </a>
               </div>
             </div>
           </div>
         </div>
       </nav>
-
-      {currentPage === 'treasury' && <TreasuryPage />}
-      {currentPage === 'contracts' && <ContractsPage />}
+      {children}
     </div>
   );
 }

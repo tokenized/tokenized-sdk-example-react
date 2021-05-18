@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import {
   useTokenizedApi,
@@ -13,6 +13,7 @@ import {
 import LoadingScreen from './LoadingScreen';
 
 function LoginScreen() {
+  const location = useLocation();
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
   const isLoggingIn = useIsLoggingIn();
@@ -53,7 +54,7 @@ function LoginScreen() {
     return <LoadingScreen />;
   }
   if (isLoggedIn) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to={location?.state?.from || '/'} />;
   }
 
   return (

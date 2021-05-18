@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bulma/css/bulma.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import App from './App';
 import { TokenizedApi } from '@tokenized/sdk-js-private';
 import { TokenizedApiProvider } from '@tokenized/sdk-react-private';

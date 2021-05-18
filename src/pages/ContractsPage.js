@@ -3,7 +3,7 @@ import React from 'react';
 import { useContracts } from '@tokenized/sdk-react-private';
 import ContractRow from '../tableRows/ContractRow';
 
-function TreasuryPage() {
+function ContractsPage() {
   const contracts = useContracts();
 
   return (
@@ -26,4 +26,4 @@ function TreasuryPage() {
   );
 }
 
-export default TreasuryPage;
+export default ContractsPage;

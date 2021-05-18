@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@reduxjs/toolkit": "^1.5.1",
     "@tokenized/sdk-js-private": "^0.2.0",
     "@tokenized/sdk-react-private": "^0.2.0",
