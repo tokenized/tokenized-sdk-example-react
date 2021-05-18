@@ -6,8 +6,8 @@ function BalanceRow({ isHeader, balance }) {
   const assetDetails = useAssetDetails(balance?.assetId)?.data;
 
   let faceValue = '';
-  if (assetDetails?.faceValue) {
-    faceValue = `${assetDetails.faceValue.units} ${assetDetails.faceValue.currency}`;
+  if (assetDetails?.assetTypeSpecifics?.faceValue) {
+    faceValue = `${assetDetails.assetTypeSpecifics.faceValue.units} ${assetDetails.assetTypeSpecifics.faceValue.currency}`;
   }
 
   if (isHeader) {
