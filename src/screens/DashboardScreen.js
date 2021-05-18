@@ -5,6 +5,8 @@ import {
   useTokenizedApi,
   useIsLoading,
   useOwnFullName,
+  useCurrentProfileId,
+  useProfileName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 
@@ -12,6 +14,8 @@ function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
   const fullName = useOwnFullName();
+  const profileId = useCurrentProfileId();
+  const profileName = useProfileName(profileId);
 
   const onLogOut = useCallback(
     (event) => {
@@ -86,6 +90,7 @@ function DashboardScreen({ children }) {
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item">
                   <strong>{fullName}</strong>
+                  {profileName && <span>&nbsp;&nbsp;{profileName}</span>}
                 </div>
                 <hr className="navbar-divider" />
                 <a className="navbar-item" onClick={onLogOut}>

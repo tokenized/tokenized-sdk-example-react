@@ -1,15 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { usePrimaryBalances } from '@tokenized/sdk-react-private';
+import {
+  usePrimaryVaultId,
+  useVaultName,
+  useBalances,
+} from '@tokenized/sdk-react-private';
 import BalanceRow from '../tableRows/BalanceRow';
 
 function TreasuryPage() {
-  const balances = usePrimaryBalances();
+  const vaultId = usePrimaryVaultId();
+  const vaultName = useVaultName(vaultId);
+  const balances = useBalances(vaultId);
 
   return (
     <section className="section">
-      <h1 className="title">Primary vault</h1>
-      {balances?.isLoading && <h2 className="subtitle">Loading…</h2>}
+      <h1 className="title">
+        {vaultName || 'Treasury'}&nbsp;&nbsp;
+        <span className="tag is-info">Primary vault</span>
+      </h1>
+      {balances?.isLoading && (
+        <progress className="progress is-small is-primary" max="100" />
+      )}
       {balances?.data && (
         <table className="table">
           <thead>

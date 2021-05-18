@@ -9,7 +9,9 @@ function ContractsPage() {
   return (
     <section className="section">
       <h1 className="title">Contracts</h1>
-      {contracts?.isLoading && <h2 className="subtitle">Loading…</h2>}
+      {contracts?.isLoading && (
+        <progress className="progress is-small is-primary" max="100" />
+      )}
       {contracts?.data && (
         <table className="table">
           <thead>

@@ -64,7 +64,7 @@ function LoginScreen() {
           <div className="has-text-centered my-6">
             <h1 className="title">Tokenized SDK demo</h1>
             <p className="subtitle">
-              Please sign in with your Tokenized profile credentials
+              Please sign in with your Tokenized account credentials
             </p>
           </div>
           {needsMfa && (
