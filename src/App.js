@@ -38,7 +38,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/login">
+        <Route path="/login" exact>
           <LoginScreen />
         </Route>
         <PrivateRoute path="/activity">

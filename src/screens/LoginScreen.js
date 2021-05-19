@@ -54,7 +54,14 @@ function LoginScreen() {
     return <LoadingScreen />;
   }
   if (isLoggedIn) {
-    return <Redirect to={location?.state?.from || '/'} />;
+    let originalLocation = '/';
+    if (
+      location?.state?.from &&
+      location?.state?.from?.pathname !== location?.pathname
+    ) {
+      originalLocation = location?.state?.from;
+    }
+    return <Redirect to={originalLocation} />;
   }
 
   return (
