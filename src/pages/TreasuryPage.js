@@ -27,7 +27,7 @@ function TreasuryPage() {
     })?.data?.length || 0;
   const liabilitiesCount =
     useFilteredBalances(vaultId, {
-      includeLiabilities: false,
+      includeLiabilities: true,
       includeInactive: false,
     })?.data?.length || 0;
   const inactiveCount =
