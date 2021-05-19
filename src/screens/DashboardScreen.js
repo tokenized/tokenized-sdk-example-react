@@ -5,8 +5,7 @@ import {
   useTokenizedApi,
   useIsLoading,
   useOwnFullName,
-  useCurrentProfileId,
-  useProfileName,
+  useCurrentProfileName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 
@@ -14,8 +13,7 @@ function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
   const fullName = useOwnFullName();
-  const profileId = useCurrentProfileId();
-  const profileName = useProfileName(profileId);
+  const profileName = useCurrentProfileName();
 
   const onLogOut = useCallback(
     (event) => {

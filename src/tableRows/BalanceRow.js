@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { useAssetDetails } from '@tokenized/sdk-react-private';
 
 function BalanceRow({ isHeader, balance }) {
-  const assetDetails = useAssetDetails(balance?.assetId)?.data;
-
   let faceValue = '';
-  if (assetDetails?.assetTypeSpecifics?.faceValue) {
-    faceValue = `${assetDetails.assetTypeSpecifics.faceValue.units} ${assetDetails.assetTypeSpecifics.faceValue.currency}`;
+  if (balance?.assetTypeSpecifics?.faceValue) {
+    faceValue = `${balance.assetTypeSpecifics.faceValue.units} ${balance.assetTypeSpecifics.faceValue.currency}`;
   }
 
   if (isHeader) {
@@ -22,7 +19,7 @@ function BalanceRow({ isHeader, balance }) {
   }
   return (
     <tr>
-      <th>{assetDetails?.name || balance?.assetId}</th>
+      <th>{balance?.name || balance?.assetId}</th>
       <td>{faceValue}</td>
       <td>{balance?.availableUnits}</td>
       <td>{balance?.totalUnits}</td>
