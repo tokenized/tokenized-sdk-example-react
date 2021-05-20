@@ -38,8 +38,8 @@ function TreasuryPage() {
   return (
     <section className="section">
       <h1 className="title">
-        {vaultName || 'Treasury'}&nbsp;&nbsp;
-        <span className="tag is-info">Primary vault</span>
+        {vaultName || 'Treasury'}
+        <span className="tag is-info ml-4">Primary vault</span>
       </h1>
       <div className="buttons has-addons">
         <NavLink
@@ -47,16 +47,18 @@ function TreasuryPage() {
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Assets&nbsp;&nbsp;</span>
-          <span className="tag is-link is-light is-rounded">{assetsCount}</span>
+          <span>Assets</span>
+          <span className="tag is-link is-light is-rounded ml-2">
+            {assetsCount}
+          </span>
         </NavLink>
         <NavLink
           to={`${url}/liabilities`}
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Liabilities&nbsp;&nbsp;</span>
-          <span className="tag is-link is-light is-rounded">
+          <span>Liabilities</span>
+          <span className="tag is-link is-light is-rounded ml-2">
             {liabilitiesCount}
           </span>
         </NavLink>
@@ -65,8 +67,8 @@ function TreasuryPage() {
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Inactive&nbsp;&nbsp;</span>
-          <span className="tag is-link is-light is-rounded">
+          <span>Inactive</span>
+          <span className="tag is-link is-light is-rounded ml-2">
             {inactiveCount}
           </span>
         </NavLink>

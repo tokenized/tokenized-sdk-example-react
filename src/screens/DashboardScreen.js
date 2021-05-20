@@ -88,7 +88,7 @@ function DashboardScreen({ children }) {
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item">
                   <strong>{fullName}</strong>
-                  {profileName && <span>&nbsp;&nbsp;{profileName}</span>}
+                  {profileName && <span className="ml-2">{profileName}</span>}
                 </div>
                 <hr className="navbar-divider" />
                 <a className="navbar-item" onClick={onLogOut}>
