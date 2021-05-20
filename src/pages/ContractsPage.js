@@ -13,7 +13,7 @@ function ContractsPage() {
         <progress className="progress is-small is-primary" max="100" />
       )}
       {contracts?.data && (
-        <table className="table">
+        <table className="table is-hoverable">
           <thead>
             <ContractRow isHeader />
           </thead>

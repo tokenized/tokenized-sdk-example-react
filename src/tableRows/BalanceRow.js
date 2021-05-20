@@ -10,16 +10,16 @@ function BalanceRow({ isHeader, balance }) {
   if (isHeader) {
     return (
       <tr>
-        <th>Asset</th>
-        <th>Face value</th>
-        <th>Available units</th>
-        <th>Total units</th>
+        <th className="has-text-left">Asset</th>
+        <th className="has-text-left">Face value</th>
+        <th className="has-text-left">Available units</th>
+        <th className="has-text-left">Total units</th>
       </tr>
     );
   }
   return (
     <tr>
-      <th>{balance?.name || balance?.assetId}</th>
+      <th className="has-text-left">{balance?.name || balance?.assetId}</th>
       <td>{faceValue}</td>
       <td>{balance?.availableUnits}</td>
       <td>{balance?.totalUnits}</td>

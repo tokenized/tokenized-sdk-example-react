@@ -17,7 +17,7 @@ function TreasuryLiabilitiesTable() {
     return <progress className="progress is-small is-primary" max="100" />;
   }
   return (
-    <table className="table">
+    <table className="table is-hoverable">
       <thead>
         <BalanceRow isHeader />
       </thead>

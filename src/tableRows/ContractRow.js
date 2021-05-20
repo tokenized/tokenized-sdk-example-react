@@ -5,9 +5,9 @@ function ContractRow({ isHeader, contract }) {
   if (isHeader) {
     return (
       <tr>
-        <th>Title</th>
-        <th>Issuer / counterparty</th>
-        <th>Type</th>
+        <th className="has-text-left">Title</th>
+        <th className="has-text-left">Issuer / counterparty</th>
+        <th className="has-text-left">Type</th>
       </tr>
     );
   }
@@ -16,7 +16,7 @@ function ContractRow({ isHeader, contract }) {
   }
   return (
     <tr>
-      <th>{contract?.name}</th>
+      <th className="has-text-left">{contract?.name}</th>
       <td>{contract?.issuer?.name}</td>
       <td>{contract?.contractType}</td>
     </tr>
