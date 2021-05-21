@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 import { useIsLoggedIn } from '@tokenized/sdk-react-private';
 import LoginScreen from './screens/LoginScreen';
 import DashboardScreen from './screens/DashboardScreen';
@@ -35,6 +36,15 @@ function PrivateRoute({ children, ...rest }) {
 }
 
 function App() {
+  const intl = useIntl();
+  useEffect(() => {
+    document.title = intl.formatMessage({
+      description: 'The app’s browser page title',
+      defaultMessage: 'Tokenized SDK demo',
+      id: '6amK0i',
+    });
+  }, [intl]);
+
   return (
     <Router>
       <Switch>

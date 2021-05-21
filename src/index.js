@@ -7,6 +7,7 @@ import { TokenizedApi } from '@tokenized/sdk-js-private';
 import { TokenizedApiProvider } from '@tokenized/sdk-react-private';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { QueryClientProvider } from 'react-query/react';
+import { IntlProvider } from 'react-intl';
 
 const tokenizedApi = new TokenizedApi({
   // By default, the SDK connects to the Tokenized platform, allowing login
@@ -37,7 +38,9 @@ ReactDOM.render(
     <QueryClientProvider client={tokenizedApi.getQueryClient()}>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-    <App />
+    <IntlProvider locale="en" messages={{}}>
+      <App />
+    </IntlProvider>
   </TokenizedApiProvider>,
   document.getElementById('root'),
 );
