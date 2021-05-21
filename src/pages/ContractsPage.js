@@ -10,7 +10,7 @@ function ContractsPage() {
     <section className="section">
       <h1 className="title">Contracts</h1>
       {contracts?.isLoading && (
-        <progress className="progress is-small is-primary" max="100" />
+        <progress className="progress is-small is-primary mt-5" max="100" />
       )}
       {contracts?.data && (
         <table className="table is-hoverable">

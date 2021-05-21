@@ -14,7 +14,7 @@ function TreasuryAssetsTable() {
   });
 
   if (balances?.isLoading) {
-    return <progress className="progress is-small is-primary" max="100" />;
+    return <progress className="progress is-small is-primary mt-5" max="100" />;
   }
   return (
     <table className="table is-hoverable">

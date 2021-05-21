@@ -11,7 +11,7 @@ function TreasuryInactiveTable() {
   const balances = useFilteredBalances(vaultId, { includeInactive: true });
 
   if (balances?.isLoading) {
-    return <progress className="progress is-small is-primary" max="100" />;
+    return <progress className="progress is-small is-primary mt-5" max="100" />;
   }
   return (
     <table className="table is-hoverable">
