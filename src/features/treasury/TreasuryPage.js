@@ -7,14 +7,16 @@ import {
   Redirect,
   useRouteMatch,
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {
   usePrimaryVaultId,
   useVaultName,
   useFilteredBalances,
 } from '@tokenized/sdk-react-private';
-import TreasuryAssetsTable from '../tables/TreasuryAssetsTable';
-import TreasuryLiabilitiesTable from '../tables/TreasuryLiabilitiesTable';
-import TreasuryInactiveTable from '../tables/TreasuryInactiveTable';
+import TreasuryAssetsTable from './TreasuryAssetsTable';
+import TreasuryLiabilitiesTable from './TreasuryLiabilitiesTable';
+import TreasuryInactiveTable from './TreasuryInactiveTable';
+import { selectTreasuryCurrentFilter } from './treasurySlice';
 
 function TreasuryPage() {
   const { url, path } = useRouteMatch();
@@ -34,6 +36,8 @@ function TreasuryPage() {
     useFilteredBalances(vaultId, {
       includeInactive: true,
     })?.data?.length || 0;
+
+  const currentFilter = useSelector(selectTreasuryCurrentFilter);
 
   return (
     <section className="section">
@@ -84,7 +88,7 @@ function TreasuryPage() {
           <TreasuryInactiveTable />
         </Route>
         <Route path="*">
-          <Redirect to={`${path}/assets`} />
+          <Redirect to={`${path}/${currentFilter || 'assets'}`} />
         </Route>
       </Switch>
     </section>

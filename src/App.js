@@ -9,8 +9,8 @@ import { useIntl } from 'react-intl';
 import { useIsLoggedIn } from '@tokenized/sdk-react-private';
 import LoginScreen from './screens/LoginScreen';
 import DashboardScreen from './screens/DashboardScreen';
-import TreasuryPage from './pages/TreasuryPage';
-import ContractsPage from './pages/ContractsPage';
+import TreasuryPage from './features/treasury/TreasuryPage';
+import ContractsPage from './features/contracts/ContractsPage';
 
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated

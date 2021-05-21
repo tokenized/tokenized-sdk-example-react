@@ -1,17 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   usePrimaryVaultId,
   useFilteredBalances,
 } from '@tokenized/sdk-react-private';
-import BalanceRow from '../tableRows/BalanceRow';
+import { setCurrentFilter } from './treasurySlice';
+import BalanceRow from './BalanceRow';
 
-function TreasuryAssetsTable() {
+function TreasuryInactiveTable() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setCurrentFilter('inactive'));
+  }, [dispatch]);
+
   const vaultId = usePrimaryVaultId();
-  const balances = useFilteredBalances(vaultId, {
-    includeLiabilities: false,
-    includeInactive: false,
-  });
+  const balances = useFilteredBalances(vaultId, { includeInactive: true });
 
   if (balances?.isLoading) {
     return <progress className="progress is-small is-primary mt-5" max="100" />;
@@ -30,4 +34,4 @@ function TreasuryAssetsTable() {
   );
 }
 
-export default TreasuryAssetsTable;
+export default TreasuryInactiveTable;

@@ -1,15 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   usePrimaryVaultId,
   useFilteredBalances,
 } from '@tokenized/sdk-react-private';
-import BalanceRow from '../tableRows/BalanceRow';
+import { setCurrentFilter } from './treasurySlice';
+import BalanceRow from './BalanceRow';
 
-function TreasuryLiabilitiesTable() {
+function TreasuryAssetsTable() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setCurrentFilter('assets'));
+  }, [dispatch]);
+
   const vaultId = usePrimaryVaultId();
   const balances = useFilteredBalances(vaultId, {
-    includeLiabilities: true,
+    includeLiabilities: false,
     includeInactive: false,
   });
 
@@ -30,4 +37,4 @@ function TreasuryLiabilitiesTable() {
   );
 }
 
-export default TreasuryLiabilitiesTable;
+export default TreasuryAssetsTable;
