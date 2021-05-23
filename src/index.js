@@ -40,7 +40,7 @@ ReactDOM.render(
     <QueryClientProvider client={tokenizedApi.getQueryClient()}>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-    <IntlProvider locale="en" messages={{}}>
+    <IntlProvider locale="en-US" messages={{}}>
       <ReduxProvider store={store}>
         <App />
       </ReduxProvider>
