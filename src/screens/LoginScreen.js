@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 import {
   useTokenizedApi,
   useIsLoading,
@@ -8,22 +9,24 @@ import {
   useLoginNeedsMfa,
   useIsLoggedIn,
   useLoginError,
-  useUserFullName,
+  useOwnFullName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 
 function LoginScreen() {
+  const location = useLocation();
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
   const isLoggingIn = useIsLoggingIn();
   const needsMfa = useLoginNeedsMfa();
   const isLoggedIn = useIsLoggedIn();
-  const fullName = useUserFullName();
+  const fullName = useOwnFullName();
 
   const [handle, setHandle] = useState('');
-  const onHandleInput = useCallback((event) => setHandle(event.target.value), [
-    setHandle,
-  ]);
+  const onHandleInput = useCallback(
+    (event) => setHandle(event.target.value),
+    [setHandle],
+  );
   const handlePostfix = tokenizedApi.getUserHandlePostfix();
   const [passphrase, setPassphrase] = useState('');
   const onPassphraseInput = useCallback(
@@ -43,15 +46,23 @@ function LoginScreen() {
 
   const loginError = useLoginError();
   const [hideError, setHideError] = useState(null);
-  const onDismissError = useCallback(() => setHideError(loginError), [
-    loginError,
-  ]);
+  const onDismissError = useCallback(
+    () => setHideError(loginError),
+    [loginError],
+  );
 
   if (isLoading) {
     return <LoadingScreen />;
   }
   if (isLoggedIn) {
-    return <Redirect to="/dashboard" />;
+    let originalLocation = '/';
+    if (
+      location?.state?.from &&
+      location?.state?.from?.pathname !== location?.pathname
+    ) {
+      originalLocation = location?.state?.from;
+    }
+    return <Redirect to={originalLocation} />;
   }
 
   return (
@@ -59,18 +70,39 @@ function LoginScreen() {
       <div className="columns is-centered">
         <div className="column is-half">
           <div className="has-text-centered my-6">
-            <h1 className="title">Tokenized SDK demo</h1>
+            <h1 className="title">
+              <FormattedMessage
+                description="Login screen title"
+                defaultMessage="Tokenized SDK demo"
+                id="BWwoyB"
+              />
+            </h1>
             <p className="subtitle">
-              Please sign in with your Tokenized profile credentials
+              <FormattedMessage
+                description="Login screen subtitle"
+                defaultMessage="Please sign in with your Tokenized account credentials"
+                id="vaZlef"
+              />
             </p>
           </div>
           {needsMfa && (
             <section className="box hero is-warning">
               <div className="hero-body">
-                <p className="title">Welcome {fullName}</p>
+                <p className="title">
+                  <FormattedMessage
+                    description="Login screen mobile authentication prompt title"
+                    defaultMessage="Welcome {fullName}"
+                    id="wurpXL"
+                    values={{ fullName }}
+                  />
+                </p>
                 <progress className="progress is-small is-primary" max="100" />
                 <p className="subtitle">
-                  Please confirm your identity in the authenticator app
+                  <FormattedMessage
+                    description="Login screen mobile authentication prompt subtitle"
+                    defaultMessage="Please confirm your identity in the authenticator app"
+                    id="FEJ3nB"
+                  />
                 </p>
               </div>
             </section>
@@ -80,7 +112,13 @@ function LoginScreen() {
               {loginError?.formattedErrorMessage && loginError !== hideError && (
                 <article className="message is-danger">
                   <div className="message-header">
-                    <p>Unable to sign in</p>
+                    <p>
+                      <FormattedMessage
+                        description="Login screen failed login error message title"
+                        defaultMessage="Unable to sign in"
+                        id="/QSoyN"
+                      />
+                    </p>
                     <button
                       className="delete"
                       aria-label="delete"
@@ -92,12 +130,19 @@ function LoginScreen() {
                   </div>
                 </article>
               )}
-              <label className="label">Handle</label>
+              <label className="label">
+                <FormattedMessage
+                  description="Login input field name: identify your account using your handle"
+                  defaultMessage="Handle"
+                  id="J5JGM9"
+                />
+              </label>
               <div className="field has-addons">
                 <div className="control is-expanded">
                   <input
                     className="input"
                     type="text"
+                    autoComplete="username"
                     value={handle}
                     onInput={onHandleInput}
                   />
@@ -107,11 +152,18 @@ function LoginScreen() {
                 </div>
               </div>
               <div className="field">
-                <label className="label">Passphrase</label>
+                <label className="label">
+                  <FormattedMessage
+                    description="Login input field name: passphrase"
+                    defaultMessage="Passphrase"
+                    id="kUSQxB"
+                  />
+                </label>
                 <div className="control">
                   <input
                     className="input"
                     type="password"
+                    autoComplete="current-password"
                     value={passphrase}
                     onInput={onPassphraseInput}
                   />
@@ -125,7 +177,11 @@ function LoginScreen() {
                 )}
                 disabled={!handle || !passphrase}
               >
-                Sign in
+                <FormattedMessage
+                  description="Login screen sign in button"
+                  defaultMessage="Sign in"
+                  id="Vt7Ozj"
+                />
               </button>
             </form>
           )}

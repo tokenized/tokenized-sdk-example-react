@@ -1,0 +1,46 @@
+{
+  "/QSoyN": {
+    "defaultMessage": "Unable to sign in",
+    "description": "Login screen failed login error message title"
+  },
+  "6amK0i": {
+    "defaultMessage": "Tokenized SDK demo",
+    "description": "The app’s browser page title"
+  },
+  "BWwoyB": {
+    "defaultMessage": "Tokenized SDK demo",
+    "description": "Login screen title"
+  },
+  "CYyLJH": {
+    "defaultMessage": "Loading…",
+    "description": "App loading screen title"
+  },
+  "FEJ3nB": {
+    "defaultMessage": "Please confirm your identity in the authenticator app",
+    "description": "Login screen mobile authentication prompt subtitle"
+  },
+  "J5JGM9": {
+    "defaultMessage": "Handle",
+    "description": "Login input field name: identify your account using your handle"
+  },
+  "Vt7Ozj": {
+    "defaultMessage": "Sign in",
+    "description": "Login screen sign in button"
+  },
+  "kUSQxB": {
+    "defaultMessage": "Passphrase",
+    "description": "Login input field name: passphrase"
+  },
+  "slLQlj": {
+    "defaultMessage": "Checking for previous session",
+    "description": "App loading screen subtitle (below animated progress bar)"
+  },
+  "vaZlef": {
+    "defaultMessage": "Please sign in with your Tokenized account credentials",
+    "description": "Login screen subtitle"
+  },
+  "wurpXL": {
+    "defaultMessage": "Welcome {fullName}",
+    "description": "Login screen mobile authentication prompt title"
+  }
+}
