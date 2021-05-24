@@ -57,10 +57,12 @@ function BalanceRow({ isHeader, balance }) {
       </td>
       <td>{balance?.quantities?.authorizedQuantity?.tokens?.formatted}</td>
       <td>
-        {balance?.quantities?.individualFaceValue?.faceValue && (
+        {balance?.quantities?.individualFaceValue?.displayCurrency && (
           <FormattedNumber
-            value={balance.quantities.individualFaceValue.faceValue.number}
-            {...balance.quantities.individualFaceValue.faceValue
+            value={
+              balance.quantities.individualFaceValue.displayCurrency.number
+            }
+            {...balance.quantities.individualFaceValue.displayCurrency
               .NumberFormatOptions}
           />
         )}
