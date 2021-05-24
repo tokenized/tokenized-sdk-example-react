@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   usePrimaryVaultId,
   useFilteredBalances,
+  useCurrentProfileDisplayCurrency,
 } from '@tokenized/sdk-react-private';
 import { setCurrentFilter } from './treasurySlice';
 import BalanceRow from './BalanceRow';
@@ -15,9 +16,11 @@ function TreasuryAssetsTable() {
   }, [dispatch]);
 
   const vaultId = usePrimaryVaultId();
+  const displayCurrencyCode = useCurrentProfileDisplayCurrency();
   const balances = useFilteredBalances(vaultId, {
     includeLiabilities: false,
     includeInactive: false,
+    displayCurrencyCode,
   });
 
   if (balances?.isLoading) {

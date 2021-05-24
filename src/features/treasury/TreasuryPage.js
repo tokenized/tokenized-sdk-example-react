@@ -12,6 +12,7 @@ import {
   usePrimaryVaultId,
   useVaultName,
   useFilteredBalances,
+  useCurrentProfileDisplayCurrency,
 } from '@tokenized/sdk-react-private';
 import TreasuryAssetsTable from './TreasuryAssetsTable';
 import TreasuryLiabilitiesTable from './TreasuryLiabilitiesTable';
@@ -21,20 +22,24 @@ import { selectTreasuryCurrentFilter } from './treasurySlice';
 function TreasuryPage() {
   const { url, path } = useRouteMatch();
   const vaultId = usePrimaryVaultId();
+  const displayCurrencyCode = useCurrentProfileDisplayCurrency();
   const vaultName = useVaultName(vaultId);
   const assetsCount =
     useFilteredBalances(vaultId, {
       includeLiabilities: false,
       includeInactive: false,
+      displayCurrencyCode,
     })?.data?.length || 0;
   const liabilitiesCount =
     useFilteredBalances(vaultId, {
       includeLiabilities: true,
       includeInactive: false,
+      displayCurrencyCode,
     })?.data?.length || 0;
   const inactiveCount =
     useFilteredBalances(vaultId, {
       includeInactive: true,
+      displayCurrencyCode,
     })?.data?.length || 0;
 
   const currentFilter = useSelector(selectTreasuryCurrentFilter);

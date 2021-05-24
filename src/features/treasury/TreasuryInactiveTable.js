@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   usePrimaryVaultId,
   useFilteredBalances,
+  useCurrentProfileDisplayCurrency,
 } from '@tokenized/sdk-react-private';
 import { setCurrentFilter } from './treasurySlice';
 import BalanceRow from './BalanceRow';
@@ -15,7 +16,11 @@ function TreasuryInactiveTable() {
   }, [dispatch]);
 
   const vaultId = usePrimaryVaultId();
-  const balances = useFilteredBalances(vaultId, { includeInactive: true });
+  const displayCurrencyCode = useCurrentProfileDisplayCurrency();
+  const balances = useFilteredBalances(vaultId, {
+    includeInactive: true,
+    displayCurrencyCode,
+  });
 
   if (balances?.isLoading) {
     return <progress className="progress is-small is-primary mt-5" max="100" />;
