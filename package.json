@@ -31,9 +31,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "extract-strings": "formatjs extract 'src/**/*.js' --out-file lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'"
+    "extract-strings": "formatjs extract 'src/**/*.js' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
+    "compile-strings": "formatjs compile-folder --ast src/lang src/compiled-lang"
   },
   "eslintConfig": {
+    "root": true,
     "extends": "react-app",
     "plugins": [
       "formatjs"

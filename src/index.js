@@ -4,12 +4,16 @@ import 'bulma/css/bulma.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { QueryClientProvider } from 'react-query/react';
 import { IntlProvider } from 'react-intl';
+import messagesEn from './compiled-lang/en.json';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { TokenizedApi } from '@tokenized/sdk-js-private';
 import { TokenizedApiProvider } from '@tokenized/sdk-react-private';
 import store from './store';
 import App from './App';
+
+const locale =
+  window.navigator.languages?.[0] || window.navigator.language || 'en';
 
 const tokenizedApi = new TokenizedApi({
   // By default, the SDK connects to the Tokenized platform, allowing login
@@ -40,7 +44,7 @@ ReactDOM.render(
     <QueryClientProvider client={tokenizedApi.getQueryClient()}>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-    <IntlProvider locale="en-US" messages={{}}>
+    <IntlProvider locale={locale} messages={messagesEn}>
       <ReduxProvider store={store}>
         <App />
       </ReduxProvider>

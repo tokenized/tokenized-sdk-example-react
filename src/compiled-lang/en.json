@@ -1,0 +1,72 @@
+{
+  "/QSoyN": [
+    {
+      "type": 0,
+      "value": "Unable to sign in"
+    }
+  ],
+  "6amK0i": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
+    }
+  ],
+  "BWwoyB": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
+    }
+  ],
+  "CYyLJH": [
+    {
+      "type": 0,
+      "value": "Loading…"
+    }
+  ],
+  "FEJ3nB": [
+    {
+      "type": 0,
+      "value": "Please confirm your identity in the authenticator app"
+    }
+  ],
+  "J5JGM9": [
+    {
+      "type": 0,
+      "value": "Handle"
+    }
+  ],
+  "Vt7Ozj": [
+    {
+      "type": 0,
+      "value": "Sign in"
+    }
+  ],
+  "kUSQxB": [
+    {
+      "type": 0,
+      "value": "Passphrase"
+    }
+  ],
+  "slLQlj": [
+    {
+      "type": 0,
+      "value": "Checking for previous session"
+    }
+  ],
+  "vaZlef": [
+    {
+      "type": 0,
+      "value": "Please sign in with your Tokenized account credentials"
+    }
+  ],
+  "wurpXL": [
+    {
+      "type": 0,
+      "value": "Welcome "
+    },
+    {
+      "type": 1,
+      "value": "fullName"
+    }
+  ]
+}
