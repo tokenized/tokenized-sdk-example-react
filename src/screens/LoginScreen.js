@@ -9,7 +9,7 @@ import {
   useLoginNeedsMfa,
   useIsLoggedIn,
   useLoginError,
-  useOwnFullName,
+  useOwnFormattedName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 
@@ -20,7 +20,7 @@ function LoginScreen() {
   const isLoggingIn = useIsLoggingIn();
   const needsMfa = useLoginNeedsMfa();
   const isLoggedIn = useIsLoggedIn();
-  const fullName = useOwnFullName();
+  const ownFormattedName = useOwnFormattedName();
 
   const [handle, setHandle] = useState('');
   const onHandleInput = useCallback(
@@ -93,7 +93,7 @@ function LoginScreen() {
                     description="Login screen mobile authentication prompt title"
                     defaultMessage="Welcome {fullName}"
                     id="wurpXL"
-                    values={{ fullName }}
+                    values={{ fullName: ownFormattedName }}
                   />
                 </p>
                 <progress className="progress is-small is-primary" max="100" />

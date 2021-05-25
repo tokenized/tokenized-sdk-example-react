@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import {
   useTokenizedApi,
   useIsLoading,
-  useOwnFullName,
+  useOwnFormattedName,
   useCurrentProfileName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
@@ -12,7 +12,7 @@ import LoadingScreen from './LoadingScreen';
 function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
-  const fullName = useOwnFullName();
+  const ownFormattedName = useOwnFormattedName();
   const profileName = useCurrentProfileName();
 
   const onLogOut = useCallback(
@@ -87,7 +87,7 @@ function DashboardScreen({ children }) {
               </a>
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item">
-                  <strong>{fullName}</strong>
+                  <strong>{ownFormattedName}</strong>
                   {profileName && <span className="ml-2">{profileName}</span>}
                 </div>
                 <hr className="navbar-divider" />
