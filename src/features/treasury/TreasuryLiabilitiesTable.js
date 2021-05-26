@@ -20,16 +20,18 @@ function TreasuryLiabilitiesTable({ vaultId }) {
     return <progress className="progress is-small is-primary mt-5" max="100" />;
   }
   return (
-    <table className="table is-hoverable">
-      <thead>
-        <BalanceRow isHeader />
-      </thead>
-      <tbody>
-        {balances?.data?.map?.((balance) => (
-          <BalanceRow key={balance.assetId} balance={balance} />
-        ))}
-      </tbody>
-    </table>
+    <div className="table-container">
+      <table className="table is-hoverable">
+        <thead>
+          <BalanceRow isHeader />
+        </thead>
+        <tbody>
+          {balances?.data?.map?.((balance) => (
+            <BalanceRow key={balance.assetId} balance={balance} />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

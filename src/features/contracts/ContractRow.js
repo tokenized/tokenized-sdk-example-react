@@ -15,7 +15,7 @@ function ContractRow({ isHeader, contract }) {
     return null;
   }
   return (
-    <tr>
+    <tr style={{ whiteSpace: 'nowrap' }}>
       <th className="has-text-left">{contract?.name}</th>
       <td>{contract?.issuer?.name}</td>
       <td>{contract?.contractType}</td>

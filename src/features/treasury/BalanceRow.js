@@ -7,6 +7,7 @@ function BalanceRow({ isHeader, balance }) {
     return (
       <tr>
         <th className="has-text-left">Asset</th>
+        <th className="has-text-left">Type</th>
         <th className="has-text-left">Issuer</th>
         <th className="has-text-left">In vault</th>
         <th className="has-text-left">Reserved</th>
@@ -46,8 +47,9 @@ function BalanceRow({ isHeader, balance }) {
   }
 
   return (
-    <tr>
+    <tr style={{ whiteSpace: 'nowrap' }}>
       <th className="has-text-left">{balance?.assetName}</th>
+      <td>{balance?.assetType?.formatted}</td>
       <td>{balance?.issuer?.formatted}</td>
       <td>{quantity}</td>
       <td>{reserved}</td>

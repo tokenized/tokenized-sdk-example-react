@@ -13,16 +13,21 @@ function ContractsPage() {
         <progress className="progress is-small is-primary mt-5" max="100" />
       )}
       {contracts?.data && (
-        <table className="table is-hoverable">
-          <thead>
-            <ContractRow isHeader />
-          </thead>
-          <tbody>
-            {Object.values(contracts.data).map((contract) => (
-              <ContractRow key={contract.contractAddress} contract={contract} />
-            ))}
-          </tbody>
-        </table>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <ContractRow isHeader />
+            </thead>
+            <tbody>
+              {Object.values(contracts.data).map((contract) => (
+                <ContractRow
+                  key={contract.contractAddress}
+                  contract={contract}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </section>
   );
