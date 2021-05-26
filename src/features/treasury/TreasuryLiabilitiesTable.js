@@ -1,26 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  usePrimaryVaultId,
-  useFilteredBalances,
-  useCurrentProfileDisplayCurrency,
-} from '@tokenized/sdk-react-private';
+import { useFilteredBalances } from '@tokenized/sdk-react-private';
 import { setCurrentFilter } from './treasurySlice';
 import BalanceRow from './BalanceRow';
 
-function TreasuryLiabilitiesTable() {
+function TreasuryLiabilitiesTable({ vaultId }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setCurrentFilter('liabilities'));
   }, [dispatch]);
 
-  const vaultId = usePrimaryVaultId();
-  const displayCurrencyCode = useCurrentProfileDisplayCurrency();
   const balances = useFilteredBalances(vaultId, {
     includeLiabilities: true,
     includeInactive: false,
-    displayCurrencyCode,
   });
 
   if (balances?.isLoading) {

@@ -9,10 +9,8 @@ import {
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
-  usePrimaryVaultId,
-  useVaultName,
+  usePrimaryVault,
   useFilteredBalances,
-  useCurrentProfileDisplayCurrency,
 } from '@tokenized/sdk-react-private';
 import TreasuryAssetsTable from './TreasuryAssetsTable';
 import TreasuryLiabilitiesTable from './TreasuryLiabilitiesTable';
@@ -21,25 +19,22 @@ import { selectTreasuryCurrentFilter } from './treasurySlice';
 
 function TreasuryPage() {
   const { url, path } = useRouteMatch();
-  const vaultId = usePrimaryVaultId();
-  const displayCurrencyCode = useCurrentProfileDisplayCurrency();
-  const vaultName = useVaultName(vaultId);
+  const vault = usePrimaryVault();
+  const vaultId = vault?.id;
+  const vaultName = vault?.name;
   const assetsCount =
     useFilteredBalances(vaultId, {
       includeLiabilities: false,
       includeInactive: false,
-      displayCurrencyCode,
     })?.data?.length || 0;
   const liabilitiesCount =
     useFilteredBalances(vaultId, {
       includeLiabilities: true,
       includeInactive: false,
-      displayCurrencyCode,
     })?.data?.length || 0;
   const inactiveCount =
     useFilteredBalances(vaultId, {
       includeInactive: true,
-      displayCurrencyCode,
     })?.data?.length || 0;
 
   const currentFilter = useSelector(selectTreasuryCurrentFilter);
@@ -84,13 +79,13 @@ function TreasuryPage() {
       </div>
       <Switch>
         <Route path={`${path}/assets`}>
-          <TreasuryAssetsTable />
+          <TreasuryAssetsTable vaultId={vaultId} />
         </Route>
         <Route path={`${path}/liabilities`}>
-          <TreasuryLiabilitiesTable />
+          <TreasuryLiabilitiesTable vaultId={vaultId} />
         </Route>
         <Route path={`${path}/inactive`}>
-          <TreasuryInactiveTable />
+          <TreasuryInactiveTable vaultId={vaultId} />
         </Route>
         <Route path="*">
           <Redirect to={`${path}/${currentFilter || 'assets'}`} />
