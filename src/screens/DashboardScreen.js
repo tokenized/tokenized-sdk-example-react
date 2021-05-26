@@ -17,7 +17,7 @@ function DashboardScreen({ children }) {
 
   const onLogOut = useCallback(
     (event) => {
-      tokenizedApi.logout();
+      tokenizedApi.logOut();
     },
     [tokenizedApi],
   );
