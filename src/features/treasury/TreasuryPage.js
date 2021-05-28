@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {
   NavLink,
@@ -8,6 +7,7 @@ import {
   useRouteMatch,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 import {
   usePrimaryVault,
   useFilteredBalances,
@@ -42,8 +42,20 @@ function TreasuryPage() {
   return (
     <section className="section">
       <h1 className="title">
-        {vaultName || 'Treasury'}
-        <span className="tag is-info ml-4">Primary vault</span>
+        {vaultName || (
+          <FormattedMessage
+            defaultMessage="Treasury"
+            description="Treasury page title (if no vault name)"
+            id="uQj7Yo"
+          />
+        )}
+        <span className="tag is-info ml-4">
+          <FormattedMessage
+            defaultMessage="Primary vault"
+            description="Treasury primary vault tag"
+            id="oneuwr"
+          />
+        </span>
       </h1>
       <div className="buttons has-addons">
         <NavLink
@@ -51,9 +63,15 @@ function TreasuryPage() {
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Assets</span>
+          <span>
+            <FormattedMessage
+              defaultMessage="Assets"
+              description="Treasury assets tab"
+              id="wejkZs"
+            />
+          </span>
           <span className="tag is-link is-light is-rounded ml-2">
-            {assetsCount}
+            <FormattedNumber value={assetsCount} />
           </span>
         </NavLink>
         <NavLink
@@ -61,9 +79,15 @@ function TreasuryPage() {
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Liabilities</span>
+          <span>
+            <FormattedMessage
+              defaultMessage="Liabilities"
+              description="Treasury liabilities tab"
+              id="31KHio"
+            />
+          </span>
           <span className="tag is-link is-light is-rounded ml-2">
-            {liabilitiesCount}
+            <FormattedNumber value={liabilitiesCount} />
           </span>
         </NavLink>
         <NavLink
@@ -71,9 +95,15 @@ function TreasuryPage() {
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Inactive</span>
+          <span>
+            <FormattedMessage
+              defaultMessage="Inactive"
+              description="Treasury inactive tab"
+              id="VYmTOm"
+            />
+          </span>
           <span className="tag is-link is-light is-rounded ml-2">
-            {inactiveCount}
+            <FormattedNumber value={inactiveCount} />
           </span>
         </NavLink>
       </div>

@@ -1,21 +1,80 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { FormattedNumber } from 'react-intl';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 
 function BalanceRow({ isHeader, balance }) {
   if (isHeader) {
     return (
       <tr>
-        <th className="has-text-left">Asset</th>
-        <th className="has-text-left">Type</th>
-        <th className="has-text-left">Issuer</th>
-        <th className="has-text-left">In vault</th>
-        <th className="has-text-left">Reserved</th>
-        <th className="has-text-left">Issued</th>
-        <th className="has-text-left">Authorized</th>
-        <th className="has-text-left">One unit</th>
-        <th className="has-text-left">Liability</th>
-        <th className="has-text-left">Value</th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Asset"
+            description="Balance table column header: asset name"
+            id="41ypwV"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Type"
+            description="Balance table column header: asset type"
+            id="hTxeee"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Issuer"
+            description="Balance table column header: asset issuer"
+            id="isZs2i"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="In vault"
+            description="Balance table column header: quantity held in vault"
+            id="QaB4nu"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Reserved"
+            description="Balance table column header: quantity of balance reserved"
+            id="D6bG5X"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Issued"
+            description="Balance table column header: quantity issued by me"
+            id="kYHpnu"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Authorized"
+            description="Balance table column header: quantity of assets authorized in contract"
+            id="Ih3sF+"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="One unit"
+            description="Balance table column header: value of one asset unit"
+            id="SOA+3t"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Liability"
+            description="Balance table column header: liability (owed on issued assets)"
+            id="6I1l1I"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Value"
+            description="Balance table column header: value (of assets to me)"
+            id="VyIxs7"
+          />
+        </th>
       </tr>
     );
   }

@@ -5,6 +5,36 @@
       "value": "Unable to sign in"
     }
   ],
+  "/lBke1": [
+    {
+      "type": 0,
+      "value": "Title"
+    }
+  ],
+  "2vbsAo": [
+    {
+      "type": 0,
+      "value": "Contracts"
+    }
+  ],
+  "31KHio": [
+    {
+      "type": 0,
+      "value": "Liabilities"
+    }
+  ],
+  "41ypwV": [
+    {
+      "type": 0,
+      "value": "Asset"
+    }
+  ],
+  "6I1l1I": [
+    {
+      "type": 0,
+      "value": "Liability"
+    }
+  ],
   "6amK0i": [
     {
       "type": 0,
@@ -23,10 +53,28 @@
       "value": "Loading…"
     }
   ],
+  "D6bG5X": [
+    {
+      "type": 0,
+      "value": "Reserved"
+    }
+  ],
   "FEJ3nB": [
     {
       "type": 0,
       "value": "Please confirm your identity in the authenticator app"
+    }
+  ],
+  "FvzCUW": [
+    {
+      "type": 0,
+      "value": "Contracts"
+    }
+  ],
+  "Ih3sF+": [
+    {
+      "type": 0,
+      "value": "Authorized"
     }
   ],
   "J5JGM9": [
@@ -35,10 +83,82 @@
       "value": "Handle"
     }
   ],
+  "PVFFBa": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
+    }
+  ],
+  "QaB4nu": [
+    {
+      "type": 0,
+      "value": "In vault"
+    }
+  ],
+  "SOA+3t": [
+    {
+      "type": 0,
+      "value": "One unit"
+    }
+  ],
+  "Uq6/ag": [
+    {
+      "type": 0,
+      "value": "Treasury"
+    }
+  ],
+  "VYmTOm": [
+    {
+      "type": 0,
+      "value": "Inactive"
+    }
+  ],
   "Vt7Ozj": [
     {
       "type": 0,
       "value": "Sign in"
+    }
+  ],
+  "VyIxs7": [
+    {
+      "type": 0,
+      "value": "Value"
+    }
+  ],
+  "a6TlyZ": [
+    {
+      "type": 0,
+      "value": "Sign out"
+    }
+  ],
+  "cnwMLl": [
+    {
+      "type": 0,
+      "value": "Type"
+    }
+  ],
+  "cxOmHD": [
+    {
+      "type": 0,
+      "value": "Issuer / counterparty"
+    }
+  ],
+  "hTxeee": [
+    {
+      "type": 0,
+      "value": "Type"
+    }
+  ],
+  "isZs2i": [
+    {
+      "type": 0,
+      "value": "Issuer"
+    }
+  ],
+  "iuWj8R": [
+    {
+      "type": 0,
+      "value": "Activity"
     }
   ],
   "kUSQxB": [
@@ -47,16 +167,46 @@
       "value": "Passphrase"
     }
   ],
+  "kYHpnu": [
+    {
+      "type": 0,
+      "value": "Issued"
+    }
+  ],
+  "oneuwr": [
+    {
+      "type": 0,
+      "value": "Primary vault"
+    }
+  ],
+  "qZNWyi": [
+    {
+      "type": 0,
+      "value": "Relationships"
+    }
+  ],
   "slLQlj": [
     {
       "type": 0,
       "value": "Checking for previous session"
     }
   ],
+  "uQj7Yo": [
+    {
+      "type": 0,
+      "value": "Treasury"
+    }
+  ],
   "vaZlef": [
     {
       "type": 0,
       "value": "Please sign in with your Tokenized account credentials"
+    }
+  ],
+  "wejkZs": [
+    {
+      "type": 0,
+      "value": "Assets"
     }
   ],
   "wurpXL": [

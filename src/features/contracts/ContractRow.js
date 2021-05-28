@@ -1,13 +1,31 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { FormattedMessage } from 'react-intl';
 import React from 'react';
 
 function ContractRow({ isHeader, contract }) {
   if (isHeader) {
     return (
       <tr>
-        <th className="has-text-left">Title</th>
-        <th className="has-text-left">Issuer / counterparty</th>
-        <th className="has-text-left">Type</th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Title"
+            description="Contracts table column header: contract title"
+            id="/lBke1"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Issuer / counterparty"
+            description="Contracts table column header: contract issuer / counterparty"
+            id="cxOmHD"
+          />
+        </th>
+        <th className="has-text-left">
+          <FormattedMessage
+            defaultMessage="Type"
+            description="Contracts table column header: contract type"
+            id="cnwMLl"
+          />
+        </th>
       </tr>
     );
   }

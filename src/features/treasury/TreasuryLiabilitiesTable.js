@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFilteredBalances } from '@tokenized/sdk-react-private';

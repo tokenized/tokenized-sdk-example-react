@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useContracts } from '@tokenized/sdk-react-private';
 import ContractRow from './ContractRow';
 
@@ -8,7 +8,13 @@ function ContractsPage() {
 
   return (
     <section className="section">
-      <h1 className="title">Contracts</h1>
+      <h1 className="title">
+        <FormattedMessage
+          defaultMessage="Contracts"
+          description="Contracts page title"
+          id="2vbsAo"
+        />
+      </h1>
       {contracts?.isLoading && (
         <progress className="progress is-small is-primary mt-5" max="100" />
       )}
