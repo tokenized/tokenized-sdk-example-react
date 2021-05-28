@@ -32,7 +32,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "extract-strings": "formatjs extract 'src/**/*.js' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
-    "compile-strings": "formatjs compile-folder --ast src/lang src/compiled-lang"
+    "compile-strings": "formatjs compile-folder --ast src/lang src/compiled-lang",
+    "generate-docs": "jsdoc2md --template template/README.template.md node_modules/@tokenized/sdk-react-private/src/index.js node_modules/@tokenized/sdk-js-private/src/index.js node_modules/@tokenized/sdk-js-private/src/tokenized-api/TokenizedApi.js > README.md && prettier --write ./README.md"
   },
   "eslintConfig": {
     "root": true,
@@ -55,6 +56,8 @@
   ],
   "devDependencies": {
     "@formatjs/cli": "^4.2.15",
-    "eslint-plugin-formatjs": "^2.15.2"
+    "eslint-plugin-formatjs": "^2.15.2",
+    "jsdoc-to-markdown": "^7.0.1",
+    "prettier": "^2.2.1"
   }
 }
