@@ -131,6 +131,22 @@ Tokenized JavaScript SDK bindings for React
 down to components that use queries and mutations. Use this once at the top of
 your app’s component tree.
 
+#### Devtools
+
+The SDK caches model data with [React Query](https://react-query.tanstack.com)
+and stores state using [Redux](https://redux.js.org). To avoid confusion with
+your app’s usage of these frameworks, devtools support is turned off by default.
+If you’d like to view the SDK’s internal state in development builds, run this
+code in your browser’s console, and reload:
+
+    window.localStorage.setItem('tokenized-sdk-devtools-enable', 'true');
+
+The React Query devtools are rendered inside the `<TokenizedApiProvider>`
+component. In the Redux devtools browser extension, you should be able to select
+`Tokenized SDK` from the list of stores. To turn the devtools off again, run:
+
+    window.localStorage.removeItem('tokenized-sdk-devtools-enable');
+
 **Kind**: static property of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 
@@ -294,6 +310,21 @@ A TokenizedApi object manages user sign-ins and sessions, one at a time, and
 provides the user’s Tokenized profile data to your app’s UI code. Create one
 TokenizedApi object globally on startup, and pass it as context throughout your
 app.
+
+#### Devtools
+
+The SDK stores state using [Redux](https://redux.js.org). Devtools support for
+the internal store is turned off by default. If you’d like to view the SDK’s
+internal state in development builds, run this code in your browser’s console,
+and reload:
+
+    window.localStorage.setItem('tokenized-sdk-devtools-enable', 'true');
+
+In the Redux devtools browser extension, you should be able to select
+`Tokenized SDK` from the list of stores. To turn devtools support off again,
+run:
+
+    window.localStorage.removeItem('tokenized-sdk-devtools-enable');
 
 **Kind**: static class of
 [<code>@tokenized/sdk-js-private</code>](#module_@tokenized/sdk-js-private)

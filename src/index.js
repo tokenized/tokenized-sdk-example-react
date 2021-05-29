@@ -2,11 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bulma/css/bulma.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
-import { QueryClientProvider } from 'react-query/react';
 import { IntlProvider } from 'react-intl';
 import messagesEn from './compiled-lang/en.json';
 import { Provider as ReduxProvider } from 'react-redux';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import { TokenizedApi } from '@tokenized/sdk-js-private';
 import { TokenizedApiProvider } from '@tokenized/sdk-react-private';
 import store from './store';
@@ -41,9 +39,6 @@ const tokenizedApi = new TokenizedApi({
 
 ReactDOM.render(
   <TokenizedApiProvider tokenizedApi={tokenizedApi}>
-    <QueryClientProvider client={tokenizedApi.getQueryClient()}>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
     <IntlProvider locale={locale} messages={messagesEn}>
       <ReduxProvider store={store}>
         <App />
