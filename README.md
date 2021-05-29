@@ -12,7 +12,9 @@ customers building web-based apps, the
 handles all the details of the REST API for you, and is the quickest way to
 integrate the power of the Tokenized platform.
 
-_This is SDK release **0.3.0**_
+_This is **SDK release 0.3.0**, an early-access preview release with many
+features not yet implemented. At this early stage significant changes are
+possible to the SDK interface between releases._
 
 This GitHub repository,
 [`tokenized/tokenized-sdk-example-react`](https://github.com/tokenized/tokenized-sdk-example-react),
