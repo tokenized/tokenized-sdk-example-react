@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import {
   useTokenizedApi,
   useIsLoading,
-  useOwnFullName,
+  useOwnFormattedName,
   useCurrentProfileName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
@@ -12,12 +13,12 @@ import LoadingScreen from './LoadingScreen';
 function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
-  const fullName = useOwnFullName();
+  const ownFormattedName = useOwnFormattedName();
   const profileName = useCurrentProfileName();
 
   const onLogOut = useCallback(
     (event) => {
-      tokenizedApi.logout();
+      tokenizedApi.logOut();
     },
     [tokenizedApi],
   );
@@ -34,7 +35,13 @@ function DashboardScreen({ children }) {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <strong className="navbar-item">Tokenized SDK demo</strong>
+          <strong className="navbar-item">
+            <FormattedMessage
+              description="Nav bar main title"
+              defaultMessage="Tokenized SDK demo"
+              id="PVFFBa"
+            />
+          </strong>
           <a
             role="button"
             className="navbar-burger"
@@ -54,28 +61,52 @@ function DashboardScreen({ children }) {
               className="navbar-item"
               activeClassName="is-tab is-active"
             >
-              <span>Activity</span>
+              <span>
+                <FormattedMessage
+                  description="Nav bar activity tab"
+                  defaultMessage="Activity"
+                  id="iuWj8R"
+                />
+              </span>
             </NavLink>
             <NavLink
               to="/treasury"
               className="navbar-item"
               activeClassName="is-tab is-active"
             >
-              <span>Treasury</span>
+              <span>
+                <FormattedMessage
+                  description="Nav bar treasury tab"
+                  defaultMessage="Treasury"
+                  id="Uq6/ag"
+                />
+              </span>
             </NavLink>
             <NavLink
               to="/contracts"
               className="navbar-item"
               activeClassName="is-tab is-active"
             >
-              <span>Contracts</span>
+              <span>
+                <FormattedMessage
+                  description="Nav bar contracts tab"
+                  defaultMessage="Contracts"
+                  id="FvzCUW"
+                />
+              </span>
             </NavLink>
             <NavLink
               to="/relationships"
               className="navbar-item"
               activeClassName="is-tab is-active"
             >
-              <span>Relationships</span>
+              <span>
+                <FormattedMessage
+                  description="Nav bar relationships tab"
+                  defaultMessage="Relationships"
+                  id="qZNWyi"
+                />
+              </span>
             </NavLink>
           </div>
           <div className="navbar-end">
@@ -87,7 +118,7 @@ function DashboardScreen({ children }) {
               </a>
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item">
-                  <strong>{fullName}</strong>
+                  <strong>{ownFormattedName}</strong>
                   {profileName && <span className="ml-2">{profileName}</span>}
                 </div>
                 <hr className="navbar-divider" />
@@ -95,7 +126,13 @@ function DashboardScreen({ children }) {
                   <span className="icon">
                     <i className="fas fa-sign-out-alt"></i>
                   </span>
-                  <span>Sign out</span>
+                  <span>
+                    <FormattedMessage
+                      defaultMessage="Sign out"
+                      id="a6TlyZ"
+                      description="Nav bar user menu sign out action"
+                    />
+                  </span>
                 </a>
               </div>
             </div>

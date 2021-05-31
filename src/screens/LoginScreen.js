@@ -6,10 +6,10 @@ import {
   useTokenizedApi,
   useIsLoading,
   useIsLoggingIn,
-  useLoginNeedsMfa,
+  useLogInNeedsMfa,
   useIsLoggedIn,
-  useLoginError,
-  useOwnFullName,
+  useLogInError,
+  useOwnFormattedName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 
@@ -18,16 +18,16 @@ function LoginScreen() {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
   const isLoggingIn = useIsLoggingIn();
-  const needsMfa = useLoginNeedsMfa();
+  const needsMfa = useLogInNeedsMfa();
   const isLoggedIn = useIsLoggedIn();
-  const fullName = useOwnFullName();
+  const ownFormattedName = useOwnFormattedName();
 
   const [handle, setHandle] = useState('');
   const onHandleInput = useCallback(
     (event) => setHandle(event.target.value),
     [setHandle],
   );
-  const handlePostfix = tokenizedApi.getUserHandlePostfix();
+  const handlePostfix = tokenizedApi.account.getUserHandlePostfix();
   const [passphrase, setPassphrase] = useState('');
   const onPassphraseInput = useCallback(
     (event) => setPassphrase(event.target.value),
@@ -37,18 +37,18 @@ function LoginScreen() {
   const onSignIn = useCallback(
     (event) => {
       event.preventDefault();
-      tokenizedApi.login({ handle, passphrase });
+      tokenizedApi.logIn({ handle, passphrase });
       setHandle('');
       setPassphrase('');
     },
     [handle, passphrase, tokenizedApi],
   );
 
-  const loginError = useLoginError();
+  const logInError = useLogInError();
   const [hideError, setHideError] = useState(null);
   const onDismissError = useCallback(
-    () => setHideError(loginError),
-    [loginError],
+    () => setHideError(logInError),
+    [logInError],
   );
 
   if (isLoading) {
@@ -93,7 +93,7 @@ function LoginScreen() {
                     description="Login screen mobile authentication prompt title"
                     defaultMessage="Welcome {fullName}"
                     id="wurpXL"
-                    values={{ fullName }}
+                    values={{ fullName: ownFormattedName }}
                   />
                 </p>
                 <progress className="progress is-small is-primary" max="100" />
@@ -109,7 +109,7 @@ function LoginScreen() {
           )}
           {!needsMfa && (
             <form className="box" onSubmit={onSignIn}>
-              {loginError?.formattedErrorMessage && loginError !== hideError && (
+              {logInError?.formattedErrorMessage && logInError !== hideError && (
                 <article className="message is-danger">
                   <div className="message-header">
                     <p>
@@ -126,7 +126,7 @@ function LoginScreen() {
                     ></button>
                   </div>
                   <div className="message-body">
-                    {loginError.formattedErrorMessage}
+                    {logInError.formattedErrorMessage}
                   </div>
                 </article>
               )}

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {
   NavLink,
@@ -8,11 +7,10 @@ import {
   useRouteMatch,
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 import {
-  usePrimaryVaultId,
-  useVaultName,
+  usePrimaryVault,
   useFilteredBalances,
-  useCurrentProfileDisplayCurrency,
 } from '@tokenized/sdk-react-private';
 import TreasuryAssetsTable from './TreasuryAssetsTable';
 import TreasuryLiabilitiesTable from './TreasuryLiabilitiesTable';
@@ -21,25 +19,22 @@ import { selectTreasuryCurrentFilter } from './treasurySlice';
 
 function TreasuryPage() {
   const { url, path } = useRouteMatch();
-  const vaultId = usePrimaryVaultId();
-  const displayCurrencyCode = useCurrentProfileDisplayCurrency();
-  const vaultName = useVaultName(vaultId);
+  const vault = usePrimaryVault();
+  const vaultId = vault?.id;
+  const vaultName = vault?.name;
   const assetsCount =
     useFilteredBalances(vaultId, {
       includeLiabilities: false,
       includeInactive: false,
-      displayCurrencyCode,
     })?.data?.length || 0;
   const liabilitiesCount =
     useFilteredBalances(vaultId, {
       includeLiabilities: true,
       includeInactive: false,
-      displayCurrencyCode,
     })?.data?.length || 0;
   const inactiveCount =
     useFilteredBalances(vaultId, {
       includeInactive: true,
-      displayCurrencyCode,
     })?.data?.length || 0;
 
   const currentFilter = useSelector(selectTreasuryCurrentFilter);
@@ -47,8 +42,20 @@ function TreasuryPage() {
   return (
     <section className="section">
       <h1 className="title">
-        {vaultName || 'Treasury'}
-        <span className="tag is-info ml-4">Primary vault</span>
+        {vaultName || (
+          <FormattedMessage
+            defaultMessage="Treasury"
+            description="Treasury page title (if no vault name)"
+            id="uQj7Yo"
+          />
+        )}
+        <span className="tag is-info ml-4">
+          <FormattedMessage
+            defaultMessage="Primary vault"
+            description="Treasury primary vault tag"
+            id="oneuwr"
+          />
+        </span>
       </h1>
       <div className="buttons has-addons">
         <NavLink
@@ -56,9 +63,15 @@ function TreasuryPage() {
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Assets</span>
+          <span>
+            <FormattedMessage
+              defaultMessage="Assets"
+              description="Treasury assets tab"
+              id="wejkZs"
+            />
+          </span>
           <span className="tag is-link is-light is-rounded ml-2">
-            {assetsCount}
+            <FormattedNumber value={assetsCount} />
           </span>
         </NavLink>
         <NavLink
@@ -66,9 +79,15 @@ function TreasuryPage() {
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Liabilities</span>
+          <span>
+            <FormattedMessage
+              defaultMessage="Liabilities"
+              description="Treasury liabilities tab"
+              id="31KHio"
+            />
+          </span>
           <span className="tag is-link is-light is-rounded ml-2">
-            {liabilitiesCount}
+            <FormattedNumber value={liabilitiesCount} />
           </span>
         </NavLink>
         <NavLink
@@ -76,21 +95,27 @@ function TreasuryPage() {
           className="button"
           activeClassName="is-link is-selected"
         >
-          <span>Inactive</span>
+          <span>
+            <FormattedMessage
+              defaultMessage="Inactive"
+              description="Treasury inactive tab"
+              id="VYmTOm"
+            />
+          </span>
           <span className="tag is-link is-light is-rounded ml-2">
-            {inactiveCount}
+            <FormattedNumber value={inactiveCount} />
           </span>
         </NavLink>
       </div>
       <Switch>
         <Route path={`${path}/assets`}>
-          <TreasuryAssetsTable />
+          <TreasuryAssetsTable vaultId={vaultId} />
         </Route>
         <Route path={`${path}/liabilities`}>
-          <TreasuryLiabilitiesTable />
+          <TreasuryLiabilitiesTable vaultId={vaultId} />
         </Route>
         <Route path={`${path}/inactive`}>
-          <TreasuryInactiveTable />
+          <TreasuryInactiveTable vaultId={vaultId} />
         </Route>
         <Route path="*">
           <Redirect to={`${path}/${currentFilter || 'assets'}`} />

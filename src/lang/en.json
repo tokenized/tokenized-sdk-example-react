@@ -3,6 +3,26 @@
     "defaultMessage": "Unable to sign in",
     "description": "Login screen failed login error message title"
   },
+  "/lBke1": {
+    "defaultMessage": "Title",
+    "description": "Contracts table column header: contract title"
+  },
+  "2vbsAo": {
+    "defaultMessage": "Contracts",
+    "description": "Contracts page title"
+  },
+  "31KHio": {
+    "defaultMessage": "Liabilities",
+    "description": "Treasury liabilities tab"
+  },
+  "41ypwV": {
+    "defaultMessage": "Asset",
+    "description": "Balance table column header: asset name"
+  },
+  "6I1l1I": {
+    "defaultMessage": "Liability",
+    "description": "Balance table column header: liability (owed on issued assets)"
+  },
   "6amK0i": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "The app’s browser page title"
@@ -15,29 +35,109 @@
     "defaultMessage": "Loading…",
     "description": "App loading screen title"
   },
+  "D6bG5X": {
+    "defaultMessage": "Reserved",
+    "description": "Balance table column header: quantity of balance reserved"
+  },
   "FEJ3nB": {
     "defaultMessage": "Please confirm your identity in the authenticator app",
     "description": "Login screen mobile authentication prompt subtitle"
+  },
+  "FvzCUW": {
+    "defaultMessage": "Contracts",
+    "description": "Nav bar contracts tab"
+  },
+  "Ih3sF+": {
+    "defaultMessage": "Authorized",
+    "description": "Balance table column header: quantity of assets authorized in contract"
   },
   "J5JGM9": {
     "defaultMessage": "Handle",
     "description": "Login input field name: identify your account using your handle"
   },
+  "PVFFBa": {
+    "defaultMessage": "Tokenized SDK demo",
+    "description": "Nav bar main title"
+  },
+  "QaB4nu": {
+    "defaultMessage": "In vault",
+    "description": "Balance table column header: quantity held in vault"
+  },
+  "SOA+3t": {
+    "defaultMessage": "One unit",
+    "description": "Balance table column header: value of one asset unit"
+  },
+  "Uq6/ag": {
+    "defaultMessage": "Treasury",
+    "description": "Nav bar treasury tab"
+  },
+  "VYmTOm": {
+    "defaultMessage": "Inactive",
+    "description": "Treasury inactive tab"
+  },
   "Vt7Ozj": {
     "defaultMessage": "Sign in",
     "description": "Login screen sign in button"
+  },
+  "VyIxs7": {
+    "defaultMessage": "Value",
+    "description": "Balance table column header: value (of assets to me)"
+  },
+  "a6TlyZ": {
+    "defaultMessage": "Sign out",
+    "description": "Nav bar user menu sign out action"
+  },
+  "cnwMLl": {
+    "defaultMessage": "Type",
+    "description": "Contracts table column header: contract type"
+  },
+  "cxOmHD": {
+    "defaultMessage": "Issuer / counterparty",
+    "description": "Contracts table column header: contract issuer / counterparty"
+  },
+  "hTxeee": {
+    "defaultMessage": "Type",
+    "description": "Balance table column header: asset type"
+  },
+  "isZs2i": {
+    "defaultMessage": "Issuer",
+    "description": "Balance table column header: asset issuer"
+  },
+  "iuWj8R": {
+    "defaultMessage": "Activity",
+    "description": "Nav bar activity tab"
   },
   "kUSQxB": {
     "defaultMessage": "Passphrase",
     "description": "Login input field name: passphrase"
   },
+  "kYHpnu": {
+    "defaultMessage": "Issued",
+    "description": "Balance table column header: quantity issued by me"
+  },
+  "oneuwr": {
+    "defaultMessage": "Primary vault",
+    "description": "Treasury primary vault tag"
+  },
+  "qZNWyi": {
+    "defaultMessage": "Relationships",
+    "description": "Nav bar relationships tab"
+  },
   "slLQlj": {
     "defaultMessage": "Checking for previous session",
     "description": "App loading screen subtitle (below animated progress bar)"
   },
+  "uQj7Yo": {
+    "defaultMessage": "Treasury",
+    "description": "Treasury page title (if no vault name)"
+  },
   "vaZlef": {
     "defaultMessage": "Please sign in with your Tokenized account credentials",
     "description": "Login screen subtitle"
+  },
+  "wejkZs": {
+    "defaultMessage": "Assets",
+    "description": "Treasury assets tab"
   },
   "wurpXL": {
     "defaultMessage": "Welcome {fullName}",
