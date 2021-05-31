@@ -649,6 +649,9 @@ specific UI libraries)
     - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
+    - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+      - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
+        ⇒ <code>string</code>
     - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+logIn)
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+logOut)
     - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
@@ -685,6 +688,9 @@ run:
   - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
+  - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+    - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
+      ⇒ <code>string</code>
   - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+logIn)
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+logOut)
   - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
@@ -741,6 +747,26 @@ Access to contracts
 
 **Kind**: instance property of
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account"></a>
+
+#### tokenizedApi.account
+
+**Kind**: instance property of
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix"></a>
+
+##### account.getUserHandlePostfix() ⇒ <code>string</code>
+
+Returns the string that will be appended to user handles to form an account
+identifier for log in. Display this in your log in dialog when prompting the
+user for a handle. Since the postfix is determined by the back end
+(`production`, `test`, or `development`), it remains fixed for the lifetime of
+each `TokenizedApi` object.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>string</code> - The handle postfix, for example
+`'@tokenized.id'`.  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+logIn"></a>
 
 #### tokenizedApi.logIn(options)
