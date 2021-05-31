@@ -94,8 +94,12 @@ specific UI libraries)</p>
 ## External
 
 <dl>
-<dt><a href="#external_QueryClient">QueryClient</a></dt>
-<dd><p>React Query client</p>
+<dt><a href="#external_react-query">react-query</a></dt>
+<dd><p>The React Query framework is used by the SDK to handle fetching and mutating
+model data with the Tokenized REST API, with automatic retries and
+re-fetching. Some knowledge of how React Query works is useful, since the SDK
+exposes some of its details directly, like the <code>UseQueryResult</code> objects
+returned by the <code>@tokenized/sdk-react-private</code> query hooks.</p>
 </dd>
 </dl>
 
@@ -121,6 +125,16 @@ Tokenized JavaScript SDK bindings for React
     <code>boolean</code>
   - [.useLogInError()](#module_@tokenized/sdk-react-private.useLogInError) ⇒
     <code>Error</code>
+  - [.useOwnFormattedName()](#module_@tokenized/sdk-react-private.useOwnFormattedName)
+    ⇒ <code>string</code>
+  - [.useCurrentProfileName()](#module_@tokenized/sdk-react-private.useCurrentProfileName)
+    ⇒ <code>string</code>
+  - [.usePrimaryVault()](#module_@tokenized/sdk-react-private.usePrimaryVault) ⇒
+    [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+  - [.useContracts()](#module_@tokenized/sdk-react-private.useContracts) ⇒
+    [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+  - [.useFilteredBalances(vaultId, filterOptions)](#module_@tokenized/sdk-react-private.useFilteredBalances)
+    ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
 
 <a name="module_@tokenized/sdk-react-private.TokenizedApiProvider"></a>
 
@@ -179,7 +193,7 @@ ReactDOM.render(
 
 ### @tokenized/sdk-react-private.useTokenizedApi() ⇒ [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
 
-(React hook) providing access to the
+**`React hook`** providing access to the
 [TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi) session manager.
 
 **Kind**: static method of
@@ -192,8 +206,8 @@ The session manager you passed into
 
 ### @tokenized/sdk-react-private.useIsLoading() ⇒ <code>boolean</code>
 
-(React hook) Initial loading status. Show a loading screen when `useIsLoading`
-is `true`.
+**`React hook`** Initial loading status. Show a loading screen when
+`useIsLoading` is `true`.
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
@@ -203,8 +217,12 @@ finished restoring the session on startup.
 
 ### @tokenized/sdk-react-private.useIsLoggingIn() ⇒ <code>boolean</code>
 
-(React hook) Current log in process status. Show a spinner and disable user
+**`React hook`** Current log in process status. Show a spinner and disable user
 input on your login screen when `useIsLoggingIn` is `true`.
+
+_Note that in an upcoming release of the SDK, log in will be handled by a
+redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
+longer be necessary._
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
@@ -214,7 +232,7 @@ input on your login screen when `useIsLoggingIn` is `true`.
 
 ### @tokenized/sdk-react-private.useIsLoggedOut() ⇒ <code>boolean</code>
 
-(React hook) Current “no session” status.
+**`React hook`** Current “no session” status.
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
@@ -224,9 +242,13 @@ and also no log in process happening.
 
 ### @tokenized/sdk-react-private.useLogInNeedsMfa() ⇒ <code>boolean</code>
 
-(React hook) Current multi-factor authentication status. Show a prompt to
+**`React hook`** Current multi-factor authentication status. Show a prompt to
 “Confirm your identity in the authenticator app” on your login screen when
 `useLogInNeedsMfa` is `true`.
+
+_Note that in an upcoming release of the SDK, log in (including MFA) will be
+handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
+will no longer be necessary._
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
@@ -236,8 +258,8 @@ for MFA confirmation.
 
 ### @tokenized/sdk-react-private.useIsLoggedIn() ⇒ <code>boolean</code>
 
-(React hook) Valid user session status. Check this on every normal page of your
-app, and switch to the login prompt if `useIsLoggedIn` is `false`.
+**`React hook`** Valid user session status. Check this on every normal page of
+your app, and switch to the login prompt if `useIsLoggedIn` is `false`.
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
@@ -279,13 +301,342 @@ function PrivateRoute({ children, ...rest }) {
 
 ### @tokenized/sdk-react-private.useLogInError() ⇒ <code>Error</code>
 
-(React hook) Current log in error. Display the error message on your login
+**`React hook`** Current log in error. Display the error message on your login
 screen to inform the user why their log in attempt was unsuccessful.
+
+_Note that in an upcoming release of the SDK, log in will be handled by a
+redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
+longer be necessary._
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>Error</code> - The error that caused a log in attempt to
 fail. Cleared to `null` when a new log in process is started.  
+<a name="module_@tokenized/sdk-react-private.useOwnFormattedName"></a>
+
+### @tokenized/sdk-react-private.useOwnFormattedName() ⇒ <code>string</code>
+
+**`React hook`** The full name of the authenticated user. Display the user’s
+name in an account menu, for example. The name is available as soon as the login
+credentials are verified, so you can display it in the MFA prompt before full
+authentication.
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>string</code> - The user’s full name  
+<a name="module_@tokenized/sdk-react-private.useCurrentProfileName"></a>
+
+### @tokenized/sdk-react-private.useCurrentProfileName() ⇒ <code>string</code>
+
+**`React hook`** The name of the user’s current profile. Display in an account
+menu next to the user’s name. Currently the profile name will always be
+“Individual”.
+
+#### About profiles
+
+The SDK interacts with a single current profile per session, providing
+management of the vaults, assets, and contracts allowed by the user’s role
+within the entity selected by the profile. _Currently only the user’s personal
+“Individual” entity and its default profile is supported._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>string</code> - The current profile name  
+<a name="module_@tokenized/sdk-react-private.usePrimaryVault"></a>
+
+### @tokenized/sdk-react-private.usePrimaryVault() ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+
+**`React hook`** Provides information about the primary vault in the user’s
+current profile. Pass the `id` of the vault into
+[`useFilteredBalances`](#module_@tokenized/sdk-react-private.useFilteredBalances)
+to get a list of the assets in the vault.
+
+_Currently only a single primary vault is supported per profile._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**:
+[<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - The user’s
+primary vault as the `data` property within a React Query
+[`UseQueryResult`](#external_react-query.UseQueryResult) object. For example
+(not all query status properties shown):
+
+```js
+{
+  "isLoading": false,
+  "data": {
+    "id": "432b199b-1f71-42bf-ba0b-33d512afa9de",
+    "name": "Primary",
+    "isPrimary": true,
+    "isActive": true,
+    "isDeleted": false,
+    "dateCreated": 1603874542197,
+    "dateModified": 1622130022588,
+    "profileId": "dc1fb13c-e586-433b-b7f1-68fbb0e8a941",
+    "profileName": "Individual"
+    "profileIndex": 0,
+    "entityId": "ae0cfeac-4316-456e-abaf-c3568e7e67b9",
+    "displayHandle": "hankrearden@tokenized.id",
+    "displayName": "Hank Rearden"
+  },
+  "error": null
+}
+```
+
+<a name="module_@tokenized/sdk-react-private.useContracts"></a>
+
+### @tokenized/sdk-react-private.useContracts() ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+
+**`React hook`** Provides a list of the contracts accessible in the current
+profile, including all those that the profile’s entity is a counterparty to, and
+the contracts for all assets held by the entity. The list includes contracts
+that can be edited and contracts that can only be viewed.
+
+_The contract data structure is not finalized, and will be reorganized and
+transformed for easier usage in a future SDK release._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**:
+[<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - The data
+property of the [`UseQueryResult`](#external_react-query.UseQueryResult) object
+is the list of contracts in an object, where the keys are the contract addresses
+and the values are the contract objects. For example (not all properties shown):
+
+```js
+{
+  "isLoading": false,
+  "data": {
+    "1CSLw5EY7CGenvXhiU7RUPsDvQjd7BkpZj": {
+      "contractAddress": "1CSLw5EY7CGenvXhiU7RUPsDvQjd7BkpZj",
+      "name": "Chapters Dev 3",
+      "contractType": "COU",
+      "issuer": { "name": "Hank Rearden" },
+      "issuerHandle": "hankrearden@tokenized.id",
+      "bodyOfAgreement": {
+        "bodyOfAgreementFormation": {
+          "chapters": [
+            {
+              "title": "Chapter 1",
+              "preamble": "First preamble",
+              "articles": [
+                {
+                  "title": "An article.",
+                  "body": "And an article body",
+                  "children": [
+                    { "title": "A section.", "body": "Another body" }
+                  ]
+                },
+                { "title": "Another article.", "body": "Another body" }
+              ]
+            },
+            {
+              "title": "Chapter 2",
+              "preamble": "Second preamble",
+              "articles": [
+                {
+                  "title": "An article.",
+                  "body": "More body",
+                  "children": [
+                    {
+                      "title": "Another section.",
+                      "body": "Another section body"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "timestamp": 1614444222322.359
+        }
+      }
+    }
+  },
+  "error": null
+}
+```
+
+<a name="module_@tokenized/sdk-react-private.useFilteredBalances"></a>
+
+### @tokenized/sdk-react-private.useFilteredBalances(vaultId, filterOptions) ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+
+**`React hook`** Filtered and sorted list of the quantities (balances) of assets
+and liabilities in a specified vault. While the hook is mounted, balances will
+be refreshed automatically **every 60 seconds**.
+
+Each object in the results array describes a selection of relevant quantities
+for the particular asset:
+
+- `balance`: Quantity of the asset held in this vault
+- `reserved`: Quantity of balance reserved for pending transactions
+- `authorizedQuantity`: Total quantity of asset in existence
+- `individualFaceValue`: The value of one “unit” of the asset
+- `issuedLiability`: For the entity’s own assets: the quantity issued to others
+- `value`: The quantity of the asset issued to this vault
+
+Every quantity provides the necessary information to format the number in a
+variety of different ways, depending on your requirements:
+
+- `tokens`: the quantity in the natural units of the asset – “48 coupons”.
+- `faceValue`: the value of the assets in their face value currency –
+  “$59,184.00”.
+- `displayCurrency`: the value of the assets converted to the user’s selected
+  display currency (the currency can be overridden in the `filterOptions`
+  argument) – “£41,737.68”.
+
+For the currency quantities, `NumberFormatOptions` objects are provided that can
+be passed directly (or with your own modifications) to
+[`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat)
+for localized currency formatting.
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**:
+[<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - An array
+of balances as the `data` property within a React Query
+[`UseQueryResult`](#external_react-query.UseQueryResult) object. Refer to the
+example for details of the data structure and how to use it.
+
+| Param                             | Type                 | Description                                                                                                                                                                                                                                                                         |
+| --------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| vaultId                           | <code>string</code>  | The id of the vault to query for balances. The id of the user’s primary vault can be obtained via [`usePrimaryVault()?.id`](#module_@tokenized/sdk-react-private.usePrimaryVault).                                                                                                  |
+| filterOptions                     | <code>object</code>  |                                                                                                                                                                                                                                                                                     |
+| filterOptions.includeLiabilities  | <code>boolean</code> | Asset/liability filtering: Set `includeLiabilities: true` to only include assets created by the current entity. Set `includeLiabilities: false` to only include assets issued to the current entity by another entity, Omit `includeLiabilities` to include assets and liabilities. |
+| filterOptions.includeInactive     | <code>boolean</code> | Active/inactive filtering: Set `includeInactive: true` to only include assets that are inactive or expired. Set `includeInactive: false` to only include assets that are active and not expired. Omit `includeInactive` to include active and inactive assets.                      |
+| filterOptions.displayCurrencyCode | <code>string</code>  | Override the display currency from the user’s profile for currency conversions. For example setting `displayCurrencyCode: 'USD'` will return quantities with display currency conversions to US dollars.                                                                            |
+
+**Example**
+
+```js
+import React from 'react';
+import {
+  usePrimaryVault,
+  useFilteredBalances,
+} from '@tokenized/sdk-react-private';
+
+export default function BalancesExample() {
+  const vault = usePrimaryVault();
+  const vaultId = vault && vault.id;
+  const balances =
+    useFilteredBalances(vaultId, {
+      includeLiabilities: undefined,
+      includeInactive: false,
+    }) || {};
+
+  if (balances.isLoading) {
+    return <p>Loading…</p>;
+  }
+
+  return (
+    <div className="content">
+      <ul>
+        {balances.data &&
+          balances.data.map((balanceData) => {
+            const {
+              assetId, // "COUEtBdhD4FHnm6FT7wyNnMnPH7aBbMfJPMk"
+              assetName, // "Example coupon"
+              assetType: {
+                code: assetTypeCode, // "COU"
+                formatted: assetTypeName, // "Coupon"
+              },
+              isActive,
+              isExpired,
+              isLiability,
+              quantities,
+              contract: {
+                address: contractAddress, // "16zB7rCnWLm8PhfiVGaux1cLiVdZinNF2v"
+                formatted: contractName, // "Example coupon contract"
+              } = {},
+              issuer: {
+                entityId: issuerId, // "468136c8-4a90-4181-8dc1-508893171b15"
+                formatted: issuerName, // "Martina Probst"
+              } = {},
+            } = balanceData;
+
+            const {
+              balance, // Quantity of the asset held in this vault
+              reserved, // Quantity of balance reserved for pending transactions
+              authorizedQuantity, // Total quantity of asset in existence
+              individualFaceValue, // The value of one “unit” of the asset
+              issuedLiability, // For the entity’s own assets: the quantity issued to others
+              value, // The quantity of the asset issued to this vault
+            } = quantities;
+
+            return (
+              <li key={assetId}>
+                {assetName} ({assetTypeName})
+                <ul>
+                  <li>
+                    balance: <FormatQuantity quantity={balance} />
+                  </li>
+                  <li>
+                    reserved: <FormatQuantity quantity={reserved} />
+                  </li>
+                  <li>
+                    authorizedQuantity:{' '}
+                    <FormatQuantity quantity={authorizedQuantity} />
+                  </li>
+                  <li>
+                    individualFaceValue:{' '}
+                    <FormatQuantity quantity={individualFaceValue} />
+                  </li>
+                  <li>
+                    issuedLiability:{' '}
+                    <FormatQuantity quantity={issuedLiability} />
+                  </li>
+                  <li>
+                    value: <FormatQuantity quantity={value} />
+                  </li>
+                </ul>
+              </li>
+            );
+          })}
+      </ul>
+    </div>
+  );
+}
+
+function FormatQuantity({ quantity }) {
+  const {
+    tokens: {
+      // "48 coupons"
+      number: tokenNumber,
+      formatted: tokenFormatted,
+    } = {},
+    faceValue: {
+      // "$59,184.00"
+      number: faceValueNumber,
+      NumberFormatOptions: faceValueOptions,
+    } = {},
+    displayCurrency: {
+      // "£41,737.68"
+      number: displayCurrencyNumber,
+      NumberFormatOptions: displayCurrencyOptions,
+    } = {},
+  } = quantity || {};
+
+  const formats = [];
+  if (tokenFormatted) {
+    formats.push(tokenFormatted);
+  }
+  if (faceValueOptions) {
+    formats.push(
+      new Intl.NumberFormat(undefined, faceValueOptions).format(
+        faceValueNumber,
+      ),
+    );
+  }
+  if (displayCurrencyOptions) {
+    formats.push(
+      new Intl.NumberFormat(undefined, displayCurrencyOptions).format(
+        displayCurrencyNumber,
+      ),
+    );
+  }
+  return formats.join(', ');
+}
+```
+
 <a name="module_@tokenized/sdk-js-private"></a>
 
 ## @tokenized/sdk-js-private
@@ -300,7 +651,7 @@ specific UI libraries)
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
     - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
-      ⇒ [<code>QueryClient</code>](#external_QueryClient)
+      ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
 
 <a name="module_@tokenized/sdk-js-private.TokenizedApi"></a>
 
@@ -335,7 +686,7 @@ run:
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
   - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
-    ⇒ [<code>QueryClient</code>](#external_QueryClient)
+    ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
 
 <a name="new_module_@tokenized/sdk-js-private.TokenizedApi_new"></a>
 
@@ -398,7 +749,7 @@ Access to the user’s contracts
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient"></a>
 
-#### tokenizedApi.getQueryClient() ⇒ [<code>QueryClient</code>](#external_QueryClient)
+#### tokenizedApi.getQueryClient() ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
 
 Provides the
 [React Query `QueryClient` object](https://react-query.tanstack.com/reference/QueryClient)
@@ -407,13 +758,54 @@ query data and perform mutations.
 
 **Kind**: instance method of
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
-<a name="external_QueryClient"></a>
+<a name="external_react-query"></a>
 
-## QueryClient
+## react-query
 
-React Query client
+The React Query framework is used by the SDK to handle fetching and mutating
+model data with the Tokenized REST API, with automatic retries and re-fetching.
+Some knowledge of how React Query works is useful, since the SDK exposes some of
+its details directly, like the `UseQueryResult` objects returned by the
+`@tokenized/sdk-react-private` query hooks.
 
 **Kind**: global external  
+**See**: https://react-query.tanstack.com/overview
+
+- [react-query](#external_react-query)
+  - [.UseQueryResult](#external_react-query.UseQueryResult)
+  - [.QueryClient](#external_react-query.QueryClient)
+
+<a name="external_react-query.UseQueryResult"></a>
+
+### react-query.UseQueryResult
+
+The query hooks in `@tokenized/sdk-react-private` return information about the
+status of a query, including the data once it becomes available, in a
+`UseQueryResult` object that’s defined by the `UseQuery` hook from
+[React Query](#external_react-query). Amongst other things, the object provides:
+
+- `.loading`: A boolean that’s `true` while the query fetches its first results.
+  You can use this flag to display a loading spinner.
+- `.data`: The latest query results, once they’re available.
+- `.error`: The error object if the query fails.
+
+**Kind**: static typedef of [<code>react-query</code>](#external_react-query)  
+**See**: https://react-query.tanstack.com/reference/useQuery  
+<a name="external_react-query.QueryClient"></a>
+
+### react-query.QueryClient
+
+The `QueryClient` object encapsulates a React Query data cache. It provides
+(amongst many other things):
+
+- [`queryClient.fetchQuery`](https://react-query.tanstack.com/reference/QueryClient#queryclientfetchquery):
+  A way to run one-off queries directly, caching the results.
+- The `QueryClient` object can be used to construct a
+  [`QueryObserver`](https://react-query.tanstack.com/reference/QueryObserver)
+  for a particular query, which can then be bound to UI using the observer
+  pattern.
+
+**Kind**: static typedef of [<code>react-query</code>](#external_react-query)  
 **See**: https://react-query.tanstack.com/reference/QueryClient
 
 ---
