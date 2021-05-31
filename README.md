@@ -12,7 +12,7 @@ customers building web-based apps, the
 handles all the details of the REST API for you, and is the quickest way to
 integrate the power of the Tokenized platform.
 
-_This is **SDK release 0.3.0**, an early-access preview release with many
+_This is **SDK release 0.4.0**, an early-access preview release with many
 features not yet implemented. At this early stage significant changes are
 possible to the SDK interface between releases._
 
@@ -647,9 +647,10 @@ specific UI libraries)
 - [@tokenized/sdk-js-private](#module_@tokenized/sdk-js-private)
   - [.TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi)
     - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
-    - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
+    - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+logIn)
+    - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+logOut)
     - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
       ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
 
@@ -682,9 +683,10 @@ run:
 
 - [.TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi)
   - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
-  - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
+  - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+logIn)
+  - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+logOut)
   - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
     ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
 
@@ -723,19 +725,11 @@ const tokenizedApi = new TokenizedApi({
 });
 ```
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account"></a>
-
-#### tokenizedApi.account
-
-Manages the sign in process
-
-**Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+treasury"></a>
 
 #### tokenizedApi.treasury
 
-Access to the user’s balances and assets
+Access to balances and assets
 
 **Kind**: instance property of
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
@@ -743,9 +737,37 @@ Access to the user’s balances and assets
 
 #### tokenizedApi.contracts
 
-Access to the user’s contracts
+Access to contracts
 
 **Kind**: instance property of
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+logIn"></a>
+
+#### tokenizedApi.logIn(options)
+
+Begin a new asynchronous log in process with the specified account credentials.
+If a log in attempt is currently in progress, it will be cancelled and replaced
+with the new one. Fails if there’s already a valid authenticated session.
+
+**Kind**: instance method of
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
+
+| Param               | Type                | Description                                                                                                                                                                                                                                                                                                                 |
+| ------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options             | <code>object</code> |                                                                                                                                                                                                                                                                                                                             |
+| options.handle      | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will log in as `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
+| options.phoneNumber | <code>string</code> | Identifies the account to log into using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                               |
+| options.email       | <code>string</code> | Identifies the account to log into using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                              |
+| options.passphrase  | <code>string</code> | The passphrase to authenticate the user’s account.                                                                                                                                                                                                                                                                          |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+logOut"></a>
+
+#### tokenizedApi.logOut()
+
+End the current authenticated session and clear all internal state associated
+with it. If a log in attempt is currently in progress then cancel it.
+
+**Kind**: instance method of
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient"></a>
 
@@ -818,6 +840,10 @@ The SDK is always released together in three parts:
 and
 [`tokenized/tokenized-sdk-example-react` (GitHub repo)](https://github.com/tokenized/tokenized-sdk-example-react).
 
+- **`0.4.0` 2021-05-31** — First customer preview release. Treasury balance list
+  structure redesigned to provide all relevant quantities precalculated with
+  highly flexible formatting and currency conversions. Full documentation of the
+  library interfaces is now built into the READMEs.
 - **`0.3.0` 2021-05-24** — Fully-functional querying and formatting of treasury
   balance lists, and initial support for listing contracts, using React Query
   for data fetching. Internationalization support with React Intl (FormatJS).

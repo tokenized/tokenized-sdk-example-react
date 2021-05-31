@@ -12,7 +12,7 @@ customers building web-based apps, the
 handles all the details of the REST API for you, and is the quickest way to
 integrate the power of the Tokenized platform.
 
-_This is **SDK release 0.3.0**, an early-access preview release with many
+_This is **SDK release 0.4.0**, an early-access preview release with many
 features not yet implemented. At this early stage significant changes are
 possible to the SDK interface between releases._
 
@@ -91,6 +91,10 @@ The SDK is always released together in three parts:
 and
 [`tokenized/tokenized-sdk-example-react` (GitHub repo)](https://github.com/tokenized/tokenized-sdk-example-react).
 
+- **`0.4.0` 2021-05-31** — First customer preview release. Treasury balance list
+  structure redesigned to provide all relevant quantities precalculated with
+  highly flexible formatting and currency conversions. Full documentation of the
+  library interfaces is now built into the READMEs.
 - **`0.3.0` 2021-05-24** — Fully-functional querying and formatting of treasury
   balance lists, and initial support for listing contracts, using React Query
   for data fetching. Internationalization support with React Intl (FormatJS).

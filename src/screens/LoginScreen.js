@@ -27,7 +27,7 @@ function LoginScreen() {
     (event) => setHandle(event.target.value),
     [setHandle],
   );
-  const handlePostfix = tokenizedApi.getUserHandlePostfix();
+  const handlePostfix = tokenizedApi.account.getUserHandlePostfix();
   const [passphrase, setPassphrase] = useState('');
   const onPassphraseInput = useCallback(
     (event) => setPassphrase(event.target.value),
