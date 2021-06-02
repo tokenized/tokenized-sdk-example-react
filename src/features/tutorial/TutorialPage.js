@@ -1,13 +1,23 @@
 import React from 'react';
+import classNames from 'classnames';
 import {
   usePrimaryVault,
   useFilteredBalances,
 } from '@tokenized/sdk-react-private';
 
+const assetTypeColor = {
+  CCY: 'is-link',
+  COU: 'is-info',
+  LOY: 'is-success',
+  CHP: 'is-warning',
+  TIC: 'is-primary',
+};
+
 export default function TutorialPage() {
   const vault = usePrimaryVault();
   const balances = useFilteredBalances(vault?.id, {
     includeInactive: false,
+    displayCurrencyCode: 'AUD',
   });
 
   return (
@@ -24,20 +34,47 @@ export default function TutorialPage() {
                     ? balance.quantities?.issuedLiability
                     : balance.quantities?.value;
                   let valueOrLiability;
-                  if (quantity?.displayCurrency) {
+                  let tokenCount = false;
+                  if (
+                    quantity?.displayCurrency &&
+                    quantity.displayCurrency.number > 0
+                  ) {
+                    const number = balance.isLiability
+                      ? -quantity.displayCurrency.number
+                      : quantity.displayCurrency.number;
+                    const formatOptions = {
+                      ...quantity.displayCurrency.NumberFormatOptions,
+                      currencySign: 'accounting',
+                    };
                     valueOrLiability = new Intl.NumberFormat(
                       undefined,
-                      quantity.displayCurrency.NumberFormatOptions,
-                    ).format(quantity.displayCurrency.number);
+                      formatOptions,
+                    ).format(number);
+                  } else if (quantity?.tokens?.formatted) {
+                    valueOrLiability = quantity.tokens.formatted;
+                    tokenCount = true;
                   }
                   return (
                     <div key={balance.assetId} className="control">
                       <div className="tags has-addons">
-                        <span className="tag is-link">
+                        <span
+                          className={classNames(
+                            'tag',
+                            balance.isLiability && ' has-text-weight-bold',
+                            assetTypeColor[balance.assetType?.code] ||
+                              'is-light',
+                          )}
+                        >
                           {balance?.assetName}
                         </span>
                         {valueOrLiability && (
-                          <span className="tag is-dark">
+                          <span
+                            className={classNames(
+                              'tag',
+                              tokenCount ? 'is-link is-light' : 'is-dark',
+                              !tokenCount && 'has-text-weight-bold',
+                            )}
+                          >
                             {valueOrLiability}
                           </span>
                         )}
