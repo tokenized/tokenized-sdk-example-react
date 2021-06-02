@@ -11,6 +11,7 @@ import LoginScreen from './screens/LoginScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import TreasuryPage from './features/treasury/TreasuryPage';
 import ContractsPage from './features/contracts/ContractsPage';
+import TutorialPage from './features/tutorial/TutorialPage';
 
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated
@@ -52,7 +53,9 @@ function App() {
           <LoginScreen />
         </Route>
         <PrivateRoute path="/activity">
-          <DashboardScreen />
+          <DashboardScreen>
+            <TutorialPage />
+          </DashboardScreen>
         </PrivateRoute>
         <PrivateRoute path="/treasury">
           <DashboardScreen>
