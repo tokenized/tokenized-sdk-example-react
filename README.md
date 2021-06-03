@@ -508,7 +508,7 @@ for the particular asset:
 - `balance`: Quantity of the asset held in this vault
 - `reserved`: Quantity of balance reserved for pending transactions
 - `authorizedQuantity`: Total quantity of asset in existence
-- `individualFaceValue`: The value of one “unit” of the asset
+- `unitValue`: The value of one “unit” of the asset
 - `issuedLiability`: For the entity’s own assets: the quantity issued to others
 - `value`: The quantity of the asset issued to this vault
 
@@ -595,7 +595,7 @@ export default function BalancesExample() {
               balance, // Quantity of the asset held in this vault
               reserved, // Quantity of balance reserved for pending transactions
               authorizedQuantity, // Total quantity of asset in existence
-              individualFaceValue, // The value of one “unit” of the asset
+              unitValue, // The value of one “unit” of the asset
               issuedLiability, // For the entity’s own assets: the quantity issued to others
               value, // The quantity of the asset issued to this vault
             } = quantities;
@@ -615,8 +615,7 @@ export default function BalancesExample() {
                     <FormatQuantity quantity={authorizedQuantity} />
                   </li>
                   <li>
-                    individualFaceValue:{' '}
-                    <FormatQuantity quantity={individualFaceValue} />
+                    unitValue: <FormatQuantity quantity={unitValue} />
                   </li>
                   <li>
                     issuedLiability:{' '}
