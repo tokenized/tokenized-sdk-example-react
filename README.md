@@ -121,6 +121,9 @@ Tokenized JavaScript SDK bindings for React
     <code>boolean</code>
   - [.useLogInNeedsMfa()](#module_@tokenized/sdk-react-private.useLogInNeedsMfa)
     ⇒ <code>boolean</code>
+  - [.useIsWaitingForDevicePairing()](#module_@tokenized/sdk-react-private.useIsWaitingForDevicePairing)
+    ⇒ <code>boolean</code>
+  - [.DevicePairingCode()](#module_@tokenized/sdk-react-private.DevicePairingCode)
   - [.useIsLoggedIn()](#module_@tokenized/sdk-react-private.useIsLoggedIn) ⇒
     <code>boolean</code>
   - [.useLogInError()](#module_@tokenized/sdk-react-private.useLogInError) ⇒
@@ -254,6 +257,41 @@ will no longer be necessary._
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when the log in process is polling
 for MFA confirmation.  
+<a name="module_@tokenized/sdk-react-private.useIsWaitingForDevicePairing"></a>
+
+### @tokenized/sdk-react-private.useIsWaitingForDevicePairing() ⇒ <code>boolean</code>
+
+**`React hook`** Authenticator device pairing status. Show the pairing QR code
+and a prompt to “Scan this code with the authenticator app” on your login screen
+when `useIsWaitingForDevicePairing` is `true`.
+
+_Note that in an upcoming release of the SDK, device pairing will be handled by
+a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
+longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>boolean</code> - `true` when a device pairing process is
+active.  
+<a name="module_@tokenized/sdk-react-private.DevicePairingCode"></a>
+
+### @tokenized/sdk-react-private.DevicePairingCode()
+
+`<DevicePairingCode>` is a React component that renders the authenticator device
+pairing QR code. Present this to the user and prompt them to “Scan this code
+with the authenticator app”.
+
+_Note that in an upcoming release of the SDK, device pairing will be handled by
+a redirect to a secure, Tokenized-hosted mini-web-app, and this component will
+no longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
+
+| Param        | Type                | Default          | Description                                                         |
+| ------------ | ------------------- | ---------------- | ------------------------------------------------------------------- |
+| [props.size] | <code>number</code> | <code>256</code> | The dimensions of the (square) QR code, in pixels. Default is `256` |
+
 <a name="module_@tokenized/sdk-react-private.useIsLoggedIn"></a>
 
 ### @tokenized/sdk-react-private.useIsLoggedIn() ⇒ <code>boolean</code>
@@ -650,10 +688,11 @@ specific UI libraries)
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
     - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+      - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+      - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
+      - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
         ⇒ <code>string</code>
-    - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+logIn)
-    - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+logOut)
     - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
       ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
 
@@ -689,10 +728,11 @@ run:
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
   - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+    - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+    - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
+    - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
       ⇒ <code>string</code>
-  - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+logIn)
-  - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+logOut)
   - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
     ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
 
@@ -752,7 +792,54 @@ Access to contracts
 #### tokenizedApi.account
 
 **Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
+
+- [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+  - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+  - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
+  - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
+  - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
+    ⇒ <code>string</code>
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logIn"></a>
+
+##### account.logIn(options)
+
+Begin a new asynchronous log in process with the specified account credentials.
+If a log in attempt is currently in progress, it will be cancelled and replaced
+with the new one. Fails if there’s already a valid authenticated session.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+
+| Param               | Type                | Description                                                                                                                                                                                                                                                                                                                 |
+| ------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options             | <code>object</code> |                                                                                                                                                                                                                                                                                                                             |
+| options.handle      | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will log in as `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
+| options.phoneNumber | <code>string</code> | Identifies the account to log into using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                               |
+| options.email       | <code>string</code> | Identifies the account to log into using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                              |
+| options.passphrase  | <code>string</code> | The passphrase to authenticate the user’s account.                                                                                                                                                                                                                                                                          |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing"></a>
+
+##### account.initiateDevicePairing()
+
+Generate a new one-time password to start the device pairing process. During
+sign in, this will be done automatically if the user has no active authenticator
+devices. Use this function when the user explicitly chooses to re-pair, or if
+you need to regenerate an expired code.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logOut"></a>
+
+##### account.logOut()
+
+End the current authenticated session and clear all internal state associated
+with it. If a log in attempt is currently in progress then cancel it.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix"></a>
 
 ##### account.getUserHandlePostfix() ⇒ <code>string</code>
@@ -767,34 +854,6 @@ each `TokenizedApi` object.
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>string</code> - The handle postfix, for example
 `'@tokenized.id'`.  
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+logIn"></a>
-
-#### tokenizedApi.logIn(options)
-
-Begin a new asynchronous log in process with the specified account credentials.
-If a log in attempt is currently in progress, it will be cancelled and replaced
-with the new one. Fails if there’s already a valid authenticated session.
-
-**Kind**: instance method of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
-
-| Param               | Type                | Description                                                                                                                                                                                                                                                                                                                 |
-| ------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options             | <code>object</code> |                                                                                                                                                                                                                                                                                                                             |
-| options.handle      | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will log in as `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
-| options.phoneNumber | <code>string</code> | Identifies the account to log into using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                               |
-| options.email       | <code>string</code> | Identifies the account to log into using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                              |
-| options.passphrase  | <code>string</code> | The passphrase to authenticate the user’s account.                                                                                                                                                                                                                                                                          |
-
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+logOut"></a>
-
-#### tokenizedApi.logOut()
-
-End the current authenticated session and clear all internal state associated
-with it. If a log in attempt is currently in progress then cancel it.
-
-**Kind**: instance method of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient"></a>
 
 #### tokenizedApi.getQueryClient() ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)

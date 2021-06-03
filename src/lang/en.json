@@ -27,9 +27,17 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "The app’s browser page title"
   },
+  "8MXtG4": {
+    "defaultMessage": "Display pairing code…",
+    "description": "Login screen display pairing code button"
+  },
   "BWwoyB": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "Login screen title"
+  },
+  "C6Pp9+": {
+    "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
+    "description": "Login screen mobile authenticator pairing subtitle"
   },
   "CYyLJH": {
     "defaultMessage": "Loading…",
@@ -46,6 +54,10 @@
   "FvzCUW": {
     "defaultMessage": "Contracts",
     "description": "Nav bar contracts tab"
+  },
+  "GCPZxk": {
+    "defaultMessage": "Cancel",
+    "description": "Login screen cancel button"
   },
   "Ih3sF+": {
     "defaultMessage": "Authorized",
@@ -94,6 +106,10 @@
   "cxOmHD": {
     "defaultMessage": "Issuer / counterparty",
     "description": "Contracts table column header: contract issuer / counterparty"
+  },
+  "fFr3qj": {
+    "defaultMessage": "Pair with authenticator",
+    "description": "Login screen mobile authenticator pairing title"
   },
   "hTxeee": {
     "defaultMessage": "Type",

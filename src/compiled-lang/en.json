@@ -41,10 +41,30 @@
       "value": "Tokenized SDK demo"
     }
   ],
+  "8MXtG4": [
+    {
+      "type": 0,
+      "value": "Display pairing code…"
+    }
+  ],
   "BWwoyB": [
     {
       "type": 0,
       "value": "Tokenized SDK demo"
+    }
+  ],
+  "C6Pp9+": [
+    {
+      "type": 0,
+      "value": "Scan this code in the Tokenized authenticator app to pair with account "
+    },
+    {
+      "type": 1,
+      "value": "fullName"
+    },
+    {
+      "type": 0,
+      "value": " and approve sign in"
     }
   ],
   "CYyLJH": [
@@ -69,6 +89,12 @@
     {
       "type": 0,
       "value": "Contracts"
+    }
+  ],
+  "GCPZxk": [
+    {
+      "type": 0,
+      "value": "Cancel"
     }
   ],
   "Ih3sF+": [
@@ -141,6 +167,12 @@
     {
       "type": 0,
       "value": "Issuer / counterparty"
+    }
+  ],
+  "fFr3qj": [
+    {
+      "type": 0,
+      "value": "Pair with authenticator"
     }
   ],
   "hTxeee": [

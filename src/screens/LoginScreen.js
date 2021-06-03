@@ -7,6 +7,8 @@ import {
   useIsLoading,
   useIsLoggingIn,
   useLogInNeedsMfa,
+  useIsWaitingForDevicePairing,
+  DevicePairingCode,
   useIsLoggedIn,
   useLogInError,
   useOwnFormattedName,
@@ -19,6 +21,7 @@ function LoginScreen() {
   const isLoading = useIsLoading();
   const isLoggingIn = useIsLoggingIn();
   const needsMfa = useLogInNeedsMfa();
+  const showPairingCode = useIsWaitingForDevicePairing();
   const isLoggedIn = useIsLoggedIn();
   const ownFormattedName = useOwnFormattedName();
 
@@ -37,12 +40,19 @@ function LoginScreen() {
   const onSignIn = useCallback(
     (event) => {
       event.preventDefault();
-      tokenizedApi.logIn({ handle, passphrase });
+      tokenizedApi.account.logIn({ handle, passphrase });
       setHandle('');
       setPassphrase('');
     },
     [handle, passphrase, tokenizedApi],
   );
+
+  const onCancelSignIn = useCallback(() => {
+    tokenizedApi.account.logOut();
+  }, [tokenizedApi]);
+  const onDisplayPairingCode = useCallback(() => {
+    tokenizedApi.account.initiateDevicePairing();
+  }, [tokenizedApi]);
 
   const logInError = useLogInError();
   const [hideError, setHideError] = useState(null);
@@ -85,29 +95,92 @@ function LoginScreen() {
               />
             </p>
           </div>
-          {needsMfa && (
+          {(needsMfa || showPairingCode) && (
             <section className="box hero is-warning">
               <div className="hero-body">
-                <p className="title">
-                  <FormattedMessage
-                    description="Login screen mobile authentication prompt title"
-                    defaultMessage="Welcome {fullName}"
-                    id="wurpXL"
-                    values={{ fullName: ownFormattedName }}
-                  />
-                </p>
-                <progress className="progress is-small is-primary" max="100" />
-                <p className="subtitle">
-                  <FormattedMessage
-                    description="Login screen mobile authentication prompt subtitle"
-                    defaultMessage="Please confirm your identity in the authenticator app"
-                    id="FEJ3nB"
-                  />
-                </p>
+                {!showPairingCode && (
+                  <>
+                    <p className="title">
+                      <FormattedMessage
+                        description="Login screen mobile authentication prompt title"
+                        defaultMessage="Welcome {fullName}"
+                        id="wurpXL"
+                        values={{ fullName: ownFormattedName }}
+                      />
+                    </p>
+                    <progress
+                      className="progress is-small is-primary"
+                      max="100"
+                    />
+                    <p className="subtitle">
+                      <FormattedMessage
+                        description="Login screen mobile authentication prompt subtitle"
+                        defaultMessage="Please confirm your identity in the authenticator app"
+                        id="FEJ3nB"
+                      />
+                    </p>
+                    <div className="buttons">
+                      <button
+                        onClick={onCancelSignIn}
+                        className="button is-light"
+                      >
+                        <FormattedMessage
+                          description="Login screen cancel button"
+                          defaultMessage="Cancel"
+                          id="GCPZxk"
+                        />
+                      </button>
+                      <button
+                        onClick={onDisplayPairingCode}
+                        className="button is-info is-light"
+                      >
+                        <FormattedMessage
+                          description="Login screen display pairing code button"
+                          defaultMessage="Display pairing code…"
+                          id="8MXtG4"
+                        />
+                      </button>
+                    </div>
+                  </>
+                )}
+                {showPairingCode && (
+                  <>
+                    <div className="is-flex is-justify-content-center">
+                      <DevicePairingCode />
+                    </div>
+                    <p className="title has-text-centered mt-5">
+                      <FormattedMessage
+                        description="Login screen mobile authenticator pairing title"
+                        defaultMessage="Pair with authenticator"
+                        id="fFr3qj"
+                      />
+                    </p>
+                    <p className="subtitle has-text-centered">
+                      <FormattedMessage
+                        description="Login screen mobile authenticator pairing subtitle"
+                        defaultMessage="Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in"
+                        id="C6Pp9+"
+                        values={{ fullName: ownFormattedName }}
+                      />
+                    </p>
+                    <div className="buttons is-centered">
+                      <button
+                        onClick={onCancelSignIn}
+                        className="button is-light"
+                      >
+                        <FormattedMessage
+                          description="Login screen cancel button"
+                          defaultMessage="Cancel"
+                          id="GCPZxk"
+                        />
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </section>
           )}
-          {!needsMfa && (
+          {!(needsMfa || showPairingCode) && (
             <form className="box" onSubmit={onSignIn}>
               {logInError?.formattedErrorMessage && logInError !== hideError && (
                 <article className="message is-danger">
