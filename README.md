@@ -516,8 +516,8 @@ Every quantity provides the necessary information to format the number in a
 variety of different ways, depending on your requirements:
 
 - `tokens`: the quantity in the natural units of the asset – “48 coupons”.
-- `faceValue`: the value of the assets in their face value currency –
-  “$59,184.00”.
+- `assetCurrency`: the value of the assets in their own currencies, if specified
+  – “$59,184.00”.
 - `displayCurrency`: the value of the assets converted to the user’s selected
   display currency (the currency can be overridden in the `filterOptions`
   argument) – “£41,737.68”.
@@ -640,10 +640,10 @@ function FormatQuantity({ quantity }) {
       number: tokenNumber,
       formatted: tokenFormatted,
     } = {},
-    faceValue: {
+    assetCurrency: {
       // "$59,184.00"
-      number: faceValueNumber,
-      NumberFormatOptions: faceValueOptions,
+      number: assetCurrencyNumber,
+      NumberFormatOptions: assetCurrencyOptions,
     } = {},
     displayCurrency: {
       // "£41,737.68"
@@ -656,10 +656,10 @@ function FormatQuantity({ quantity }) {
   if (tokenFormatted) {
     formats.push(tokenFormatted);
   }
-  if (faceValueOptions) {
+  if (assetCurrencyOptions) {
     formats.push(
-      new Intl.NumberFormat(undefined, faceValueOptions).format(
-        faceValueNumber,
+      new Intl.NumberFormat(undefined, assetCurrencyOptions).format(
+        assetCurrencyNumber,
       ),
     );
   }
