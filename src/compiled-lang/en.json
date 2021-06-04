@@ -17,6 +17,12 @@
       "value": "Contracts"
     }
   ],
+  "2yLUnh": [
+    {
+      "type": 0,
+      "value": "Account phone number"
+    }
+  ],
   "31KHio": [
     {
       "type": 0,
@@ -103,7 +109,13 @@
       "value": "Authorized"
     }
   ],
-  "J5JGM9": [
+  "Kg4KGH": [
+    {
+      "type": 0,
+      "value": "Passphrase"
+    }
+  ],
+  "KoV/4d": [
     {
       "type": 0,
       "value": "Handle"
@@ -151,10 +163,28 @@
       "value": "Value"
     }
   ],
+  "YFXmr+": [
+    {
+      "type": 0,
+      "value": "Account email address"
+    }
+  ],
   "a6TlyZ": [
     {
       "type": 0,
       "value": "Sign out"
+    }
+  ],
+  "a7iBE2": [
+    {
+      "type": 0,
+      "value": "Phone"
+    }
+  ],
+  "cjeVpa": [
+    {
+      "type": 0,
+      "value": "Account handle"
     }
   ],
   "cnwMLl": [
@@ -193,16 +223,16 @@
       "value": "Activity"
     }
   ],
-  "kUSQxB": [
-    {
-      "type": 0,
-      "value": "Passphrase"
-    }
-  ],
   "kYHpnu": [
     {
       "type": 0,
       "value": "Issued"
+    }
+  ],
+  "oLcK9U": [
+    {
+      "type": 0,
+      "value": "Email"
     }
   ],
   "oneuwr": [

@@ -25,26 +25,86 @@ function LoginScreen() {
   const isLoggedIn = useIsLoggedIn();
   const ownFormattedName = useOwnFormattedName();
 
+  const [identifierType, setIdentifierType] = useState('handle');
+  const onSelectHandleId = useCallback((event) => {
+    event.preventDefault();
+    setIdentifierType('handle');
+  }, []);
+  const onSelectEmailId = useCallback((event) => {
+    event.preventDefault();
+    setIdentifierType('email');
+  }, []);
+  const onSelectPhoneId = useCallback((event) => {
+    event.preventDefault();
+    setIdentifierType('phone');
+  }, []);
+
   const [handle, setHandle] = useState('');
   const onHandleInput = useCallback(
     (event) => setHandle(event.target.value),
     [setHandle],
   );
   const handlePostfix = tokenizedApi.account.getUserHandlePostfix();
+
+  const [email, setEmail] = useState('');
+  const onEmailInput = useCallback(
+    (event) => setEmail(event.target.value),
+    [setEmail],
+  );
+
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const onPhoneNumberInput = useCallback(
+    (event) => setPhoneNumber(event.target.value),
+    [setPhoneNumber],
+  );
+
   const [passphrase, setPassphrase] = useState('');
   const onPassphraseInput = useCallback(
     (event) => setPassphrase(event.target.value),
     [setPassphrase],
   );
 
+  let signInButtonEnabled = false;
+  switch (identifierType) {
+    case 'handle':
+    default:
+      signInButtonEnabled = handle && passphrase;
+      break;
+    case 'email':
+      signInButtonEnabled = email && passphrase;
+      break;
+    case 'phone':
+      signInButtonEnabled = phoneNumber && passphrase;
+      break;
+  }
   const onSignIn = useCallback(
     (event) => {
       event.preventDefault();
-      tokenizedApi.account.logIn({ handle, passphrase });
+      switch (identifierType) {
+        case 'handle':
+        default:
+          tokenizedApi.account.logIn({ handle, passphrase });
+          break;
+        case 'email':
+          tokenizedApi.account.logIn({ email, passphrase });
+          break;
+        case 'phone':
+          tokenizedApi.account.logIn({ phoneNumber, passphrase });
+          break;
+      }
       setHandle('');
+      setEmail('');
+      setPhoneNumber('');
       setPassphrase('');
     },
-    [handle, passphrase, tokenizedApi],
+    [
+      email,
+      handle,
+      identifierType,
+      passphrase,
+      phoneNumber,
+      tokenizedApi.account,
+    ],
   );
 
   const onCancelSignIn = useCallback(() => {
@@ -181,7 +241,7 @@ function LoginScreen() {
             </section>
           )}
           {!(needsMfa || showPairingCode) && (
-            <form className="box" onSubmit={onSignIn}>
+            <div className="box">
               {logInError?.formattedErrorMessage && logInError !== hideError && (
                 <article className="message is-danger">
                   <div className="message-header">
@@ -203,60 +263,152 @@ function LoginScreen() {
                   </div>
                 </article>
               )}
-              <label className="label">
-                <FormattedMessage
-                  description="Login input field name: identify your account using your handle"
-                  defaultMessage="Handle"
-                  id="J5JGM9"
-                />
-              </label>
-              <div className="field has-addons">
-                <div className="control is-expanded">
-                  <input
-                    className="input"
-                    type="text"
-                    autoComplete="username"
-                    value={handle}
-                    onInput={onHandleInput}
-                  />
-                </div>
-                <div className="control">
-                  <span className="button is-static">{handlePostfix}</span>
-                </div>
-              </div>
-              <div className="field">
-                <label className="label">
+              <div className="buttons has-addons">
+                <button
+                  onClick={onSelectHandleId}
+                  className={classNames(
+                    'button',
+                    identifierType === 'handle' && 'is-link is-selected',
+                  )}
+                >
                   <FormattedMessage
-                    description="Login input field name: passphrase"
-                    defaultMessage="Passphrase"
-                    id="kUSQxB"
+                    description="Login identification method selection: use your handle"
+                    defaultMessage="Handle"
+                    id="KoV/4d"
                   />
-                </label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="password"
-                    autoComplete="current-password"
-                    value={passphrase}
-                    onInput={onPassphraseInput}
+                </button>
+                <button
+                  onClick={onSelectEmailId}
+                  className={classNames(
+                    'button',
+                    identifierType === 'email' && 'is-link is-selected',
+                  )}
+                >
+                  <FormattedMessage
+                    defaultMessage="Email"
+                    description="Login identification method selection: use your email address"
+                    id="oLcK9U"
                   />
-                </div>
+                </button>
+                <button
+                  onClick={onSelectPhoneId}
+                  className={classNames(
+                    'button',
+                    identifierType === 'phone' && 'is-link is-selected',
+                  )}
+                >
+                  <FormattedMessage
+                    defaultMessage="Phone"
+                    description="Login identification method selection: use your phone number"
+                    id="a7iBE2"
+                  />
+                </button>
               </div>
-              <button
-                className={classNames(
-                  'button',
-                  'is-primary',
-                  isLoggingIn && 'is-loading',
+              <form onSubmit={onSignIn}>
+                {identifierType === 'handle' && (
+                  <div className="field">
+                    <label className="label">
+                      <FormattedMessage
+                        defaultMessage="Account handle"
+                        description="Login input field label: handle"
+                        id="cjeVpa"
+                      />
+                    </label>
+                    <div className="field has-addons">
+                      <div className="control is-expanded">
+                        <input
+                          className="input"
+                          type="text"
+                          autoComplete="username"
+                          value={handle}
+                          onInput={onHandleInput}
+                          placeholder="yourhandle"
+                        />
+                      </div>
+                      <div className="control">
+                        <span className="button is-static">
+                          {handlePostfix}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 )}
-                disabled={!handle || !passphrase}
-              >
-                <FormattedMessage
-                  description="Login screen sign in button"
-                  defaultMessage="Sign in"
-                  id="Vt7Ozj"
-                />
-              </button>
-            </form>
+                {identifierType === 'email' && (
+                  <div className="field">
+                    <label className="label">
+                      <FormattedMessage
+                        defaultMessage="Account email address"
+                        description="Login input field label: email"
+                        id="YFXmr+"
+                      />
+                    </label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        type="email"
+                        autoComplete="email"
+                        value={email}
+                        onInput={onEmailInput}
+                        placeholder="registered@example.com"
+                      />
+                    </div>
+                  </div>
+                )}
+                {identifierType === 'phone' && (
+                  <div className="field">
+                    <label className="label">
+                      <FormattedMessage
+                        defaultMessage="Account phone number"
+                        description="Login input field label: phone number"
+                        id="2yLUnh"
+                      />
+                    </label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        type="tel"
+                        autoComplete="tel"
+                        value={phoneNumber}
+                        onInput={onPhoneNumberInput}
+                        placeholder="+15551234567"
+                      />
+                    </div>
+                  </div>
+                )}
+                <div className="field">
+                  <label className="label">
+                    <FormattedMessage
+                      description="Login input field label: passphrase"
+                      defaultMessage="Passphrase"
+                      id="Kg4KGH"
+                    />
+                  </label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="password"
+                      autoComplete="current-password"
+                      value={passphrase}
+                      onInput={onPassphraseInput}
+                    />
+                  </div>
+                </div>
+                <button
+                  className={classNames(
+                    'button',
+                    'is-primary',
+                    isLoggingIn && 'is-loading',
+                  )}
+                  disabled={!signInButtonEnabled}
+                >
+                  <FormattedMessage
+                    description="Login screen sign in button"
+                    defaultMessage="Sign in"
+                    id="Vt7Ozj"
+                  />
+                </button>
+              </form>
+            </div>
           )}
         </div>
       </div>

@@ -11,6 +11,10 @@
     "defaultMessage": "Contracts",
     "description": "Contracts page title"
   },
+  "2yLUnh": {
+    "defaultMessage": "Account phone number",
+    "description": "Login input field label: phone number"
+  },
   "31KHio": {
     "defaultMessage": "Liabilities",
     "description": "Treasury liabilities tab"
@@ -63,9 +67,13 @@
     "defaultMessage": "Authorized",
     "description": "Balance table column header: quantity of assets authorized in contract"
   },
-  "J5JGM9": {
+  "Kg4KGH": {
+    "defaultMessage": "Passphrase",
+    "description": "Login input field label: passphrase"
+  },
+  "KoV/4d": {
     "defaultMessage": "Handle",
-    "description": "Login input field name: identify your account using your handle"
+    "description": "Login identification method selection: use your handle"
   },
   "PVFFBa": {
     "defaultMessage": "Tokenized SDK demo",
@@ -95,9 +103,21 @@
     "defaultMessage": "Value",
     "description": "Balance table column header: value (of assets to me)"
   },
+  "YFXmr+": {
+    "defaultMessage": "Account email address",
+    "description": "Login input field label: email"
+  },
   "a6TlyZ": {
     "defaultMessage": "Sign out",
     "description": "Nav bar user menu sign out action"
+  },
+  "a7iBE2": {
+    "defaultMessage": "Phone",
+    "description": "Login identification method selection: use your phone number"
+  },
+  "cjeVpa": {
+    "defaultMessage": "Account handle",
+    "description": "Login input field label: handle"
   },
   "cnwMLl": {
     "defaultMessage": "Type",
@@ -123,13 +143,13 @@
     "defaultMessage": "Activity",
     "description": "Nav bar activity tab"
   },
-  "kUSQxB": {
-    "defaultMessage": "Passphrase",
-    "description": "Login input field name: passphrase"
-  },
   "kYHpnu": {
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
+  },
+  "oLcK9U": {
+    "defaultMessage": "Email",
+    "description": "Login identification method selection: use your email address"
   },
   "oneuwr": {
     "defaultMessage": "Primary vault",
