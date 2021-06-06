@@ -26,14 +26,16 @@ const tokenizedApi = new TokenizedApi({
   // all your API keys, and the SDK will select the right one:
   //
   // platformApiKey: {
-  //   development:
-  //     'public.dbd1f1c781c2018f818b8d2cc898f32c776c1f7541916875ca10a4eea2c6e73e',
   //   test:
   //     'public.c9a4c8883fbce04d17a0041b1ee9436355dd2fd45fea39fec6e4f4c811238e82',
   //   production:
   //     'public.899a0f0715422da945f272d97b52afa1a0548315940b547be9de2e4a27e1a381',
   // },
-  tokenizedBackend: 'development',
+
+  // For customer development work on third-party, Tokenized-powered apps,
+  // we recommend working with the `test` back end, which is separated
+  // from production users, but more stable than the `development` back end.
+  tokenizedBackend: 'test',
   applicationIdentifier: 'tokenized-example-react',
 });
 
