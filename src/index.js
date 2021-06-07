@@ -10,6 +10,11 @@ import { TokenizedApiProvider } from '@tokenized/sdk-react-private';
 import store from './store';
 import App from './App';
 
+// This is for internal Tokenized development use
+const backendOverride = window.localStorage.getItem(
+  'tokenized-sdk-example-backend',
+);
+
 const locale =
   window.navigator.languages?.[0] || window.navigator.language || 'en';
 
@@ -35,7 +40,7 @@ const tokenizedApi = new TokenizedApi({
   // For customer development work on third-party, Tokenized-powered apps,
   // we recommend working with the `test` back end, which is separated
   // from production users, but more stable than the `development` back end.
-  tokenizedBackend: 'test',
+  tokenizedBackend: backendOverride || 'test',
   applicationIdentifier: 'tokenized-example-react',
 });
 
