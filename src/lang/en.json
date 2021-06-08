@@ -7,6 +7,10 @@
     "defaultMessage": "Title",
     "description": "Contracts table column header: contract title"
   },
+  "2oGVVt": {
+    "defaultMessage": "Paymail handle",
+    "description": "Sign up input field label: handle"
+  },
   "2vbsAo": {
     "defaultMessage": "Contracts",
     "description": "Contracts page title"
@@ -31,13 +35,13 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "The app’s browser page title"
   },
+  "7BgPWf": {
+    "defaultMessage": "Continue",
+    "description": "New account continue button"
+  },
   "8MXtG4": {
     "defaultMessage": "Display pairing code…",
     "description": "Login screen display pairing code button"
-  },
-  "BWwoyB": {
-    "defaultMessage": "Tokenized SDK demo",
-    "description": "Login screen title"
   },
   "C6Pp9+": {
     "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
@@ -51,6 +55,10 @@
     "defaultMessage": "Reserved",
     "description": "Balance table column header: quantity of balance reserved"
   },
+  "ETFPN0": {
+    "defaultMessage": "Sign in…",
+    "description": "New account screen back to sign in link"
+  },
   "FEJ3nB": {
     "defaultMessage": "Please confirm your identity in the authenticator app",
     "description": "Login screen mobile authentication prompt subtitle"
@@ -62,6 +70,10 @@
   "GCPZxk": {
     "defaultMessage": "Cancel",
     "description": "Login screen cancel button"
+  },
+  "GbFjMQ": {
+    "defaultMessage": "Tokenized SDK demo",
+    "description": "Sign in screen title"
   },
   "Ih3sF+": {
     "defaultMessage": "Authorized",
@@ -75,6 +87,10 @@
     "defaultMessage": "Handle",
     "description": "Login identification method selection: use your handle"
   },
+  "MKs5lh": {
+    "defaultMessage": "Last name",
+    "description": "Sign up input field label: last name"
+  },
   "PVFFBa": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "Nav bar main title"
@@ -82,6 +98,14 @@
   "QaB4nu": {
     "defaultMessage": "In vault",
     "description": "Balance table column header: quantity held in vault"
+  },
+  "QoOTpE": {
+    "defaultMessage": "Cancel",
+    "description": "New account cancel button"
+  },
+  "RAmj2a": {
+    "defaultMessage": "Create a new account",
+    "description": "New account screen subtitle"
   },
   "SOA+3t": {
     "defaultMessage": "One unit",
@@ -107,6 +131,10 @@
     "defaultMessage": "Account email address",
     "description": "Login input field label: email"
   },
+  "YGFyva": {
+    "defaultMessage": "First name",
+    "description": "Sign up input field label: first name"
+  },
   "a6TlyZ": {
     "defaultMessage": "Sign out",
     "description": "Nav bar user menu sign out action"
@@ -114,6 +142,10 @@
   "a7iBE2": {
     "defaultMessage": "Phone",
     "description": "Login identification method selection: use your phone number"
+  },
+  "cB1RHb": {
+    "defaultMessage": "Personal email",
+    "description": "Sign up input field label: email"
   },
   "cjeVpa": {
     "defaultMessage": "Account handle",
@@ -135,6 +167,10 @@
     "defaultMessage": "Type",
     "description": "Balance table column header: asset type"
   },
+  "iA3+G9": {
+    "defaultMessage": "Tokenized SDK demo",
+    "description": "New account screen title"
+  },
   "isZs2i": {
     "defaultMessage": "Issuer",
     "description": "Balance table column header: asset issuer"
@@ -146,6 +182,10 @@
   "kYHpnu": {
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
+  },
+  "nUTL2v": {
+    "defaultMessage": "Please sign in with your Tokenized account credentials",
+    "description": "Sign in screen subtitle"
   },
   "oLcK9U": {
     "defaultMessage": "Email",
@@ -167,9 +207,9 @@
     "defaultMessage": "Treasury",
     "description": "Treasury page title (if no vault name)"
   },
-  "vaZlef": {
-    "defaultMessage": "Please sign in with your Tokenized account credentials",
-    "description": "Login screen subtitle"
+  "w00rFA": {
+    "defaultMessage": "Create a new account…",
+    "description": "Sign in screen create new account link"
   },
   "wejkZs": {
     "defaultMessage": "Assets",

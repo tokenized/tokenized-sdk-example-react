@@ -11,6 +11,12 @@
       "value": "Title"
     }
   ],
+  "2oGVVt": [
+    {
+      "type": 0,
+      "value": "Paymail handle"
+    }
+  ],
   "2vbsAo": [
     {
       "type": 0,
@@ -47,16 +53,16 @@
       "value": "Tokenized SDK demo"
     }
   ],
+  "7BgPWf": [
+    {
+      "type": 0,
+      "value": "Continue"
+    }
+  ],
   "8MXtG4": [
     {
       "type": 0,
       "value": "Display pairing code…"
-    }
-  ],
-  "BWwoyB": [
-    {
-      "type": 0,
-      "value": "Tokenized SDK demo"
     }
   ],
   "C6Pp9+": [
@@ -85,6 +91,12 @@
       "value": "Reserved"
     }
   ],
+  "ETFPN0": [
+    {
+      "type": 0,
+      "value": "Sign in…"
+    }
+  ],
   "FEJ3nB": [
     {
       "type": 0,
@@ -101,6 +113,12 @@
     {
       "type": 0,
       "value": "Cancel"
+    }
+  ],
+  "GbFjMQ": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
     }
   ],
   "Ih3sF+": [
@@ -121,6 +139,12 @@
       "value": "Handle"
     }
   ],
+  "MKs5lh": [
+    {
+      "type": 0,
+      "value": "Last name"
+    }
+  ],
   "PVFFBa": [
     {
       "type": 0,
@@ -131,6 +155,18 @@
     {
       "type": 0,
       "value": "In vault"
+    }
+  ],
+  "QoOTpE": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "RAmj2a": [
+    {
+      "type": 0,
+      "value": "Create a new account"
     }
   ],
   "SOA+3t": [
@@ -169,6 +205,12 @@
       "value": "Account email address"
     }
   ],
+  "YGFyva": [
+    {
+      "type": 0,
+      "value": "First name"
+    }
+  ],
   "a6TlyZ": [
     {
       "type": 0,
@@ -179,6 +221,12 @@
     {
       "type": 0,
       "value": "Phone"
+    }
+  ],
+  "cB1RHb": [
+    {
+      "type": 0,
+      "value": "Personal email"
     }
   ],
   "cjeVpa": [
@@ -211,6 +259,12 @@
       "value": "Type"
     }
   ],
+  "iA3+G9": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
+    }
+  ],
   "isZs2i": [
     {
       "type": 0,
@@ -227,6 +281,12 @@
     {
       "type": 0,
       "value": "Issued"
+    }
+  ],
+  "nUTL2v": [
+    {
+      "type": 0,
+      "value": "Please sign in with your Tokenized account credentials"
     }
   ],
   "oLcK9U": [
@@ -259,10 +319,10 @@
       "value": "Treasury"
     }
   ],
-  "vaZlef": [
+  "w00rFA": [
     {
       "type": 0,
-      "value": "Please sign in with your Tokenized account credentials"
+      "value": "Create a new account…"
     }
   ],
   "wejkZs": [

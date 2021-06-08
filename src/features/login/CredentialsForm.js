@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import { Form, Field } from 'react-final-form';
@@ -9,29 +10,14 @@ import {
 } from '@tokenized/sdk-react-private';
 import { fieldRequired, fieldIsEmail } from '../../utils/validators';
 
-function validateHandle(value, { identifierType }) {
-  if (identifierType === 'handle') {
-    return fieldRequired(value);
-  }
-}
-function validateEmail(value, { identifierType }) {
-  if (identifierType === 'email') {
-    return fieldIsEmail(value);
-  }
-}
-function validatePhoneNumber(value, { identifierType }) {
-  if (identifierType === 'phoneNumber') {
-    return fieldRequired(value);
-  }
-}
-
-function CredentialsForm() {
+function CredentialsForm({ identifierType }) {
+  const location = useLocation();
   const tokenizedApi = useTokenizedApi();
   const isLoggingIn = useIsLoggingIn();
   const handlePostfix = tokenizedApi.account.getUserHandlePostfix();
 
   const onSignIn = useCallback(
-    ({ identifierType, handle, email, phoneNumber, passphrase }, form) => {
+    ({ handle, email, phoneNumber, passphrase }, form) => {
       switch (identifierType) {
         case 'handle':
         default:
@@ -46,7 +32,7 @@ function CredentialsForm() {
       }
       form.restart();
     },
-    [tokenizedApi.account],
+    [identifierType, tokenizedApi.account],
   );
 
   const logInError = useLogInError();
@@ -82,57 +68,62 @@ function CredentialsForm() {
                 </div>
               </article>
             )}
-            <Field name="identifierType" initialValue="handle">
-              {({ input: { value, onChange } }) => (
-                <div className="buttons has-addons">
-                  <button
-                    type="button"
-                    onClick={() => onChange('handle')}
-                    className={classNames(
-                      'button',
-                      value === 'handle' && 'is-link is-selected',
-                    )}
-                  >
-                    <FormattedMessage
-                      description="Login identification method selection: use your handle"
-                      defaultMessage="Handle"
-                      id="KoV/4d"
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onChange('email')}
-                    className={classNames(
-                      'button',
-                      value === 'email' && 'is-link is-selected',
-                    )}
-                  >
-                    <FormattedMessage
-                      defaultMessage="Email"
-                      description="Login identification method selection: use your email address"
-                      id="oLcK9U"
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onChange('phoneNumber')}
-                    className={classNames(
-                      'button',
-                      value === 'phoneNumber' && 'is-link is-selected',
-                    )}
-                  >
-                    <FormattedMessage
-                      defaultMessage="Phone"
-                      description="Login identification method selection: use your phone number"
-                      id="a7iBE2"
-                    />
-                  </button>
-                </div>
-              )}
-            </Field>
-            <Field name="handle" validate={validateHandle}>
-              {({ input, meta: { touched, error } }) =>
-                values.identifierType === 'handle' && (
+            <div className="buttons has-addons">
+              <Link
+                type="button"
+                to={{
+                  pathname: '/sign-in/handle',
+                  state: location?.state,
+                }}
+                className={classNames(
+                  'button',
+                  identifierType === 'handle' && 'is-link is-selected',
+                )}
+              >
+                <FormattedMessage
+                  description="Login identification method selection: use your handle"
+                  defaultMessage="Handle"
+                  id="KoV/4d"
+                />
+              </Link>
+              <Link
+                type="button"
+                to={{
+                  pathname: '/sign-in/email',
+                  state: location?.state,
+                }}
+                className={classNames(
+                  'button',
+                  identifierType === 'email' && 'is-link is-selected',
+                )}
+              >
+                <FormattedMessage
+                  defaultMessage="Email"
+                  description="Login identification method selection: use your email address"
+                  id="oLcK9U"
+                />
+              </Link>
+              <Link
+                type="button"
+                to={{
+                  pathname: '/sign-in/phone-number',
+                  state: location?.state,
+                }}
+                className={classNames(
+                  'button',
+                  identifierType === 'phoneNumber' && 'is-link is-selected',
+                )}
+              >
+                <FormattedMessage
+                  defaultMessage="Phone"
+                  description="Login identification method selection: use your phone number"
+                  id="a7iBE2"
+                />
+              </Link>
+            </div>
+            {identifierType === 'handle' && (
+              <Field name="handle" validate={fieldRequired}>
+                {({ input, meta: { touched, error } }) => (
                   <div className="field">
                     <label className="label">
                       <FormattedMessage
@@ -165,12 +156,12 @@ function CredentialsForm() {
                       </div>
                     </div>
                   </div>
-                )
-              }
-            </Field>
-            <Field name="email" validate={validateEmail}>
-              {({ input, meta: { touched, error } }) =>
-                values.identifierType === 'email' && (
+                )}
+              </Field>
+            )}
+            {identifierType === 'email' && (
+              <Field name="email" validate={fieldIsEmail}>
+                {({ input, meta: { touched, error } }) => (
                   <div className="field">
                     <label className="label">
                       <FormattedMessage
@@ -195,12 +186,12 @@ function CredentialsForm() {
                       )}
                     </div>
                   </div>
-                )
-              }
-            </Field>
-            <Field name="phoneNumber" validate={validatePhoneNumber}>
-              {({ input, meta: { touched, error } }) =>
-                values.identifierType === 'phoneNumber' && (
+                )}
+              </Field>
+            )}
+            {identifierType === 'phoneNumber' && (
+              <Field name="phoneNumber" validate={fieldRequired}>
+                {({ input, meta: { touched, error } }) => (
                   <div className="field">
                     <label className="label">
                       <FormattedMessage
@@ -225,9 +216,9 @@ function CredentialsForm() {
                       )}
                     </div>
                   </div>
-                )
-              }
-            </Field>
+                )}
+              </Field>
+            )}
             <Field name="passphrase" validate={fieldRequired}>
               {({ input, meta: { touched, error } }) => (
                 <div className="field">
@@ -256,21 +247,23 @@ function CredentialsForm() {
                 </div>
               )}
             </Field>
-            <button
-              type="submit"
-              className={classNames(
-                'button',
-                'is-primary',
-                isLoggingIn && 'is-loading',
-              )}
-              disabled={!valid || isLoggingIn}
-            >
-              <FormattedMessage
-                description="Login screen sign in button"
-                defaultMessage="Sign in"
-                id="Vt7Ozj"
-              />
-            </button>
+            <div className="buttons is-right mt-6">
+              <button
+                type="submit"
+                className={classNames(
+                  'button',
+                  'is-primary',
+                  isLoggingIn && 'is-loading',
+                )}
+                disabled={!valid || isLoggingIn}
+              >
+                <FormattedMessage
+                  description="Login screen sign in button"
+                  defaultMessage="Sign in"
+                  id="Vt7Ozj"
+                />
+              </button>
+            </div>
           </form>
         )}
       </Form>

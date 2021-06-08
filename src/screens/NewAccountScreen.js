@@ -1,22 +1,13 @@
 import React from 'react';
-import { Redirect, useLocation } from 'react-router-dom';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import {
-  useIsLoading,
-  useLogInNeedsMfa,
-  useIsWaitingForDevicePairing,
-  useIsLoggedIn,
-} from '@tokenized/sdk-react-private';
+import { useIsLoading, useIsLoggedIn } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
-import CredentialsForm from '../features/login/CredentialsForm';
-import PairAuthenticator from '../features/login/PairAuthenticator';
-import WaitForMFA from '../features/login/WaitForMFA';
+import NewAccountNames from '../features/new-account/NewAccountNames';
 
-function LoginScreen() {
+function NewAccountScreen() {
   const location = useLocation();
   const isLoading = useIsLoading();
-  const needsMfa = useLogInNeedsMfa();
-  const showPairingCode = useIsWaitingForDevicePairing();
   const isLoggedIn = useIsLoggedIn();
 
   if (isLoading) {
@@ -40,26 +31,39 @@ function LoginScreen() {
           <div className="has-text-centered my-6">
             <h1 className="title">
               <FormattedMessage
-                description="Login screen title"
+                description="New account screen title"
                 defaultMessage="Tokenized SDK demo"
-                id="BWwoyB"
+                id="iA3+G9"
               />
             </h1>
             <p className="subtitle">
               <FormattedMessage
-                description="Login screen subtitle"
-                defaultMessage="Please sign in with your Tokenized account credentials"
-                id="vaZlef"
+                description="New account screen subtitle"
+                defaultMessage="Create a new account"
+                id="RAmj2a"
               />
             </p>
           </div>
-          {!(needsMfa || showPairingCode) && <CredentialsForm />}
-          {needsMfa && !showPairingCode && <WaitForMFA />}
-          {showPairingCode && <PairAuthenticator />}
+          <NewAccountNames />
+          <section className="section has-text-centered">
+            <Link
+              to={{
+                pathname: '/sign-in',
+                state: location?.state,
+              }}
+              className="button is-link is-light"
+            >
+              <FormattedMessage
+                defaultMessage="Sign in…"
+                id="ETFPN0"
+                description="New account screen back to sign in link"
+              />
+            </Link>
+          </section>
         </div>
       </div>
     </div>
   );
 }
 
-export default LoginScreen;
+export default NewAccountScreen;

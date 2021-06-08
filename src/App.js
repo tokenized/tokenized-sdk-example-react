@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import { useIsLoggedIn } from '@tokenized/sdk-react-private';
-import LoginScreen from './screens/LoginScreen';
+import SignInScreen from './screens/SignInScreen';
+import NewAccountScreen from './screens/NewAccountScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import TreasuryPage from './features/treasury/TreasuryPage';
 import ContractsPage from './features/contracts/ContractsPage';
@@ -25,7 +26,7 @@ function PrivateRoute({ children, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: '/login',
+              pathname: '/sign-in',
               state: { from: location },
             }}
           />
@@ -48,8 +49,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/login" exact>
-          <LoginScreen />
+        <Route path="/sign-in">
+          <SignInScreen />
+        </Route>
+        <Route path="/new-account">
+          <NewAccountScreen />
         </Route>
         <PrivateRoute path="/activity">
           <DashboardScreen />
