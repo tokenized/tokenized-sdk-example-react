@@ -22,8 +22,8 @@ function NewAccountNames({ handleSubmit, valid }) {
                   <label className="label">
                     <FormattedMessage
                       defaultMessage="First name"
-                      description="Sign up input field label: first name"
-                      id="YGFyva"
+                      description="New account input field label: first name"
+                      id="LfU0vg"
                     />
                   </label>
                   <div className="control">
@@ -51,8 +51,8 @@ function NewAccountNames({ handleSubmit, valid }) {
                   <label className="label">
                     <FormattedMessage
                       defaultMessage="Last name"
-                      description="Sign up input field label: last name"
-                      id="MKs5lh"
+                      description="New account input field label: last name"
+                      id="LwJoyw"
                     />
                   </label>
                   <div className="control">
@@ -80,8 +80,8 @@ function NewAccountNames({ handleSubmit, valid }) {
               <label className="label">
                 <FormattedMessage
                   defaultMessage="Personal email"
-                  description="Sign up input field label: email"
-                  id="cB1RHb"
+                  description="New account input field label: email"
+                  id="BFmRsr"
                 />
               </label>
               <div className="control">
@@ -107,8 +107,8 @@ function NewAccountNames({ handleSubmit, valid }) {
               <label className="label">
                 <FormattedMessage
                   defaultMessage="Paymail handle"
-                  description="Sign up input field label: handle"
-                  id="2oGVVt"
+                  description="New account input field label: handle"
+                  id="BDkKXS"
                 />
               </label>
               <div className="field has-addons">
@@ -144,14 +144,14 @@ function NewAccountNames({ handleSubmit, valid }) {
           >
             <FormattedMessage
               defaultMessage="Cancel"
-              id="QoOTpE"
               description="New account cancel button"
+              id="QoOTpE"
             />
           </Link>
           <button type="submit" className="button is-primary" disabled={!valid}>
             <FormattedMessage
-              description="New account continue button"
               defaultMessage="Continue"
+              description="New account continue button"
               id="7BgPWf"
             />
           </button>

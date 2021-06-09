@@ -17,8 +17,8 @@ function NewAccountPassphrase({ handleSubmit, valid }) {
               <label className="label">
                 <FormattedMessage
                   defaultMessage="Create a passphrase"
-                  description="Sign up input field label: create passphrase"
-                  id="4s5dSC"
+                  description="New account input field label: create passphrase"
+                  id="UT0wpI"
                 />
               </label>
               <div className="control">
@@ -44,8 +44,8 @@ function NewAccountPassphrase({ handleSubmit, valid }) {
               <label className="label">
                 <FormattedMessage
                   defaultMessage="Verify passphrase"
-                  description="Sign up input field label: verify passphrase"
-                  id="LGkHCP"
+                  description="New account input field label: verify passphrase"
+                  id="pTJMyU"
                 />
               </label>
               <div className="control">
@@ -75,8 +75,8 @@ function NewAccountPassphrase({ handleSubmit, valid }) {
           >
             <FormattedMessage
               defaultMessage="Cancel"
-              id="QoOTpE"
               description="New account cancel button"
+              id="QoOTpE"
             />
           </Link>
           <button type="submit" className="button is-primary" disabled={!valid}>

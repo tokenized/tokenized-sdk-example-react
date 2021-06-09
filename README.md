@@ -689,6 +689,8 @@ specific UI libraries)
     - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
       - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
       - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
+      - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
+      - [.verifyNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
       - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
         ⇒ <code>string</code>
@@ -729,6 +731,8 @@ run:
   - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
     - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
     - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
+    - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
+    - [.verifyNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
       ⇒ <code>string</code>
@@ -796,6 +800,8 @@ Access to contracts
 - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
   - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
   - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
+  - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
+  - [.verifyNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
     ⇒ <code>string</code>
@@ -830,6 +836,45 @@ you need to regenerate an expired code.
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount"></a>
+
+##### account.createNewAccount(options)
+
+Start a new account creation process. This will send a confirmation email
+containing a code that must be passed into `confirmNewAccount` to allow the
+account creation to take place.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+
+| Param                     | Type                | Description                                                                                                                                                                                                                                                                     |
+| ------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options                   | <code>object</code> |                                                                                                                                                                                                                                                                                 |
+| options.firstName         | <code>string</code> | First name of the user creating the account.                                                                                                                                                                                                                                    |
+| options.lastName          | <code>string</code> | Last name of the user creating the account.                                                                                                                                                                                                                                     |
+| options.handle            | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the new account. So for example specifying `handle: 'hankrearden'` will create the account `hankrearden@tokenized.id` on the production back end. |
+| options.email             | <code>string</code> | Used to verify the person creating the account, by sending a confirmation code.                                                                                                                                                                                                 |
+| options.passphrase        | <code>string</code> | The passphrase for the new account.                                                                                                                                                                                                                                             |
+| options.passphraseConfirm | <code>string</code> | The passphrase for the new account.                                                                                                                                                                                                                                             |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount"></a>
+
+##### account.verifyNewAccount(options)
+
+Verify creation of a new account by providing the code sent to the account email
+address (triggered by an earlier call to `createNewAccount`). If the code is
+correct, the new account will be created. The next step is to log in, which will
+trigger the authenticator device pairing process.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+
+| Param         | Type                | Description                                                                     |
+| ------------- | ------------------- | ------------------------------------------------------------------------------- |
+| options       | <code>object</code> |                                                                                 |
+| options.email | <code>string</code> | Used to verify the person creating the account, by sending a confirmation code. |
+| options.code  | <code>string</code> | The verification code sent to the email address for the new account.            |
+
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logOut"></a>
 
 ##### account.logOut()

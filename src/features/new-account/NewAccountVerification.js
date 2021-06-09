@@ -66,8 +66,8 @@ function NewAccountVerification({ handleSubmit, values, valid }) {
           >
             <FormattedMessage
               defaultMessage="Cancel"
-              id="QoOTpE"
               description="New account cancel button"
+              id="QoOTpE"
             />
           </Link>
           <button type="submit" className="button is-primary" disabled={!valid}>

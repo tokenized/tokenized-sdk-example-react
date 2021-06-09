@@ -7,10 +7,6 @@
     "defaultMessage": "Title",
     "description": "Contracts table column header: contract title"
   },
-  "2oGVVt": {
-    "defaultMessage": "Paymail handle",
-    "description": "Sign up input field label: handle"
-  },
   "2vbsAo": {
     "defaultMessage": "Contracts",
     "description": "Contracts page title"
@@ -22,6 +18,10 @@
   "31KHio": {
     "defaultMessage": "Liabilities",
     "description": "Treasury liabilities tab"
+  },
+  "3M+zLD": {
+    "defaultMessage": "To create your new account, enter the email verification code sent to {email}",
+    "description": "New account verify email description"
   },
   "41ypwV": {
     "defaultMessage": "Asset",
@@ -42,6 +42,18 @@
   "8MXtG4": {
     "defaultMessage": "Display pairing code…",
     "description": "Login screen display pairing code button"
+  },
+  "8SZXVP": {
+    "defaultMessage": "Verification code",
+    "description": "New account input field label: email verification code"
+  },
+  "BDkKXS": {
+    "defaultMessage": "Paymail handle",
+    "description": "New account input field label: handle"
+  },
+  "BFmRsr": {
+    "defaultMessage": "Personal email",
+    "description": "New account input field label: email"
   },
   "C6Pp9+": {
     "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
@@ -87,9 +99,13 @@
     "defaultMessage": "Handle",
     "description": "Login identification method selection: use your handle"
   },
-  "MKs5lh": {
+  "LfU0vg": {
+    "defaultMessage": "First name",
+    "description": "New account input field label: first name"
+  },
+  "LwJoyw": {
     "defaultMessage": "Last name",
-    "description": "Sign up input field label: last name"
+    "description": "New account input field label: last name"
   },
   "PVFFBa": {
     "defaultMessage": "Tokenized SDK demo",
@@ -111,6 +127,10 @@
     "defaultMessage": "One unit",
     "description": "Balance table column header: value of one asset unit"
   },
+  "UT0wpI": {
+    "defaultMessage": "Create a passphrase",
+    "description": "New account input field label: create passphrase"
+  },
   "Uq6/ag": {
     "defaultMessage": "Treasury",
     "description": "Nav bar treasury tab"
@@ -131,9 +151,9 @@
     "defaultMessage": "Account email address",
     "description": "Login input field label: email"
   },
-  "YGFyva": {
-    "defaultMessage": "First name",
-    "description": "Sign up input field label: first name"
+  "Z5nasz": {
+    "defaultMessage": "Create account",
+    "description": "New account create button"
   },
   "a6TlyZ": {
     "defaultMessage": "Sign out",
@@ -143,9 +163,9 @@
     "defaultMessage": "Phone",
     "description": "Login identification method selection: use your phone number"
   },
-  "cB1RHb": {
-    "defaultMessage": "Personal email",
-    "description": "Sign up input field label: email"
+  "cStYuC": {
+    "defaultMessage": "Verify",
+    "description": "New account verify code to complete button"
   },
   "cjeVpa": {
     "defaultMessage": "Account handle",
@@ -158,6 +178,10 @@
   "cxOmHD": {
     "defaultMessage": "Issuer / counterparty",
     "description": "Contracts table column header: contract issuer / counterparty"
+  },
+  "dyjW1T": {
+    "defaultMessage": "Verify your email",
+    "description": "New account verify email description title"
   },
   "fFr3qj": {
     "defaultMessage": "Pair with authenticator",
@@ -194,6 +218,10 @@
   "oneuwr": {
     "defaultMessage": "Primary vault",
     "description": "Treasury primary vault tag"
+  },
+  "pTJMyU": {
+    "defaultMessage": "Verify passphrase",
+    "description": "New account input field label: verify passphrase"
   },
   "qZNWyi": {
     "defaultMessage": "Relationships",

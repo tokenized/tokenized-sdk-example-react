@@ -11,12 +11,6 @@
       "value": "Title"
     }
   ],
-  "2oGVVt": [
-    {
-      "type": 0,
-      "value": "Paymail handle"
-    }
-  ],
   "2vbsAo": [
     {
       "type": 0,
@@ -33,6 +27,16 @@
     {
       "type": 0,
       "value": "Liabilities"
+    }
+  ],
+  "3M+zLD": [
+    {
+      "type": 0,
+      "value": "To create your new account, enter the email verification code sent to "
+    },
+    {
+      "type": 1,
+      "value": "email"
     }
   ],
   "41ypwV": [
@@ -63,6 +67,24 @@
     {
       "type": 0,
       "value": "Display pairing code…"
+    }
+  ],
+  "8SZXVP": [
+    {
+      "type": 0,
+      "value": "Verification code"
+    }
+  ],
+  "BDkKXS": [
+    {
+      "type": 0,
+      "value": "Paymail handle"
+    }
+  ],
+  "BFmRsr": [
+    {
+      "type": 0,
+      "value": "Personal email"
     }
   ],
   "C6Pp9+": [
@@ -139,7 +161,13 @@
       "value": "Handle"
     }
   ],
-  "MKs5lh": [
+  "LfU0vg": [
+    {
+      "type": 0,
+      "value": "First name"
+    }
+  ],
+  "LwJoyw": [
     {
       "type": 0,
       "value": "Last name"
@@ -175,6 +203,12 @@
       "value": "One unit"
     }
   ],
+  "UT0wpI": [
+    {
+      "type": 0,
+      "value": "Create a passphrase"
+    }
+  ],
   "Uq6/ag": [
     {
       "type": 0,
@@ -205,10 +239,10 @@
       "value": "Account email address"
     }
   ],
-  "YGFyva": [
+  "Z5nasz": [
     {
       "type": 0,
-      "value": "First name"
+      "value": "Create account"
     }
   ],
   "a6TlyZ": [
@@ -223,10 +257,10 @@
       "value": "Phone"
     }
   ],
-  "cB1RHb": [
+  "cStYuC": [
     {
       "type": 0,
-      "value": "Personal email"
+      "value": "Verify"
     }
   ],
   "cjeVpa": [
@@ -245,6 +279,12 @@
     {
       "type": 0,
       "value": "Issuer / counterparty"
+    }
+  ],
+  "dyjW1T": [
+    {
+      "type": 0,
+      "value": "Verify your email"
     }
   ],
   "fFr3qj": [
@@ -299,6 +339,12 @@
     {
       "type": 0,
       "value": "Primary vault"
+    }
+  ],
+  "pTJMyU": [
+    {
+      "type": 0,
+      "value": "Verify passphrase"
     }
   ],
   "qZNWyi": [

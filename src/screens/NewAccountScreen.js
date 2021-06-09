@@ -78,15 +78,15 @@ function NewAccountScreen() {
           <div className="has-text-centered my-6">
             <h1 className="title">
               <FormattedMessage
-                description="New account screen title"
                 defaultMessage="Tokenized SDK demo"
+                description="New account screen title"
                 id="iA3+G9"
               />
             </h1>
             <p className="subtitle">
               <FormattedMessage
-                description="New account screen subtitle"
                 defaultMessage="Create a new account"
+                description="New account screen subtitle"
                 id="RAmj2a"
               />
             </p>
@@ -94,21 +94,23 @@ function NewAccountScreen() {
           <Form onSubmit={onSubmit}>
             {(formProps) => <FormPage {...formProps} />}
           </Form>
-          <section className="section has-text-centered">
-            <Link
-              to={{
-                pathname: '/sign-in',
-                state: location?.state,
-              }}
-              className="button is-link is-light"
-            >
-              <FormattedMessage
-                defaultMessage="Sign in…"
-                id="ETFPN0"
-                description="New account screen back to sign in link"
-              />
-            </Link>
-          </section>
+          {step === 'namesEmailHandle' && (
+            <section className="section has-text-centered">
+              <Link
+                to={{
+                  pathname: '/sign-in',
+                  state: location?.state,
+                }}
+                className="button is-link is-light"
+              >
+                <FormattedMessage
+                  defaultMessage="Sign in…"
+                  description="New account screen back to sign in link"
+                  id="ETFPN0"
+                />
+              </Link>
+            </section>
+          )}
         </div>
       </div>
     </div>
