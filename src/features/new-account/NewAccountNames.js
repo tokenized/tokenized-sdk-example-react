@@ -1,129 +1,139 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
+import { Field } from 'react-final-form';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { useTokenizedApi, useIsLoggingIn } from '@tokenized/sdk-react-private';
+import { useTokenizedApi } from '@tokenized/sdk-react-private';
+import { fieldRequired, fieldIsEmail } from '../../utils/validators';
 
-function NewAccountNames() {
+function NewAccountNames({ handleSubmit, valid }) {
   const location = useLocation();
   const tokenizedApi = useTokenizedApi();
-  const isLoggingIn = useIsLoggingIn();
-
-  const [firstName, setFirstName] = useState('');
-  const onFirstNameInput = useCallback(
-    (event) => setFirstName(event.target.value),
-    [setFirstName],
-  );
-
-  const [lastName, setLastName] = useState('');
-  const onLastNameInput = useCallback(
-    (event) => setLastName(event.target.value),
-    [setLastName],
-  );
-
-  const [email, setEmail] = useState('');
-  const onEmailInput = useCallback(
-    (event) => setEmail(event.target.value),
-    [setEmail],
-  );
-
-  const [handle, setHandle] = useState('');
-  const onHandleInput = useCallback(
-    (event) => setHandle(event.target.value),
-    [setHandle],
-  );
   const handlePostfix = tokenizedApi.account.getUserHandlePostfix();
-
-  const onContinue = useCallback((event) => {
-    event.preventDefault();
-  }, []);
 
   return (
     <div className="box">
-      <form onSubmit={onContinue}>
+      <form onSubmit={handleSubmit}>
         <div className="columns">
           <div className="column">
-            <div className="field">
-              <label className="label">
-                <FormattedMessage
-                  defaultMessage="First name"
-                  description="Sign up input field label: first name"
-                  id="YGFyva"
-                />
-              </label>
-              <div className="control">
-                <input
-                  className="input"
-                  type="text"
-                  autoComplete="given-name"
-                  value={firstName}
-                  onInput={onFirstNameInput}
-                />
-              </div>
-            </div>
+            <Field name="firstName" validate={fieldRequired}>
+              {({ input, meta: { touched, error } }) => (
+                <div className="field">
+                  <label className="label">
+                    <FormattedMessage
+                      defaultMessage="First name"
+                      description="Sign up input field label: first name"
+                      id="YGFyva"
+                    />
+                  </label>
+                  <div className="control">
+                    <input
+                      className={classNames(
+                        'input',
+                        touched && error && 'is-danger',
+                      )}
+                      type="text"
+                      autoComplete="given-name"
+                      {...input}
+                    />
+                    {touched && !!error && (
+                      <p className="help is-danger">{error}</p>
+                    )}
+                  </div>
+                </div>
+              )}
+            </Field>
           </div>
           <div className="column">
+            <Field name="lastName" validate={fieldRequired}>
+              {({ input, meta: { touched, error } }) => (
+                <div className="field">
+                  <label className="label">
+                    <FormattedMessage
+                      defaultMessage="Last name"
+                      description="Sign up input field label: last name"
+                      id="MKs5lh"
+                    />
+                  </label>
+                  <div className="control">
+                    <input
+                      className={classNames(
+                        'input',
+                        touched && error && 'is-danger',
+                      )}
+                      type="text"
+                      autoComplete="family-name"
+                      {...input}
+                    />
+                    {touched && !!error && (
+                      <p className="help is-danger">{error}</p>
+                    )}
+                  </div>
+                </div>
+              )}
+            </Field>
+          </div>
+        </div>
+        <Field name="email" validate={fieldIsEmail}>
+          {({ input, meta: { touched, error } }) => (
             <div className="field">
               <label className="label">
                 <FormattedMessage
-                  defaultMessage="Last name"
-                  description="Sign up input field label: last name"
-                  id="MKs5lh"
+                  defaultMessage="Personal email"
+                  description="Sign up input field label: email"
+                  id="cB1RHb"
                 />
               </label>
               <div className="control">
                 <input
-                  className="input"
-                  type="text"
-                  autoComplete="family-name"
-                  value={lastName}
-                  onInput={onLastNameInput}
+                  className={classNames(
+                    'input',
+                    touched && error && 'is-danger',
+                  )}
+                  type="email"
+                  autoComplete="email"
+                  {...input}
                 />
+                {touched && !!error && (
+                  <p className="help is-danger">{error}</p>
+                )}
               </div>
             </div>
-          </div>
-        </div>
-        <div className="field">
-          <label className="label">
-            <FormattedMessage
-              defaultMessage="Personal email"
-              description="Sign up input field label: email"
-              id="cB1RHb"
-            />
-          </label>
-          <div className="control">
-            <input
-              className="input"
-              type="email"
-              autoComplete="email"
-              value={email}
-              onInput={onEmailInput}
-            />
-          </div>
-        </div>
-        <div className="field">
-          <label className="label">
-            <FormattedMessage
-              defaultMessage="Paymail handle"
-              description="Sign up input field label: handle"
-              id="2oGVVt"
-            />
-          </label>
-          <div className="field has-addons">
-            <div className="control is-expanded">
-              <input
-                className="input"
-                type="text"
-                autoComplete="username"
-                value={handle}
-                onInput={onHandleInput}
-              />
+          )}
+        </Field>
+        <Field name="handle" validate={fieldRequired}>
+          {({ input, meta: { touched, error } }) => (
+            <div className="field">
+              <label className="label">
+                <FormattedMessage
+                  defaultMessage="Paymail handle"
+                  description="Sign up input field label: handle"
+                  id="2oGVVt"
+                />
+              </label>
+              <div className="field has-addons">
+                <div className="control is-expanded">
+                  <input
+                    className={classNames(
+                      'input',
+                      touched && error && 'is-danger',
+                    )}
+                    style={{ zIndex: 1 }}
+                    type="text"
+                    autoComplete="username"
+                    {...input}
+                  />
+                  {touched && !!error && (
+                    <p className="help is-danger">{error}</p>
+                  )}
+                </div>
+                <div className="control">
+                  <span className="button is-static">{handlePostfix}</span>
+                </div>
+              </div>
             </div>
-            <div className="control">
-              <span className="button is-static">{handlePostfix}</span>
-            </div>
-          </div>
-        </div>
+          )}
+        </Field>
         <div className="buttons is-right mt-6">
           <Link
             to={{
@@ -138,14 +148,7 @@ function NewAccountNames() {
               description="New account cancel button"
             />
           </Link>
-          <button
-            className={classNames(
-              'button',
-              'is-primary',
-              isLoggingIn && 'is-loading',
-            )}
-            disabled={!!firstName && !!lastName && !!email && !!handle}
-          >
+          <button type="submit" className="button is-primary" disabled={!valid}>
             <FormattedMessage
               description="New account continue button"
               defaultMessage="Continue"

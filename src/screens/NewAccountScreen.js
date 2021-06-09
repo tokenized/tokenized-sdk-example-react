@@ -1,14 +1,61 @@
-import React from 'react';
-import { Link, Redirect, useLocation } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
+import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import { useIsLoading, useIsLoggedIn } from '@tokenized/sdk-react-private';
+import { Form } from 'react-final-form';
+import {
+  useTokenizedApi,
+  useIsLoading,
+  useIsLoggedIn,
+} from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 import NewAccountNames from '../features/new-account/NewAccountNames';
+import NewAccountPassphrase from '../features/new-account/NewAccountPassphrase';
+import NewAccountVerification from '../features/new-account/NewAccountVerification';
 
 function NewAccountScreen() {
   const location = useLocation();
+  const history = useHistory();
   const isLoading = useIsLoading();
   const isLoggedIn = useIsLoggedIn();
+  const tokenizedApi = useTokenizedApi();
+
+  const [step, setStep] = useState('namesEmailHandle');
+  const onSubmit = useCallback(
+    async (values, form) => {
+      switch (step) {
+        case 'namesEmailHandle':
+          setStep('passphrase');
+          break;
+        case 'passphrase':
+          await tokenizedApi.account.createNewAccount(values);
+          setStep('verificationCode');
+          break;
+        case 'verificationCode':
+          await tokenizedApi.account.verifyNewAccount(values);
+          history.push('/sign-in', location?.state);
+          break;
+        default:
+          setStep('namesEmailHandle');
+          form.restart();
+          break;
+      }
+    },
+    [history, location?.state, step, tokenizedApi.account],
+  );
+
+  let FormPage;
+  switch (step) {
+    case 'namesEmailHandle':
+    default:
+      FormPage = NewAccountNames;
+      break;
+    case 'passphrase':
+      FormPage = NewAccountPassphrase;
+      break;
+    case 'verificationCode':
+      FormPage = NewAccountVerification;
+      break;
+  }
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -44,7 +91,9 @@ function NewAccountScreen() {
               />
             </p>
           </div>
-          <NewAccountNames />
+          <Form onSubmit={onSubmit}>
+            {(formProps) => <FormPage {...formProps} />}
+          </Form>
           <section className="section has-text-centered">
             <Link
               to={{
