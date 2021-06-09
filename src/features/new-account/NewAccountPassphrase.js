@@ -1,16 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Field } from 'react-final-form';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { fieldRequired } from '../../utils/validators';
+import { fieldRequired, fieldIsEmail } from '../../utils/validators';
 
-function NewAccountPassphrase({ handleSubmit, valid }) {
+function NewAccountPassphrase({
+  handleSubmit,
+  hasValidationErrors,
+  submitting,
+  submitError,
+}) {
   const location = useLocation();
 
+  const [hideError, setHideError] = useState(null);
+
+  // Note the email and handle fields are included but hidden,
+  // so that password managers can deduce the full credentials
   return (
     <div className="box">
       <form onSubmit={handleSubmit}>
+        {submitError && submitError !== hideError && (
+          <article className="message is-danger">
+            <div className="message-header">
+              <p>
+                <FormattedMessage
+                  defaultMessage="Unable to create account"
+                  description="New account failed error message title"
+                  id="UBuArm"
+                />
+              </p>
+              <button
+                className="delete"
+                aria-label="delete"
+                onClick={() => setHideError(submitError)}
+              ></button>
+            </div>
+            <div className="message-body">{`${submitError}`}</div>
+          </article>
+        )}
+        <Field name="handle" validate={fieldRequired}>
+          {({ input }) => (
+            <input
+              style={{ display: 'none' }}
+              type="text"
+              autoComplete="username"
+              {...input}
+            />
+          )}
+        </Field>
+        <Field name="email" validate={fieldIsEmail}>
+          {({ input }) => (
+            <input
+              style={{ display: 'none' }}
+              type="email"
+              autoComplete="email"
+              {...input}
+            />
+          )}
+        </Field>
         <Field name="passphrase" validate={fieldRequired}>
           {({ input, meta: { touched, error } }) => (
             <div className="field">
@@ -79,7 +127,15 @@ function NewAccountPassphrase({ handleSubmit, valid }) {
               id="QoOTpE"
             />
           </Link>
-          <button type="submit" className="button is-primary" disabled={!valid}>
+          <button
+            type="submit"
+            className={classNames(
+              'button',
+              'is-primary',
+              submitting && 'is-loading',
+            )}
+            disabled={submitting || hasValidationErrors}
+          >
             <FormattedMessage
               defaultMessage="Create account"
               description="New account create button"

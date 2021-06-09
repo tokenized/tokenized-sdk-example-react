@@ -127,6 +127,10 @@
     "defaultMessage": "One unit",
     "description": "Balance table column header: value of one asset unit"
   },
+  "UBuArm": {
+    "defaultMessage": "Unable to create account",
+    "description": "New account failed error message title"
+  },
   "UT0wpI": {
     "defaultMessage": "Create a passphrase",
     "description": "New account input field label: create passphrase"
@@ -206,6 +210,10 @@
   "kYHpnu": {
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
+  },
+  "ljBbFZ": {
+    "defaultMessage": "Unable to verify new account",
+    "description": "New account verify failed error message title"
   },
   "nUTL2v": {
     "defaultMessage": "Please sign in with your Tokenized account credentials",

@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Form } from 'react-final-form';
+import { FORM_ERROR } from 'final-form';
 import {
   useTokenizedApi,
   useIsLoading,
@@ -27,11 +28,19 @@ function NewAccountScreen() {
           setStep('passphrase');
           break;
         case 'passphrase':
-          await tokenizedApi.account.createNewAccount(values);
+          try {
+            await tokenizedApi.account.createNewAccount(values);
+          } catch (error) {
+            return { [FORM_ERROR]: error };
+          }
           setStep('verificationCode');
           break;
         case 'verificationCode':
-          await tokenizedApi.account.verifyNewAccount(values);
+          try {
+            await tokenizedApi.account.verifyNewAccount(values);
+          } catch (error) {
+            return { [FORM_ERROR]: error };
+          }
           history.push('/sign-in', location?.state);
           break;
         default:

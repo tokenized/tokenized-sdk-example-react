@@ -869,11 +869,11 @@ trigger the authenticator device pairing process.
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
 
-| Param         | Type                | Description                                                                     |
-| ------------- | ------------------- | ------------------------------------------------------------------------------- |
-| options       | <code>object</code> |                                                                                 |
-| options.email | <code>string</code> | Used to verify the person creating the account, by sending a confirmation code. |
-| options.code  | <code>string</code> | The verification code sent to the email address for the new account.            |
+| Param         | Type                | Description                                          |
+| ------------- | ------------------- | ---------------------------------------------------- |
+| options       | <code>object</code> |                                                      |
+| options.email | <code>string</code> | The email address of the new account to be verified. |
+| options.code  | <code>string</code> | The verification code from the received email.       |
 
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logOut"></a>
 
