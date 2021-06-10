@@ -687,6 +687,10 @@ specific UI libraries)
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
     - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+      - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
+        ⇒ <code>function</code>
+      - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
+        ⇒ <code>function</code>
       - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
       - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
       - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
@@ -729,6 +733,10 @@ run:
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
   - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+    - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
+      ⇒ <code>function</code>
+    - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
+      ⇒ <code>function</code>
     - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
     - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
     - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
@@ -798,6 +806,10 @@ Access to contracts
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
 
 - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+  - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
+    ⇒ <code>function</code>
+  - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
+    ⇒ <code>function</code>
   - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
   - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
   - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
@@ -806,6 +818,53 @@ Access to contracts
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
     ⇒ <code>string</code>
 
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker"></a>
+
+##### account.makeDebouncedHandleAvailabilityChecker() ⇒ <code>function</code>
+
+Use this in a new account dialog, to show the user as they type whether their
+paymail unique ID (handle) is already in use. You can call the returned async
+function as often as you like (on every keystroke), and it won’t send more than
+one query to the back end every 500ms. Each time a query is sent, the result
+will become the resolved value of all unresolved promises previously returned.
+
+Note that each validator function returned by this method maintains its own
+separate timer for debouncing, so if you call
+`makeDebouncedHandleAvailabilityChecker` in a React render function, you must
+memoize the result with `useMemo` or similar, to maintain the same validator for
+the lifetime of your component.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>function</code> - The async validation function, which takes
+one argument, the handle string to check, and returns a promise that resolves to
+`true` if the _most recent_ handle that was checked is available (because the
+queries are debounced, only the last of a rapid sequence of submitted strings
+will actually be checked).  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker"></a>
+
+##### account.makeDebouncedEmailAvailabilityChecker() ⇒ <code>function</code>
+
+Use this in a new account dialog, to show the user as they type whether an email
+address is already associated with another account. You can call the returned
+async function as often as you like (on every keystroke), and it won’t send more
+than one query to the back end every 500ms. Each time a query is sent, the
+result will become the resolved value of all unresolved promises previously
+returned.
+
+Note that each validator function returned by this method maintains its own
+separate timer for debouncing, so if you call
+`makeDebouncedEmailAvailabilityChecker` in a React render function, you must
+memoize the result with `useMemo` or similar, to maintain the same validator for
+the lifetime of your component.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>function</code> - The async validation function, which takes
+one argument, the email address to check, and returns a promise that resolves to
+`true` if the _most recent_ email that was checked is available (because the
+queries are debounced, only the last of a rapid sequence of submitted strings
+will actually be checked).  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logIn"></a>
 
 ##### account.logIn(options)

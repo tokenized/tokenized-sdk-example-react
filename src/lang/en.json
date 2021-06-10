@@ -7,6 +7,14 @@
     "defaultMessage": "Title",
     "description": "Contracts table column header: contract title"
   },
+  "0EfTim": {
+    "defaultMessage": "Choose a unique ID for connecting with others and receiving payments",
+    "description": "New account handle field help: explanation of paymail"
+  },
+  "1s3HAo": {
+    "defaultMessage": "Avoid workplace or educational emails you might lose access to",
+    "description": "New account email field help: advice to pick personal accounts"
+  },
   "2vbsAo": {
     "defaultMessage": "Contracts",
     "description": "Contracts page title"
@@ -26,6 +34,10 @@
   "41ypwV": {
     "defaultMessage": "Asset",
     "description": "Balance table column header: asset name"
+  },
+  "4Ud2UA": {
+    "defaultMessage": "That handle is already in use",
+    "description": "New account field validation error: handle in use"
   },
   "6I1l1I": {
     "defaultMessage": "Liability",
@@ -190,6 +202,10 @@
   "fFr3qj": {
     "defaultMessage": "Pair with authenticator",
     "description": "Login screen mobile authenticator pairing title"
+  },
+  "fnlNdQ": {
+    "defaultMessage": "That email is already in use",
+    "description": "New account field validation error: email in use"
   },
   "hTxeee": {
     "defaultMessage": "Type",

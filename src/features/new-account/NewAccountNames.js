@@ -1,15 +1,63 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Field } from 'react-final-form';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import { FormattedMessage } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 import { useTokenizedApi } from '@tokenized/sdk-react-private';
-import { fieldRequired, fieldIsEmail } from '../../utils/validators';
+import {
+  composeValidators,
+  fieldRequired,
+  fieldIsEmail,
+} from '../../utils/validators';
 
-function NewAccountNames({ handleSubmit, hasValidationErrors, submitError }) {
+function NewAccountNames({
+  handleSubmit,
+  validating,
+  hasValidationErrors,
+  submitError,
+}) {
   const location = useLocation();
+  const intl = useIntl();
   const tokenizedApi = useTokenizedApi();
   const handlePostfix = tokenizedApi.account.getUserHandlePostfix();
+
+  const isEmailAvailable = useMemo(
+    () => tokenizedApi.account.makeDebouncedEmailAvailabilityChecker(),
+    [tokenizedApi.account],
+  );
+  const validateEmail = useMemo(
+    () =>
+      composeValidators(fieldIsEmail, async (email) => {
+        const available = await isEmailAvailable(email);
+        if (!available) {
+          return intl.formatMessage({
+            defaultMessage: 'That email is already in use',
+            description: 'New account field validation error: email in use',
+            id: 'fnlNdQ',
+          });
+        }
+      }),
+    [intl, isEmailAvailable],
+  );
+
+  const isHandleAvailable = useMemo(
+    () => tokenizedApi.account.makeDebouncedHandleAvailabilityChecker(),
+    [tokenizedApi.account],
+  );
+  const validateHandle = useMemo(
+    () =>
+      composeValidators(fieldRequired, async (handle) => {
+        const available = await isHandleAvailable(handle);
+        if (!available) {
+          return intl.formatMessage({
+            defaultMessage: 'That handle is already in use',
+            description: 'New account field validation error: handle in use',
+            id: '4Ud2UA',
+          });
+        }
+      }),
+    [intl, isHandleAvailable],
+  );
 
   const [hideError, setHideError] = useState(null);
 
@@ -37,7 +85,11 @@ function NewAccountNames({ handleSubmit, hasValidationErrors, submitError }) {
         )}
         <div className="columns">
           <div className="column">
-            <Field name="firstName" validate={fieldRequired}>
+            <Field
+              name="firstName"
+              validate={fieldRequired}
+              validateFields={[]}
+            >
               {({ input, meta: { touched, error } }) => (
                 <div className="field">
                   <label className="label">
@@ -66,7 +118,7 @@ function NewAccountNames({ handleSubmit, hasValidationErrors, submitError }) {
             </Field>
           </div>
           <div className="column">
-            <Field name="lastName" validate={fieldRequired}>
+            <Field name="lastName" validate={fieldRequired} validateFields={[]}>
               {({ input, meta: { touched, error } }) => (
                 <div className="field">
                   <label className="label">
@@ -95,7 +147,7 @@ function NewAccountNames({ handleSubmit, hasValidationErrors, submitError }) {
             </Field>
           </div>
         </div>
-        <Field name="email" validate={fieldIsEmail}>
+        <Field name="email" validate={validateEmail} validateFields={[]}>
           {({ input, meta: { touched, error } }) => (
             <div className="field">
               <label className="label">
@@ -109,21 +161,29 @@ function NewAccountNames({ handleSubmit, hasValidationErrors, submitError }) {
                 <input
                   className={classNames(
                     'input',
-                    touched && error && 'is-danger',
+                    (fieldIsEmail(input?.value) === undefined || touched) &&
+                      error &&
+                      'is-danger',
                   )}
                   type="email"
                   autoComplete="email"
                   {...input}
                 />
-                {touched && !!error && (
-                  <p className="help is-danger">{error}</p>
-                )}
+                <p className="help">
+                  <FormattedMessage
+                    defaultMessage="Avoid workplace or educational emails you might lose access to"
+                    description="New account email field help: advice to pick personal accounts"
+                    id="1s3HAo"
+                  />
+                </p>
+                {(fieldIsEmail(input?.value) === undefined || touched) &&
+                  !!error && <p className="help is-danger">{error}</p>}
               </div>
             </div>
           )}
         </Field>
-        <Field name="handle" validate={fieldRequired}>
-          {({ input, meta: { touched, error } }) => (
+        <Field name="handle" validate={validateHandle} validateFields={[]}>
+          {({ input, meta: { error, touched } }) => (
             <div className="field">
               <label className="label">
                 <FormattedMessage
@@ -137,14 +197,21 @@ function NewAccountNames({ handleSubmit, hasValidationErrors, submitError }) {
                   <input
                     className={classNames(
                       'input',
-                      touched && error && 'is-danger',
+                      (input?.value || touched) && error && 'is-danger',
                     )}
                     style={{ zIndex: 1 }}
                     type="text"
                     autoComplete="username"
                     {...input}
                   />
-                  {touched && !!error && (
+                  <p className="help">
+                    <FormattedMessage
+                      defaultMessage="Choose a unique ID for connecting with others and receiving payments"
+                      description="New account handle field help: explanation of paymail"
+                      id="0EfTim"
+                    />
+                  </p>
+                  {(!!input?.value || touched) && !!error && (
                     <p className="help is-danger">{error}</p>
                   )}
                 </div>
@@ -171,8 +238,12 @@ function NewAccountNames({ handleSubmit, hasValidationErrors, submitError }) {
           </Link>
           <button
             type="submit"
-            className="button is-primary"
-            disabled={hasValidationErrors}
+            className={classNames(
+              'button',
+              'is-primary',
+              validating && 'is-loading',
+            )}
+            disabled={hasValidationErrors || validating}
           >
             <FormattedMessage
               defaultMessage="Continue"

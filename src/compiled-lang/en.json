@@ -11,6 +11,18 @@
       "value": "Title"
     }
   ],
+  "0EfTim": [
+    {
+      "type": 0,
+      "value": "Choose a unique ID for connecting with others and receiving payments"
+    }
+  ],
+  "1s3HAo": [
+    {
+      "type": 0,
+      "value": "Avoid workplace or educational emails you might lose access to"
+    }
+  ],
   "2vbsAo": [
     {
       "type": 0,
@@ -43,6 +55,12 @@
     {
       "type": 0,
       "value": "Asset"
+    }
+  ],
+  "4Ud2UA": [
+    {
+      "type": 0,
+      "value": "That handle is already in use"
     }
   ],
   "6I1l1I": [
@@ -297,6 +315,12 @@
     {
       "type": 0,
       "value": "Pair with authenticator"
+    }
+  ],
+  "fnlNdQ": [
+    {
+      "type": 0,
+      "value": "That email is already in use"
     }
   ],
   "hTxeee": [
