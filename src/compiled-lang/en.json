@@ -105,6 +105,12 @@
       "value": "Personal email"
     }
   ],
+  "BQRMqg": [
+    {
+      "type": 0,
+      "value": "Must be an email address"
+    }
+  ],
   "C6Pp9+": [
     {
       "type": 0,
@@ -167,6 +173,12 @@
       "value": "Authorized"
     }
   ],
+  "KByFkD": [
+    {
+      "type": 0,
+      "value": "Must be a number"
+    }
+  ],
   "Kg4KGH": [
     {
       "type": 0,
@@ -219,6 +231,17 @@
     {
       "type": 0,
       "value": "One unit"
+    }
+  ],
+  "Ssp7dT": [
+    {
+      "type": 0,
+      "value": "Must be greater than "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "min"
     }
   ],
   "UBuArm": [
@@ -323,6 +346,12 @@
       "value": "That email is already in use"
     }
   ],
+  "gHRR9x": [
+    {
+      "type": 0,
+      "value": "Required"
+    }
+  ],
   "hTxeee": [
     {
       "type": 0,
@@ -347,6 +376,17 @@
       "value": "Activity"
     }
   ],
+  "kEIuFa": [
+    {
+      "type": 0,
+      "value": "Maximum: "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "max"
+    }
+  ],
   "kYHpnu": [
     {
       "type": 0,
@@ -357,6 +397,12 @@
     {
       "type": 0,
       "value": "Unable to verify new account"
+    }
+  ],
+  "n0cMeX": [
+    {
+      "type": 0,
+      "value": "Doesn’t match entered passphrase"
     }
   ],
   "nUTL2v": [
@@ -389,10 +435,40 @@
       "value": "Relationships"
     }
   ],
+  "sChJWn": [
+    {
+      "type": 0,
+      "value": "Must be "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "min"
+    },
+    {
+      "type": 0,
+      "value": " characters or more"
+    }
+  ],
   "slLQlj": [
     {
       "type": 0,
       "value": "Checking for previous session"
+    }
+  ],
+  "uN85Mi": [
+    {
+      "type": 0,
+      "value": "Must be "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "max"
+    },
+    {
+      "type": 0,
+      "value": " characters or fewer"
     }
   ],
   "uQj7Yo": [
@@ -421,6 +497,23 @@
     {
       "type": 1,
       "value": "fullName"
+    }
+  ],
+  "xlJ5FF": [
+    {
+      "type": 0,
+      "value": "Only alphanumeric characters allowed"
+    }
+  ],
+  "zolMCa": [
+    {
+      "type": 0,
+      "value": "Minimum: "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "min"
     }
   ]
 }

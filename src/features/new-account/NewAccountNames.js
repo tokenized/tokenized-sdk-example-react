@@ -1,12 +1,12 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Field } from 'react-final-form';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { useTokenizedApi } from '@tokenized/sdk-react-private';
 import {
-  composeValidators,
-  fieldRequired,
+  useValidators,
+  fieldIsRequired,
   fieldIsEmail,
 } from '../../utils/validators';
 
@@ -20,43 +20,47 @@ function NewAccountNames({
   const intl = useIntl();
   const tokenizedApi = useTokenizedApi();
   const handlePostfix = tokenizedApi.account.getUserHandlePostfix();
+  const validateRequired = useValidators(fieldIsRequired);
 
   const isEmailAvailable = useMemo(
     () => tokenizedApi.account.makeDebouncedEmailAvailabilityChecker(),
     [tokenizedApi.account],
   );
-  const validateEmail = useMemo(
-    () =>
-      composeValidators(fieldIsEmail, async (email) => {
-        const available = await isEmailAvailable(email);
-        if (!available) {
-          return intl.formatMessage({
-            defaultMessage: 'That email is already in use',
-            description: 'New account field validation error: email in use',
-            id: 'fnlNdQ',
-          });
-        }
-      }),
-    [intl, isEmailAvailable],
+  const validateEmailAvailable = useCallback(
+    async (intl, email) => {
+      const available = await isEmailAvailable(email);
+      if (!available) {
+        return intl.formatMessage({
+          defaultMessage: 'That email is already in use',
+          description: 'New account field validation error: email in use',
+          id: 'fnlNdQ',
+        });
+      }
+    },
+    [isEmailAvailable],
   );
+  const validateEmail = useValidators(fieldIsEmail, validateEmailAvailable);
 
   const isHandleAvailable = useMemo(
     () => tokenizedApi.account.makeDebouncedHandleAvailabilityChecker(),
     [tokenizedApi.account],
   );
-  const validateHandle = useMemo(
-    () =>
-      composeValidators(fieldRequired, async (handle) => {
-        const available = await isHandleAvailable(handle);
-        if (!available) {
-          return intl.formatMessage({
-            defaultMessage: 'That handle is already in use',
-            description: 'New account field validation error: handle in use',
-            id: '4Ud2UA',
-          });
-        }
-      }),
-    [intl, isHandleAvailable],
+  const validateHandleAvailable = useCallback(
+    async (intl, handle) => {
+      const available = await isHandleAvailable(handle);
+      if (!available) {
+        return intl.formatMessage({
+          defaultMessage: 'That handle is already in use',
+          description: 'New account field validation error: handle in use',
+          id: '4Ud2UA',
+        });
+      }
+    },
+    [isHandleAvailable],
+  );
+  const validateHandle = useValidators(
+    fieldIsRequired,
+    validateHandleAvailable,
   );
 
   const [hideError, setHideError] = useState(null);
@@ -87,7 +91,7 @@ function NewAccountNames({
           <div className="column">
             <Field
               name="firstName"
-              validate={fieldRequired}
+              validate={validateRequired}
               validateFields={[]}
             >
               {({ input, meta: { touched, error } }) => (
@@ -118,7 +122,11 @@ function NewAccountNames({
             </Field>
           </div>
           <div className="column">
-            <Field name="lastName" validate={fieldRequired} validateFields={[]}>
+            <Field
+              name="lastName"
+              validate={validateRequired}
+              validateFields={[]}
+            >
               {({ input, meta: { touched, error } }) => (
                 <div className="field">
                   <label className="label">
@@ -161,7 +169,8 @@ function NewAccountNames({
                 <input
                   className={classNames(
                     'input',
-                    (fieldIsEmail(input?.value) === undefined || touched) &&
+                    (fieldIsEmail(intl, input?.value) === undefined ||
+                      touched) &&
                       error &&
                       'is-danger',
                   )}
@@ -176,7 +185,7 @@ function NewAccountNames({
                     id="1s3HAo"
                   />
                 </p>
-                {(fieldIsEmail(input?.value) === undefined || touched) &&
+                {(fieldIsEmail(intl, input?.value) === undefined || touched) &&
                   !!error && <p className="help is-danger">{error}</p>}
               </div>
             </div>

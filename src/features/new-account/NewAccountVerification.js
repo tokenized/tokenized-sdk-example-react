@@ -3,7 +3,7 @@ import { Field } from 'react-final-form';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { fieldRequired, fieldIsEmail } from '../../utils/validators';
+import { useValidators, fieldIsRequired } from '../../utils/validators';
 
 function NewAccountVerification({
   handleSubmit,
@@ -13,6 +13,8 @@ function NewAccountVerification({
   submitError,
 }) {
   const location = useLocation();
+
+  const validateRequired = useValidators(fieldIsRequired);
 
   const [hideError, setHideError] = useState(null);
 
@@ -59,37 +61,37 @@ function NewAccountVerification({
             />
           </div>
         </article>
-        <Field name="handle" validate={fieldRequired}>
+        <Field name="handle">
           {({ input }) => (
             <input
-              style={{ display: 'none' }}
+              className="is-hidden"
               type="text"
               autoComplete="username"
               {...input}
             />
           )}
         </Field>
-        <Field name="email" validate={fieldIsEmail}>
+        <Field name="email">
           {({ input }) => (
             <input
-              style={{ display: 'none' }}
+              className="is-hidden"
               type="email"
               autoComplete="email"
               {...input}
             />
           )}
         </Field>
-        <Field name="passphrase" validate={fieldRequired}>
+        <Field name="passphrase">
           {({ input }) => (
             <input
-              style={{ display: 'none' }}
+              className="is-hidden"
               type="password"
               autoComplete="new-password"
               {...input}
             />
           )}
         </Field>
-        <Field name="code" validate={fieldRequired}>
+        <Field name="code" validate={validateRequired}>
           {({ input, meta: { touched, error } }) => (
             <div className="field">
               <label className="label">

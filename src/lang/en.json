@@ -67,6 +67,10 @@
     "defaultMessage": "Personal email",
     "description": "New account input field label: email"
   },
+  "BQRMqg": {
+    "defaultMessage": "Must be an email address",
+    "description": "Form field validation failure: valid email address is required"
+  },
   "C6Pp9+": {
     "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
     "description": "Login screen mobile authenticator pairing subtitle"
@@ -103,6 +107,10 @@
     "defaultMessage": "Authorized",
     "description": "Balance table column header: quantity of assets authorized in contract"
   },
+  "KByFkD": {
+    "defaultMessage": "Must be a number",
+    "description": "Form field validation failure: a number is required"
+  },
   "Kg4KGH": {
     "defaultMessage": "Passphrase",
     "description": "Login input field label: passphrase"
@@ -138,6 +146,10 @@
   "SOA+3t": {
     "defaultMessage": "One unit",
     "description": "Balance table column header: value of one asset unit"
+  },
+  "Ssp7dT": {
+    "defaultMessage": "Must be greater than {min, number}",
+    "description": "Form field validation failure: number > min is required"
   },
   "UBuArm": {
     "defaultMessage": "Unable to create account",
@@ -207,6 +219,10 @@
     "defaultMessage": "That email is already in use",
     "description": "New account field validation error: email in use"
   },
+  "gHRR9x": {
+    "defaultMessage": "Required",
+    "description": "Form field validation failure: a value is required"
+  },
   "hTxeee": {
     "defaultMessage": "Type",
     "description": "Balance table column header: asset type"
@@ -223,6 +239,10 @@
     "defaultMessage": "Activity",
     "description": "Nav bar activity tab"
   },
+  "kEIuFa": {
+    "defaultMessage": "Maximum: {max, number}",
+    "description": "Form field validation failure: number <= max is required"
+  },
   "kYHpnu": {
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
@@ -230,6 +250,10 @@
   "ljBbFZ": {
     "defaultMessage": "Unable to verify new account",
     "description": "New account verify failed error message title"
+  },
+  "n0cMeX": {
+    "defaultMessage": "Doesn’t match entered passphrase",
+    "description": "Form field validation failure: matching passphrase confirmation is required"
   },
   "nUTL2v": {
     "defaultMessage": "Please sign in with your Tokenized account credentials",
@@ -251,9 +275,17 @@
     "defaultMessage": "Relationships",
     "description": "Nav bar relationships tab"
   },
+  "sChJWn": {
+    "defaultMessage": "Must be {min, number} characters or more",
+    "description": "Form field validation failure: min characters or more required"
+  },
   "slLQlj": {
     "defaultMessage": "Checking for previous session",
     "description": "App loading screen subtitle (below animated progress bar)"
+  },
+  "uN85Mi": {
+    "defaultMessage": "Must be {max, number} characters or fewer",
+    "description": "Form field validation failure: max characters or fewer required"
   },
   "uQj7Yo": {
     "defaultMessage": "Treasury",
@@ -270,5 +302,13 @@
   "wurpXL": {
     "defaultMessage": "Welcome {fullName}",
     "description": "Login screen mobile authentication prompt title"
+  },
+  "xlJ5FF": {
+    "defaultMessage": "Only alphanumeric characters allowed",
+    "description": "Form field validation failure: alphanumeric string is required"
+  },
+  "zolMCa": {
+    "defaultMessage": "Minimum: {min, number}",
+    "description": "Form field validation failure: number >= min is required"
   }
 }

@@ -101,6 +101,13 @@ re-fetching. Some knowledge of how React Query works is useful, since the SDK
 exposes some of its details directly, like the <code>UseQueryResult</code> objects
 returned by the <code>@tokenized/sdk-react-private</code> query hooks.</p>
 </dd>
+<dt><a href="#external_zxcvbn">zxcvbn</a></dt>
+<dd><p>A password strength estimator that identifies the patterns used in common
+weak passwords exploited by password crackers. Note that <code>zxcvbn</code> includes a
+significant amount of static string data, and so installing
+<code>@tokenized/sdk-js-private</code> can increase your Webpack bundle size by several
+hundred kilobytes.</p>
+</dd>
 </dl>
 
 <a name="module_@tokenized/sdk-react-private"></a>
@@ -687,6 +694,9 @@ specific UI libraries)
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
     - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+      - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
+      - [.analyzePassphraseStrength](#module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength)
+        ⇒ <code>object</code>
       - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
         ⇒ <code>function</code>
       - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
@@ -733,6 +743,9 @@ run:
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
   - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+    - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
+    - [.analyzePassphraseStrength](#module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength)
+      ⇒ <code>object</code>
     - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
       ⇒ <code>function</code>
     - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
@@ -806,6 +819,9 @@ Access to contracts
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
 
 - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+  - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
+  - [.analyzePassphraseStrength](#module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength)
+    ⇒ <code>object</code>
   - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
     ⇒ <code>function</code>
   - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
@@ -817,6 +833,36 @@ Access to contracts
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
     ⇒ <code>string</code>
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH"></a>
+
+##### account.PASSPHRASE_MIN_LENGTH
+
+The minimum length of passphrase that will be accepted to secure an account
+
+**Kind**: instance property of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength"></a>
+
+##### account.analyzePassphraseStrength ⇒ <code>object</code>
+
+Assess the strength of a passphrase entered by the user, providing feedback and
+suggestions for improvement. Use this in your “create account” and “change
+passphrase” dialogs. The `isAcceptable` property in the result object specifies
+whether or not this password will be accepted by
+[`createNewAccount`](module:@tokenized/sdk-js-private.TokenizedApi#account.createNewAccount).
+
+The core analysis is performed by the [`zxcvbn`](#external_zxcvbn) package, with
+some additional formatting (including localization) and feedback specific to the
+Tokenized service added to the result.
+
+**Kind**: instance property of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+
+| Param      | Type                              | Description                                                                                                                                                                                                               |
+| ---------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| passphrase | <code>string</code>               | The user-supplied passphrase to check                                                                                                                                                                                     |
+| userInputs | <code>Array.&lt;string&gt;</code> | An optional list of strings that should be considered weak for the analysis. Use this to pass in the account identification (first and last names, email, handle), so that repeating those as the passphrase is rejected. |
 
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker"></a>
 
@@ -1016,7 +1062,19 @@ The `QueryClient` object encapsulates a React Query data cache. It provides
   pattern.
 
 **Kind**: static typedef of [<code>react-query</code>](#external_react-query)  
-**See**: https://react-query.tanstack.com/reference/QueryClient
+**See**: https://react-query.tanstack.com/reference/QueryClient  
+<a name="external_zxcvbn"></a>
+
+## zxcvbn
+
+A password strength estimator that identifies the patterns used in common weak
+passwords exploited by password crackers. Note that `zxcvbn` includes a
+significant amount of static string data, and so installing
+`@tokenized/sdk-js-private` can increase your Webpack bundle size by several
+hundred kilobytes.
+
+**Kind**: global external  
+**See**: https://github.com/dropbox/zxcvbn#usage
 
 ---
 

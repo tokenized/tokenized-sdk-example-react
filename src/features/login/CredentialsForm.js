@@ -8,13 +8,20 @@ import {
   useIsLoggingIn,
   useLogInError,
 } from '@tokenized/sdk-react-private';
-import { fieldRequired, fieldIsEmail } from '../../utils/validators';
+import {
+  useValidators,
+  fieldIsRequired,
+  fieldIsEmail,
+} from '../../utils/validators';
 
 function CredentialsForm({ identifierType }) {
   const location = useLocation();
   const tokenizedApi = useTokenizedApi();
   const isLoggingIn = useIsLoggingIn();
   const handlePostfix = tokenizedApi.account.getUserHandlePostfix();
+
+  const validateRequired = useValidators(fieldIsRequired);
+  const validateEmail = useValidators(fieldIsEmail);
 
   const onSignIn = useCallback(
     ({ handle, email, phoneNumber, passphrase }, form) => {
@@ -122,7 +129,7 @@ function CredentialsForm({ identifierType }) {
               </Link>
             </div>
             {identifierType === 'handle' && (
-              <Field name="handle" validate={fieldRequired}>
+              <Field name="handle" validate={validateRequired}>
                 {({ input, meta: { touched, error } }) => (
                   <div className="field">
                     <label className="label">
@@ -160,7 +167,7 @@ function CredentialsForm({ identifierType }) {
               </Field>
             )}
             {identifierType === 'email' && (
-              <Field name="email" validate={fieldIsEmail}>
+              <Field name="email" validate={validateEmail}>
                 {({ input, meta: { touched, error } }) => (
                   <div className="field">
                     <label className="label">
@@ -190,7 +197,7 @@ function CredentialsForm({ identifierType }) {
               </Field>
             )}
             {identifierType === 'phoneNumber' && (
-              <Field name="phoneNumber" validate={fieldRequired}>
+              <Field name="phoneNumber" validate={validateRequired}>
                 {({ input, meta: { touched, error } }) => (
                   <div className="field">
                     <label className="label">
@@ -219,7 +226,7 @@ function CredentialsForm({ identifierType }) {
                 )}
               </Field>
             )}
-            <Field name="passphrase" validate={fieldRequired}>
+            <Field name="passphrase" validate={validateRequired}>
               {({ input, meta: { touched, error } }) => (
                 <div className="field">
                   <label className="label">
