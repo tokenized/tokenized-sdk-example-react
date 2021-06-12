@@ -75,58 +75,78 @@ function CredentialsForm({ identifierType }) {
                 </div>
               </article>
             )}
-            <div className="buttons has-addons">
-              <Link
-                type="button"
-                to={{
-                  pathname: '/sign-in/handle',
-                  state: location?.state,
-                }}
-                className={classNames(
-                  'button',
-                  identifierType === 'handle' && 'is-link is-selected',
-                )}
-              >
-                <FormattedMessage
-                  description="Login identification method selection: use your handle"
-                  defaultMessage="Handle"
-                  id="KoV/4d"
-                />
-              </Link>
-              <Link
-                type="button"
-                to={{
-                  pathname: '/sign-in/email',
-                  state: location?.state,
-                }}
-                className={classNames(
-                  'button',
-                  identifierType === 'email' && 'is-link is-selected',
-                )}
-              >
-                <FormattedMessage
-                  defaultMessage="Email"
-                  description="Login identification method selection: use your email address"
-                  id="oLcK9U"
-                />
-              </Link>
-              <Link
-                type="button"
-                to={{
-                  pathname: '/sign-in/phone-number',
-                  state: location?.state,
-                }}
-                className={classNames(
-                  'button',
-                  identifierType === 'phoneNumber' && 'is-link is-selected',
-                )}
-              >
-                <FormattedMessage
-                  defaultMessage="Phone"
-                  description="Login identification method selection: use your phone number"
-                  id="a7iBE2"
-                />
-              </Link>
+            <div className="tabs is-boxed">
+              <ul>
+                <li
+                  className={classNames(
+                    identifierType === 'handle' && 'is-active',
+                  )}
+                >
+                  <Link
+                    to={{
+                      pathname: '/sign-in/handle',
+                      state: location?.state,
+                    }}
+                  >
+                    <span className="icon is-small">
+                      <i className="fas fa-id-badge" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                      <FormattedMessage
+                        description="Login identification method selection: use your handle"
+                        defaultMessage="Handle"
+                        id="KoV/4d"
+                      />
+                    </span>
+                  </Link>
+                </li>
+                <li
+                  className={classNames(
+                    identifierType === 'email' && 'is-active',
+                  )}
+                >
+                  <Link
+                    to={{
+                      pathname: '/sign-in/email',
+                      state: location?.state,
+                    }}
+                  >
+                    <span className="icon is-small">
+                      <i className="fas fa-at" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                      <FormattedMessage
+                        defaultMessage="Email"
+                        description="Login identification method selection: use your email address"
+                        id="oLcK9U"
+                      />
+                    </span>
+                  </Link>
+                </li>
+                <li
+                  className={classNames(
+                    identifierType === 'phoneNumber' && 'is-active',
+                  )}
+                >
+                  <Link
+                    to={{
+                      pathname: '/sign-in/phone-number',
+                      state: location?.state,
+                    }}
+                  >
+                    <span className="icon is-small">
+                      <i className="fas fa-mobile-alt" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                      <FormattedMessage
+                        defaultMessage="Phone"
+                        description="Login identification method selection: use your phone number"
+                        id="a7iBE2"
+                      />
+                    </span>
+                  </Link>
+                </li>
+              </ul>
             </div>
             {identifierType === 'handle' && (
               <Field name="handle" validate={validateRequired}>
