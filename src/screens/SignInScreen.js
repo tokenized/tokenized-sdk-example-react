@@ -10,21 +10,30 @@ import {
 import { FormattedMessage } from 'react-intl';
 import {
   useIsLoading,
-  useLogInNeedsMfa,
+  useIsLoggingIn,
+  useLogInNeedsVerifyEmail,
   useIsWaitingForDevicePairing,
+  useLogInNeedsMfa,
+  useLogInNeedsSeedPhraseBackup,
   useIsLoggedIn,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
+import LogInProgress from '../features/login/LogInProgress';
+import AccountVerification from '../features/login/AccountVerification';
 import CredentialsForm from '../features/login/CredentialsForm';
 import PairAuthenticator from '../features/login/PairAuthenticator';
 import WaitForMFA from '../features/login/WaitForMFA';
+import BackUpSeedPhrase from '../features/login/BackUpSeedPhrase';
 
 function SignInScreen() {
   const location = useLocation();
   const { path } = useRouteMatch();
   const isLoading = useIsLoading();
-  const needsMfa = useLogInNeedsMfa();
+  const isSigningIn = useIsLoggingIn();
+  const showVerifyAccount = useLogInNeedsVerifyEmail();
   const showPairingCode = useIsWaitingForDevicePairing();
+  const showMfaPrompt = useLogInNeedsMfa();
+  const showBackup = useLogInNeedsSeedPhraseBackup();
   const isLoggedIn = useIsLoggedIn();
 
   if (isLoading) {
@@ -39,6 +48,22 @@ function SignInScreen() {
       originalLocation = location?.state?.from;
     }
     return <Redirect to={originalLocation} />;
+  }
+  let SignInProcessComponent = null;
+  if (isSigningIn) {
+    SignInProcessComponent = LogInProgress;
+    if (showVerifyAccount) {
+      SignInProcessComponent = AccountVerification;
+    }
+    if (showPairingCode) {
+      SignInProcessComponent = PairAuthenticator;
+    }
+    if (showMfaPrompt) {
+      SignInProcessComponent = WaitForMFA;
+    }
+    if (showBackup) {
+      SignInProcessComponent = BackUpSeedPhrase;
+    }
   }
 
   return (
@@ -61,7 +86,7 @@ function SignInScreen() {
               />
             </p>
           </div>
-          {!(needsMfa || showPairingCode) && (
+          {!isSigningIn && (
             <Switch>
               <Route path={`${path}/handle`}>
                 <CredentialsForm identifierType="handle" />
@@ -77,9 +102,8 @@ function SignInScreen() {
               </Route>
             </Switch>
           )}
-          {needsMfa && !showPairingCode && <WaitForMFA />}
-          {showPairingCode && <PairAuthenticator />}
-          {!(needsMfa || showPairingCode) && (
+          {isSigningIn && <SignInProcessComponent />}
+          {!isSigningIn && (
             <section className="section has-text-centered">
               <Link
                 to={{

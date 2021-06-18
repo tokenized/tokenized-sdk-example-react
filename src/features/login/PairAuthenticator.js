@@ -36,7 +36,11 @@ function PairAuthenticator() {
           />
         </p>
         <div className="buttons is-centered">
-          <button onClick={onCancelSignIn} className="button is-light">
+          <button
+            type="button"
+            onClick={onCancelSignIn}
+            className="button is-light"
+          >
             <FormattedMessage
               description="Login screen cancel button"
               defaultMessage="Cancel"

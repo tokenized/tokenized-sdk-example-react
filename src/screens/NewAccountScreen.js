@@ -11,7 +11,6 @@ import {
 import LoadingScreen from './LoadingScreen';
 import NewAccountNames from '../features/new-account/NewAccountNames';
 import NewAccountPassphrase from '../features/new-account/NewAccountPassphrase';
-import NewAccountVerification from '../features/new-account/NewAccountVerification';
 
 function NewAccountScreen() {
   const location = useLocation();
@@ -30,14 +29,6 @@ function NewAccountScreen() {
         case 'passphrase':
           try {
             await tokenizedApi.account.createNewAccount(values);
-          } catch (error) {
-            return { [FORM_ERROR]: error };
-          }
-          setStep('verificationCode');
-          break;
-        case 'verificationCode':
-          try {
-            await tokenizedApi.account.verifyNewAccount(values);
           } catch (error) {
             return { [FORM_ERROR]: error };
           }
@@ -60,9 +51,6 @@ function NewAccountScreen() {
       break;
     case 'passphrase':
       FormPage = NewAccountPassphrase;
-      break;
-    case 'verificationCode':
-      FormPage = NewAccountVerification;
       break;
   }
 

@@ -23,6 +23,12 @@
       "value": "Avoid workplace or educational emails you might lose access to"
     }
   ],
+  "2ST6ee": [
+    {
+      "type": 0,
+      "value": "Verification code"
+    }
+  ],
   "2vbsAo": [
     {
       "type": 0,
@@ -41,14 +47,10 @@
       "value": "Liabilities"
     }
   ],
-  "3M+zLD": [
+  "3dxT5H": [
     {
       "type": 0,
-      "value": "To create your new account, enter the email verification code sent to "
-    },
-    {
-      "type": 1,
-      "value": "email"
+      "value": "Verify"
     }
   ],
   "41ypwV": [
@@ -61,6 +63,12 @@
     {
       "type": 0,
       "value": "That handle is already in use"
+    }
+  ],
+  "5Kq5jW": [
+    {
+      "type": 0,
+      "value": "Checking seed phrase has been recorded"
     }
   ],
   "6I1l1I": [
@@ -85,12 +93,6 @@
     {
       "type": 0,
       "value": "Display pairing code…"
-    }
-  ],
-  "8SZXVP": [
-    {
-      "type": 0,
-      "value": "Verification code"
     }
   ],
   "BDkKXS": [
@@ -137,10 +139,22 @@
       "value": "Reserved"
     }
   ],
+  "EStIqe": [
+    {
+      "type": 0,
+      "value": "Checking account"
+    }
+  ],
   "ETFPN0": [
     {
       "type": 0,
       "value": "Sign in…"
+    }
+  ],
+  "F347da": [
+    {
+      "type": 0,
+      "value": "Checking for paired authenticator"
     }
   ],
   "FEJ3nB": [
@@ -165,6 +179,12 @@
     {
       "type": 0,
       "value": "Tokenized SDK demo"
+    }
+  ],
+  "GbM/e6": [
+    {
+      "type": 0,
+      "value": "Record your recovery seed phrase"
     }
   ],
   "Ih3sF+": [
@@ -209,10 +229,22 @@
       "value": "Tokenized SDK demo"
     }
   ],
+  "Pu+yE/": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
   "QaB4nu": [
     {
       "type": 0,
       "value": "In vault"
+    }
+  ],
+  "Qi6Vpw": [
+    {
+      "type": 0,
+      "value": "Cancel"
     }
   ],
   "QoOTpE": [
@@ -248,6 +280,12 @@
     {
       "type": 0,
       "value": "Unable to create account"
+    }
+  ],
+  "UIi3Ix": [
+    {
+      "type": 0,
+      "value": "Later…"
     }
   ],
   "UT0wpI": [
@@ -292,6 +330,12 @@
       "value": "Create account"
     }
   ],
+  "ZCEz8Q": [
+    {
+      "type": 0,
+      "value": "Confirm your identity in the authenticator app"
+    }
+  ],
   "a6TlyZ": [
     {
       "type": 0,
@@ -304,10 +348,14 @@
       "value": "Phone"
     }
   ],
-  "cStYuC": [
+  "cEaRXX": [
     {
       "type": 0,
-      "value": "Verify"
+      "value": "Welcome "
+    },
+    {
+      "type": 1,
+      "value": "fullName"
     }
   ],
   "cjeVpa": [
@@ -328,12 +376,6 @@
       "value": "Issuer / counterparty"
     }
   ],
-  "dyjW1T": [
-    {
-      "type": 0,
-      "value": "Verify your email"
-    }
-  ],
   "fFr3qj": [
     {
       "type": 0,
@@ -344,6 +386,12 @@
     {
       "type": 0,
       "value": "That email is already in use"
+    }
+  ],
+  "g3Jws1": [
+    {
+      "type": 0,
+      "value": "If you forget your passphrase, you will need this special 24-word “recovery seed” to restore full access to your profile and treasury assets. Be sure to keep at least one paper copy in a private and secure location."
     }
   ],
   "gHRR9x": [
@@ -393,10 +441,10 @@
       "value": "Issued"
     }
   ],
-  "ljBbFZ": [
+  "l1Zi41": [
     {
       "type": 0,
-      "value": "Unable to verify new account"
+      "value": "Show phrase"
     }
   ],
   "n0cMeX": [
@@ -423,10 +471,32 @@
       "value": "Primary vault"
     }
   ],
+  "p8/WnA": [
+    {
+      "type": 0,
+      "value": "Checking credentials"
+    }
+  ],
   "pTJMyU": [
     {
       "type": 0,
       "value": "Verify passphrase"
+    }
+  ],
+  "q5NAaz": [
+    {
+      "type": 0,
+      "value": "To verify the account, enter the code sent to "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "email"
+        }
+      ],
+      "type": 8,
+      "value": "boldText"
     }
   ],
   "qZNWyi": [
@@ -477,10 +547,22 @@
       "value": "Treasury"
     }
   ],
+  "vELQTJ": [
+    {
+      "type": 0,
+      "value": "Verify your email"
+    }
+  ],
   "w00rFA": [
     {
       "type": 0,
       "value": "Create a new account…"
+    }
+  ],
+  "w69pFf": [
+    {
+      "type": 0,
+      "value": "Checking vault and signing keys"
     }
   ],
   "wejkZs": [

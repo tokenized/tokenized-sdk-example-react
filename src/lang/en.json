@@ -15,6 +15,10 @@
     "defaultMessage": "Avoid workplace or educational emails you might lose access to",
     "description": "New account email field help: advice to pick personal accounts"
   },
+  "2ST6ee": {
+    "defaultMessage": "Verification code",
+    "description": "Verify account input field label: email verification code"
+  },
   "2vbsAo": {
     "defaultMessage": "Contracts",
     "description": "Contracts page title"
@@ -27,9 +31,9 @@
     "defaultMessage": "Liabilities",
     "description": "Treasury liabilities tab"
   },
-  "3M+zLD": {
-    "defaultMessage": "To create your new account, enter the email verification code sent to {email}",
-    "description": "New account verify email description"
+  "3dxT5H": {
+    "defaultMessage": "Verify",
+    "description": "Verify account confirm button"
   },
   "41ypwV": {
     "defaultMessage": "Asset",
@@ -38,6 +42,10 @@
   "4Ud2UA": {
     "defaultMessage": "That handle is already in use",
     "description": "New account field validation error: handle in use"
+  },
+  "5Kq5jW": {
+    "defaultMessage": "Checking seed phrase has been recorded",
+    "description": "Log-in status: Checking seed phrase backup"
   },
   "6I1l1I": {
     "defaultMessage": "Liability",
@@ -54,10 +62,6 @@
   "8MXtG4": {
     "defaultMessage": "Display pairing code…",
     "description": "Login screen display pairing code button"
-  },
-  "8SZXVP": {
-    "defaultMessage": "Verification code",
-    "description": "New account input field label: email verification code"
   },
   "BDkKXS": {
     "defaultMessage": "Paymail handle",
@@ -83,9 +87,17 @@
     "defaultMessage": "Reserved",
     "description": "Balance table column header: quantity of balance reserved"
   },
+  "EStIqe": {
+    "defaultMessage": "Checking account",
+    "description": "Log-in status: Checking email verification"
+  },
   "ETFPN0": {
     "defaultMessage": "Sign in…",
     "description": "New account screen back to sign in link"
+  },
+  "F347da": {
+    "defaultMessage": "Checking for paired authenticator",
+    "description": "Log-in status: Checking for paired authenticator"
   },
   "FEJ3nB": {
     "defaultMessage": "Please confirm your identity in the authenticator app",
@@ -102,6 +114,10 @@
   "GbFjMQ": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "Sign in screen title"
+  },
+  "GbM/e6": {
+    "defaultMessage": "Record your recovery seed phrase",
+    "description": "Back up seed phrase description title"
   },
   "Ih3sF+": {
     "defaultMessage": "Authorized",
@@ -131,9 +147,17 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "Nav bar main title"
   },
+  "Pu+yE/": {
+    "defaultMessage": "Cancel",
+    "description": "Verify account cancel button"
+  },
   "QaB4nu": {
     "defaultMessage": "In vault",
     "description": "Balance table column header: quantity held in vault"
+  },
+  "Qi6Vpw": {
+    "defaultMessage": "Cancel",
+    "description": "Back up seed phrase cancel button"
   },
   "QoOTpE": {
     "defaultMessage": "Cancel",
@@ -154,6 +178,10 @@
   "UBuArm": {
     "defaultMessage": "Unable to create account",
     "description": "New account failed error message title"
+  },
+  "UIi3Ix": {
+    "defaultMessage": "Later…",
+    "description": "Back up seed phrase later button"
   },
   "UT0wpI": {
     "defaultMessage": "Create a passphrase",
@@ -183,6 +211,10 @@
     "defaultMessage": "Create account",
     "description": "New account create button"
   },
+  "ZCEz8Q": {
+    "defaultMessage": "Confirm your identity in the authenticator app",
+    "description": "Log-in status: waiting for MFA"
+  },
   "a6TlyZ": {
     "defaultMessage": "Sign out",
     "description": "Nav bar user menu sign out action"
@@ -191,9 +223,9 @@
     "defaultMessage": "Phone",
     "description": "Login identification method selection: use your phone number"
   },
-  "cStYuC": {
-    "defaultMessage": "Verify",
-    "description": "New account verify code to complete button"
+  "cEaRXX": {
+    "defaultMessage": "Welcome {fullName}",
+    "description": "Log-in screen progress title"
   },
   "cjeVpa": {
     "defaultMessage": "Account handle",
@@ -207,10 +239,6 @@
     "defaultMessage": "Issuer / counterparty",
     "description": "Contracts table column header: contract issuer / counterparty"
   },
-  "dyjW1T": {
-    "defaultMessage": "Verify your email",
-    "description": "New account verify email description title"
-  },
   "fFr3qj": {
     "defaultMessage": "Pair with authenticator",
     "description": "Login screen mobile authenticator pairing title"
@@ -218,6 +246,10 @@
   "fnlNdQ": {
     "defaultMessage": "That email is already in use",
     "description": "New account field validation error: email in use"
+  },
+  "g3Jws1": {
+    "defaultMessage": "If you forget your passphrase, you will need this special 24-word “recovery seed” to restore full access to your profile and treasury assets. Be sure to keep at least one paper copy in a private and secure location.",
+    "description": "Back up seed phrase description"
   },
   "gHRR9x": {
     "defaultMessage": "Required",
@@ -247,9 +279,9 @@
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
   },
-  "ljBbFZ": {
-    "defaultMessage": "Unable to verify new account",
-    "description": "New account verify failed error message title"
+  "l1Zi41": {
+    "defaultMessage": "Show phrase",
+    "description": "Back up seed phrase confirm button"
   },
   "n0cMeX": {
     "defaultMessage": "Doesn’t match entered passphrase",
@@ -267,9 +299,17 @@
     "defaultMessage": "Primary vault",
     "description": "Treasury primary vault tag"
   },
+  "p8/WnA": {
+    "defaultMessage": "Checking credentials",
+    "description": "Log-in status: Checking credentials"
+  },
   "pTJMyU": {
     "defaultMessage": "Verify passphrase",
     "description": "New account input field label: verify passphrase"
+  },
+  "q5NAaz": {
+    "defaultMessage": "To verify the account, enter the code sent to <boldText>{email}</boldText>",
+    "description": "Verify account email description"
   },
   "qZNWyi": {
     "defaultMessage": "Relationships",
@@ -291,9 +331,17 @@
     "defaultMessage": "Treasury",
     "description": "Treasury page title (if no vault name)"
   },
+  "vELQTJ": {
+    "defaultMessage": "Verify your email",
+    "description": "Verify account email description title"
+  },
   "w00rFA": {
     "defaultMessage": "Create a new account…",
     "description": "Sign in screen create new account link"
+  },
+  "w69pFf": {
+    "defaultMessage": "Checking vault and signing keys",
+    "description": "Log-in status: Checking vault and signing keys"
   },
   "wejkZs": {
     "defaultMessage": "Assets",

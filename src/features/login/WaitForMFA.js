@@ -36,7 +36,11 @@ function WaitForMFA() {
           />
         </p>
         <div className="buttons">
-          <button onClick={onCancelSignIn} className="button is-light">
+          <button
+            type="button"
+            onClick={onCancelSignIn}
+            className="button is-light"
+          >
             <FormattedMessage
               description="Login screen cancel button"
               defaultMessage="Cancel"
@@ -44,6 +48,7 @@ function WaitForMFA() {
             />
           </button>
           <button
+            type="button"
             onClick={onDisplayPairingCode}
             className="button is-info is-light"
           >

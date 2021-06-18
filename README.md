@@ -124,11 +124,21 @@ Tokenized JavaScript SDK bindings for React
     <code>boolean</code>
   - [.useIsLoggingIn()](#module_@tokenized/sdk-react-private.useIsLoggingIn) ⇒
     <code>boolean</code>
+  - [.useLogInProgress()](#module_@tokenized/sdk-react-private.useLogInProgress)
+    ⇒ <code>object</code>
   - [.useIsLoggedOut()](#module_@tokenized/sdk-react-private.useIsLoggedOut) ⇒
     <code>boolean</code>
+  - [.useLogInNeedsVerifyEmail()](#module_@tokenized/sdk-react-private.useLogInNeedsVerifyEmail)
+    ⇒ <code>boolean</code>
+  - [.useVerificationEmailAddress()](#module_@tokenized/sdk-react-private.useVerificationEmailAddress)
+    ⇒ <code>string</code>
+  - [.useIsWaitingForDevicePairing()](#module_@tokenized/sdk-react-private.useIsWaitingForDevicePairing)
+    ⇒ <code>boolean</code>
   - [.useLogInNeedsMfa()](#module_@tokenized/sdk-react-private.useLogInNeedsMfa)
     ⇒ <code>boolean</code>
-  - [.useIsWaitingForDevicePairing()](#module_@tokenized/sdk-react-private.useIsWaitingForDevicePairing)
+  - [.useLogInNeedsRestoreRootKey()](#module_@tokenized/sdk-react-private.useLogInNeedsRestoreRootKey)
+    ⇒ <code>boolean</code>
+  - [.useLogInNeedsSeedPhraseBackup()](#module_@tokenized/sdk-react-private.useLogInNeedsSeedPhraseBackup)
     ⇒ <code>boolean</code>
   - [.DevicePairingCode()](#module_@tokenized/sdk-react-private.DevicePairingCode)
   - [.useIsLoggedIn()](#module_@tokenized/sdk-react-private.useIsLoggedIn) ⇒
@@ -228,7 +238,7 @@ finished restoring the session on startup.
 ### @tokenized/sdk-react-private.useIsLoggingIn() ⇒ <code>boolean</code>
 
 **`React hook`** Current log in process status. Show a spinner and disable user
-input on your login screen when `useIsLoggingIn` is `true`.
+input on your log-in screen when `useIsLoggingIn` is `true`.
 
 _Note that in an upcoming release of the SDK, log in will be handled by a
 redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
@@ -238,6 +248,21 @@ longer be necessary._
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when the log in process has started
 (credentials entered), but the user has not been fully authenticated yet.  
+<a name="module_@tokenized/sdk-react-private.useLogInProgress"></a>
+
+### @tokenized/sdk-react-private.useLogInProgress() ⇒ <code>object</code>
+
+**`React hook`** Provides indication of the current stage of the log-in process.
+Use this to show a progress bar and/or status message on your log-in screen.
+
+_Note that in an upcoming release of the SDK, log in will be handled by a
+redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
+longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>object</code> - The progress through the log-in process
+(`percent` property), and the stage reached (`checking` property).  
 <a name="module_@tokenized/sdk-react-private.useIsLoggedOut"></a>
 
 ### @tokenized/sdk-react-private.useIsLoggedOut() ⇒ <code>boolean</code>
@@ -248,29 +273,45 @@ longer be necessary._
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when there’s no valid user session,
 and also no log in process happening.  
-<a name="module_@tokenized/sdk-react-private.useLogInNeedsMfa"></a>
+<a name="module_@tokenized/sdk-react-private.useLogInNeedsVerifyEmail"></a>
 
-### @tokenized/sdk-react-private.useLogInNeedsMfa() ⇒ <code>boolean</code>
+### @tokenized/sdk-react-private.useLogInNeedsVerifyEmail() ⇒ <code>boolean</code>
 
-**`React hook`** Current multi-factor authentication status. Show a prompt to
-“Confirm your identity in the authenticator app” on your login screen when
-`useLogInNeedsMfa` is `true`.
+**`React hook`** Signals that the log-in process is paused waiting for email
+verification. Show a prompt to “Verify your account with the email code” on your
+login screen when `useLogInNeedsVerifyEmail` is `true`.
 
-_Note that in an upcoming release of the SDK, log in (including MFA) will be
+_Note that in an upcoming release of the SDK, account verification will be
 handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
 will no longer be necessary._
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
-**Returns**: <code>boolean</code> - `true` when the log in process is polling
-for MFA confirmation.  
+**Returns**: <code>boolean</code> - `true` when the log in process has paused
+for email verification.  
+<a name="module_@tokenized/sdk-react-private.useVerificationEmailAddress"></a>
+
+### @tokenized/sdk-react-private.useVerificationEmailAddress() ⇒ <code>string</code>
+
+**`React hook`** Provides the email address that a verification code was sent
+to. Use this to prompt the user to retrieve the code and enter it to continue.
+
+_Note that in an upcoming release of the SDK, verification codes will be handled
+by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
+longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>string</code> - The email address that a verification code
+was sent to.  
 <a name="module_@tokenized/sdk-react-private.useIsWaitingForDevicePairing"></a>
 
 ### @tokenized/sdk-react-private.useIsWaitingForDevicePairing() ⇒ <code>boolean</code>
 
-**`React hook`** Authenticator device pairing status. Show the pairing QR code
-and a prompt to “Scan this code with the authenticator app” on your login screen
-when `useIsWaitingForDevicePairing` is `true`.
+**`React hook`** Signals that the SDK is waiting for authenticator device
+pairing. Show the pairing QR code and a prompt to “Scan this code with the
+authenticator app” on your login screen when `selectIsWaitingForDevicePairing`
+is `true`.
 
 _Note that in an upcoming release of the SDK, device pairing will be handled by
 a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
@@ -280,6 +321,54 @@ longer be necessary._
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when a device pairing process is
 active.  
+<a name="module_@tokenized/sdk-react-private.useLogInNeedsMfa"></a>
+
+### @tokenized/sdk-react-private.useLogInNeedsMfa() ⇒ <code>boolean</code>
+
+**`React hook`** Signals that the log-in process is waiting for multi-factor
+authentication. Show a prompt to “Confirm your identity in the authenticator
+app” on your login screen when `useLogInNeedsMfa` is `true`.
+
+_Note that in an upcoming release of the SDK, log in (including MFA) will be
+handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
+will no longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>boolean</code> - `true` when the log in process is polling
+for MFA confirmation.  
+<a name="module_@tokenized/sdk-react-private.useLogInNeedsRestoreRootKey"></a>
+
+### @tokenized/sdk-react-private.useLogInNeedsRestoreRootKey() ⇒ <code>boolean</code>
+
+**`React hook`** Signals that the log-in process is paused waiting for account
+restoration. Show a prompt to enter the seed phrase for recovery when
+`useLogInNeedsRestoreRootKey` is `true`.
+
+_Note that in an upcoming release of the SDK, account recovery will be handled
+by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
+longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>boolean</code> - `true` when the log in process has paused
+for account restoration.  
+<a name="module_@tokenized/sdk-react-private.useLogInNeedsSeedPhraseBackup"></a>
+
+### @tokenized/sdk-react-private.useLogInNeedsSeedPhraseBackup() ⇒ <code>boolean</code>
+
+**`React hook`** Signals that the log-in process is paused waiting for seed
+phrase backup. Show the seed phrase, and confirm the user has correctly recorded
+it when `useLogInNeedsSeedPhraseBackup` is `true`.
+
+_Note that in an upcoming release of the SDK, seed phrase backup will be handled
+by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
+longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>boolean</code> - `true` when the log in process has paused
+for seed phrase backup.  
 <a name="module_@tokenized/sdk-react-private.DevicePairingCode"></a>
 
 ### @tokenized/sdk-react-private.DevicePairingCode()
@@ -701,10 +790,11 @@ specific UI libraries)
         ⇒ <code>function</code>
       - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
         ⇒ <code>function</code>
-      - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
-      - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
       - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
-      - [.verifyNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
+      - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+      - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
+      - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+      - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
       - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
         ⇒ <code>string</code>
@@ -750,10 +840,11 @@ run:
       ⇒ <code>function</code>
     - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
       ⇒ <code>function</code>
-    - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
-    - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
     - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
-    - [.verifyNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
+    - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+    - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
+    - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+    - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
       ⇒ <code>string</code>
@@ -826,10 +917,11 @@ Access to contracts
     ⇒ <code>function</code>
   - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
     ⇒ <code>function</code>
-  - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
-  - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
   - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
-  - [.verifyNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
+  - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+  - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
+  - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+  - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
     ⇒ <code>string</code>
@@ -911,36 +1003,6 @@ one argument, the email address to check, and returns a promise that resolves to
 `true` if the _most recent_ email that was checked is available (because the
 queries are debounced, only the last of a rapid sequence of submitted strings
 will actually be checked).  
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logIn"></a>
-
-##### account.logIn(options)
-
-Begin a new asynchronous log in process with the specified account credentials.
-If a log in attempt is currently in progress, it will be cancelled and replaced
-with the new one. Fails if there’s already a valid authenticated session.
-
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
-
-| Param               | Type                | Description                                                                                                                                                                                                                                                                                                                 |
-| ------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options             | <code>object</code> |                                                                                                                                                                                                                                                                                                                             |
-| options.handle      | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will log in as `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
-| options.phoneNumber | <code>string</code> | Identifies the account to log into using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                               |
-| options.email       | <code>string</code> | Identifies the account to log into using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                              |
-| options.passphrase  | <code>string</code> | The passphrase to authenticate the user’s account.                                                                                                                                                                                                                                                                          |
-
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing"></a>
-
-##### account.initiateDevicePairing()
-
-Generate a new one-time password to start the device pairing process. During
-sign in, this will be done automatically if the user has no active authenticator
-devices. Use this function when the user explicitly chooses to re-pair, or if
-you need to regenerate an expired code.
-
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount"></a>
 
 ##### account.createNewAccount(options)
@@ -962,24 +1024,63 @@ account creation to take place.
 | options.passphrase        | <code>string</code> | The passphrase for the new account.                                                                                                                                                                                                                                             |
 | options.passphraseConfirm | <code>string</code> | The passphrase for the new account.                                                                                                                                                                                                                                             |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount"></a>
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logIn"></a>
 
-##### account.verifyNewAccount(options)
+##### account.logIn(options)
 
-Verify creation of a new account by providing the code sent to the account email
-address (triggered by an earlier call to `createNewAccount`). If the code is
-correct, the new account will be created. The next step is to log in, which will
-trigger the authenticator device pairing process.
+Begin a new asynchronous log in process with the specified account credentials.
+If a log in attempt is currently in progress, it will be cancelled and replaced
+with the new one. Fails if there’s already a valid authenticated session.
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
 
-| Param         | Type                | Description                                          |
-| ------------- | ------------------- | ---------------------------------------------------- |
-| options       | <code>object</code> |                                                      |
-| options.email | <code>string</code> | The email address of the new account to be verified. |
-| options.code  | <code>string</code> | The verification code from the received email.       |
+| Param               | Type                | Description                                                                                                                                                                                                                                                                                                                 |
+| ------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options             | <code>object</code> |                                                                                                                                                                                                                                                                                                                             |
+| options.handle      | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will log in as `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
+| options.phoneNumber | <code>string</code> | Identifies the account to log into using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                               |
+| options.email       | <code>string</code> | Identifies the account to log into using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                              |
+| options.passphrase  | <code>string</code> | The passphrase to authenticate the user’s account.                                                                                                                                                                                                                                                                          |
 
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount"></a>
+
+##### account.verifyNewAccount(code)
+
+Verify creation of a new account during initial log in by providing the code
+sent to the account email address (triggered by an earlier call to
+`createNewAccount`). If the code is correct, the log in process will continue
+automatically.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+
+| Param | Type                | Description                                    |
+| ----- | ------------------- | ---------------------------------------------- |
+| code  | <code>string</code> | The verification code from the received email. |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup"></a>
+
+##### account.skipSeedPhraseBackup()
+
+When trying to log in to an account where the user hasn’t yet recorded the seed
+phrase, you can call this to skip the backup and start the session. You should
+warn the user that this is a dangerous action that might lead to loss of the
+account
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing"></a>
+
+##### account.initiateDevicePairing()
+
+Generate a new one-time password to start the device pairing process. During
+sign in, this will be done automatically if the user has no active authenticator
+devices. Use this function when the user explicitly chooses to re-pair, or if
+you need to regenerate an expired code.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logOut"></a>
 
 ##### account.logOut()
