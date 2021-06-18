@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/runtime": "^7.14.6",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@reduxjs/toolkit": "^1.5.1",
     "@tokenized/sdk-js-private": "^0.4.0",
@@ -25,12 +26,11 @@
     "react-query": "^3.16.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
     "redux": "^4.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "webpack serve --config webpack.config.js --mode development --open --progress --hot --inline",
+    "build": "webpack --mode=production --config webpack.config.js",
     "extract-strings": "formatjs extract 'src/**/*.js' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
     "compile-strings": "formatjs compile-folder --ast src/lang src/compiled-lang",
     "generate-docs": "jsdoc2md --template docs/README.template.md node_modules/@tokenized/sdk-react-private/src/*.js node_modules/@tokenized/sdk-js-private/src/index.js node_modules/@tokenized/sdk-js-private/src/tokenized-api/*.js node_modules/@tokenized/sdk-js-private/src/tokenized-api/modules/*.js > README.md && prettier --write ./README.md"
@@ -55,9 +55,29 @@
     "not dead"
   ],
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
     "@formatjs/cli": "^4.2.15",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "babel-loader": "^8.2.2",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "css-loader": "^5.2.6",
     "eslint-plugin-formatjs": "^2.15.2",
+    "html-webpack-plugin": "^5.3.1",
     "jsdoc-to-markdown": "^7.0.1",
-    "prettier": "^2.2.1"
-  }
+    "prettier": "^2.2.1",
+    "process": "^0.11.10",
+    "react-refresh": "^0.9.0",
+    "stream-browserify": "^3.0.0",
+    "style-loader": "^2.0.0",
+    "util": "^0.12.4",
+    "webpack": "^5.39.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "workspaces": [
+    "nexus-desktop/packages/*"
+  ]
 }
