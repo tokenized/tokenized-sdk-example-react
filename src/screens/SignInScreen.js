@@ -79,11 +79,19 @@ function SignInScreen() {
               />
             </h1>
             <p className="subtitle">
-              <FormattedMessage
-                description="Sign in screen subtitle"
-                defaultMessage="Please sign in with your Tokenized account credentials"
-                id="nUTL2v"
-              />
+              {isSigningIn ? (
+                <FormattedMessage
+                  defaultMessage="Signing in to your account…"
+                  description="Sign in screen in progress subtitle"
+                  id="H84siG"
+                />
+              ) : (
+                <FormattedMessage
+                  defaultMessage="Please sign in with your Tokenized account credentials"
+                  description="Sign in screen ready subtitle"
+                  id="YrL2I7"
+                />
+              )}
             </p>
           </div>
           {!isSigningIn && (

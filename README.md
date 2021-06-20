@@ -140,6 +140,8 @@ Tokenized JavaScript SDK bindings for React
     ⇒ <code>boolean</code>
   - [.useLogInNeedsSeedPhraseBackup()](#module_@tokenized/sdk-react-private.useLogInNeedsSeedPhraseBackup)
     ⇒ <code>boolean</code>
+  - [.useSeedPhraseWordsForBackup()](#module_@tokenized/sdk-react-private.useSeedPhraseWordsForBackup)
+    ⇒ <code>Array.&lt;string&gt;</code>
   - [.DevicePairingCode()](#module_@tokenized/sdk-react-private.DevicePairingCode)
   - [.useIsLoggedIn()](#module_@tokenized/sdk-react-private.useIsLoggedIn) ⇒
     <code>boolean</code>
@@ -369,6 +371,26 @@ longer be necessary._
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when the log in process has paused
 for seed phrase backup.  
+<a name="module_@tokenized/sdk-react-private.useSeedPhraseWordsForBackup"></a>
+
+### @tokenized/sdk-react-private.useSeedPhraseWordsForBackup() ⇒ <code>Array.&lt;string&gt;</code>
+
+**`React hook`** Provides the default root key seed phrase. Present this to the
+user when the log-in process requests seed phrase backup, and ask them to write
+it down and keep it safe.
+
+Use the hook in a component that only gets mounted when the log-in process
+requests a seed phrase backup. An error will be thrown if seed phrase backup
+isn’t already active.
+
+_Note that in an upcoming release of the SDK, seed phrase backup will be handled
+by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
+longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>Array.&lt;string&gt;</code> - An array of 24 English words
+from which the root key is derived.  
 <a name="module_@tokenized/sdk-react-private.DevicePairingCode"></a>
 
 ### @tokenized/sdk-react-private.DevicePairingCode()
@@ -794,6 +816,10 @@ specific UI libraries)
       - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
       - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
       - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+      - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
+        ⇒ <code>Array.&lt;string&gt;</code>
+      - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
+        ⇒ <code>Array.&lt;string&gt;</code>
       - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
       - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -844,6 +870,10 @@ run:
     - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
     - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
     - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+    - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
+      ⇒ <code>Array.&lt;string&gt;</code>
+    - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
+      ⇒ <code>Array.&lt;string&gt;</code>
     - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -921,6 +951,10 @@ Access to contracts
   - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
   - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
   - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+  - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
+    ⇒ <code>Array.&lt;string&gt;</code>
+  - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
+    ⇒ <code>Array.&lt;string&gt;</code>
   - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -1070,6 +1104,35 @@ account
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup"></a>
+
+##### account.getSeedPhraseWordsForBackup() ⇒ <code>Array.&lt;string&gt;</code>
+
+Provides the default root key seed phrase. Present this to the user when the
+log-in process requests seed phrase backup, and ask them to write it down and
+keep it safe.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>Array.&lt;string&gt;</code> - An array of 24 English words
+from which the root key is derived.  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord"></a>
+
+##### account.autocompleteSeedWord(inputValue) ⇒ <code>Array.&lt;string&gt;</code>
+
+Provides a sorted list of possible seed phrase words that best match user input.
+Use this in your account recovery dialog to provide autocomplete assistance to
+the user when they’re entering their 24-word seed phrase.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>Array.&lt;string&gt;</code> - An array of seed phrase words
+that roughly match what the user typed, ordered by best match.
+
+| Param      | Type                | Description                                     |
+| ---------- | ------------------- | ----------------------------------------------- |
+| inputValue | <code>string</code> | A partially-complete recovery seed phrase word. |
+
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing"></a>
 
 ##### account.initiateDevicePairing()

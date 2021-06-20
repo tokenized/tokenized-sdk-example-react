@@ -7,8 +7,7 @@ import {
   useVerificationEmailAddress,
 } from '@tokenized/sdk-react-private';
 import { useValidators, fieldIsRequired } from '../../utils/validators';
-
-const boldText = (chunks) => <strong>{chunks}</strong>;
+import { boldText } from '../../utils/richTextFormat';
 
 function AccountVerification() {
   const tokenizedApi = useTokenizedApi();

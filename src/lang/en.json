@@ -1,4 +1,8 @@
 {
+  "+WML42": {
+    "defaultMessage": "Record your recovery phrase",
+    "description": "Back up seed phrase description title"
+  },
   "/QSoyN": {
     "defaultMessage": "Unable to sign in",
     "description": "Login screen failed login error message title"
@@ -35,6 +39,10 @@
     "defaultMessage": "Verify",
     "description": "Verify account confirm button"
   },
+  "3eaHIh": {
+    "defaultMessage": "Sign in without backup",
+    "description": "Postpone seed phrase backup confirm button"
+  },
   "41ypwV": {
     "defaultMessage": "Asset",
     "description": "Balance table column header: asset name"
@@ -59,6 +67,10 @@
     "defaultMessage": "Continue",
     "description": "New account continue button"
   },
+  "8HgVfG": {
+    "defaultMessage": "Are you sure? Taking an account backup only takes a few minutes, and without it your funds will be permanently lost if you ever forget your passphrase",
+    "description": "Postpone seed phrase backup risks 1"
+  },
   "8MXtG4": {
     "defaultMessage": "Display pairing code…",
     "description": "Login screen display pairing code button"
@@ -74,6 +86,10 @@
   "BQRMqg": {
     "defaultMessage": "Must be an email address",
     "description": "Form field validation failure: valid email address is required"
+  },
+  "Bb9qyJ": {
+    "defaultMessage": "Postpone backup",
+    "description": "Postpone seed phrase backup title"
   },
   "C6Pp9+": {
     "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
@@ -115,13 +131,29 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "Sign in screen title"
   },
-  "GbM/e6": {
-    "defaultMessage": "Record your recovery seed phrase",
-    "description": "Back up seed phrase description title"
+  "H84siG": {
+    "defaultMessage": "Signing in to your account…",
+    "description": "Sign in screen in progress subtitle"
+  },
+  "Hg69xV": {
+    "defaultMessage": "Confirm",
+    "description": "Verify seed phrase backup confirm button"
+  },
+  "IaE9fj": {
+    "defaultMessage": "Transactions in your <boldText>non-custodial</boldText> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
+    "description": "Back up seed phrase intro 1"
   },
   "Ih3sF+": {
     "defaultMessage": "Authorized",
     "description": "Balance table column header: quantity of assets authorized in contract"
+  },
+  "J7uwgI": {
+    "defaultMessage": "Enter your recovery phrase from your backup to verify it. Note you can paste the whole phrase in one go from a password manager.",
+    "description": "Verify seed phrase backup instructions"
+  },
+  "JvW0S/": {
+    "defaultMessage": "Account backup (essential)",
+    "description": "Back up seed phrase description title"
   },
   "KByFkD": {
     "defaultMessage": "Must be a number",
@@ -146,6 +178,10 @@
   "PVFFBa": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "Nav bar main title"
+  },
+  "Pgb70J": {
+    "defaultMessage": "I understand the risks",
+    "description": "Postpone seed phrase backup risks confirmation"
   },
   "Pu+yE/": {
     "defaultMessage": "Cancel",
@@ -175,6 +211,10 @@
     "defaultMessage": "Must be greater than {min, number}",
     "description": "Form field validation failure: number > min is required"
   },
+  "Th1am5": {
+    "defaultMessage": "I’ve changed my mind…",
+    "description": "Postpone seed phrase backup cancel (back up after all) button"
+  },
   "UBuArm": {
     "defaultMessage": "Unable to create account",
     "description": "New account failed error message title"
@@ -195,6 +235,10 @@
     "defaultMessage": "Inactive",
     "description": "Treasury inactive tab"
   },
+  "Vt0wGh": {
+    "defaultMessage": "Verify your backup",
+    "description": "Verify seed phrase backup description title"
+  },
   "Vt7Ozj": {
     "defaultMessage": "Sign in",
     "description": "Login screen sign in button"
@@ -203,9 +247,17 @@
     "defaultMessage": "Value",
     "description": "Balance table column header: value (of assets to me)"
   },
+  "Wefkn1": {
+    "defaultMessage": "I’m ready to record my private recovery phrase, and nobody’s watching",
+    "description": "Back up seed phrase confirm safe to show"
+  },
   "YFXmr+": {
     "defaultMessage": "Account email address",
     "description": "Login input field label: email"
+  },
+  "YrL2I7": {
+    "defaultMessage": "Please sign in with your Tokenized account credentials",
+    "description": "Sign in screen ready subtitle"
   },
   "Z5nasz": {
     "defaultMessage": "Create account",
@@ -239,6 +291,14 @@
     "defaultMessage": "Issuer / counterparty",
     "description": "Contracts table column header: contract issuer / counterparty"
   },
+  "emC2Xv": {
+    "defaultMessage": "This is the master key to your account. <veryImportantText>Do not share these words with anyone</veryImportantText>. Carefully write down all 24 words, or copy them into a password manager.",
+    "description": "Back up seed phrase instructions"
+  },
+  "fFkbdo": {
+    "defaultMessage": "Next",
+    "description": "Back up seed phrase next button"
+  },
   "fFr3qj": {
     "defaultMessage": "Pair with authenticator",
     "description": "Login screen mobile authenticator pairing title"
@@ -246,10 +306,6 @@
   "fnlNdQ": {
     "defaultMessage": "That email is already in use",
     "description": "New account field validation error: email in use"
-  },
-  "g3Jws1": {
-    "defaultMessage": "If you forget your passphrase, you will need this special 24-word “recovery seed” to restore full access to your profile and treasury assets. Be sure to keep at least one paper copy in a private and secure location.",
-    "description": "Back up seed phrase description"
   },
   "gHRR9x": {
     "defaultMessage": "Required",
@@ -286,10 +342,6 @@
   "n0cMeX": {
     "defaultMessage": "Doesn’t match entered passphrase",
     "description": "Form field validation failure: matching passphrase confirmation is required"
-  },
-  "nUTL2v": {
-    "defaultMessage": "Please sign in with your Tokenized account credentials",
-    "description": "Sign in screen subtitle"
   },
   "oLcK9U": {
     "defaultMessage": "Email",
@@ -330,6 +382,10 @@
   "uQj7Yo": {
     "defaultMessage": "Treasury",
     "description": "Treasury page title (if no vault name)"
+  },
+  "v9a1op": {
+    "defaultMessage": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore <boldText>essential that you record your digital key now</boldText>, in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds.",
+    "description": "Back up seed phrase intro 2"
   },
   "vELQTJ": {
     "defaultMessage": "Verify your email",
