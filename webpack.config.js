@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const absolute = (path) => resolve(__dirname, path);
-const packageRoot = 'nexus-desktop/packages';
+const packageRoot = '../nexus-desktop/packages';
 const packages = existsSync(absolute(packageRoot))
   ? readdirSync(absolute(packageRoot))
   : [];
