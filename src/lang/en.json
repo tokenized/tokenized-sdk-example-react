@@ -211,10 +211,6 @@
     "defaultMessage": "Must be greater than {min, number}",
     "description": "Form field validation failure: number > min is required"
   },
-  "Th1am5": {
-    "defaultMessage": "I’ve changed my mind…",
-    "description": "Postpone seed phrase backup cancel (back up after all) button"
-  },
   "UBuArm": {
     "defaultMessage": "Unable to create account",
     "description": "New account failed error message title"
@@ -274,6 +270,10 @@
   "a7iBE2": {
     "defaultMessage": "Phone",
     "description": "Login identification method selection: use your phone number"
+  },
+  "b37V5u": {
+    "defaultMessage": "Back",
+    "description": "Back up seed phrase show phrase again button"
   },
   "cEaRXX": {
     "defaultMessage": "Welcome {fullName}",
@@ -410,6 +410,10 @@
   "xlJ5FF": {
     "defaultMessage": "Only alphanumeric characters allowed",
     "description": "Form field validation failure: alphanumeric string is required"
+  },
+  "xu36fu": {
+    "defaultMessage": "I’ve changed my mind",
+    "description": "Postpone seed phrase backup cancel (back up after all) button"
   },
   "zolMCa": {
     "defaultMessage": "Minimum: {min, number}",

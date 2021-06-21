@@ -344,12 +344,6 @@
       "value": "min"
     }
   ],
-  "Th1am5": [
-    {
-      "type": 0,
-      "value": "I’ve changed my mind…"
-    }
-  ],
   "UBuArm": [
     {
       "type": 0,
@@ -438,6 +432,12 @@
     {
       "type": 0,
       "value": "Phone"
+    }
+  ],
+  "b37V5u": [
+    {
+      "type": 0,
+      "value": "Back"
     }
   ],
   "cEaRXX": [
@@ -711,6 +711,12 @@
     {
       "type": 0,
       "value": "Only alphanumeric characters allowed"
+    }
+  ],
+  "xu36fu": [
+    {
+      "type": 0,
+      "value": "I’ve changed my mind"
     }
   ],
   "zolMCa": [

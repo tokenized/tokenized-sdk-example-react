@@ -21,7 +21,8 @@ function BackUpSeedPhrase() {
         new Array(24),
         // Note the validation error text is never shown, so
         // no need to localize
-        (_, index) => (value) => value === words?.[index] ? undefined : 'Wrong',
+        (_, index) => (value) =>
+          value && value === words?.[index] ? undefined : 'Wrong',
       ),
     [words],
   );
@@ -144,10 +145,14 @@ function BackUpSeedPhrase() {
               disabled={!ready}
             >
               <FormattedMessage
+                tagName="span"
                 defaultMessage="Show phrase"
                 description="Back up seed phrase confirm button"
                 id="l1Zi41"
               />
+              <span className="icon is-small">
+                <i className="fas fa-chevron-right"></i>
+              </span>
             </button>
           </div>
         </div>
@@ -190,18 +195,23 @@ function BackUpSeedPhrase() {
               id="Pgb70J"
             />
           </label>
-          <div className="buttons is-right mt-6">
+          <div className="buttons is-left mt-6">
             <button
               type="button"
               onClick={onCancelPostpone}
               className="button is-primary"
             >
+              <span className="icon is-small">
+                <i className="fas fa-chevron-left"></i>
+              </span>
               <FormattedMessage
-                defaultMessage="I’ve changed my mind…"
+                tagName="span"
+                defaultMessage="I’ve changed my mind"
                 description="Postpone seed phrase backup cancel (back up after all) button"
-                id="Th1am5"
+                id="xu36fu"
               />
             </button>
+            <div className="is-flex-grow-1" />
             <button
               type="button"
               onClick={onConfirmPostpone}
@@ -275,10 +285,14 @@ function BackUpSeedPhrase() {
               onClick={onPhraseRecorded}
             >
               <FormattedMessage
+                tagName="span"
                 defaultMessage="Next"
                 description="Back up seed phrase next button"
                 id="fFkbdo"
               />
+              <span className="icon is-small">
+                <i className="fas fa-chevron-right"></i>
+              </span>
             </button>
           </div>
         </div>
@@ -440,7 +454,23 @@ function BackUpSeedPhrase() {
                       </Field>
                     ))}
                   </div>
-                  <div className="buttons is-right mt-6">
+                  <div className="buttons is-left mt-6">
+                    <button
+                      type="button"
+                      className="button is-primary is-light"
+                      onClick={onShowPhrase}
+                    >
+                      <span className="icon is-small">
+                        <i className="fas fa-chevron-left"></i>
+                      </span>
+                      <FormattedMessage
+                        tagName="span"
+                        defaultMessage="Back"
+                        description="Back up seed phrase show phrase again button"
+                        id="b37V5u"
+                      />
+                    </button>
+                    <div className="is-flex-grow-1" />
                     <button
                       type="button"
                       onClick={onCancelSignIn}
@@ -462,10 +492,16 @@ function BackUpSeedPhrase() {
                       disabled={!valid || submitting}
                     >
                       <FormattedMessage
+                        tagName="span"
                         defaultMessage="Confirm"
                         description="Verify seed phrase backup confirm button"
                         id="Hg69xV"
                       />
+                      {valid && (
+                        <span className="icon is-small">
+                          <i className="fas fa-check"></i>
+                        </span>
+                      )}
                     </button>
                   </div>
                 </form>
