@@ -13,6 +13,7 @@ import ResetPassphraseScreen from './screens/ResetPassphraseScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import TreasuryPage from './features/treasury/TreasuryPage';
 import ContractsPage from './features/contracts/ContractsPage';
+import ActivityPage from './features/activity/ActivityPage';
 
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated
@@ -60,7 +61,9 @@ function App() {
           <ResetPassphraseScreen />
         </Route>
         <PrivateRoute path="/activity">
-          <DashboardScreen />
+          <DashboardScreen>
+            <ActivityPage />
+          </DashboardScreen>
         </PrivateRoute>
         <PrivateRoute path="/treasury">
           <DashboardScreen>
