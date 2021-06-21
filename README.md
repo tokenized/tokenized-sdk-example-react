@@ -815,11 +815,12 @@ specific UI libraries)
       - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
       - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
       - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
-      - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
       - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
         ⇒ <code>Array.&lt;string&gt;</code>
       - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
         ⇒ <code>Array.&lt;string&gt;</code>
+      - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+      - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
       - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
       - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -869,11 +870,12 @@ run:
     - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
     - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
     - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
-    - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
     - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
       ⇒ <code>Array.&lt;string&gt;</code>
     - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
       ⇒ <code>Array.&lt;string&gt;</code>
+    - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+    - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
     - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -950,11 +952,12 @@ Access to contracts
   - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
   - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
   - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
-  - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
   - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
     ⇒ <code>Array.&lt;string&gt;</code>
   - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
     ⇒ <code>Array.&lt;string&gt;</code>
+  - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
+  - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
   - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -1093,17 +1096,6 @@ automatically.
 | ----- | ------------------- | ---------------------------------------------- |
 | code  | <code>string</code> | The verification code from the received email. |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup"></a>
-
-##### account.skipSeedPhraseBackup()
-
-When trying to log in to an account where the user hasn’t yet recorded the seed
-phrase, you can call this to skip the backup and start the session. You should
-warn the user that this is a dangerous action that might lead to loss of the
-account
-
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup"></a>
 
 ##### account.getSeedPhraseWordsForBackup() ⇒ <code>Array.&lt;string&gt;</code>
@@ -1111,6 +1103,10 @@ account
 Provides the default root key seed phrase. Present this to the user when the
 log-in process requests seed phrase backup, and ask them to write it down and
 keep it safe.
+
+Note that for security reasons, the actual words are only provided when a seed
+phrase backup is needed – at other times every item in the array will be
+`undefined`.
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
@@ -1124,6 +1120,10 @@ Provides a sorted list of possible seed phrase words that best match user input.
 Use this in your account recovery dialog to provide autocomplete assistance to
 the user when they’re entering their 24-word seed phrase.
 
+Note that this function has to search the complete list of seed words, so you
+should ensure it’s only called when really needed – don’t call it
+unconditionally in the render function for every seed word.
+
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>Array.&lt;string&gt;</code> - An array of seed phrase words
@@ -1133,6 +1133,28 @@ that roughly match what the user typed, ordered by best match.
 | ---------- | ------------------- | ----------------------------------------------- |
 | inputValue | <code>string</code> | A partially-complete recovery seed phrase word. |
 
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup"></a>
+
+##### account.skipSeedPhraseBackup()
+
+When trying to log in to an account where the user hasn’t yet recorded the seed
+phrase, you can call this to skip the backup and start the session. You should
+warn the user that this is a dangerous action that might lead to loss of the
+account.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup"></a>
+
+##### account.confirmSeedPhraseBackup()
+
+Confirms that the user has recorded their seed phrase, and sets `isBackedUp` to
+`true` in the `userDetails` query. Before you call this, you should check the
+user is able to re-enter the seed phrase correctly. The log in process will
+continue automatically after the returned promise resolves.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing"></a>
 
 ##### account.initiateDevicePairing()

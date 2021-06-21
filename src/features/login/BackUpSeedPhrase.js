@@ -3,6 +3,7 @@ import React, { useCallback, useState, useMemo } from 'react';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 import { Form, Field } from 'react-final-form';
+import { FORM_ERROR } from 'final-form';
 import Downshift from 'downshift';
 import {
   useTokenizedApi,
@@ -53,7 +54,14 @@ function BackUpSeedPhrase() {
     [tokenizedApi.account],
   );
   const onPhraseRecorded = useCallback(() => setStep('verifyPhrase'), []);
-  const onVerifyBackup = useCallback(() => {}, []);
+  const onVerifyBackup = useCallback(async () => {
+    try {
+      tokenizedApi.account.confirmSeedPhraseBackup();
+    } catch (error) {
+      console.error(error);
+      return { [FORM_ERROR]: error };
+    }
+  }, [tokenizedApi.account]);
 
   switch (step) {
     case 'start':
