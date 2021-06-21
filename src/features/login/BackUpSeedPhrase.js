@@ -15,6 +15,34 @@ function BackUpSeedPhrase() {
   const tokenizedApi = useTokenizedApi();
   const words = useSeedPhraseWordsForBackup();
 
+  const [step, setStep] = useState('start');
+  const onCancelSignIn = useCallback(() => {
+    tokenizedApi.account.logOut();
+  }, [tokenizedApi]);
+
+  const [ready, setReady] = useState(false);
+  const onChangeReady = useCallback(() => setReady((ready) => !ready), []);
+  const onShowPhrase = useCallback(() => setStep('showPhrase'), []);
+  const onPhraseRecorded = useCallback(() => setStep('verifyPhrase'), []);
+
+  const [postponeConfirm, setPostponeConfirm] = useState(false);
+  const onChangePostponeConfirm = useCallback(
+    () => setPostponeConfirm((confirm) => !confirm),
+    [],
+  );
+  const onPostpone = useCallback(() => {
+    setPostponeConfirm(false);
+    setStep('postpone');
+  }, []);
+  const onCancelPostpone = useCallback(() => {
+    setReady(false);
+    setStep('start');
+  }, []);
+  const onConfirmPostpone = useCallback(
+    () => tokenizedApi.account.skipSeedPhraseBackup(),
+    [tokenizedApi.account],
+  );
+
   const wordValidators = useMemo(
     () =>
       Array.from(
@@ -26,35 +54,6 @@ function BackUpSeedPhrase() {
       ),
     [words],
   );
-
-  const [step, setStep] = useState('start');
-
-  const [ready, setReady] = useState(false);
-  const onChangeReady = useCallback(() => setReady((ready) => !ready), []);
-
-  const [postponeConfirm, setPostponeConfirm] = useState(false);
-  const onChangePostponeConfirm = useCallback(
-    () => setPostponeConfirm((confirm) => !confirm),
-    [],
-  );
-
-  const onCancelSignIn = useCallback(() => {
-    tokenizedApi.account.logOut();
-  }, [tokenizedApi]);
-  const onSkip = useCallback(() => {
-    setPostponeConfirm(false);
-    setStep('postpone');
-  }, []);
-  const onCancelPostpone = useCallback(() => {
-    setReady(false);
-    setStep('start');
-  }, []);
-  const onShowPhrase = useCallback(() => setStep('showPhrase'), []);
-  const onConfirmPostpone = useCallback(
-    () => tokenizedApi.account.skipSeedPhraseBackup(),
-    [tokenizedApi.account],
-  );
-  const onPhraseRecorded = useCallback(() => setStep('verifyPhrase'), []);
   const onVerifyBackup = useCallback(async () => {
     try {
       tokenizedApi.account.confirmSeedPhraseBackup();
@@ -129,7 +128,7 @@ function BackUpSeedPhrase() {
             </button>
             <button
               type="button"
-              onClick={onSkip}
+              onClick={onPostpone}
               className="button is-danger is-light"
             >
               <FormattedMessage
