@@ -29,17 +29,30 @@
     "redux": "^4.1.0"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack serve --config webpack.config.js --mode development --open --progress --hot --inline",
+    "start": "cross-env NODE_ENV=development webpack serve --config webpack.config.js --mode development --open --progress --hot --inline",
     "build": "webpack --mode=production --config webpack.config.js",
     "extract-strings": "formatjs extract 'src/**/*.js' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
-    "compile-strings": "formatjs compile-folder --ast src/lang src/compiled-lang",
-    "generate-docs": "jsdoc2md --template docs/README.template.md node_modules/@tokenized/sdk-react-private/src/*.js node_modules/@tokenized/sdk-js-private/src/index.js node_modules/@tokenized/sdk-js-private/src/tokenized-api/*.js node_modules/@tokenized/sdk-js-private/src/tokenized-api/modules/*.js > README.md && prettier --write ./README.md"
+    "compile-strings": "formatjs compile-folder --ast src/lang src/compiled-lang"
   },
   "eslintConfig": {
     "root": true,
-    "extends": "react-app",
     "plugins": [
       "formatjs"
+    ],
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/recommended",
+      "plugin:promise/recommended",
+      "plugin:compat/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "prettier"
     ],
     "rules": {
       "formatjs/enforce-id": [
@@ -47,7 +60,13 @@
         {
           "idInterpolationPattern": "[sha512:contenthash:base64:6]"
         }
-      ]
+      ],
+      "react/prop-types": "off"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
     }
   },
   "browserslist": [
@@ -65,6 +84,7 @@
     "crypto-browserify": "^3.12.0",
     "css-loader": "^5.2.6",
     "eslint-plugin-formatjs": "^2.15.2",
+    "eslint-plugin-react": "^7.24.0",
     "html-webpack-plugin": "^5.3.1",
     "jsdoc-to-markdown": "^7.0.1",
     "prettier": "^2.2.1",

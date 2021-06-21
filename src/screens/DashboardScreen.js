@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
@@ -17,7 +16,7 @@ function DashboardScreen({ children }) {
   const profileName = useCurrentProfileName();
 
   const onLogOut = useCallback(
-    (event) => {
+    () => {
       tokenizedApi.logOut();
     },
     [tokenizedApi],

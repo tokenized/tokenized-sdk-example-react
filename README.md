@@ -34,9 +34,9 @@ clearly as possible, how to use all the features of the
 
 - The
   [Tokenized JavaScript SDK for React](https://www.npmjs.com/package/@tokenized/sdk-react-private).
-- [Create React App](https://github.com/facebook/create-react-app) provides a
-  standard [React](https://reactjs.org) application build setup with
-  [Webpack](https://webpack.js.org) and [Babel](https://babeljs.io).
+- [Webpack](https://webpack.js.org) is used to build a release bundle.
+- [Babel](https://babeljs.io) transpiles JavaScript to a form understood by the
+  browser
 - [React Router](https://reactrouter.com) manages page navigation and the app’s
   URL structure.
 - [Redux Toolkit](https://redux-toolkit.js.org/) is used for some minimal
