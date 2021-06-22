@@ -1,3 +1,4 @@
+/*eslint-env node*/
 const { readdirSync, existsSync } = require('fs');
 const { resolve, join } = require('path');
 const { ProvidePlugin } = require('webpack');
