@@ -72,8 +72,9 @@ To run the app in development mode:
     npm start
 
 If Webpack doesn’t open the app in your browser automatically, browse to
-[http://localhost:3000](http://localhost:3000). Any changes you save to the code
-will be updated live.
+[http://localhost:3000](http://localhost:3000). The port can be overriden using
+the PORT environment variable. Any changes you save to the code will be updated
+live.
 
 ---
 
@@ -197,11 +198,11 @@ ReactDOM.render(
 [TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi) session manager.
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**:
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi) -
 The session manager you passed into
-[`<TokenizedApiProvider>`](TokenizedApiProvider).  
+[`<TokenizedApiProvider>`](TokenizedApiProvider).
 <a name="module_@tokenized/sdk-react-private.useIsLoading"></a>
 
 ### @tokenized/sdk-react-private.useIsLoading() ⇒ <code>boolean</code>
@@ -210,9 +211,9 @@ The session manager you passed into
 `useIsLoading` is `true`.
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**: <code>boolean</code> - Remains `true` until the Tokenized SDK has
-finished restoring the session on startup.  
+finished restoring the session on startup.
 <a name="module_@tokenized/sdk-react-private.useIsLoggingIn"></a>
 
 ### @tokenized/sdk-react-private.useIsLoggingIn() ⇒ <code>boolean</code>
@@ -225,9 +226,9 @@ redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**: <code>boolean</code> - `true` when the log in process has started
-(credentials entered), but the user has not been fully authenticated yet.  
+(credentials entered), but the user has not been fully authenticated yet.
 <a name="module_@tokenized/sdk-react-private.useIsLoggedOut"></a>
 
 ### @tokenized/sdk-react-private.useIsLoggedOut() ⇒ <code>boolean</code>
@@ -235,9 +236,9 @@ longer be necessary._
 **`React hook`** Current “no session” status.
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**: <code>boolean</code> - `true` when there’s no valid user session,
-and also no log in process happening.  
+and also no log in process happening.
 <a name="module_@tokenized/sdk-react-private.useLogInNeedsMfa"></a>
 
 ### @tokenized/sdk-react-private.useLogInNeedsMfa() ⇒ <code>boolean</code>
@@ -251,9 +252,9 @@ handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
 will no longer be necessary._
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**: <code>boolean</code> - `true` when the log in process is polling
-for MFA confirmation.  
+for MFA confirmation.
 <a name="module_@tokenized/sdk-react-private.useIsLoggedIn"></a>
 
 ### @tokenized/sdk-react-private.useIsLoggedIn() ⇒ <code>boolean</code>
@@ -262,11 +263,10 @@ for MFA confirmation.
 your app, and switch to the login prompt if `useIsLoggedIn` is `false`.
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**: <code>boolean</code> - `true` when a user session is fully
 authenticated and not expired, `false` during the log in process, and when
-there’s no valid session.  
-**Example**
+there’s no valid session. **Example**
 
 ```js
 import React from 'react';
@@ -309,9 +309,9 @@ redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**: <code>Error</code> - The error that caused a log in attempt to
-fail. Cleared to `null` when a new log in process is started.  
+fail. Cleared to `null` when a new log in process is started.
 <a name="module_@tokenized/sdk-react-private.useOwnFormattedName"></a>
 
 ### @tokenized/sdk-react-private.useOwnFormattedName() ⇒ <code>string</code>
@@ -322,8 +322,8 @@ credentials are verified, so you can display it in the MFA prompt before full
 authentication.
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
-**Returns**: <code>string</code> - The user’s full name  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
+**Returns**: <code>string</code> - The user’s full name
 <a name="module_@tokenized/sdk-react-private.useCurrentProfileName"></a>
 
 ### @tokenized/sdk-react-private.useCurrentProfileName() ⇒ <code>string</code>
@@ -340,8 +340,8 @@ within the entity selected by the profile. _Currently only the user’s personal
 “Individual” entity and its default profile is supported._
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
-**Returns**: <code>string</code> - The current profile name  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
+**Returns**: <code>string</code> - The current profile name
 <a name="module_@tokenized/sdk-react-private.usePrimaryVault"></a>
 
 ### @tokenized/sdk-react-private.usePrimaryVault() ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
@@ -354,7 +354,7 @@ to get a list of the assets in the vault.
 _Currently only a single primary vault is supported per profile._
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**:
 [<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - The user’s
 primary vault as the `data` property within a React Query
@@ -396,7 +396,7 @@ _The contract data structure is not finalized, and will be reorganized and
 transformed for easier usage in a future SDK release._
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**:
 [<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - The data
 property of the [`UseQueryResult`](#external_react-query.UseQueryResult) object
@@ -490,7 +490,7 @@ be passed directly (or with your own modifications) to
 for localized currency formatting.
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
 **Returns**:
 [<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - An array
 of balances as the `data` property within a React Query
@@ -738,7 +738,7 @@ const tokenizedApi = new TokenizedApi({
 Access to balances and assets
 
 **Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+contracts"></a>
 
 #### tokenizedApi.contracts
@@ -746,13 +746,13 @@ Access to balances and assets
 Access to contracts
 
 **Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account"></a>
 
 #### tokenizedApi.account
 
 **Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix"></a>
 
 ##### account.getUserHandlePostfix() ⇒ <code>string</code>
@@ -764,9 +764,9 @@ user for a handle. Since the postfix is determined by the back end
 each `TokenizedApi` object.
 
 **Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
 **Returns**: <code>string</code> - The handle postfix, for example
-`'@tokenized.id'`.  
+`'@tokenized.id'`.
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+logIn"></a>
 
 #### tokenizedApi.logIn(options)
@@ -794,7 +794,7 @@ End the current authenticated session and clear all internal state associated
 with it. If a log in attempt is currently in progress then cancel it.
 
 **Kind**: instance method of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient"></a>
 
 #### tokenizedApi.getQueryClient() ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
@@ -805,7 +805,7 @@ that manages the API data cache for the current user session. Use to observe
 query data and perform mutations.
 
 **Kind**: instance method of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
 <a name="external_react-query"></a>
 
 ## react-query
@@ -816,8 +816,7 @@ Some knowledge of how React Query works is useful, since the SDK exposes some of
 its details directly, like the `UseQueryResult` objects returned by the
 `@tokenized/sdk-react-private` query hooks.
 
-**Kind**: global external  
-**See**: https://react-query.tanstack.com/overview
+**Kind**: global external **See**: https://react-query.tanstack.com/overview
 
 - [react-query](#external_react-query)
   - [.UseQueryResult](#external_react-query.UseQueryResult)
@@ -837,8 +836,8 @@ status of a query, including the data once it becomes available, in a
 - `.data`: The latest query results, once they’re available.
 - `.error`: The error object if the query fails.
 
-**Kind**: static typedef of [<code>react-query</code>](#external_react-query)  
-**See**: https://react-query.tanstack.com/reference/useQuery  
+**Kind**: static typedef of [<code>react-query</code>](#external_react-query)
+**See**: https://react-query.tanstack.com/reference/useQuery
 <a name="external_react-query.QueryClient"></a>
 
 ### react-query.QueryClient
@@ -853,7 +852,7 @@ The `QueryClient` object encapsulates a React Query data cache. It provides
   for a particular query, which can then be bound to UI using the observer
   pattern.
 
-**Kind**: static typedef of [<code>react-query</code>](#external_react-query)  
+**Kind**: static typedef of [<code>react-query</code>](#external_react-query)
 **See**: https://react-query.tanstack.com/reference/QueryClient
 
 ---
