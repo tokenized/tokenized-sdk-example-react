@@ -824,7 +824,7 @@ specific UI libraries)
       - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
       - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
       - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-      - [.restoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+      - [.restoreRootKey(phrase)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
       - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
       - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -883,7 +883,7 @@ run:
     - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
     - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
     - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-    - [.restoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+    - [.restoreRootKey(phrase)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
     - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -969,7 +969,7 @@ Access to contracts
   - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
   - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
   - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-  - [.restoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+  - [.restoreRootKey(phrase)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
   - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -1205,14 +1205,19 @@ should warn the user that all transactions will fail in this state.
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey"></a>
 
-##### account.restoreRootKey()
+##### account.restoreRootKey(phrase)
 
 Restores the user’s default root key using the entered seed phrase, which is
 checked first to make sure it matches the registered vault public key. The log
 in process will continue automatically after the returned promise resolves.
 
 **Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+
+| Param  | Type                | Description                                              |
+| ------ | ------------------- | -------------------------------------------------------- |
+| phrase | <code>string</code> | The 24-word recovery phrase (separate words with spaces) |
+
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing"></a>
 
 ##### account.initiateDevicePairing()
