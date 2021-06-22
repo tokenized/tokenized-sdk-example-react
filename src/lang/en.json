@@ -19,6 +19,10 @@
     "defaultMessage": "Avoid workplace or educational emails you might lose access to",
     "description": "New account email field help: advice to pick personal accounts"
   },
+  "2F0CgA": {
+    "defaultMessage": "Later…",
+    "description": "Account recovery later button"
+  },
   "2ST6ee": {
     "defaultMessage": "Verification code",
     "description": "Verify account input field label: email verification code"
@@ -75,6 +79,10 @@
     "defaultMessage": "Display pairing code…",
     "description": "Login screen display pairing code button"
   },
+  "9maDsa": {
+    "defaultMessage": "Restore",
+    "description": "Account recovery confirm button"
+  },
   "BDkKXS": {
     "defaultMessage": "Paymail handle",
     "description": "New account input field label: handle"
@@ -102,6 +110,10 @@
   "D6bG5X": {
     "defaultMessage": "Reserved",
     "description": "Balance table column header: quantity of balance reserved"
+  },
+  "DH7vcX": {
+    "defaultMessage": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery seed that you noted down when you created the account.",
+    "description": "Account recovery description"
   },
   "EStIqe": {
     "defaultMessage": "Checking account",
@@ -131,6 +143,10 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "Sign in screen title"
   },
+  "H6n8rw": {
+    "defaultMessage": "Restore account now",
+    "description": "Skip account restore cancel (restore after all) button"
+  },
   "H84siG": {
     "defaultMessage": "Signing in to your account…",
     "description": "Sign in screen in progress subtitle"
@@ -147,6 +163,10 @@
     "defaultMessage": "Authorized",
     "description": "Balance table column header: quantity of assets authorized in contract"
   },
+  "IssfGQ": {
+    "defaultMessage": "Sign in with invalid key",
+    "description": "Confirm skip account restore title"
+  },
   "J7uwgI": {
     "defaultMessage": "Enter your recovery phrase from your backup to verify it. Note you can paste the whole phrase in one go from a password manager.",
     "description": "Verify seed phrase backup instructions"
@@ -158,6 +178,10 @@
   "KByFkD": {
     "defaultMessage": "Must be a number",
     "description": "Form field validation failure: a number is required"
+  },
+  "KGfoNb": {
+    "defaultMessage": "I understand my account is not fully operational",
+    "description": "Skip account restore confirmation"
   },
   "Kg4KGH": {
     "defaultMessage": "Passphrase",
@@ -247,6 +271,10 @@
     "defaultMessage": "I’m ready to record my private recovery phrase, and nobody’s watching",
     "description": "Back up seed phrase confirm safe to show"
   },
+  "XIPU1j": {
+    "defaultMessage": "Sign in anyway",
+    "description": "Confirm skip account restore button"
+  },
   "YFXmr+": {
     "defaultMessage": "Account email address",
     "description": "Login input field label: email"
@@ -327,6 +355,10 @@
     "defaultMessage": "Activity",
     "description": "Nav bar activity tab"
   },
+  "jOID+q": {
+    "defaultMessage": "Account recovery",
+    "description": "Account recovery description title"
+  },
   "kEIuFa": {
     "defaultMessage": "Maximum: {max, number}",
     "description": "Form field validation failure: number <= max is required"
@@ -363,6 +395,10 @@
     "defaultMessage": "To verify the account, enter the code sent to <boldText>{email}</boldText>",
     "description": "Verify account email description"
   },
+  "qHI9UA": {
+    "defaultMessage": "Cancel",
+    "description": "Account recovery cancel button"
+  },
   "qZNWyi": {
     "defaultMessage": "Relationships",
     "description": "Nav bar relationships tab"
@@ -390,6 +426,10 @@
   "vELQTJ": {
     "defaultMessage": "Verify your email",
     "description": "Verify account email description title"
+  },
+  "vutAZJ": {
+    "defaultMessage": "Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail.",
+    "description": "Confirm skip account restore description"
   },
   "w00rFA": {
     "defaultMessage": "Create a new account…",

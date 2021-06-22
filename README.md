@@ -812,6 +812,8 @@ specific UI libraries)
         ⇒ <code>function</code>
       - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
         ⇒ <code>function</code>
+      - [.makeDebouncedRecoveryPhraseValidator()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
+        ⇒ <code>function</code>
       - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
       - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
       - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
@@ -821,6 +823,8 @@ specific UI libraries)
         ⇒ <code>Array.&lt;string&gt;</code>
       - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
       - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
+      - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
+      - [.restoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
       - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
       - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -867,6 +871,8 @@ run:
       ⇒ <code>function</code>
     - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
       ⇒ <code>function</code>
+    - [.makeDebouncedRecoveryPhraseValidator()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
+      ⇒ <code>function</code>
     - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
     - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
     - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
@@ -876,6 +882,8 @@ run:
       ⇒ <code>Array.&lt;string&gt;</code>
     - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
     - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
+    - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
+    - [.restoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
     - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -949,6 +957,8 @@ Access to contracts
     ⇒ <code>function</code>
   - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
     ⇒ <code>function</code>
+  - [.makeDebouncedRecoveryPhraseValidator()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
+    ⇒ <code>function</code>
   - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
   - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
   - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
@@ -958,6 +968,8 @@ Access to contracts
     ⇒ <code>Array.&lt;string&gt;</code>
   - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
   - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
+  - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
+  - [.restoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
   - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -1019,6 +1031,32 @@ will actually be checked).
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker"></a>
 
 ##### account.makeDebouncedEmailAvailabilityChecker() ⇒ <code>function</code>
+
+Use this during account recovery when prompting the user to enter their recovery
+seed phrase, to feed back as they type whether they’ve got the words correct
+(they’re checked against the primary vault’s public key). You can call the
+returned async function as often as you like (on every keystroke), and it won’t
+do the calculation (which is expensive) more than once every 500ms. Each time a
+check is done, the result will become the resolved value of all unresolved
+promises previously returned.
+
+Note that each validator function returned by this method maintains its own
+separate timer for debouncing, so if you call
+`makeDebouncedEmailAvailabilityChecker` in a React render function, you must
+memoize the result with `useMemo` or similar, to maintain the same validator for
+the lifetime of your component.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>function</code> - The async validation function, which takes
+one argument, the complete seed phrase (separate words with spaces), and returns
+a promise that resolves to `undefined` if the _most recent_ phrase that was
+checked is correct (because the calls are debounced, only the last of a rapid
+sequence of phrases will actually be checked). If the phrase is incorrect, the
+promise will resolve to a localized string describing the error.  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator"></a>
+
+##### account.makeDebouncedRecoveryPhraseValidator() ⇒ <code>function</code>
 
 Use this in a new account dialog, to show the user as they type whether an email
 address is already associated with another account. You can call the returned
@@ -1152,6 +1190,26 @@ Confirms that the user has recorded their seed phrase, and sets `isBackedUp` to
 `true` in the `userDetails` query. Before you call this, you should check the
 user is able to re-enter the seed phrase correctly. The log in process will
 continue automatically after the returned promise resolves.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey"></a>
+
+##### account.skipRestoreRootKey()
+
+When trying to log in to an account that needs recovery due to an invalid root
+key, you can call this to skip the restore and start the session anyway. You
+should warn the user that all transactions will fail in this state.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey"></a>
+
+##### account.restoreRootKey()
+
+Restores the user’s default root key using the entered seed phrase, which is
+checked first to make sure it matches the registered vault public key. The log
+in process will continue automatically after the returned promise resolves.
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  

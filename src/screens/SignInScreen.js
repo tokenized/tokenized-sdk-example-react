@@ -14,6 +14,7 @@ import {
   useLogInNeedsVerifyEmail,
   useIsWaitingForDevicePairing,
   useLogInNeedsMfa,
+  useLogInNeedsRestoreRootKey,
   useLogInNeedsSeedPhraseBackup,
   useIsLoggedIn,
 } from '@tokenized/sdk-react-private';
@@ -24,6 +25,7 @@ import CredentialsForm from '../features/login/CredentialsForm';
 import PairAuthenticator from '../features/login/PairAuthenticator';
 import WaitForMFA from '../features/login/WaitForMFA';
 import BackUpSeedPhrase from '../features/login/BackUpSeedPhrase';
+import SeedPhraseRecovery from '../features/login/SeedPhraseRecovery';
 
 function SignInScreen() {
   const location = useLocation();
@@ -33,6 +35,7 @@ function SignInScreen() {
   const showVerifyAccount = useLogInNeedsVerifyEmail();
   const showPairingCode = useIsWaitingForDevicePairing();
   const showMfaPrompt = useLogInNeedsMfa();
+  const showRecovery = useLogInNeedsRestoreRootKey();
   const showBackup = useLogInNeedsSeedPhraseBackup();
   const isLoggedIn = useIsLoggedIn();
 
@@ -63,6 +66,9 @@ function SignInScreen() {
     }
     if (showBackup) {
       SignInProcessComponent = BackUpSeedPhrase;
+    }
+    if (showRecovery) {
+      SignInProcessComponent = SeedPhraseRecovery;
     }
   }
 

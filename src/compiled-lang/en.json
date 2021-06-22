@@ -29,6 +29,12 @@
       "value": "Avoid workplace or educational emails you might lose access to"
     }
   ],
+  "2F0CgA": [
+    {
+      "type": 0,
+      "value": "Later…"
+    }
+  ],
   "2ST6ee": [
     {
       "type": 0,
@@ -113,6 +119,12 @@
       "value": "Display pairing code…"
     }
   ],
+  "9maDsa": [
+    {
+      "type": 0,
+      "value": "Restore"
+    }
+  ],
   "BDkKXS": [
     {
       "type": 0,
@@ -163,6 +175,12 @@
       "value": "Reserved"
     }
   ],
+  "DH7vcX": [
+    {
+      "type": 0,
+      "value": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery seed that you noted down when you created the account."
+    }
+  ],
   "EStIqe": [
     {
       "type": 0,
@@ -205,6 +223,12 @@
       "value": "Tokenized SDK demo"
     }
   ],
+  "H6n8rw": [
+    {
+      "type": 0,
+      "value": "Restore account now"
+    }
+  ],
   "H84siG": [
     {
       "type": 0,
@@ -243,6 +267,12 @@
       "value": "Authorized"
     }
   ],
+  "IssfGQ": [
+    {
+      "type": 0,
+      "value": "Sign in with invalid key"
+    }
+  ],
   "J7uwgI": [
     {
       "type": 0,
@@ -259,6 +289,12 @@
     {
       "type": 0,
       "value": "Must be a number"
+    }
+  ],
+  "KGfoNb": [
+    {
+      "type": 0,
+      "value": "I understand my account is not fully operational"
     }
   ],
   "Kg4KGH": [
@@ -396,6 +432,12 @@
     {
       "type": 0,
       "value": "I’m ready to record my private recovery phrase, and nobody’s watching"
+    }
+  ],
+  "XIPU1j": [
+    {
+      "type": 0,
+      "value": "Sign in anyway"
     }
   ],
   "YFXmr+": [
@@ -536,6 +578,12 @@
       "value": "Activity"
     }
   ],
+  "jOID+q": [
+    {
+      "type": 0,
+      "value": "Account recovery"
+    }
+  ],
   "kEIuFa": [
     {
       "type": 0,
@@ -603,6 +651,12 @@
       ],
       "type": 8,
       "value": "boldText"
+    }
+  ],
+  "qHI9UA": [
+    {
+      "type": 0,
+      "value": "Cancel"
     }
   ],
   "qZNWyi": [
@@ -677,6 +731,12 @@
     {
       "type": 0,
       "value": "Verify your email"
+    }
+  ],
+  "vutAZJ": [
+    {
+      "type": 0,
+      "value": "Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail."
     }
   ],
   "w00rFA": [
