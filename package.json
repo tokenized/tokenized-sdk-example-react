@@ -31,7 +31,7 @@
     "redux": "^4.1.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --config webpack.config.js --mode development --open --progress --hot --inline",
+    "start": "cross-env NODE_ENV=development webpack serve --config webpack.config.js --mode development --progress --hot --inline",
     "build": "webpack --mode=production --config webpack.config.js",
     "extract-strings": "formatjs extract 'src/**/*.js' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
     "compile-strings": "formatjs compile-folder --ast src/lang src/compiled-lang"
