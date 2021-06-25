@@ -59,6 +59,7 @@ module.exports = {
   },
   devServer: {
     port: process.env.PORT || 3000,
+    stats: 'minimal',
     historyApiFallback: true,
     contentBase: absolute('public'),
   },

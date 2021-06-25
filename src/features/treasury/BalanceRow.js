@@ -82,11 +82,11 @@ function BalanceRow({ isHeader, balance }) {
   let quantity;
   if (balance?.quantities?.balance?.tokens) {
     quantity = balance?.quantities?.balance?.tokens.formatted;
-  } else if (balance?.quantities?.balance?.faceValue) {
+  } else if (balance?.quantities?.balance?.assetCurrency) {
     quantity = (
       <FormattedNumber
-        value={balance.quantities.balance.faceValue.number}
-        {...balance.quantities.balance.faceValue.NumberFormatOptions}
+        value={balance.quantities.balance.assetCurrency.number}
+        {...balance.quantities.balance.assetCurrency.NumberFormatOptions}
       />
     );
   }
@@ -96,11 +96,11 @@ function BalanceRow({ isHeader, balance }) {
     reserved =
       balance?.quantities?.reserved?.tokens.number > 0 &&
       balance?.quantities?.reserved?.tokens.formatted;
-  } else if (balance?.quantities?.reserved?.faceValue) {
-    reserved = balance.quantities.reserved.faceValue.number > 0 && (
+  } else if (balance?.quantities?.reserved?.assetCurrency) {
+    reserved = balance.quantities.reserved.assetCurrency.number > 0 && (
       <FormattedNumber
-        value={balance.quantities.reserved.faceValue.number}
-        {...balance.quantities.reserved.faceValue.NumberFormatOptions}
+        value={balance.quantities.reserved.assetCurrency.number}
+        {...balance.quantities.reserved.assetCurrency.NumberFormatOptions}
       />
     );
   }
@@ -118,12 +118,10 @@ function BalanceRow({ isHeader, balance }) {
       </td>
       <td>{balance?.quantities?.authorizedQuantity?.tokens?.formatted}</td>
       <td>
-        {balance?.quantities?.individualFaceValue?.displayCurrency && (
+        {balance?.quantities?.unitValue?.displayCurrency && (
           <FormattedNumber
-            value={
-              balance.quantities.individualFaceValue.displayCurrency.number
-            }
-            {...balance.quantities.individualFaceValue.displayCurrency
+            value={balance.quantities.unitValue.displayCurrency.number}
+            {...balance.quantities.unitValue.displayCurrency
               .NumberFormatOptions}
           />
         )}

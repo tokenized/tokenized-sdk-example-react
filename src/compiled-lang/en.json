@@ -1,4 +1,10 @@
 {
+  "+WML42": [
+    {
+      "type": 0,
+      "value": "Record your recovery phrase"
+    }
+  ],
   "/QSoyN": [
     {
       "type": 0,
@@ -11,10 +17,40 @@
       "value": "Title"
     }
   ],
+  "0EfTim": [
+    {
+      "type": 0,
+      "value": "Choose a unique ID for connecting with others and receiving payments"
+    }
+  ],
+  "1s3HAo": [
+    {
+      "type": 0,
+      "value": "Avoid workplace or educational emails you might lose access to"
+    }
+  ],
+  "2F0CgA": [
+    {
+      "type": 0,
+      "value": "Later…"
+    }
+  ],
+  "2ST6ee": [
+    {
+      "type": 0,
+      "value": "Verification code"
+    }
+  ],
   "2vbsAo": [
     {
       "type": 0,
       "value": "Contracts"
+    }
+  ],
+  "2yLUnh": [
+    {
+      "type": 0,
+      "value": "Account phone number"
     }
   ],
   "31KHio": [
@@ -23,10 +59,34 @@
       "value": "Liabilities"
     }
   ],
+  "3dxT5H": [
+    {
+      "type": 0,
+      "value": "Verify"
+    }
+  ],
+  "3eaHIh": [
+    {
+      "type": 0,
+      "value": "Sign in without backup"
+    }
+  ],
   "41ypwV": [
     {
       "type": 0,
       "value": "Asset"
+    }
+  ],
+  "4Ud2UA": [
+    {
+      "type": 0,
+      "value": "That handle is already in use"
+    }
+  ],
+  "5Kq5jW": [
+    {
+      "type": 0,
+      "value": "Checking seed phrase has been recorded"
     }
   ],
   "6I1l1I": [
@@ -41,10 +101,72 @@
       "value": "Tokenized SDK demo"
     }
   ],
-  "BWwoyB": [
+  "7BgPWf": [
     {
       "type": 0,
-      "value": "Tokenized SDK demo"
+      "value": "Continue"
+    }
+  ],
+  "8HgVfG": [
+    {
+      "type": 0,
+      "value": "Are you sure? Taking an account backup only takes a few minutes, and without it your funds will be permanently lost if you ever forget your passphrase"
+    }
+  ],
+  "8MXtG4": [
+    {
+      "type": 0,
+      "value": "Display pairing code…"
+    }
+  ],
+  "9maDsa": [
+    {
+      "type": 0,
+      "value": "Restore"
+    }
+  ],
+  "BDkKXS": [
+    {
+      "type": 0,
+      "value": "Paymail handle"
+    }
+  ],
+  "BFmRsr": [
+    {
+      "type": 0,
+      "value": "Personal email"
+    }
+  ],
+  "BQRMqg": [
+    {
+      "type": 0,
+      "value": "Must be an email address"
+    }
+  ],
+  "Bb9qyJ": [
+    {
+      "type": 0,
+      "value": "Postpone backup"
+    }
+  ],
+  "C6Pp9+": [
+    {
+      "type": 0,
+      "value": "Scan this code in the Tokenized authenticator app to pair with account "
+    },
+    {
+      "type": 1,
+      "value": "fullName"
+    },
+    {
+      "type": 0,
+      "value": " and approve sign in"
+    }
+  ],
+  "C6R5We": [
+    {
+      "type": 0,
+      "value": "Confirmation code"
     }
   ],
   "CYyLJH": [
@@ -59,6 +181,24 @@
       "value": "Reserved"
     }
   ],
+  "EStIqe": [
+    {
+      "type": 0,
+      "value": "Checking account"
+    }
+  ],
+  "ETFPN0": [
+    {
+      "type": 0,
+      "value": "Sign in…"
+    }
+  ],
+  "F347da": [
+    {
+      "type": 0,
+      "value": "Checking for paired authenticator"
+    }
+  ],
   "FEJ3nB": [
     {
       "type": 0,
@@ -71,16 +211,132 @@
       "value": "Contracts"
     }
   ],
+  "GCPZxk": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "GbFjMQ": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
+    }
+  ],
+  "H6n8rw": [
+    {
+      "type": 0,
+      "value": "Restore account now"
+    }
+  ],
+  "H84siG": [
+    {
+      "type": 0,
+      "value": "Signing in to your account…"
+    }
+  ],
+  "HddaKA": [
+    {
+      "type": 0,
+      "value": "Forgot your passphrase?"
+    }
+  ],
+  "Hg69xV": [
+    {
+      "type": 0,
+      "value": "Confirm"
+    }
+  ],
+  "HuJPE4": [
+    {
+      "type": 0,
+      "value": "Forgot passphrase?"
+    }
+  ],
+  "IaE9fj": [
+    {
+      "type": 0,
+      "value": "Transactions in your "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "non-custodial"
+        }
+      ],
+      "type": 8,
+      "value": "boldText"
+    },
+    {
+      "type": 0,
+      "value": " account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us."
+    }
+  ],
   "Ih3sF+": [
     {
       "type": 0,
       "value": "Authorized"
     }
   ],
-  "J5JGM9": [
+  "IssfGQ": [
+    {
+      "type": 0,
+      "value": "Sign in with invalid key"
+    }
+  ],
+  "J7uwgI": [
+    {
+      "type": 0,
+      "value": "Enter your recovery phrase from your backup to verify it. Note you can paste the whole phrase in one go from a password manager."
+    }
+  ],
+  "JvW0S/": [
+    {
+      "type": 0,
+      "value": "Account backup (essential)"
+    }
+  ],
+  "KByFkD": [
+    {
+      "type": 0,
+      "value": "Must be a number"
+    }
+  ],
+  "KGfoNb": [
+    {
+      "type": 0,
+      "value": "I understand my account is not fully operational"
+    }
+  ],
+  "Kg4KGH": [
+    {
+      "type": 0,
+      "value": "Passphrase"
+    }
+  ],
+  "KoV/4d": [
     {
       "type": 0,
       "value": "Handle"
+    }
+  ],
+  "LfU0vg": [
+    {
+      "type": 0,
+      "value": "First name"
+    }
+  ],
+  "LwJoyw": [
+    {
+      "type": 0,
+      "value": "Last name"
+    }
+  ],
+  "N6Mi0p": [
+    {
+      "type": 0,
+      "value": "Begin recovery"
     }
   ],
   "PVFFBa": [
@@ -89,16 +345,87 @@
       "value": "Tokenized SDK demo"
     }
   ],
+  "Pgb70J": [
+    {
+      "type": 0,
+      "value": "I understand the risks"
+    }
+  ],
+  "Pu+yE/": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
   "QaB4nu": [
     {
       "type": 0,
       "value": "In vault"
     }
   ],
+  "Qi6Vpw": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "QoOTpE": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "RAmj2a": [
+    {
+      "type": 0,
+      "value": "Create a new account"
+    }
+  ],
+  "RXjxnq": [
+    {
+      "type": 0,
+      "value": "Confirm registered email"
+    }
+  ],
+  "SIRX3t": [
+    {
+      "type": 0,
+      "value": "Reset your passphrase"
+    }
+  ],
   "SOA+3t": [
     {
       "type": 0,
       "value": "One unit"
+    }
+  ],
+  "Ssp7dT": [
+    {
+      "type": 0,
+      "value": "Must be greater than "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "min"
+    }
+  ],
+  "TBHu30": [
+    {
+      "type": 0,
+      "value": "Create a passphrase"
+    }
+  ],
+  "UBuArm": [
+    {
+      "type": 0,
+      "value": "Unable to create account"
+    }
+  ],
+  "UIi3Ix": [
+    {
+      "type": 0,
+      "value": "Later…"
     }
   ],
   "Uq6/ag": [
@@ -113,6 +440,12 @@
       "value": "Inactive"
     }
   ],
+  "Vt0wGh": [
+    {
+      "type": 0,
+      "value": "Verify your backup"
+    }
+  ],
   "Vt7Ozj": [
     {
       "type": 0,
@@ -125,10 +458,86 @@
       "value": "Value"
     }
   ],
+  "Wefkn1": [
+    {
+      "type": 0,
+      "value": "I’m ready to record my private recovery phrase, and nobody’s watching"
+    }
+  ],
+  "WmUjxK": [
+    {
+      "type": 0,
+      "value": "Verify passphrase"
+    }
+  ],
+  "X9RXVm": [
+    {
+      "type": 0,
+      "value": "Reset and sign in"
+    }
+  ],
+  "XIPU1j": [
+    {
+      "type": 0,
+      "value": "Sign in anyway"
+    }
+  ],
+  "YFXmr+": [
+    {
+      "type": 0,
+      "value": "Account email address"
+    }
+  ],
+  "YrL2I7": [
+    {
+      "type": 0,
+      "value": "Please sign in with your Tokenized account credentials"
+    }
+  ],
+  "Z5nasz": [
+    {
+      "type": 0,
+      "value": "Create account"
+    }
+  ],
+  "ZCEz8Q": [
+    {
+      "type": 0,
+      "value": "Confirm your identity in the authenticator app"
+    }
+  ],
   "a6TlyZ": [
     {
       "type": 0,
       "value": "Sign out"
+    }
+  ],
+  "a7iBE2": [
+    {
+      "type": 0,
+      "value": "Phone"
+    }
+  ],
+  "b37V5u": [
+    {
+      "type": 0,
+      "value": "Back"
+    }
+  ],
+  "cEaRXX": [
+    {
+      "type": 0,
+      "value": "Welcome "
+    },
+    {
+      "type": 1,
+      "value": "fullName"
+    }
+  ],
+  "cjeVpa": [
+    {
+      "type": 0,
+      "value": "Account handle"
     }
   ],
   "cnwMLl": [
@@ -143,10 +552,78 @@
       "value": "Issuer / counterparty"
     }
   ],
+  "emC2Xv": [
+    {
+      "type": 0,
+      "value": "This is the master key to your account. "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "Do not share these words with anyone"
+        }
+      ],
+      "type": 8,
+      "value": "veryImportantText"
+    },
+    {
+      "type": 0,
+      "value": ". Carefully write down all 24 words, or copy them into a password manager."
+    }
+  ],
+  "fFkbdo": [
+    {
+      "type": 0,
+      "value": "Next"
+    }
+  ],
+  "fFr3qj": [
+    {
+      "type": 0,
+      "value": "Pair with authenticator"
+    }
+  ],
+  "fnlNdQ": [
+    {
+      "type": 0,
+      "value": "That email is already in use"
+    }
+  ],
+  "fqwQxw": [
+    {
+      "type": 0,
+      "value": "Unable to reset passphrase"
+    }
+  ],
+  "g+bpPs": [
+    {
+      "type": 0,
+      "value": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery phrase that you noted down when you created the account."
+    }
+  ],
+  "gHRR9x": [
+    {
+      "type": 0,
+      "value": "Required"
+    }
+  ],
   "hTxeee": [
     {
       "type": 0,
       "value": "Type"
+    }
+  ],
+  "iA3+G9": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
+    }
+  ],
+  "iQHcoy": [
+    {
+      "type": 0,
+      "value": "Cancel"
     }
   ],
   "isZs2i": [
@@ -161,10 +638,21 @@
       "value": "Activity"
     }
   ],
-  "kUSQxB": [
+  "jOID+q": [
     {
       "type": 0,
-      "value": "Passphrase"
+      "value": "Account recovery"
+    }
+  ],
+  "kEIuFa": [
+    {
+      "type": 0,
+      "value": "Maximum: "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "max"
     }
   ],
   "kYHpnu": [
@@ -173,10 +661,62 @@
       "value": "Issued"
     }
   ],
+  "l1Zi41": [
+    {
+      "type": 0,
+      "value": "Show phrase"
+    }
+  ],
+  "n0cMeX": [
+    {
+      "type": 0,
+      "value": "Doesn’t match entered passphrase"
+    }
+  ],
+  "oLcK9U": [
+    {
+      "type": 0,
+      "value": "Email"
+    }
+  ],
+  "oWlHUa": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
+    }
+  ],
   "oneuwr": [
     {
       "type": 0,
       "value": "Primary vault"
+    }
+  ],
+  "p8/WnA": [
+    {
+      "type": 0,
+      "value": "Checking credentials"
+    }
+  ],
+  "q5NAaz": [
+    {
+      "type": 0,
+      "value": "To verify the account, enter the code sent to "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "email"
+        }
+      ],
+      "type": 8,
+      "value": "boldText"
+    }
+  ],
+  "qHI9UA": [
+    {
+      "type": 0,
+      "value": "Cancel"
     }
   ],
   "qZNWyi": [
@@ -185,10 +725,66 @@
       "value": "Relationships"
     }
   ],
+  "r+GVNN": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "rFtb0p": [
+    {
+      "type": 0,
+      "value": "A confirmation code has been sent to "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "maskedEmail"
+        }
+      ],
+      "type": 8,
+      "value": "boldText"
+    },
+    {
+      "type": 0,
+      "value": ". Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase."
+    }
+  ],
+  "sChJWn": [
+    {
+      "type": 0,
+      "value": "Must be "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "min"
+    },
+    {
+      "type": 0,
+      "value": " characters or more"
+    }
+  ],
   "slLQlj": [
     {
       "type": 0,
       "value": "Checking for previous session"
+    }
+  ],
+  "uN85Mi": [
+    {
+      "type": 0,
+      "value": "Must be "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "max"
+    },
+    {
+      "type": 0,
+      "value": " characters or fewer"
     }
   ],
   "uQj7Yo": [
@@ -197,10 +793,48 @@
       "value": "Treasury"
     }
   ],
-  "vaZlef": [
+  "v9a1op": [
     {
       "type": 0,
-      "value": "Please sign in with your Tokenized account credentials"
+      "value": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "essential that you record your digital key now"
+        }
+      ],
+      "type": 8,
+      "value": "boldText"
+    },
+    {
+      "type": 0,
+      "value": ", in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds."
+    }
+  ],
+  "vELQTJ": [
+    {
+      "type": 0,
+      "value": "Verify your email"
+    }
+  ],
+  "vutAZJ": [
+    {
+      "type": 0,
+      "value": "Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail."
+    }
+  ],
+  "w00rFA": [
+    {
+      "type": 0,
+      "value": "Create a new account…"
+    }
+  ],
+  "w69pFf": [
+    {
+      "type": 0,
+      "value": "Checking vault and signing keys"
     }
   ],
   "wejkZs": [
@@ -217,6 +851,55 @@
     {
       "type": 1,
       "value": "fullName"
+    }
+  ],
+  "wvIglH": [
+    {
+      "type": 0,
+      "value": "Continue"
+    }
+  ],
+  "xlJ5FF": [
+    {
+      "type": 0,
+      "value": "Only alphanumeric characters allowed"
+    }
+  ],
+  "xu36fu": [
+    {
+      "type": 0,
+      "value": "I’ve changed my mind"
+    }
+  ],
+  "zjXve4": [
+    {
+      "type": 0,
+      "value": "To restore full access to the account "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "identifier"
+        }
+      ],
+      "type": 8,
+      "value": "boldText"
+    },
+    {
+      "type": 0,
+      "value": ", you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process."
+    }
+  ],
+  "zolMCa": [
+    {
+      "type": 0,
+      "value": "Minimum: "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "min"
     }
   ]
 }

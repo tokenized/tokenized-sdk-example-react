@@ -15,12 +15,9 @@ function DashboardScreen({ children }) {
   const ownFormattedName = useOwnFormattedName();
   const profileName = useCurrentProfileName();
 
-  const onLogOut = useCallback(
-    () => {
-      tokenizedApi.logOut();
-    },
-    [tokenizedApi],
-  );
+  const onLogOut = useCallback(() => {
+    tokenizedApi.account.logOut();
+  }, [tokenizedApi]);
 
   if (isLoading) {
     return <LoadingScreen />;
