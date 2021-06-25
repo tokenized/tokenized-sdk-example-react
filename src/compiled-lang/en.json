@@ -163,6 +163,12 @@
       "value": " and approve sign in"
     }
   ],
+  "C6R5We": [
+    {
+      "type": 0,
+      "value": "Confirmation code"
+    }
+  ],
   "CYyLJH": [
     {
       "type": 0,
@@ -173,12 +179,6 @@
     {
       "type": 0,
       "value": "Reserved"
-    }
-  ],
-  "DH7vcX": [
-    {
-      "type": 0,
-      "value": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery seed that you noted down when you created the account."
     }
   ],
   "EStIqe": [
@@ -235,10 +235,22 @@
       "value": "Signing in to your account…"
     }
   ],
+  "HddaKA": [
+    {
+      "type": 0,
+      "value": "Forgot your passphrase?"
+    }
+  ],
   "Hg69xV": [
     {
       "type": 0,
       "value": "Confirm"
+    }
+  ],
+  "HuJPE4": [
+    {
+      "type": 0,
+      "value": "Forgot passphrase?"
     }
   ],
   "IaE9fj": [
@@ -321,6 +333,12 @@
       "value": "Last name"
     }
   ],
+  "N6Mi0p": [
+    {
+      "type": 0,
+      "value": "Begin recovery"
+    }
+  ],
   "PVFFBa": [
     {
       "type": 0,
@@ -363,6 +381,18 @@
       "value": "Create a new account"
     }
   ],
+  "RXjxnq": [
+    {
+      "type": 0,
+      "value": "Confirm registered email"
+    }
+  ],
+  "SIRX3t": [
+    {
+      "type": 0,
+      "value": "Reset your passphrase"
+    }
+  ],
   "SOA+3t": [
     {
       "type": 0,
@@ -380,6 +410,12 @@
       "value": "min"
     }
   ],
+  "TBHu30": [
+    {
+      "type": 0,
+      "value": "Create a passphrase"
+    }
+  ],
   "UBuArm": [
     {
       "type": 0,
@@ -390,12 +426,6 @@
     {
       "type": 0,
       "value": "Later…"
-    }
-  ],
-  "UT0wpI": [
-    {
-      "type": 0,
-      "value": "Create a passphrase"
     }
   ],
   "Uq6/ag": [
@@ -432,6 +462,18 @@
     {
       "type": 0,
       "value": "I’m ready to record my private recovery phrase, and nobody’s watching"
+    }
+  ],
+  "WmUjxK": [
+    {
+      "type": 0,
+      "value": "Verify passphrase"
+    }
+  ],
+  "X9RXVm": [
+    {
+      "type": 0,
+      "value": "Reset and sign in"
     }
   ],
   "XIPU1j": [
@@ -548,6 +590,18 @@
       "value": "That email is already in use"
     }
   ],
+  "fqwQxw": [
+    {
+      "type": 0,
+      "value": "Unable to reset passphrase"
+    }
+  ],
+  "g+bpPs": [
+    {
+      "type": 0,
+      "value": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery phrase that you noted down when you created the account."
+    }
+  ],
   "gHRR9x": [
     {
       "type": 0,
@@ -564,6 +618,12 @@
     {
       "type": 0,
       "value": "Tokenized SDK demo"
+    }
+  ],
+  "iQHcoy": [
+    {
+      "type": 0,
+      "value": "Cancel"
     }
   ],
   "isZs2i": [
@@ -619,6 +679,12 @@
       "value": "Email"
     }
   ],
+  "oWlHUa": [
+    {
+      "type": 0,
+      "value": "Tokenized SDK demo"
+    }
+  ],
   "oneuwr": [
     {
       "type": 0,
@@ -629,12 +695,6 @@
     {
       "type": 0,
       "value": "Checking credentials"
-    }
-  ],
-  "pTJMyU": [
-    {
-      "type": 0,
-      "value": "Verify passphrase"
     }
   ],
   "q5NAaz": [
@@ -663,6 +723,32 @@
     {
       "type": 0,
       "value": "Relationships"
+    }
+  ],
+  "r+GVNN": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "rFtb0p": [
+    {
+      "type": 0,
+      "value": "A confirmation code has been sent to "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "maskedEmail"
+        }
+      ],
+      "type": 8,
+      "value": "boldText"
+    },
+    {
+      "type": 0,
+      "value": ". Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase."
     }
   ],
   "sChJWn": [
@@ -767,6 +853,12 @@
       "value": "fullName"
     }
   ],
+  "wvIglH": [
+    {
+      "type": 0,
+      "value": "Continue"
+    }
+  ],
   "xlJ5FF": [
     {
       "type": 0,
@@ -777,6 +869,26 @@
     {
       "type": 0,
       "value": "I’ve changed my mind"
+    }
+  ],
+  "zjXve4": [
+    {
+      "type": 0,
+      "value": "To restore full access to the account "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "identifier"
+        }
+      ],
+      "type": 8,
+      "value": "boldText"
+    },
+    {
+      "type": 0,
+      "value": ", you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process."
     }
   ],
   "zolMCa": [

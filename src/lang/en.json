@@ -103,6 +103,10 @@
     "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
     "description": "Login screen mobile authenticator pairing subtitle"
   },
+  "C6R5We": {
+    "defaultMessage": "Confirmation code",
+    "description": "Forgot passphrase input field label: email confirmation code"
+  },
   "CYyLJH": {
     "defaultMessage": "Loading…",
     "description": "App loading screen title"
@@ -110,10 +114,6 @@
   "D6bG5X": {
     "defaultMessage": "Reserved",
     "description": "Balance table column header: quantity of balance reserved"
-  },
-  "DH7vcX": {
-    "defaultMessage": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery seed that you noted down when you created the account.",
-    "description": "Account recovery description"
   },
   "EStIqe": {
     "defaultMessage": "Checking account",
@@ -151,9 +151,17 @@
     "defaultMessage": "Signing in to your account…",
     "description": "Sign in screen in progress subtitle"
   },
+  "HddaKA": {
+    "defaultMessage": "Forgot your passphrase?",
+    "description": "Forgot passphrase introduction title"
+  },
   "Hg69xV": {
     "defaultMessage": "Confirm",
     "description": "Verify seed phrase backup confirm button"
+  },
+  "HuJPE4": {
+    "defaultMessage": "Forgot passphrase?",
+    "description": "Login screen forgot passphrase button"
   },
   "IaE9fj": {
     "defaultMessage": "Transactions in your <boldText>non-custodial</boldText> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
@@ -199,6 +207,10 @@
     "defaultMessage": "Last name",
     "description": "New account input field label: last name"
   },
+  "N6Mi0p": {
+    "defaultMessage": "Begin recovery",
+    "description": "Forgot passphrase start button"
+  },
   "PVFFBa": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "Nav bar main title"
@@ -227,6 +239,14 @@
     "defaultMessage": "Create a new account",
     "description": "New account screen subtitle"
   },
+  "RXjxnq": {
+    "defaultMessage": "Confirm registered email",
+    "description": "Forgot passphrase confirm email title"
+  },
+  "SIRX3t": {
+    "defaultMessage": "Reset your passphrase",
+    "description": "Reset passphrase screen subtitle"
+  },
   "SOA+3t": {
     "defaultMessage": "One unit",
     "description": "Balance table column header: value of one asset unit"
@@ -235,6 +255,10 @@
     "defaultMessage": "Must be greater than {min, number}",
     "description": "Form field validation failure: number > min is required"
   },
+  "TBHu30": {
+    "defaultMessage": "Create a passphrase",
+    "description": "New account or reset passphrase input field label: create passphrase"
+  },
   "UBuArm": {
     "defaultMessage": "Unable to create account",
     "description": "New account failed error message title"
@@ -242,10 +266,6 @@
   "UIi3Ix": {
     "defaultMessage": "Later…",
     "description": "Back up seed phrase later button"
-  },
-  "UT0wpI": {
-    "defaultMessage": "Create a passphrase",
-    "description": "New account input field label: create passphrase"
   },
   "Uq6/ag": {
     "defaultMessage": "Treasury",
@@ -270,6 +290,14 @@
   "Wefkn1": {
     "defaultMessage": "I’m ready to record my private recovery phrase, and nobody’s watching",
     "description": "Back up seed phrase confirm safe to show"
+  },
+  "WmUjxK": {
+    "defaultMessage": "Verify passphrase",
+    "description": "New account or reset passphrase input field label: verify passphrase"
+  },
+  "X9RXVm": {
+    "defaultMessage": "Reset and sign in",
+    "description": "Reset passphrase button"
   },
   "XIPU1j": {
     "defaultMessage": "Sign in anyway",
@@ -335,6 +363,14 @@
     "defaultMessage": "That email is already in use",
     "description": "New account field validation error: email in use"
   },
+  "fqwQxw": {
+    "defaultMessage": "Unable to reset passphrase",
+    "description": "Reset passphrase failed error message title"
+  },
+  "g+bpPs": {
+    "defaultMessage": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery phrase that you noted down when you created the account.",
+    "description": "Account recovery description"
+  },
   "gHRR9x": {
     "defaultMessage": "Required",
     "description": "Form field validation failure: a value is required"
@@ -346,6 +382,10 @@
   "iA3+G9": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "New account screen title"
+  },
+  "iQHcoy": {
+    "defaultMessage": "Cancel",
+    "description": "Forgot passphrase cancel button"
   },
   "isZs2i": {
     "defaultMessage": "Issuer",
@@ -379,6 +419,10 @@
     "defaultMessage": "Email",
     "description": "Login identification method selection: use your email address"
   },
+  "oWlHUa": {
+    "defaultMessage": "Tokenized SDK demo",
+    "description": "Reset passphrase screen title"
+  },
   "oneuwr": {
     "defaultMessage": "Primary vault",
     "description": "Treasury primary vault tag"
@@ -386,10 +430,6 @@
   "p8/WnA": {
     "defaultMessage": "Checking credentials",
     "description": "Log-in status: Checking credentials"
-  },
-  "pTJMyU": {
-    "defaultMessage": "Verify passphrase",
-    "description": "New account input field label: verify passphrase"
   },
   "q5NAaz": {
     "defaultMessage": "To verify the account, enter the code sent to <boldText>{email}</boldText>",
@@ -402,6 +442,14 @@
   "qZNWyi": {
     "defaultMessage": "Relationships",
     "description": "Nav bar relationships tab"
+  },
+  "r+GVNN": {
+    "defaultMessage": "Cancel",
+    "description": "New account or reset passphrase cancel button"
+  },
+  "rFtb0p": {
+    "defaultMessage": "A confirmation code has been sent to <boldText>{maskedEmail}</boldText>. Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase.",
+    "description": "Forgot passphrase confirm email description"
   },
   "sChJWn": {
     "defaultMessage": "Must be {min, number} characters or more",
@@ -447,6 +495,10 @@
     "defaultMessage": "Welcome {fullName}",
     "description": "Login screen mobile authentication prompt title"
   },
+  "wvIglH": {
+    "defaultMessage": "Continue",
+    "description": "Forgot passphrase confirm email continue button"
+  },
   "xlJ5FF": {
     "defaultMessage": "Only alphanumeric characters allowed",
     "description": "Form field validation failure: alphanumeric string is required"
@@ -454,6 +506,10 @@
   "xu36fu": {
     "defaultMessage": "I’ve changed my mind",
     "description": "Postpone seed phrase backup cancel (back up after all) button"
+  },
+  "zjXve4": {
+    "defaultMessage": "To restore full access to the account <boldText>{identifier}</boldText>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",
+    "description": "Forgot passphrase introduction"
   },
   "zolMCa": {
     "defaultMessage": "Minimum: {min, number}",

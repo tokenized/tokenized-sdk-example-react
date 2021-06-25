@@ -27,7 +27,8 @@ function mapStrengthToColor(strengthScore) {
   return 'is-danger';
 }
 
-function NewAccountPassphrase({
+function NewPassphrase({
+  isNewAccount,
   handleSubmit,
   hasValidationErrors,
   submitting,
@@ -92,41 +93,54 @@ function NewAccountPassphrase({
           <article className="message is-danger">
             <div className="message-header">
               <p>
-                <FormattedMessage
-                  defaultMessage="Unable to create account"
-                  description="New account failed error message title"
-                  id="UBuArm"
-                />
+                {isNewAccount ? (
+                  <FormattedMessage
+                    defaultMessage="Unable to create account"
+                    description="New account failed error message title"
+                    id="UBuArm"
+                  />
+                ) : (
+                  <FormattedMessage
+                    defaultMessage="Unable to reset passphrase"
+                    description="Reset passphrase failed error message title"
+                    id="fqwQxw"
+                  />
+                )}
               </p>
               <button
+                type="button"
                 className="delete"
                 aria-label="delete"
                 onClick={() => setHideError(submitError)}
-              ></button>
+              />
             </div>
             <div className="message-body">{`${submitError}`}</div>
           </article>
         )}
-        <Field name="handle">
-          {({ input }) => (
-            <input
-              className="is-hidden"
-              type="text"
-              autoComplete="username"
-              {...input}
-            />
-          )}
-        </Field>
-        <Field name="email">
-          {({ input }) => (
-            <input
-              className="is-hidden"
-              type="email"
-              autoComplete="email"
-              {...input}
-            />
-          )}
-        </Field>
+        {isNewAccount && (
+          <Field name="handle">
+            {({ input }) => (
+              <input
+                className="is-hidden"
+                type="text"
+                autoComplete="username"
+                {...input}
+              />
+            )}
+          </Field>
+        )}
+        {isNewAccount && (
+          <Field name="email">
+            {({ input }) => (
+              <input
+                className="is-hidden"
+                type="email"
+                autoComplete="email"
+                {...input}
+              />
+            )}
+          </Field>
+        )}
         <Field name="passphrase" validate={validatePassphrase}>
           {({ input, meta: { touched, error } }) => (
             <div className="field">
@@ -136,8 +150,8 @@ function NewAccountPassphrase({
                     <span>
                       <FormattedMessage
                         defaultMessage="Create a passphrase"
-                        description="New account input field label: create passphrase"
-                        id="UT0wpI"
+                        description="New account or reset passphrase input field label: create passphrase"
+                        id="TBHu30"
                       />
                     </span>
                   </div>
@@ -176,6 +190,7 @@ function NewAccountPassphrase({
                 </div>
                 <div className="control">
                   <button
+                    type="button"
                     className={classNames(
                       'button',
                       showPassphrases && 'is-info',
@@ -202,8 +217,8 @@ function NewAccountPassphrase({
               <label className="label">
                 <FormattedMessage
                   defaultMessage="Verify passphrase"
-                  description="New account input field label: verify passphrase"
-                  id="pTJMyU"
+                  description="New account or reset passphrase input field label: verify passphrase"
+                  id="WmUjxK"
                 />
               </label>
               <div className="field has-addons">
@@ -224,6 +239,7 @@ function NewAccountPassphrase({
                 </div>
                 <div className="control">
                   <button
+                    type="button"
                     className={classNames(
                       'button',
                       showPassphrases && 'is-info',
@@ -265,8 +281,8 @@ function NewAccountPassphrase({
           >
             <FormattedMessage
               defaultMessage="Cancel"
-              description="New account cancel button"
-              id="QoOTpE"
+              description="New account or reset passphrase cancel button"
+              id="r+GVNN"
             />
           </Link>
           <button
@@ -276,13 +292,25 @@ function NewAccountPassphrase({
               'is-primary',
               submitting && 'is-loading',
             )}
-            disabled={submitting || hasValidationErrors}
+            disabled={
+              hasValidationErrors ||
+              submitting ||
+              (!!submitError && !isNewAccount)
+            }
           >
-            <FormattedMessage
-              defaultMessage="Create account"
-              description="New account create button"
-              id="Z5nasz"
-            />
+            {isNewAccount ? (
+              <FormattedMessage
+                defaultMessage="Create account"
+                description="New account create button"
+                id="Z5nasz"
+              />
+            ) : (
+              <FormattedMessage
+                defaultMessage="Reset and sign in"
+                description="Reset passphrase button"
+                id="X9RXVm"
+              />
+            )}
           </button>
         </div>
       </form>
@@ -290,4 +318,4 @@ function NewAccountPassphrase({
   );
 }
 
-export default NewAccountPassphrase;
+export default NewPassphrase;

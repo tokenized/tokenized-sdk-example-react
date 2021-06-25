@@ -9,6 +9,7 @@ import { useIntl } from 'react-intl';
 import { useIsLoggedIn } from '@tokenized/sdk-react-private';
 import SignInScreen from './screens/SignInScreen';
 import NewAccountScreen from './screens/NewAccountScreen';
+import ResetPassphraseScreen from './screens/ResetPassphraseScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import TreasuryPage from './features/treasury/TreasuryPage';
 import ContractsPage from './features/contracts/ContractsPage';
@@ -54,6 +55,9 @@ function App() {
         </Route>
         <Route path="/new-account">
           <NewAccountScreen />
+        </Route>
+        <Route path="/forgot">
+          <ResetPassphraseScreen />
         </Route>
         <PrivateRoute path="/activity">
           <DashboardScreen />

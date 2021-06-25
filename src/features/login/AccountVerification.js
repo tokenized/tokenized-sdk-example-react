@@ -19,8 +19,8 @@ function AccountVerification() {
     tokenizedApi.account.logOut();
   }, [tokenizedApi]);
   const onSubmit = useCallback(
-    ({ code }, form) => {
-      tokenizedApi.account.verifyNewAccount(code);
+    async ({ code }, form) => {
+      await tokenizedApi.account.verifyNewAccount(code);
       form.restart();
     },
     [tokenizedApi.account],

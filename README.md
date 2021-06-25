@@ -12,7 +12,7 @@ customers building web-based apps, the
 handles all the details of the REST API for you, and is the quickest way to
 integrate the power of the Tokenized platform.
 
-_This is **SDK release 0.4.0**, an early-access preview release with many
+_This is **SDK release 0.5.0**, an early-access preview release with many
 features not yet implemented. At this early stage significant changes are
 possible to the SDK interface between releases._
 
@@ -34,9 +34,10 @@ clearly as possible, how to use all the features of the
 
 - The
   [Tokenized JavaScript SDK for React](https://www.npmjs.com/package/@tokenized/sdk-react-private).
-- [Webpack](https://webpack.js.org) is used to build a release bundle.
+- [Webpack](https://webpack.js.org) is used to bundle the application’s code and
+  resources to run in the browser.
 - [Babel](https://babeljs.io) transpiles JavaScript to a form understood by the
-  browser
+  browser.
 - [React Router](https://reactrouter.com) manages page navigation and the app’s
   URL structure.
 - [Redux Toolkit](https://redux-toolkit.js.org/) is used for some minimal
@@ -147,6 +148,8 @@ Tokenized JavaScript SDK bindings for React
     <code>boolean</code>
   - [.useLogInError()](#module_@tokenized/sdk-react-private.useLogInError) ⇒
     <code>Error</code>
+  - [.useResetPassphraseMaskedEmail()](#module_@tokenized/sdk-react-private.useResetPassphraseMaskedEmail)
+    ⇒ <code>string</code>
   - [.useOwnFormattedName()](#module_@tokenized/sdk-react-private.useOwnFormattedName)
     ⇒ <code>string</code>
   - [.useCurrentProfileName()](#module_@tokenized/sdk-react-private.useCurrentProfileName)
@@ -239,7 +242,7 @@ finished restoring the session on startup.
 
 ### @tokenized/sdk-react-private.useIsLoggingIn() ⇒ <code>boolean</code>
 
-**`React hook`** Current log in process status. Show a spinner and disable user
+**`React hook`** Current log-in process status. Show a spinner and disable user
 input on your log-in screen when `useIsLoggingIn` is `true`.
 
 _Note that in an upcoming release of the SDK, log in will be handled by a
@@ -248,7 +251,7 @@ longer be necessary._
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
-**Returns**: <code>boolean</code> - `true` when the log in process has started
+**Returns**: <code>boolean</code> - `true` when the log-in process has started
 (credentials entered), but the user has not been fully authenticated yet.  
 <a name="module_@tokenized/sdk-react-private.useLogInProgress"></a>
 
@@ -274,7 +277,7 @@ longer be necessary._
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when there’s no valid user session,
-and also no log in process happening.  
+and also no log-in process happening.  
 <a name="module_@tokenized/sdk-react-private.useLogInNeedsVerifyEmail"></a>
 
 ### @tokenized/sdk-react-private.useLogInNeedsVerifyEmail() ⇒ <code>boolean</code>
@@ -289,7 +292,7 @@ will no longer be necessary._
 
 **Kind**: static method of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
-**Returns**: <code>boolean</code> - `true` when the log in process has paused
+**Returns**: <code>boolean</code> - `true` when the log-in process has paused
 for email verification.  
 <a name="module_@tokenized/sdk-react-private.useVerificationEmailAddress"></a>
 
@@ -380,8 +383,8 @@ user when the log-in process requests seed phrase backup, and ask them to write
 it down and keep it safe.
 
 Use the hook in a component that only gets mounted when the log-in process
-requests a seed phrase backup. An error will be thrown if seed phrase backup
-isn’t already active.
+requests a seed phrase backup. In other situations, every word in the returned
+array will be `undefined`.
 
 _Note that in an upcoming release of the SDK, seed phrase backup will be handled
 by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
@@ -468,6 +471,23 @@ longer be necessary._
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>Error</code> - The error that caused a log in attempt to
 fail. Cleared to `null` when a new log in process is started.  
+<a name="module_@tokenized/sdk-react-private.useResetPassphraseMaskedEmail"></a>
+
+### @tokenized/sdk-react-private.useResetPassphraseMaskedEmail() ⇒ <code>string</code>
+
+**`React hook`** Masked email address that a passphrase reset confirmation email
+was sent to. Display this after the user begins the recovery (forgot passphrase)
+process, as part of the prompt to enter the confirmation code.
+
+_Note that in an upcoming release of the SDK, seed passphrase reset will be
+handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
+will no longer be necessary._
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>string</code> - The email address to display, with the middle
+part masked with asterisks to prevent revealing sensitive information outside an
+authenticated session.  
 <a name="module_@tokenized/sdk-react-private.useOwnFormattedName"></a>
 
 ### @tokenized/sdk-react-private.useOwnFormattedName() ⇒ <code>string</code>
@@ -816,6 +836,7 @@ specific UI libraries)
         ⇒ <code>function</code>
       - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
       - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+        ⇒ <code>undefined</code> \| <code>boolean</code>
       - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
       - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
         ⇒ <code>Array.&lt;string&gt;</code>
@@ -824,7 +845,10 @@ specific UI libraries)
       - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
       - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
       - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-      - [.restoreRootKey(phrase)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+      - [.restoreRootKey(words)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+      - [.requestPassphraseReset(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+requestPassphraseReset)
+        ⇒ <code>string</code>
+      - [.resetPassphrase(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+resetPassphrase)
       - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
       - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -875,6 +899,7 @@ run:
       ⇒ <code>function</code>
     - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
     - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+      ⇒ <code>undefined</code> \| <code>boolean</code>
     - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
     - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
       ⇒ <code>Array.&lt;string&gt;</code>
@@ -883,7 +908,10 @@ run:
     - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
     - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
     - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-    - [.restoreRootKey(phrase)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+    - [.restoreRootKey(words)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+    - [.requestPassphraseReset(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+requestPassphraseReset)
+      ⇒ <code>string</code>
+    - [.resetPassphrase(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+resetPassphrase)
     - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -961,6 +989,7 @@ Access to contracts
     ⇒ <code>function</code>
   - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
   - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
+    ⇒ <code>undefined</code> \| <code>boolean</code>
   - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
   - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
     ⇒ <code>Array.&lt;string&gt;</code>
@@ -969,7 +998,10 @@ Access to contracts
   - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
   - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
   - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-  - [.restoreRootKey(phrase)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+  - [.restoreRootKey(words)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
+  - [.requestPassphraseReset(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+requestPassphraseReset)
+    ⇒ <code>string</code>
+  - [.resetPassphrase(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+resetPassphrase)
   - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
   - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
   - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
@@ -1032,32 +1064,6 @@ will actually be checked).
 
 ##### account.makeDebouncedEmailAvailabilityChecker() ⇒ <code>function</code>
 
-Use this during account recovery when prompting the user to enter their recovery
-seed phrase, to feed back as they type whether they’ve got the words correct
-(they’re checked against the primary vault’s public key). You can call the
-returned async function as often as you like (on every keystroke), and it won’t
-do the calculation (which is expensive) more than once every 500ms. Each time a
-check is done, the result will become the resolved value of all unresolved
-promises previously returned.
-
-Note that each validator function returned by this method maintains its own
-separate timer for debouncing, so if you call
-`makeDebouncedEmailAvailabilityChecker` in a React render function, you must
-memoize the result with `useMemo` or similar, to maintain the same validator for
-the lifetime of your component.
-
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
-**Returns**: <code>function</code> - The async validation function, which takes
-one argument, the complete seed phrase (separate words with spaces), and returns
-a promise that resolves to `undefined` if the _most recent_ phrase that was
-checked is correct (because the calls are debounced, only the last of a rapid
-sequence of phrases will actually be checked). If the phrase is incorrect, the
-promise will resolve to a localized string describing the error.  
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator"></a>
-
-##### account.makeDebouncedRecoveryPhraseValidator() ⇒ <code>function</code>
-
 Use this in a new account dialog, to show the user as they type whether an email
 address is already associated with another account. You can call the returned
 async function as often as you like (on every keystroke), and it won’t send more
@@ -1078,13 +1084,40 @@ one argument, the email address to check, and returns a promise that resolves to
 `true` if the _most recent_ email that was checked is available (because the
 queries are debounced, only the last of a rapid sequence of submitted strings
 will actually be checked).  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator"></a>
+
+##### account.makeDebouncedRecoveryPhraseValidator() ⇒ <code>function</code>
+
+Use this during account recovery when prompting the user to enter their recovery
+seed phrase, to feed back as they type whether they’ve got the words correct
+(they’re checked against the primary vault’s public key). You can call the
+returned async function as often as you like (on every keystroke), and it won’t
+do the calculation (which is expensive) more than once every 500ms. Each time a
+check is done, the result will become the resolved value of all unresolved
+promises previously returned.
+
+Note that each validator function returned by this method maintains its own
+separate timer for debouncing, so if you call
+`makeDebouncedEmailAvailabilityChecker` in a React render function, you must
+memoize the result with `useMemo` or similar, to maintain the same validator for
+the lifetime of your component.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>function</code> - The async validation function, which takes
+one argument, the 24 words of the seed phrase as an array of strings, and
+returns a promise that resolves to `undefined` if the _most recent_ phrase that
+was checked is correct (because the calls are debounced, only the last of a
+rapid sequence of phrases will actually be checked). If the phrase is incorrect,
+the promise will resolve to a localized string describing the error.  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount"></a>
 
 ##### account.createNewAccount(options)
 
-Start a new account creation process. This will send a confirmation email
-containing a code that must be passed into `confirmNewAccount` to allow the
-account creation to take place.
+Create a new account, and send a verification code to the specified email
+address, The code will need to be provided during the first log-in to complete
+the creation process. On success, this function starts a new log-in process
+automatically with the account credentials.
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
@@ -1101,14 +1134,22 @@ account creation to take place.
 
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logIn"></a>
 
-##### account.logIn(options)
+##### account.logIn(options) ⇒ <code>undefined</code> \| <code>boolean</code>
 
 Begin a new asynchronous log in process with the specified account credentials.
 If a log in attempt is currently in progress, it will be cancelled and replaced
 with the new one. Fails if there’s already a valid authenticated session.
 
 **Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>undefined</code> \| <code>boolean</code> - A `Promise` that
+resolves to one of three possible values:
+
+- `undefined` – indicates the log-in process was cancelled by a later log-in
+  request.
+- `false` – indicates the log-in process is paused waiting for a user
+  interaction, for example email verification.
+- `true` – indicates log in completed successfully.
 
 | Param               | Type                | Description                                                                                                                                                                                                                                                                                                                 |
 | ------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1124,8 +1165,8 @@ with the new one. Fails if there’s already a valid authenticated session.
 
 Verify creation of a new account during initial log in by providing the code
 sent to the account email address (triggered by an earlier call to
-`createNewAccount`). If the code is correct, the log in process will continue
-automatically.
+[`createNewAccount`](module:@tokenized/sdk-js-private.TokenizedApi#account.createNewAccount)).
+If the code is correct, the log in process will continue automatically.
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
@@ -1158,14 +1199,14 @@ Provides a sorted list of possible seed phrase words that best match user input.
 Use this in your account recovery dialog to provide autocomplete assistance to
 the user when they’re entering their 24-word seed phrase.
 
-Note that this function has to search the complete list of seed words, so you
-should ensure it’s only called when really needed – don’t call it
-unconditionally in the render function for every seed word.
+Note that this function has to search the complete list of about two thousand
+seed words, so you should ensure it’s only called when really needed – don’t
+call it unconditionally in the render function for every seed word.
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>Array.&lt;string&gt;</code> - An array of seed phrase words
-that roughly match what the user typed, ordered by best match.
+that roughly match what the user typed, ordered by best match first.
 
 | Param      | Type                | Description                                     |
 | ---------- | ------------------- | ----------------------------------------------- |
@@ -1205,18 +1246,69 @@ should warn the user that all transactions will fail in this state.
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey"></a>
 
-##### account.restoreRootKey(phrase)
+##### account.restoreRootKey(words)
 
-Restores the user’s default root key using the entered seed phrase, which is
-checked first to make sure it matches the registered vault public key. The log
-in process will continue automatically after the returned promise resolves.
+Restores the user’s default root key using the entered backup seed phrase, which
+is checked first to make sure it matches the registered vault public key. The
+log-in process will continue automatically after the returned promise resolves.
 
 **Kind**: instance method of
 [<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
 
-| Param  | Type                | Description                                              |
-| ------ | ------------------- | -------------------------------------------------------- |
-| phrase | <code>string</code> | The 24-word recovery phrase (separate words with spaces) |
+| Param | Type                              | Description                                        |
+| ----- | --------------------------------- | -------------------------------------------------- |
+| words | <code>Array.&lt;string&gt;</code> | The 24-word recovery phrase as an array of strings |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+requestPassphraseReset"></a>
+
+##### account.requestPassphraseReset(options) ⇒ <code>string</code>
+
+Use this to implement a “forgot passphrase” flow in your sign in dialog. Call
+this method, identifying the account using one of a handle, email address, or
+phone number as for
+[`logIn`](module:@tokenized/sdk-js-private.TokenizedApi#account.logIn), If the
+account is recognized, the back end will send a confirmation code to the
+registered email address (which is provided in obfuscated form to display in a
+prompt). Call
+[`resetPassphrase`](module:@tokenized/sdk-js-private.TokenizedApi#account.resetPassphrase)
+with the entered confirmation code and new passphrase to complete the process.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
+**Returns**: <code>string</code> - (In a `Promise`) the email address that the
+confirmation code was sent to, partly masked for privacy. In React apps it’s
+more convenient to retrieve this via the dedicated hook
+[`useResetPassphraseMaskedEmail`](#module_@tokenized/sdk-react-private.useResetPassphraseMaskedEmail).
+
+| Param               | Type                | Description                                                                                                                                                                                                                                                                                                             |
+| ------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options             | <code>object</code> |                                                                                                                                                                                                                                                                                                                         |
+| options.handle      | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will reset `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
+| options.email       | <code>string</code> | Identifies the account to reset using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                             |
+| options.phoneNumber | <code>string</code> | Identifies the account to reset using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                              |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+resetPassphrase"></a>
+
+##### account.resetPassphrase(options)
+
+Use this to set a new passphrase for an account when the user has forgotten
+their passphrase. After first calling
+[`requestPassphraseReset`](module:@tokenized/sdk-js-private.TokenizedApi#account.requestPassphraseReset),
+prompt the user to enter the confirmation code, and create a new passphrase. On
+success, the method modifies the passphrase, and automatically starts a log-in
+process to the account. Unless the user re-entered their old passphrase, the
+root key will now be unusable, and the log-in process will request the recovery
+seed phrase to restore it.
+
+**Kind**: instance method of
+[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
+
+| Param                     | Type                | Description                                    |
+| ------------------------- | ------------------- | ---------------------------------------------- |
+| options                   | <code>object</code> |                                                |
+| options.code              | <code>string</code> | The confirmation code from the received email. |
+| options.passphrase        | <code>string</code> | The new passphrase for the account.            |
+| options.passphraseConfirm | <code>string</code> | The new passphrase for the account.            |
 
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing"></a>
 
@@ -1335,10 +1427,11 @@ The SDK is always released together in three parts:
 and
 [`tokenized/tokenized-sdk-example-react` (GitHub repo)](https://github.com/tokenized/tokenized-sdk-example-react).
 
-- **`0.4.0` 2021-05-31** — First customer preview release. Treasury balance list
-  structure redesigned to provide all relevant quantities precalculated with
-  highly flexible formatting and currency conversions. Full documentation of the
-  library interfaces is now built into the READMEs.
+- **`0.5.0` 2021-06-25** – Adds SDK support, and UI in the example app, to
+  handle new account creation, passphrase reset, recovery phrase backup, and
+  account restoration from the recovery phrase.
+- **`0.4.0` 2021-05-31** — First customer preview release. Full documentation of
+  the library interfaces is now built into the READMEs.
 - **`0.3.0` 2021-05-24** — Fully-functional querying and formatting of treasury
   balance lists, and initial support for listing contracts, using React Query
   for data fetching. Internationalization support with React Intl (FormatJS).

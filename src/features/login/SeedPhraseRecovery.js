@@ -39,8 +39,7 @@ function SeedPhraseRecovery() {
       // incomplete phrase and return no error – the individual
       // field validators will report those errors.
       if (words?.length === 24 && words.every((word) => word)) {
-        const phrase = words.join(' ');
-        const validationError = await validatePhrase(phrase);
+        const validationError = await validatePhrase(words);
         if (validationError) {
           return {
             [FORM_ERROR]: validationError,
@@ -54,8 +53,7 @@ function SeedPhraseRecovery() {
   const onRestore = useCallback(
     async ({ words }) => {
       try {
-        const phrase = words.join(' ');
-        await tokenizedApi.account.restoreRootKey(phrase);
+        await tokenizedApi.account.restoreRootKey(words);
       } catch (error) {
         console.error(error);
         return { [FORM_ERROR]: error };
@@ -97,9 +95,9 @@ function SeedPhraseRecovery() {
                     </div>
                     <div className="message-body">
                       <FormattedMessage
-                        defaultMessage="Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery seed that you noted down when you created the account."
+                        defaultMessage="Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery phrase that you noted down when you created the account."
                         description="Account recovery description"
-                        id="DH7vcX"
+                        id="g+bpPs"
                       />
                     </div>
                   </article>

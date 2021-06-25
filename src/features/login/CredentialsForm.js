@@ -41,6 +41,10 @@ function CredentialsForm({ identifierType }) {
     },
     [identifierType, tokenizedApi.account],
   );
+  const identifierValidForRecovery = (fieldErrors) =>
+    Object.entries(fieldErrors)
+      .filter(([fieldName]) => fieldName !== 'passphrase')
+      .every(([, fieldError]) => !fieldError);
 
   const logInError = useLogInError();
   const [hideError, setHideError] = useState(null);
@@ -52,7 +56,7 @@ function CredentialsForm({ identifierType }) {
   return (
     <div className="box">
       <Form onSubmit={onSignIn}>
-        {({ handleSubmit, values, valid }) => (
+        {({ handleSubmit, values, valid, errors }) => (
           <form onSubmit={handleSubmit}>
             {logInError?.formattedErrorMessage && logInError !== hideError && (
               <article className="message is-danger">
@@ -275,6 +279,33 @@ function CredentialsForm({ identifierType }) {
               )}
             </Field>
             <div className="buttons is-right mt-6">
+              {identifierValidForRecovery(errors) ? (
+                <Link
+                  to={{
+                    pathname: '/forgot',
+                    state: {
+                      ...values,
+                      identifierType,
+                    },
+                  }}
+                  className="button is-light"
+                  disabled={isLoggingIn}
+                >
+                  <FormattedMessage
+                    defaultMessage="Forgot passphrase?"
+                    description="Login screen forgot passphrase button"
+                    id="HuJPE4"
+                  />
+                </Link>
+              ) : (
+                <button type="button" className="button is-light" disabled>
+                  <FormattedMessage
+                    defaultMessage="Forgot passphrase?"
+                    description="Login screen forgot passphrase button"
+                    id="HuJPE4"
+                  />
+                </button>
+              )}
               <button
                 type="submit"
                 className={classNames(

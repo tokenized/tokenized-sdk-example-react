@@ -9,8 +9,8 @@ import {
   useIsLoggedIn,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
-import NewAccountNames from '../features/new-account/NewAccountNames';
-import NewAccountPassphrase from '../features/new-account/NewAccountPassphrase';
+import NewAccount from '../features/login/NewAccount';
+import NewPassphrase from '../features/login/NewPassphrase';
 
 function NewAccountScreen() {
   const location = useLocation();
@@ -47,10 +47,10 @@ function NewAccountScreen() {
   switch (step) {
     case 'namesEmailHandle':
     default:
-      FormPage = NewAccountNames;
+      FormPage = NewAccount;
       break;
     case 'passphrase':
-      FormPage = NewAccountPassphrase;
+      FormPage = NewPassphrase;
       break;
   }
 
@@ -89,7 +89,7 @@ function NewAccountScreen() {
             </p>
           </div>
           <Form onSubmit={onSubmit}>
-            {(formProps) => <FormPage {...formProps} />}
+            {(formProps) => <FormPage isNewAccount {...formProps} />}
           </Form>
           {step === 'namesEmailHandle' && (
             <section className="section has-text-centered">

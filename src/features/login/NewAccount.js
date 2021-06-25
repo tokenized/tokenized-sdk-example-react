@@ -10,7 +10,7 @@ import {
   fieldIsEmail,
 } from '../../utils/validators';
 
-function NewAccountNames({
+function NewAccount({
   handleSubmit,
   validating,
   hasValidationErrors,
@@ -266,4 +266,4 @@ function NewAccountNames({
   );
 }
 
-export default NewAccountNames;
+export default NewAccount;
