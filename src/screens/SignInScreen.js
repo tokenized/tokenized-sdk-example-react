@@ -58,11 +58,16 @@ function SignInScreen() {
     if (showVerifyAccount) {
       SignInProcessComponent = AccountVerification;
     }
-    if (showPairingCode) {
-      SignInProcessComponent = PairAuthenticator;
-    }
     if (showMfaPrompt) {
       SignInProcessComponent = WaitForMFA;
+    }
+    if (showPairingCode) {
+      // Note: the order matters here, because showPairingCode and
+      // showMfaPrompt can _both_ be true, in the situation where
+      // the user has a paired authenticator, but has pressed the
+      // “Show pairing code” button to re-pair, in which case showPairingCode
+      // should take precedence.
+      SignInProcessComponent = PairAuthenticator;
     }
     if (showBackup) {
       SignInProcessComponent = BackUpSeedPhrase;

@@ -12,7 +12,7 @@ customers building web-based apps, the
 handles all the details of the REST API for you, and is the quickest way to
 integrate the power of the Tokenized platform.
 
-_This is **SDK release 0.5.1**, an early-access preview release with many
+_This is **SDK release 0.5.2**, an early-access preview release with many
 features not yet implemented. At this early stage significant changes are
 possible to the SDK interface between releases._
 
@@ -315,8 +315,16 @@ was sent to.
 
 **`React hook`** Signals that the SDK is waiting for authenticator device
 pairing. Show the pairing QR code and a prompt to “Scan this code with the
-authenticator app” on your login screen when `selectIsWaitingForDevicePairing`
-is `true`.
+authenticator app” on your login screen when `useIsWaitingForDevicePairing` is
+`true`.
+
+Note that `useIsWaitingForDevicePairing` can be `true` at the same time as
+`useLogInNeedsMfa` is `true`. That occurs when there is an active authenticator
+device already paired with the account, so MFA can proceed, but a device
+re-pairing code has also been explicitly requested by calling
+[`tokenizedApi.account.initiateDevicePairing`](module:@tokenized/sdk-js-private.TokenizedApi#account.initiateDevicePairing).
+You should show the pairing QR code, but be prepared for MFA to complete without
+it being used.
 
 _Note that in an upcoming release of the SDK, device pairing will be handled by
 a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
@@ -1427,6 +1435,8 @@ The SDK is always released together in three parts:
 and
 [`tokenized/tokenized-sdk-example-react` (GitHub repo)](https://github.com/tokenized/tokenized-sdk-example-react).
 
+- **`0.5.2` 2021-06-27** – Fixes a bug preventing the “Show pairing code” button
+  from working on the sign-in MFA prompt.
 - **`0.5.1` 2021-06-25** – Adds SDK support, and UI in the example app, to
   handle new account creation, passphrase reset, recovery phrase backup, and
   account restoration from the recovery phrase.
