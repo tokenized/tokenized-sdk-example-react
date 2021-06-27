@@ -315,8 +315,16 @@ was sent to.
 
 **`React hook`** Signals that the SDK is waiting for authenticator device
 pairing. Show the pairing QR code and a prompt to “Scan this code with the
-authenticator app” on your login screen when `selectIsWaitingForDevicePairing`
-is `true`.
+authenticator app” on your login screen when `useIsWaitingForDevicePairing` is
+`true`.
+
+Note that `useIsWaitingForDevicePairing` can be `true` at the same time as
+`useLogInNeedsMfa` is `true`. That occurs when there is an active authenticator
+device already paired with the account, so MFA can proceed, but a device
+re-pairing code has also been explicitly requested by calling
+[`tokenizedApi.account.initiateDevicePairing`](module:@tokenized/sdk-js-private.TokenizedApi#account.initiateDevicePairing).
+You should show the pairing QR code, but be prepared for MFA to complete without
+it being used.
 
 _Note that in an upcoming release of the SDK, device pairing will be handled by
 a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
