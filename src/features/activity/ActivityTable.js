@@ -11,10 +11,11 @@ export default function ActivityTable() {
 
   return (
     <div className="table-container">
+      {/* {JSON.stringify(activity)} */}
       <table className="table is-hoverable">
         <thead></thead>
         <tbody>
-          {activity.data.map((activityItem) => (
+          {activity?.data?.map((activityItem) => (
             <ActivityRow key={activityItem.txid} item={activityItem} />
           ))}
         </tbody>

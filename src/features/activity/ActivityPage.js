@@ -1,5 +1,11 @@
 import React from 'react';
-import { NavLink, Switch, Route, useRouteMatch } from 'react-router-dom';
+import {
+  NavLink,
+  Switch,
+  Route,
+  Redirect,
+  useRouteMatch,
+} from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import ActivityTable from './ActivityTable';
 
@@ -33,6 +39,9 @@ export default function ActivityPage() {
       <Switch>
         <Route path={`${path}/all`}>
           <ActivityTable />
+        </Route>
+        <Route path="*">
+          <Redirect to={`${path}/all`} />
         </Route>
       </Switch>
     </section>
