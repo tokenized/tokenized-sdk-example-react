@@ -8,6 +8,7 @@ import {
   useCurrentProfileName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
+import SendButton from '../features/send/SendButton';
 
 function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
@@ -106,6 +107,10 @@ function DashboardScreen({ children }) {
             </NavLink>
           </div>
           <div className="navbar-end">
+            <div className="navbar-item">
+              <SendButton/>
+
+            </div>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">
                 <span className="icon">
