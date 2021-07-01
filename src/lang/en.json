@@ -7,6 +7,10 @@
     "defaultMessage": "Unable to sign in",
     "description": "Login screen failed login error message title"
   },
+  "/j2Yi1": {
+    "defaultMessage": "Status",
+    "description": "Activity table header: activity status"
+  },
   "/lBke1": {
     "defaultMessage": "Title",
     "description": "Contracts table column header: contract title"
@@ -14,6 +18,10 @@
   "0EfTim": {
     "defaultMessage": "Choose a unique ID for connecting with others and receiving payments",
     "description": "New account handle field help: explanation of paymail"
+  },
+  "1HHb9u": {
+    "defaultMessage": "Details",
+    "description": "Activity table header: details"
   },
   "1s3HAo": {
     "defaultMessage": "Avoid workplace or educational emails you might lose access to",
@@ -163,6 +171,10 @@
     "defaultMessage": "Forgot passphrase?",
     "description": "Login screen forgot passphrase button"
   },
+  "IEpphI": {
+    "defaultMessage": "Activity",
+    "description": "Activity page title"
+  },
   "IaE9fj": {
     "defaultMessage": "Transactions in your <boldText>non-custodial</boldText> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
     "description": "Back up seed phrase intro 1"
@@ -223,6 +235,10 @@
     "defaultMessage": "Cancel",
     "description": "Verify account cancel button"
   },
+  "QOJ75c": {
+    "defaultMessage": "Type",
+    "description": "Activity table header: activity type"
+  },
   "QaB4nu": {
     "defaultMessage": "In vault",
     "description": "Balance table column header: quantity held in vault"
@@ -275,6 +291,10 @@
     "defaultMessage": "Inactive",
     "description": "Treasury inactive tab"
   },
+  "Vetw5f": {
+    "defaultMessage": "Change:",
+    "description": "Activity table assets label: change"
+  },
   "Vt0wGh": {
     "defaultMessage": "Verify your backup",
     "description": "Verify seed phrase backup description title"
@@ -286,6 +306,10 @@
   "VyIxs7": {
     "defaultMessage": "Value",
     "description": "Balance table column header: value (of assets to me)"
+  },
+  "WFpQ7G": {
+    "defaultMessage": "With",
+    "description": "Activity table header: with"
   },
   "Wefkn1": {
     "defaultMessage": "I’m ready to record my private recovery phrase, and nobody’s watching",
@@ -367,6 +391,10 @@
     "defaultMessage": "Unable to reset passphrase",
     "description": "Reset passphrase failed error message title"
   },
+  "fyfIW2": {
+    "defaultMessage": "When",
+    "description": "Activity table header: when"
+  },
   "g+bpPs": {
     "defaultMessage": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery phrase that you noted down when you created the account.",
     "description": "Account recovery description"
@@ -415,6 +443,10 @@
     "defaultMessage": "Doesn’t match entered passphrase",
     "description": "Form field validation failure: matching passphrase confirmation is required"
   },
+  "nIjgF+": {
+    "defaultMessage": "All",
+    "description": "All activity tab"
+  },
   "oLcK9U": {
     "defaultMessage": "Email",
     "description": "Login identification method selection: use your email address"
@@ -442,6 +474,10 @@
   "qZNWyi": {
     "defaultMessage": "Relationships",
     "description": "Nav bar relationships tab"
+  },
+  "qq2T4k": {
+    "defaultMessage": "Total:",
+    "description": "Activity table assets label: total"
   },
   "r+GVNN": {
     "defaultMessage": "Cancel",
@@ -499,6 +535,10 @@
     "defaultMessage": "Continue",
     "description": "Forgot passphrase confirm email continue button"
   },
+  "xFJvp5": {
+    "defaultMessage": "Pending",
+    "description": "Pending activity tab"
+  },
   "xlJ5FF": {
     "defaultMessage": "Only alphanumeric characters allowed",
     "description": "Form field validation failure: alphanumeric string is required"
@@ -506,6 +546,10 @@
   "xu36fu": {
     "defaultMessage": "I’ve changed my mind",
     "description": "Postpone seed phrase backup cancel (back up after all) button"
+  },
+  "y2ZMIl": {
+    "defaultMessage": "Title",
+    "description": "Activity table header: title"
   },
   "zjXve4": {
     "defaultMessage": "To restore full access to the account <boldText>{identifier}</boldText>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",

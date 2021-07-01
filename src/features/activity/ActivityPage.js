@@ -35,10 +35,26 @@ export default function ActivityPage() {
             />
           </span>
         </NavLink>
+        <NavLink
+          to={`${url}/pending`}
+          className="button"
+          activeClassName="is-link is-selected"
+        >
+          <span>
+            <FormattedMessage
+              defaultMessage="Pending"
+              description="Pending activity tab"
+              id="xFJvp5"
+            />
+          </span>
+        </NavLink>
       </div>
       <Switch>
         <Route path={`${path}/all`}>
           <ActivityTable />
+        </Route>
+        <Route path={`${path}/pending`}>
+          <ActivityTable pending/>
         </Route>
         <Route path="*">
           <Redirect to={`${path}/all`} />

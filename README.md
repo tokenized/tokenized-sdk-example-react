@@ -160,6 +160,7 @@ Tokenized JavaScript SDK bindings for React
     [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
   - [.useFilteredBalances(vaultId, filterOptions)](#module_@tokenized/sdk-react-private.useFilteredBalances)
     ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+  - [.useActivity(filters)](#module_@tokenized/sdk-react-private.useActivity)
 
 <a name="module_@tokenized/sdk-react-private.TokenizedApiProvider"></a>
 
@@ -819,6 +820,84 @@ function FormatQuantity({ quantity }) {
   return formats.join(', ');
 }
 ```
+
+<a name="module_@tokenized/sdk-react-private.useActivity"></a>
+
+### @tokenized/sdk-react-private.useActivity(filters)
+
+**`React hook`** Filtered and sorted list of the activity of the default profile
+of an account.
+
+Each object in the results array describes an event:
+
+- `txId`: Transaction Id
+- `dateCreated`: Time of event (in milliseconds since Unix epoch)
+- `vaultId`: Id of the vault fufilling this activity
+- `memo`: String describing transaction (supplied by the trade initiating user)
+- `contract`: Optional object describing the contract
+
+  - `name`: Name given to contract
+
+- `assets`: Array of assets related to event
+
+  - `name`: Name of asset
+  - `total`: Total `quantity` of authorized assets
+  - `delta`: Change in `quantity` of authorized assets due to this activity
+
+- `activityEventType`: Object with `id` and `name` describing the type of the
+  event
+- `activityEventStatus`: Object with `id` and `name` describing the status of
+  the event
+- `counterParties`: Array of parties to a transaction (eg, 2 in the case of a
+  trade)
+
+  - `displayName`: User's name
+  - `displayHandle`: User's paymail handle
+  - `transfers`: Array of transferred assets
+
+    - `direction`: "sent" or "received"
+    - `quantity`: The transferred `quantity`
+
+A quantity is an object containing:
+
+- `assetName`: "Currency" or the name of a token
+- `assetCurrency`: Object representing the face value of that quantity
+
+  - `number`: Number of currency units
+  - `NumberFormatOptions`: Object to be supplied to Intl.NumberFormat
+
+- `tokens`: Object describing the number of tokens, if applicable
+
+  - `number`: Number of tokens
+  - `formatted`: Localised display string
+
+Status can be:
+
+- `proposed_offer`: initial pending status for all activity events.
+- `awaiting_acceptance`: the current profile owner needs to respond to a pending
+  action.
+- `awaiting_counterparty`: a response is being awaited from the counterparty.
+- `awaiting_agent`: a smart contract agent is currently processing this event.
+- `rejected`: rejected or declined by the counterparty.
+- `expired`: pending activity event has expired.
+- `failed`: response to an event did not meet the criteria of the request.
+- `signed`: a signature request was sent with a signed transaction within.
+- `executed`: final activity the event has concluded, no further actions are
+  expected.
+
+Status can be: `payment`, `trade_offer`, `vault_creation_proposal`,
+`vault_deletion_proposal`, `contract_formation`, `contract_amendment`,
+`contract_expire`, `asset_creation`, `asset_amendment` or `asset_expire`
+
+Will be refreshed automatically **every 60 seconds**.
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
+
+| Param           | Type                 | Description                                                                                                                                             |
+| --------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| filters         | <code>Object</code>  | Filters                                                                                                                                                 |
+| filters.pending | <code>boolean</code> | Only return pending activities (by default all are returned). Pending activities are awaiting action by the activity owner, counterparty or smart agent |
 
 <a name="module_@tokenized/sdk-js-private"></a>
 

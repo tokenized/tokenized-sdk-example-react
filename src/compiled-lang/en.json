@@ -11,6 +11,12 @@
       "value": "Unable to sign in"
     }
   ],
+  "/j2Yi1": [
+    {
+      "type": 0,
+      "value": "Status"
+    }
+  ],
   "/lBke1": [
     {
       "type": 0,
@@ -21,6 +27,12 @@
     {
       "type": 0,
       "value": "Choose a unique ID for connecting with others and receiving payments"
+    }
+  ],
+  "1HHb9u": [
+    {
+      "type": 0,
+      "value": "Details"
     }
   ],
   "1s3HAo": [
@@ -253,6 +265,12 @@
       "value": "Forgot passphrase?"
     }
   ],
+  "IEpphI": [
+    {
+      "type": 0,
+      "value": "Activity"
+    }
+  ],
   "IaE9fj": [
     {
       "type": 0,
@@ -357,6 +375,12 @@
       "value": "Cancel"
     }
   ],
+  "QOJ75c": [
+    {
+      "type": 0,
+      "value": "Type"
+    }
+  ],
   "QaB4nu": [
     {
       "type": 0,
@@ -440,6 +464,12 @@
       "value": "Inactive"
     }
   ],
+  "Vetw5f": [
+    {
+      "type": 0,
+      "value": "Change:"
+    }
+  ],
   "Vt0wGh": [
     {
       "type": 0,
@@ -456,6 +486,12 @@
     {
       "type": 0,
       "value": "Value"
+    }
+  ],
+  "WFpQ7G": [
+    {
+      "type": 0,
+      "value": "With"
     }
   ],
   "Wefkn1": [
@@ -596,6 +632,12 @@
       "value": "Unable to reset passphrase"
     }
   ],
+  "fyfIW2": [
+    {
+      "type": 0,
+      "value": "When"
+    }
+  ],
   "g+bpPs": [
     {
       "type": 0,
@@ -673,6 +715,12 @@
       "value": "Doesn’t match entered passphrase"
     }
   ],
+  "nIjgF+": [
+    {
+      "type": 0,
+      "value": "All"
+    }
+  ],
   "oLcK9U": [
     {
       "type": 0,
@@ -723,6 +771,12 @@
     {
       "type": 0,
       "value": "Relationships"
+    }
+  ],
+  "qq2T4k": [
+    {
+      "type": 0,
+      "value": "Total:"
     }
   ],
   "r+GVNN": [
@@ -859,6 +913,12 @@
       "value": "Continue"
     }
   ],
+  "xFJvp5": [
+    {
+      "type": 0,
+      "value": "Pending"
+    }
+  ],
   "xlJ5FF": [
     {
       "type": 0,
@@ -869,6 +929,12 @@
     {
       "type": 0,
       "value": "I’ve changed my mind"
+    }
+  ],
+  "y2ZMIl": [
+    {
+      "type": 0,
+      "value": "Title"
     }
   ],
   "zjXve4": [
