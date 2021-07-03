@@ -57,11 +57,13 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
+  devtool: 'inline-source-map',
   devServer: {
     port: process.env.PORT || 3000,
     stats: 'minimal',
     historyApiFallback: true,
     contentBase: absolute('public'),
+    disableHostCheck: !!process.env.DISABLE_HOST_CHECK,
   },
   plugins: [
     new ProvidePlugin({
