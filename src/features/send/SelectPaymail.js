@@ -3,7 +3,7 @@ import { useCombobox } from 'downshift';
 import { useHandles } from '@tokenized/sdk-react-private';
 import classNames from 'classnames';
 
-function SelectPaymail() {
+function SelectPaymail({ input }) {
   const [search, setSearch] = useState('');
 
   const handles = useHandles(search);
@@ -25,28 +25,42 @@ function SelectPaymail() {
     onInputValueChange: ({ inputValue }) => setSearch(inputValue),
   });
   return (
-    <div className={classNames('dropdown', isOpen && 'is-active')}>
-      <label {...getLabelProps()}>To:</label>
-      <div className="dropdown-trigger" {...getComboboxProps()}>
-        <input className="input" type="text" {...getInputProps()} />
-      </div>
-      <div className="dropdown-menu">
-        <div className="dropdown-content" {...getMenuProps()}>
-          {items.map((item, index) => (
-            <a
-              className={classNames(
-                'dropdown-item',
-                highlightedIndex === index && 'is-active',
-              )}
-              key={item}
-              {...getItemProps({ item, index })}
-            >
-              XX{item}
-            </a>
-          ))}
+    <>
+      <div
+        className={classNames('dropdown', isOpen && 'is-active')}
+        style={{ display: 'flex', flexDirection: 'column' }}
+      >
+        <label {...getLabelProps()}>To:</label>
+        <div className="dropdown-trigger" {...getComboboxProps()}>
+          <input
+            className="input"
+            type="text"
+            {...getInputProps()}
+            {...input}
+          />
+        </div>
+        <div className="dropdown-menu" style={{ right: 0 }}>
+          <div
+            className="dropdown-content"
+            {...getMenuProps()}
+            style={{ maxHeight: '10em', overflow: 'auto' }}
+          >
+            {items.map((item, index) => (
+              <a
+                className={classNames(
+                  'dropdown-item',
+                  highlightedIndex === index && 'is-active',
+                )}
+                key={item}
+                {...getItemProps({ item, index })}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
