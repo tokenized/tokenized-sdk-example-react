@@ -902,6 +902,7 @@ specific UI libraries)
     - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
+    - [.activity](#module_@tokenized/sdk-js-private.TokenizedApi+activity)
     - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
       - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
       - [.analyzePassphraseStrength](#module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength)
@@ -965,6 +966,7 @@ run:
   - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
+  - [.activity](#module_@tokenized/sdk-js-private.TokenizedApi+activity)
   - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
     - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
     - [.analyzePassphraseStrength](#module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength)
@@ -1021,6 +1023,7 @@ Create a new object to manage Tokenized user sessions:
 | config.applicationIdentifier      | <code>string</code>                        | Identifies your app in authentication requests. Default is `tokenized-sdk`.                                                                                                                                                                                                                     |
 | config.errorTransform             | <code>function</code>                      | Optionally provide a function that will be called whenever the SDK detects an error (single argument will be the `Error` object). Typically used to report the error to a monitoring service. If you return a value from the function, that value will be thrown instead of the original error. |
 | config.locale                     | <code>string</code>                        | Specifies the locale to use for messages and number formatting, for example `locale: 'en-GB'`. By default the browser’s current language will be used.                                                                                                                                          |
+| config.onLogOut                   | <code>function</code>                      | Provide a function that will be called whenever the user is logged out. Use this to clear any sensitive user information you’ve cached in your app. The function is called with no arguments.                                                                                                   |
 
 **Example**
 
@@ -1045,6 +1048,14 @@ Access to balances and assets
 #### tokenizedApi.contracts
 
 Access to contracts
+
+**Kind**: instance property of
+[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+activity"></a>
+
+#### tokenizedApi.activity
+
+Access to activity
 
 **Kind**: instance property of
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  

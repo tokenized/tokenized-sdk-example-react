@@ -54,7 +54,7 @@ export default function ActivityPage() {
           <ActivityTable />
         </Route>
         <Route path={`${path}/pending`}>
-          <ActivityTable pending/>
+          <ActivityTable pending />
         </Route>
         <Route path="*">
           <Redirect to={`${path}/all`} />
