@@ -12,7 +12,7 @@ customers building web-based apps, the
 handles all the details of the REST API for you, and is the quickest way to
 integrate the power of the Tokenized platform.
 
-_This is **SDK release 0.5.3**, an early-access preview release with many
+_This is **SDK release 0.5.4**, an early-access preview release with many
 features not yet implemented. At this early stage significant changes are
 possible to the SDK interface between releases._
 
@@ -1516,6 +1516,10 @@ The SDK is always released together in three parts:
 and
 [`tokenized/tokenized-sdk-example-react` (GitHub repo)](https://github.com/tokenized/tokenized-sdk-example-react).
 
+- **`0.5.4` 2021-07-06**
+  - Adds the ability to configure the SDK (via property `onLogOut`) with a
+    function that gets called on log out, so that sensitive state can be
+    cleared.
 - **`0.5.3` 2021-07-03**
   - Querying and formatting of the user's activity
 - **`0.5.2` 2021-06-27** – Fixes a bug preventing the “Show pairing code” button
