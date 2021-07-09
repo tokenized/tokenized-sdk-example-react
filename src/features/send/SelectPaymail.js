@@ -21,8 +21,6 @@ function SelectPaymail({ input, meta }) {
 
   const items = handles?.data?.map(({ displayHandle }) => displayHandle) || [];
 
-  console.log(handles);
-
   const { onBlur, onChange } = input;
 
   const {
@@ -40,7 +38,7 @@ function SelectPaymail({ input, meta }) {
   return (
     <>
       <div
-        className={classNames('dropdown', isOpen && 'is-active')}
+        className={classNames('field', 'dropdown', isOpen && 'is-active')}
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         <div className="dropdown-trigger" {...getComboboxProps()}>
@@ -49,12 +47,16 @@ function SelectPaymail({ input, meta }) {
               {meta.error}
             </span>
           )}
-          <label {...getLabelProps()}>{$['To']}</label>
-          <input
-            className="input"
-            type="text"
-            {...getInputProps({ onBlur, onChange })}
-          />
+          <label className="label" {...getLabelProps()}>
+            {$['To']}
+          </label>
+          <div className="control">
+            <input
+              className="input"
+              type="text"
+              {...getInputProps({ onBlur, onChange })}
+            />
+          </div>
           {/* {JSON.stringify(Object.keys(input))}
           {JSON.stringify(Object.keys(getInputProps()))}
           {JSON.stringify(Object.keys(getInputProps(input)))} */}

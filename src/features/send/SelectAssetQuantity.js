@@ -13,15 +13,17 @@ const $ = {
 
 function InputAssetQuantity({ input, meta }) {
   return (
-    <>
+    <div className="field">
       {meta.touched && meta.error && (
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
-      <label>
+      <label className="label">
         {$['Asset quantity']}
-        <input className="input" {...input} />
+        <div className="control">
+          <input className="input" {...input} />
+        </div>
       </label>
-    </>
+    </div>
   );
 }
 

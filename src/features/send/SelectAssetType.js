@@ -54,25 +54,29 @@ function SelectAssetType({ input, meta }) {
   });
   return (
     <div
-      className={classNames('dropdown', isOpen && 'is-active')}
+      className={classNames('field', 'dropdown', isOpen && 'is-active')}
       style={{ display: 'block' }}
     >
       {meta.touched && meta.error && (
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
-      <label {...getLabelProps()}>{$['Asset type']}</label>
-      <button
-        type="button"
-        {...getToggleButtonProps()}
-        className="input"
-        style={{ justifyContent: 'space-between' }}
-      >
-        {selectedItem ? (
-          <RenderAssetType assetType={selectedItem} />
-        ) : (
-          $['select...']
-        )}
-      </button>
+      <label className="label" {...getLabelProps()}>
+        {$['Asset type']}
+      </label>
+      <div className="control">
+        <button
+          type="button"
+          {...getToggleButtonProps()}
+          className="input"
+          style={{ justifyContent: 'space-between' }}
+        >
+          {selectedItem ? (
+            <RenderAssetType assetType={selectedItem} />
+          ) : (
+            $['select...']
+          )}
+        </button>
+      </div>
       <div className="dropdown-menu" style={{ right: 0 }}>
         <div
           className="dropdown-content"
