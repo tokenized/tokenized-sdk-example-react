@@ -2,8 +2,19 @@ import React, { useState } from 'react';
 import { useCombobox } from 'downshift';
 import { useHandles } from '@tokenized/sdk-react-private';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 
-function SelectPaymail({ input }) {
+const $ = {
+  To: (
+    <FormattedMessage
+      defaultMessage="To"
+      description="Asset transfer: input field label: paymail address of transfer target"
+      id="6dfGQZ"
+    />
+  ),
+};
+
+function SelectPaymail({ input, meta }) {
   const [search, setSearch] = useState('');
 
   const handles = useHandles(search);
@@ -11,6 +22,8 @@ function SelectPaymail({ input }) {
   const items = handles?.data?.map(({ displayHandle }) => displayHandle) || [];
 
   console.log(handles);
+
+  const { onBlur, onChange } = input;
 
   const {
     isOpen,
@@ -30,20 +43,27 @@ function SelectPaymail({ input }) {
         className={classNames('dropdown', isOpen && 'is-active')}
         style={{ display: 'flex', flexDirection: 'column' }}
       >
-        <label {...getLabelProps()}>To:</label>
         <div className="dropdown-trigger" {...getComboboxProps()}>
+          {meta.touched && meta.error && (
+            <span className="has-text-danger is-pulled-right">
+              {meta.error}
+            </span>
+          )}
+          <label {...getLabelProps()}>{$['To']}</label>
           <input
             className="input"
             type="text"
-            {...getInputProps()}
-            {...input}
+            {...getInputProps({ onBlur, onChange })}
           />
+          {/* {JSON.stringify(Object.keys(input))}
+          {JSON.stringify(Object.keys(getInputProps()))}
+          {JSON.stringify(Object.keys(getInputProps(input)))} */}
         </div>
         <div className="dropdown-menu" style={{ right: 0 }}>
           <div
             className="dropdown-content"
             {...getMenuProps()}
-            style={{ maxHeight: '10em', overflow: 'auto' }}
+            style={{ maxHeight: '20em', overflow: 'auto' }}
           >
             {items.map((item, index) => (
               <a

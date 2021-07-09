@@ -1,20 +1,42 @@
 import React from 'react';
 import { useSelect } from 'downshift';
+import classNames from 'classnames';
 import {
   useFilteredBalances,
   usePrimaryVault,
 } from '@tokenized/sdk-react-private';
-import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 
-function SelectAssetType() {
-  const vault = usePrimaryVault();
-  const vaultId = vault?.id;
+const $ = {
+  'Asset type': (
+    <FormattedMessage
+      defaultMessage="Asset type"
+      description="Asset transfer: Asset type label"
+      id="Z4zU9p"
+    />
+  ),
+  'select...': (
+    <FormattedMessage
+      defaultMessage="select..."
+      description="Asset transfer: Asset type select prompt"
+      id="Z8qLYY"
+    />
+  ),
+};
 
-  const assetBalances = useFilteredBalances(vaultId, {});
+function RenderAssetType({ assetType }) {
+  return (
+    <>
+      <span>{assetType.assetName}</span>
+      <span>{assetType.quantities?.balance.assetCurrency.number}</span>
+    </>
+  );
+}
 
-  const items = assetBalances.data?.map(({ assetName }) => assetName) || [];
-
-  console.log(assetBalances);
+function SelectAssetType({ input, meta }) {
+  const assetBalances = useFilteredBalances(usePrimaryVault()?.id, {});
+  //const items = assetBalances?.data?.map(({ assetName }) => assetName) || [];
+  const items = assetBalances?.data || [];
 
   const {
     isOpen,
@@ -24,21 +46,38 @@ function SelectAssetType() {
     getMenuProps,
     highlightedIndex,
     getItemProps,
-  } = useSelect({ items });
+  } = useSelect({
+    items,
+    onSelectedItemChange: ({ selectedItem }) => input.onChange(selectedItem),
+    itemToString: ({ assetName }) => assetName,
+    selectedItem: input.value,
+  });
   return (
     <div
       className={classNames('dropdown', isOpen && 'is-active')}
-      style={{ display: 'flex', flexDirection: 'column' }}
+      style={{ display: 'block' }}
     >
-      <label {...getLabelProps()}>Asset type:</label>
-      <button type="button" {...getToggleButtonProps()}>
-        {selectedItem || 'select...'}
+      {meta.touched && meta.error && (
+        <span className="has-text-danger is-pulled-right">{meta.error}</span>
+      )}
+      <label {...getLabelProps()}>{$['Asset type']}</label>
+      <button
+        type="button"
+        {...getToggleButtonProps()}
+        className="input"
+        style={{ justifyContent: 'space-between' }}
+      >
+        {selectedItem ? (
+          <RenderAssetType assetType={selectedItem} />
+        ) : (
+          $['select...']
+        )}
       </button>
       <div className="dropdown-menu" style={{ right: 0 }}>
         <div
           className="dropdown-content"
           {...getMenuProps()}
-          style={{ maxHeight: '10em', overflow: 'auto' }}
+          style={{ maxHeight: '20em', overflow: 'auto' }}
         >
           {items.map((item, index) => (
             <a
@@ -46,10 +85,11 @@ function SelectAssetType() {
                 'dropdown-item',
                 highlightedIndex === index && 'is-active',
               )}
-              key={item}
+              key={item.assetName}
               {...getItemProps({ item, index })}
+              style={{ justifyContent: 'space-between', display: 'flex' }}
             >
-              {item}
+              <RenderAssetType assetType={item} />
             </a>
           ))}
         </div>
