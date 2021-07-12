@@ -1,11 +1,17 @@
 import React from 'react';
 import SelectPaymail from './SelectPaymail';
 import SelectAssetType from './SelectAssetType';
-import InputAssetQuantity from './SelectAssetQuantity';
+import InputAssetQuantity from './InputAssetQuantity';
 import { Field, Form } from 'react-final-form';
 import { fieldIsRequired, useValidators } from '../../utils/validators';
 import { FormattedMessage } from 'react-intl';
-import InputAssetMemo from './SelectAssetMemo';
+import InputAssetMemo from './InputAssetMemo';
+import {
+  usePrimaryVault,
+  useSendMaxEstimate,
+} from '@tokenized/sdk-react-private';
+import ChooseSendMax from './ChooseSendMax';
+import FormatQuantity from '../../utils/FormatQuantity';
 
 const $ = {
   'Should be a quantity greater than zero': (
@@ -38,25 +44,67 @@ const $ = {
   ),
 };
 
+const greaterThanZero = (value) =>
+  value < 0 ? $['Should be a quantity greater than zero'] : undefined;
+const notMoreThanMax = (max) => (value) =>
+  value > max ? $['Too much'] : undefined;
+const composeValidators =
+  (...validators) =>
+  (value) =>
+    validators.reduce(
+      (error, validator) => error || validator(value),
+      undefined,
+    );
+
+const SendFormFields = ({
+  values: { assetType: { assetId } = {}, assetMemo, sendMax },
+}) => {
+  const validateRequired = useValidators(fieldIsRequired);
+
+  let maxSendEstimate = useSendMaxEstimate(
+    usePrimaryVault()?.id,
+    assetId,
+    1,
+    assetMemo,
+  );
+
+  return (
+    <>
+      <Field name="to" validate={validateRequired} render={SelectPaymail} />
+      <Field
+        name="assetType"
+        validate={validateRequired}
+        render={SelectAssetType}
+      />
+      <Field
+        name="sendMax"
+        render={ChooseSendMax}
+        max={maxSendEstimate.data?.available}
+      />
+      <Field
+        name="assetQuantity"
+        render={InputAssetQuantity}
+        validate={composeValidators(
+          greaterThanZero,
+          notMoreThanMax(maxSendEstimate.data?.number),
+        )}
+        disabled={sendMax}
+      />
+      <Field name="assetMemo" render={InputAssetMemo} />
+      <div>
+        Miner fee: <FormatQuantity quantity={maxSendEstimate.data?.minerFee} />
+      </div>
+    </>
+  );
+};
+
 const SendModal = ({ close }) => {
   const onSubmit = (data) => console.log('submitted!', data);
-
-  const validateRequired = useValidators(fieldIsRequired);
 
   return (
     <Form
       onSubmit={onSubmit}
-      validate={(values) => {
-        return {
-          assetQuantity: !(values.assetQuantity > 0)
-            ? $['Should be a quantity greater than zero']
-            : values.assetQuantity >
-              values.assetType?.quantities.balance.assetCurrency.number
-            ? $['Too much']
-            : undefined,
-        };
-      }}
-      render={({ handleSubmit }) => (
+      render={({ handleSubmit, hasValidationErrors, submitting, values }) => (
         <form onSubmit={handleSubmit}>
           <div className="modal is-active" style={{ overflow: 'visible ' }}>
             <div className="modal-background" onClick={close}></div>
@@ -71,23 +119,16 @@ const SendModal = ({ close }) => {
               </header>
               <section
                 className="modal-card-body"
-                style={{ overflow: 'visible ' }}
+                style={{ overflow: 'visible' }}
               >
-                <Field
-                  name="to"
-                  validate={validateRequired}
-                  render={SelectPaymail}
-                />
-                <Field
-                  name="assetType"
-                  validate={validateRequired}
-                  render={SelectAssetType}
-                />
-                <Field name="assetQuantity" render={InputAssetQuantity} />
-                <Field name="assetMemo" render={InputAssetMemo} />
+                <SendFormFields values={values} />
               </section>
               <footer className="modal-card-foot">
-                <button className="button is-success" type="submit">
+                <button
+                  className="button is-success"
+                  type="submit"
+                  disabled={submitting || hasValidationErrors}
+                >
                   {$['Review']}
                 </button>
                 <button className="button" onClick={close}>

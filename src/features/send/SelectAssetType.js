@@ -6,6 +6,7 @@ import {
   usePrimaryVault,
 } from '@tokenized/sdk-react-private';
 import { FormattedMessage } from 'react-intl';
+import FormatQuantity from '../../utils/FormatQuantity';
 
 const $ = {
   'Asset type': (
@@ -28,7 +29,12 @@ function RenderAssetType({ assetType }) {
   return (
     <>
       <span>{assetType.assetName}</span>
-      <span>{assetType.quantities?.balance.assetCurrency.number}</span>
+      <span>
+        <FormatQuantity
+          quantity={assetType.quantities?.balance}
+          showCouponName={false}
+        />
+      </span>
     </>
   );
 }

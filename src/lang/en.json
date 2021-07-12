@@ -35,6 +35,10 @@
     "defaultMessage": "Verification code",
     "description": "Verify account input field label: email verification code"
   },
+  "2boX6x": {
+    "defaultMessage": "Review",
+    "description": "Asset transfer: review button"
+  },
   "2vbsAo": {
     "defaultMessage": "Contracts",
     "description": "Contracts page title"
@@ -63,6 +67,10 @@
     "defaultMessage": "That handle is already in use",
     "description": "New account field validation error: handle in use"
   },
+  "5ELeq9": {
+    "defaultMessage": "Memo - optional message sent with transaction",
+    "description": "Asset transfer: input field label: memo - optional message sent with transaction"
+  },
   "5Kq5jW": {
     "defaultMessage": "Checking seed phrase has been recorded",
     "description": "Log-in status: Checking seed phrase backup"
@@ -74,6 +82,10 @@
   "6amK0i": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "The app’s browser page title"
+  },
+  "6dfGQZ": {
+    "defaultMessage": "To",
+    "description": "Asset transfer: input field label: paymail address of transfer target"
   },
   "7BgPWf": {
     "defaultMessage": "Continue",
@@ -259,6 +271,10 @@
     "defaultMessage": "Confirm registered email",
     "description": "Forgot passphrase confirm email title"
   },
+  "RcSq+h": {
+    "defaultMessage": "max: {max} ≈ {maxConvert}",
+    "description": "Asset transfer: asset transfer maximum in original units and display currency"
+  },
   "SIRX3t": {
     "defaultMessage": "Reset your passphrase",
     "description": "Reset passphrase screen subtitle"
@@ -335,9 +351,17 @@
     "defaultMessage": "Please sign in with your Tokenized account credentials",
     "description": "Sign in screen ready subtitle"
   },
+  "Z4zU9p": {
+    "defaultMessage": "Asset type",
+    "description": "Asset transfer: Asset type label"
+  },
   "Z5nasz": {
     "defaultMessage": "Create account",
     "description": "New account create button"
+  },
+  "Z8qLYY": {
+    "defaultMessage": "select...",
+    "description": "Asset transfer: Asset type select prompt"
   },
   "ZCEz8Q": {
     "defaultMessage": "Confirm your identity in the authenticator app",
@@ -350,6 +374,10 @@
   "a7iBE2": {
     "defaultMessage": "Phone",
     "description": "Login identification method selection: use your phone number"
+  },
+  "aoZTnl": {
+    "defaultMessage": "Too much",
+    "description": "Asset transfer: error message: quantity larger than available assets"
   },
   "b37V5u": {
     "defaultMessage": "Back",
@@ -374,6 +402,10 @@
   "emC2Xv": {
     "defaultMessage": "This is the master key to your account. <veryImportantText>Do not share these words with anyone</veryImportantText>. Carefully write down all 24 words, or copy them into a password manager.",
     "description": "Back up seed phrase instructions"
+  },
+  "f1KzmK": {
+    "defaultMessage": "Asset quantity",
+    "description": "Asset transfer: input field label: asset quantity"
   },
   "fFkbdo": {
     "defaultMessage": "Next",
@@ -411,6 +443,10 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "New account screen title"
   },
+  "iBTSzG": {
+    "defaultMessage": "Cancel",
+    "description": "Asset transfer: cancel button"
+  },
   "iQHcoy": {
     "defaultMessage": "Cancel",
     "description": "Forgot passphrase cancel button"
@@ -438,6 +474,14 @@
   "l1Zi41": {
     "defaultMessage": "Show phrase",
     "description": "Back up seed phrase confirm button"
+  },
+  "mZ+5PJ": {
+    "defaultMessage": "Should be a quantity greater than zero",
+    "description": "Asset transfer: error message: asset quantity should be greater than zero"
+  },
+  "mi6NAe": {
+    "defaultMessage": "Send maximum quantity",
+    "description": "Asset transfer: input field label: Send maximum quantity (checkbox yes/no)"
   },
   "n0cMeX": {
     "defaultMessage": "Doesn’t match entered passphrase",
