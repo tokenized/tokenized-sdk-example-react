@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SelectPaymail from './SelectPaymail';
 import SelectAssetType from './SelectAssetType';
 import InputAssetQuantity from './InputAssetQuantity';
@@ -7,11 +7,15 @@ import { fieldIsRequired, useValidators } from '../../utils/validators';
 import { FormattedMessage } from 'react-intl';
 import InputAssetMemo from './InputAssetMemo';
 import {
+  useConfirmSendAsset,
+  usePrepareSendAsset,
   usePrimaryVault,
   useSendMaxEstimate,
+  useTokenizedApi,
 } from '@tokenized/sdk-react-private';
 import ChooseSendMax from './ChooseSendMax';
 import FormatQuantity from '../../utils/FormatQuantity';
+import { useMutation } from 'react-query';
 
 const $ = {
   'Should be a quantity greater than zero': (
@@ -35,6 +39,13 @@ const $ = {
       id="2boX6x"
     />
   ),
+  Confirm: (
+    <FormattedMessage
+      defaultMessage="Confirm"
+      description="Asset transfer: confirm button"
+      id="qvvZcz"
+    />
+  ),
   Cancel: (
     <FormattedMessage
       defaultMessage="Cancel"
@@ -42,22 +53,102 @@ const $ = {
       id="iBTSzG"
     />
   ),
+  'Estimated miner fee': (
+    <FormattedMessage
+      defaultMessage="Estimated miner fee"
+      description="Asset transfer: label for estimation of miner transfer fee"
+      id="BnZgJS"
+    />
+  ),
+  To: (
+    <FormattedMessage
+      defaultMessage="To"
+      description="Asset transfer: review details: label for send target"
+      id="MGVbsq"
+    />
+  ),
+  To: (
+    <FormattedMessage
+      defaultMessage="To"
+      description="Asset transfer: review details: label for send target"
+      id="MGVbsq"
+    />
+  ),
+  Asset: (
+    <FormattedMessage
+      defaultMessage="Asset"
+      description="Asset transfer: review details: label for asset to send"
+      id="kxcjH1"
+    />
+  ),
+  Quantity: (
+    <FormattedMessage
+      defaultMessage="Quantity"
+      description="Asset transfer: review details: label for asset quantity to send"
+      id="AHUNQG"
+    />
+  ),
+  maximum: (
+    <FormattedMessage
+      defaultMessage="maximum"
+      description="Asset transfer: review details: indicator that the maximum will be sent"
+      id="p3amHf"
+    />
+  ),
+  Memo: (
+    <FormattedMessage
+      defaultMessage="Memo"
+      description="Asset transfer: review details: label for memo to add to transfer"
+      id="f5SHXC"
+    />
+  ),
+  Fee: (
+    <FormattedMessage
+      defaultMessage="Fee"
+      description="Asset transfer: review details: label for computed fee for transfer"
+      id="00bEzj"
+    />
+  ),
+};
+
+const SendShowConfirmation = ({
+  values: {
+    assetType: { assetName } = {},
+    assetQuantity,
+    assetMemo,
+    sendMax,
+    to,
+  },
+  fee,
+}) => {
+  return (
+    <div>
+      <div>
+        {$['To']}: {to}
+      </div>
+      <div>
+        {$['Asset']}: {assetName}
+      </div>
+      <div>
+        {$['Quantity']}: {sendMax ? $['maximum'] : assetQuantity}
+      </div>
+      <div>
+        {$['Memo']}: {assetMemo}
+      </div>
+      <div>
+        {$['Fee']}: <FormatQuantity quantity={fee} />
+      </div>
+    </div>
+  );
 };
 
 const greaterThanZero = (value) =>
-  value < 0 ? $['Should be a quantity greater than zero'] : undefined;
-const notMoreThanMax = (max) => (value) =>
-  value > max ? $['Too much'] : undefined;
-const composeValidators =
-  (...validators) =>
-  (value) =>
-    validators.reduce(
-      (error, validator) => error || validator(value),
-      undefined,
-    );
+  value > 0 ? undefined : $['Should be a quantity greater than zero'];
+const notMoreThan = (max) => (value) => value > max ? $['Too much'] : undefined;
 
 const SendFormFields = ({
-  values: { assetType: { assetId } = {}, assetMemo, sendMax },
+  values: { assetType: { assetId } = {}, assetMemo, sendMax, assetQuantity },
+  disabled,
 }) => {
   const validateRequired = useValidators(fieldIsRequired);
 
@@ -75,6 +166,7 @@ const SendFormFields = ({
         name="assetType"
         validate={validateRequired}
         render={SelectAssetType}
+        disabled={disabled}
       />
       <Field
         name="sendMax"
@@ -84,26 +176,65 @@ const SendFormFields = ({
       <Field
         name="assetQuantity"
         render={InputAssetQuantity}
-        validate={composeValidators(
-          greaterThanZero,
-          notMoreThanMax(maxSendEstimate.data?.number),
-        )}
         disabled={sendMax}
+        validate={notMoreThan(maxSendEstimate.data?.available?.number)}
       />
       <Field name="assetMemo" render={InputAssetMemo} />
       <div>
-        Miner fee: <FormatQuantity quantity={maxSendEstimate.data?.minerFee} />
+        {$['Estimated miner fee']}:
+        <FormatQuantity quantity={maxSendEstimate.data?.minerFee} />
       </div>
     </>
   );
 };
 
 const SendModal = ({ close }) => {
-  const onSubmit = (data) => console.log('submitted!', data);
+  const submit = usePrepareSendAsset();
+  const confirm = useConfirmSendAsset();
+  let vaultId = usePrimaryVault()?.id;
+
+  const [pending, setPending] = useState(null);
+
+  const onSubmit = async (data) => {
+    if (!pending) {
+      let assetId = data.assetType.assetId;
+      let description = data.assetMemo;
+      let recipients = [
+        {
+          amount: data.assetQuantity,
+          sendMax: data.sendMax,
+          handle: data.to,
+        },
+      ];
+      let sendRequest = await submit.mutateAsync({
+        vaultId,
+        assetId,
+        description,
+        recipients,
+      });
+
+      setPending(sendRequest);
+
+      console.log('Send request', sendRequest);
+    } else {
+      let sendResult = await confirm.mutateAsync(pending);
+
+      console.log('submitted!', data, pending, sendResult);
+      close();
+    }
+  };
 
   return (
     <Form
       onSubmit={onSubmit}
+      validate={(values) => {
+        let errors = {};
+        errors.assetQuantity = values.sendMax
+          ? undefined
+          : greaterThanZero(values.assetQuantity); /* ||
+            notMoreThan(maxSendEstimate.data?.available?.number)(value)*/
+        return errors;
+      }}
       render={({ handleSubmit, hasValidationErrors, submitting, values }) => (
         <form onSubmit={handleSubmit}>
           <div className="modal is-active" style={{ overflow: 'visible ' }}>
@@ -121,7 +252,11 @@ const SendModal = ({ close }) => {
                 className="modal-card-body"
                 style={{ overflow: 'visible' }}
               >
-                <SendFormFields values={values} />
+                {pending ? (
+                  <SendShowConfirmation values={values} fee={pending.fee} />
+                ) : (
+                  <SendFormFields values={values} />
+                )}
               </section>
               <footer className="modal-card-foot">
                 <button
@@ -129,7 +264,7 @@ const SendModal = ({ close }) => {
                   type="submit"
                   disabled={submitting || hasValidationErrors}
                 >
-                  {$['Review']}
+                  {pending ? $['Confirm'] : $['Review']}
                 </button>
                 <button className="button" onClick={close}>
                   {$['Cancel']}

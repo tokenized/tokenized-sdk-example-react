@@ -33,7 +33,10 @@ function SelectPaymail({ input, meta }) {
     getItemProps,
   } = useCombobox({
     items,
-    onInputValueChange: ({ inputValue }) => setSearch(inputValue),
+    onInputValueChange: ({ inputValue }) => {
+      setSearch(inputValue);
+      onChange(inputValue);
+    },
   });
   return (
     <>
