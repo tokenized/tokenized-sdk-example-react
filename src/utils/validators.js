@@ -8,11 +8,11 @@ export function useValidators(...validators) {
     // aeg to each one), and return the first error, or
     // undefined if they all pass
     (...validateArgs) =>
-      validators.reduce(
-        (error, validator) => error || validator(intl, ...validateArgs),
-        undefined,
-      ),
-    [intl, validators],
+      validators.reduce((error, validator) => {
+        return error || validator(intl, ...validateArgs);
+      }, undefined),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [intl, ...validators],
   );
 }
 
@@ -49,7 +49,7 @@ export const fieldIsNumber = (intl, value) => {
 export function makeFieldIsNotLessThan(min) {
   return (intl, value) => {
     // implies must be number
-    const errorIfNotNumber = fieldIsNumber(value);
+    const errorIfNotNumber = fieldIsNumber(intl, value);
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
@@ -71,7 +71,7 @@ export function makeFieldIsNotLessThan(min) {
 export function makeFieldIsNotMoreThan(max) {
   return (intl, value) => {
     // implies must be number
-    const errorIfNotNumber = fieldIsNumber(value);
+    const errorIfNotNumber = fieldIsNumber(intl, value);
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
@@ -93,7 +93,7 @@ export function makeFieldIsNotMoreThan(max) {
 export function makeFieldIsMoreThan(min) {
   return (intl, value) => {
     // implies must be number
-    const errorIfNotNumber = fieldIsNumber(value);
+    const errorIfNotNumber = fieldIsNumber(intl, value);
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
