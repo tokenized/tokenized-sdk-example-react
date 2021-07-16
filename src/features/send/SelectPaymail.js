@@ -17,7 +17,7 @@ const $ = {
 function SelectPaymail({ input, meta }) {
   const [search, setSearch] = useState('');
 
-  const handles = useHandles(search);
+  const handles = useHandles(search, { excludeSelf: true });
 
   const items = handles?.data?.map(({ displayHandle }) => displayHandle) || [];
 
