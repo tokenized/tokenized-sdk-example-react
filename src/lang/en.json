@@ -15,6 +15,14 @@
     "defaultMessage": "Title",
     "description": "Contracts table column header: contract title"
   },
+  "/zXPuJ": {
+    "defaultMessage": "Maximum: {max}",
+    "description": "Form field validation failure: number <= max is required"
+  },
+  "00bEzj": {
+    "defaultMessage": "Fee",
+    "description": "Asset transfer: review details: label for computed fee for transfer"
+  },
   "0EfTim": {
     "defaultMessage": "Choose a unique ID for connecting with others and receiving payments",
     "description": "New account handle field help: explanation of paymail"
@@ -103,6 +111,10 @@
     "defaultMessage": "Restore",
     "description": "Account recovery confirm button"
   },
+  "AHUNQG": {
+    "defaultMessage": "Quantity",
+    "description": "Asset transfer: review details: label for asset quantity to send"
+  },
   "BDkKXS": {
     "defaultMessage": "Paymail handle",
     "description": "New account input field label: handle"
@@ -118,6 +130,10 @@
   "Bb9qyJ": {
     "defaultMessage": "Postpone backup",
     "description": "Postpone seed phrase backup title"
+  },
+  "BnZgJS": {
+    "defaultMessage": "Estimated miner fee",
+    "description": "Asset transfer: label for estimation of miner transfer fee"
   },
   "C6Pp9+": {
     "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
@@ -230,6 +246,10 @@
   "LwJoyw": {
     "defaultMessage": "Last name",
     "description": "New account input field label: last name"
+  },
+  "MGVbsq": {
+    "defaultMessage": "To",
+    "description": "Asset transfer: review details: label for send target"
   },
   "N6Mi0p": {
     "defaultMessage": "Begin recovery",
@@ -407,6 +427,10 @@
     "defaultMessage": "Asset quantity",
     "description": "Asset transfer: input field label: asset quantity"
   },
+  "f5SHXC": {
+    "defaultMessage": "Memo",
+    "description": "Asset transfer: review details: label for memo to add to transfer"
+  },
   "fFkbdo": {
     "defaultMessage": "Next",
     "description": "Back up seed phrase next button"
@@ -463,13 +487,13 @@
     "defaultMessage": "Account recovery",
     "description": "Account recovery description title"
   },
-  "kEIuFa": {
-    "defaultMessage": "Maximum: {max, number}",
-    "description": "Form field validation failure: number <= max is required"
-  },
   "kYHpnu": {
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
+  },
+  "kxcjH1": {
+    "defaultMessage": "Asset",
+    "description": "Asset transfer: review details: label for asset to send"
   },
   "l1Zi41": {
     "defaultMessage": "Show phrase",
@@ -503,6 +527,10 @@
     "defaultMessage": "Primary vault",
     "description": "Treasury primary vault tag"
   },
+  "p3amHf": {
+    "defaultMessage": "maximum",
+    "description": "Asset transfer: review details: indicator that the maximum will be sent"
+  },
   "p8/WnA": {
     "defaultMessage": "Checking credentials",
     "description": "Log-in status: Checking credentials"
@@ -522,6 +550,10 @@
   "qq2T4k": {
     "defaultMessage": "Total:",
     "description": "Activity table assets label: total"
+  },
+  "qvvZcz": {
+    "defaultMessage": "Confirm",
+    "description": "Asset transfer: confirm button"
   },
   "r+GVNN": {
     "defaultMessage": "Cancel",

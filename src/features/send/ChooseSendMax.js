@@ -2,16 +2,15 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import FormatCurrency from '../../utils/FormatCurrency';
 import FormatQuantity from '../../utils/FormatQuantity';
+import { findMessage } from '../../utils/messages';
 
-const $ = {
-  'Send maximum quantity': (
-    <FormattedMessage
-      defaultMessage="Send maximum quantity"
-      description="Asset transfer: input field label: Send maximum quantity (checkbox yes/no)"
-      id="mi6NAe"
-    />
-  ),
-};
+const $ = findMessage(
+  <FormattedMessage
+    defaultMessage="Send maximum quantity"
+    description="Asset transfer: input field label: Send maximum quantity (checkbox yes/no)"
+    id="mi6NAe"
+  />,
+);
 
 function ChooseSendMax({ input, max, meta }) {
   return (
@@ -35,7 +34,7 @@ function ChooseSendMax({ input, max, meta }) {
       <label className="checkbox">
         <input type="checkbox" {...input} />
         &nbsp;
-        {$['Send maximum quantity']}
+        {$('Send maximum quantity')}
       </label>
     </div>
   );

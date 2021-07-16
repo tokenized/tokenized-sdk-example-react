@@ -3,7 +3,11 @@ import SelectPaymail from './SelectPaymail';
 import SelectAssetType from './SelectAssetType';
 import InputAssetQuantity from './InputAssetQuantity';
 import { Field, Form } from 'react-final-form';
-import { fieldIsRequired, useValidators } from '../../utils/validators';
+import {
+  fieldIsRequired,
+  makeFieldIsNotMoreThan,
+  useValidators,
+} from '../../utils/validators';
 import { FormattedMessage } from 'react-intl';
 import InputAssetMemo from './InputAssetMemo';
 import {
@@ -11,105 +15,78 @@ import {
   usePrepareSendAsset,
   usePrimaryVault,
   useSendMaxEstimate,
-  useTokenizedApi,
 } from '@tokenized/sdk-react-private';
 import ChooseSendMax from './ChooseSendMax';
 import FormatQuantity from '../../utils/FormatQuantity';
-import { useMutation } from 'react-query';
+import { findMessage } from '../../utils/messages';
 
-const $ = {
-  'Should be a quantity greater than zero': (
-    <FormattedMessage
-      defaultMessage="Should be a quantity greater than zero"
-      description="Asset transfer: error message: asset quantity should be greater than zero"
-      id="mZ+5PJ"
-    />
-  ),
-  'Too much': (
-    <FormattedMessage
-      defaultMessage="Too much"
-      description="Asset transfer: error message: quantity larger than available assets"
-      id="aoZTnl"
-    />
-  ),
-  Review: (
-    <FormattedMessage
-      defaultMessage="Review"
-      description="Asset transfer: review button"
-      id="2boX6x"
-    />
-  ),
-  Confirm: (
-    <FormattedMessage
-      defaultMessage="Confirm"
-      description="Asset transfer: confirm button"
-      id="qvvZcz"
-    />
-  ),
-  Cancel: (
-    <FormattedMessage
-      defaultMessage="Cancel"
-      description="Asset transfer: cancel button"
-      id="iBTSzG"
-    />
-  ),
-  'Estimated miner fee': (
-    <FormattedMessage
-      defaultMessage="Estimated miner fee"
-      description="Asset transfer: label for estimation of miner transfer fee"
-      id="BnZgJS"
-    />
-  ),
-  To: (
-    <FormattedMessage
-      defaultMessage="To"
-      description="Asset transfer: review details: label for send target"
-      id="MGVbsq"
-    />
-  ),
-  To: (
-    <FormattedMessage
-      defaultMessage="To"
-      description="Asset transfer: review details: label for send target"
-      id="MGVbsq"
-    />
-  ),
-  Asset: (
-    <FormattedMessage
-      defaultMessage="Asset"
-      description="Asset transfer: review details: label for asset to send"
-      id="kxcjH1"
-    />
-  ),
-  Quantity: (
-    <FormattedMessage
-      defaultMessage="Quantity"
-      description="Asset transfer: review details: label for asset quantity to send"
-      id="AHUNQG"
-    />
-  ),
-  maximum: (
-    <FormattedMessage
-      defaultMessage="maximum"
-      description="Asset transfer: review details: indicator that the maximum will be sent"
-      id="p3amHf"
-    />
-  ),
-  Memo: (
-    <FormattedMessage
-      defaultMessage="Memo"
-      description="Asset transfer: review details: label for memo to add to transfer"
-      id="f5SHXC"
-    />
-  ),
-  Fee: (
-    <FormattedMessage
-      defaultMessage="Fee"
-      description="Asset transfer: review details: label for computed fee for transfer"
-      id="00bEzj"
-    />
-  ),
-};
+const $ = findMessage(
+  <FormattedMessage
+    defaultMessage="Should be a quantity greater than zero"
+    description="Asset transfer: error message: asset quantity should be greater than zero"
+    id="mZ+5PJ"
+  />,
+  <FormattedMessage
+    defaultMessage="Too much"
+    description="Asset transfer: error message: quantity larger than available assets"
+    id="aoZTnl"
+  />,
+  <FormattedMessage
+    defaultMessage="Review"
+    description="Asset transfer: review button"
+    id="2boX6x"
+  />,
+  <FormattedMessage
+    defaultMessage="Confirm"
+    description="Asset transfer: confirm button"
+    id="qvvZcz"
+  />,
+  <FormattedMessage
+    defaultMessage="Cancel"
+    description="Asset transfer: cancel button"
+    id="iBTSzG"
+  />,
+  <FormattedMessage
+    defaultMessage="Estimated miner fee"
+    description="Asset transfer: label for estimation of miner transfer fee"
+    id="BnZgJS"
+  />,
+  <FormattedMessage
+    defaultMessage="To"
+    description="Asset transfer: review details: label for send target"
+    id="MGVbsq"
+  />,
+  <FormattedMessage
+    defaultMessage="To"
+    description="Asset transfer: review details: label for send target"
+    id="MGVbsq"
+  />,
+  <FormattedMessage
+    defaultMessage="Asset"
+    description="Asset transfer: review details: label for asset to send"
+    id="kxcjH1"
+  />,
+  <FormattedMessage
+    defaultMessage="Quantity"
+    description="Asset transfer: review details: label for asset quantity to send"
+    id="AHUNQG"
+  />,
+  <FormattedMessage
+    defaultMessage="maximum"
+    description="Asset transfer: review details: indicator that the maximum will be sent"
+    id="p3amHf"
+  />,
+  <FormattedMessage
+    defaultMessage="Memo"
+    description="Asset transfer: review details: label for memo to add to transfer"
+    id="f5SHXC"
+  />,
+  <FormattedMessage
+    defaultMessage="Fee"
+    description="Asset transfer: review details: label for computed fee for transfer"
+    id="00bEzj"
+  />,
+);
 
 const SendShowConfirmation = ({
   values: {
@@ -124,30 +101,29 @@ const SendShowConfirmation = ({
   return (
     <div>
       <div>
-        {$['To']}: {to}
+        {$('To')}: {to}
       </div>
       <div>
-        {$['Asset']}: {assetName}
+        {$('Asset')}: {assetName}
       </div>
       <div>
-        {$['Quantity']}: {sendMax ? $['maximum'] : assetQuantity}
+        {$('Quantity')}: {sendMax ? $('maximum') : assetQuantity}
       </div>
       <div>
-        {$['Memo']}: {assetMemo}
+        {$('Memo')}: {assetMemo}
       </div>
       <div>
-        {$['Fee']}: <FormatQuantity quantity={fee} />
+        {$('Fee')}: <FormatQuantity quantity={fee} />
       </div>
     </div>
   );
 };
 
 const greaterThanZero = (value) =>
-  value > 0 ? undefined : $['Should be a quantity greater than zero'];
-const notMoreThan = (max) => (value) => value > max ? $['Too much'] : undefined;
+  value > 0 ? undefined : $('Should be a quantity greater than zero');
 
 const SendFormFields = ({
-  values: { assetType: { assetId } = {}, assetMemo, sendMax, assetQuantity },
+  values: { assetType: { assetId } = {}, assetMemo, sendMax },
   disabled,
 }) => {
   const validateRequired = useValidators(fieldIsRequired);
@@ -157,6 +133,7 @@ const SendFormFields = ({
     assetId,
     1,
     assetMemo,
+    { enabled: !!assetId },
   );
 
   return (
@@ -177,13 +154,17 @@ const SendFormFields = ({
         name="assetQuantity"
         render={InputAssetQuantity}
         disabled={sendMax}
-        validate={notMoreThan(maxSendEstimate.data?.available?.number)}
+        validate={useValidators(
+          makeFieldIsNotMoreThan(maxSendEstimate.data?.available?.number),
+        )}
       />
       <Field name="assetMemo" render={InputAssetMemo} />
-      <div>
-        {$['Estimated miner fee']}:
-        <FormatQuantity quantity={maxSendEstimate.data?.minerFee} />
-      </div>
+      {!!maxSendEstimate.data?.minerFee.number && (
+        <div>
+          {$('Estimated miner fee')}:
+          <FormatQuantity quantity={maxSendEstimate.data?.minerFee} />
+        </div>
+      )}
     </>
   );
 };
@@ -214,12 +195,9 @@ const SendModal = ({ close }) => {
       });
 
       setPending(sendRequest);
-
-      console.log('Send request', sendRequest);
     } else {
-      let sendResult = await confirm.mutateAsync(pending);
+      await confirm.mutateAsync(pending);
 
-      console.log('submitted!', data, pending, sendResult);
       close();
     }
   };
@@ -264,10 +242,10 @@ const SendModal = ({ close }) => {
                   type="submit"
                   disabled={submitting || hasValidationErrors}
                 >
-                  {pending ? $['Confirm'] : $['Review']}
+                  {pending ? $('Confirm') : $('Review')}
                 </button>
                 <button className="button" onClick={close}>
-                  {$['Cancel']}
+                  {$('Cancel')}
                 </button>
               </footer>
             </div>

@@ -49,7 +49,7 @@ export const fieldIsNumber = (intl, value) => {
 export function makeFieldIsNotLessThan(min) {
   return (intl, value) => {
     // implies must be number
-    const errorIfNotNumber = fieldIsNumber(value);
+    const errorIfNotNumber = fieldIsNumber(intl, value);
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
@@ -71,7 +71,7 @@ export function makeFieldIsNotLessThan(min) {
 export function makeFieldIsNotMoreThan(max) {
   return (intl, value) => {
     // implies must be number
-    const errorIfNotNumber = fieldIsNumber(value);
+    const errorIfNotNumber = fieldIsNumber(intl, value);
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
@@ -80,11 +80,11 @@ export function makeFieldIsNotMoreThan(max) {
     }
     return intl.formatMessage(
       {
-        defaultMessage: 'Maximum: {max, number}',
+        defaultMessage: 'Maximum: {max}',
         description: 'Form field validation failure: number <= max is required',
-        id: 'kEIuFa',
+        id: '/zXPuJ',
       },
-      { max },
+      { max: max.toString() },
     );
   };
 }

@@ -3,16 +3,15 @@ import { useCombobox } from 'downshift';
 import { useHandles } from '@tokenized/sdk-react-private';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
+import { findMessage } from '../../utils/messages';
 
-const $ = {
-  To: (
-    <FormattedMessage
-      defaultMessage="To"
-      description="Asset transfer: input field label: paymail address of transfer target"
-      id="6dfGQZ"
-    />
-  ),
-};
+const $ = findMessage(
+  <FormattedMessage
+    defaultMessage="To"
+    description="Asset transfer: input field label: paymail address of transfer target"
+    id="6dfGQZ"
+  />,
+);
 
 function SelectPaymail({ input, meta }) {
   const [search, setSearch] = useState('');
@@ -51,7 +50,7 @@ function SelectPaymail({ input, meta }) {
             </span>
           )}
           <label className="label" {...getLabelProps()}>
-            {$['To']}
+            {$('To')}
           </label>
           <div className="control">
             <input

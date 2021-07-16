@@ -7,23 +7,20 @@ import {
 } from '@tokenized/sdk-react-private';
 import { FormattedMessage } from 'react-intl';
 import FormatQuantity from '../../utils/FormatQuantity';
+import { findMessage } from '../../utils/messages';
 
-const $ = {
-  'Asset type': (
-    <FormattedMessage
-      defaultMessage="Asset type"
-      description="Asset transfer: Asset type label"
-      id="Z4zU9p"
-    />
-  ),
-  'select...': (
-    <FormattedMessage
-      defaultMessage="select..."
-      description="Asset transfer: Asset type select prompt"
-      id="Z8qLYY"
-    />
-  ),
-};
+const $ = findMessage(
+  <FormattedMessage
+    defaultMessage="Asset type"
+    description="Asset transfer: Asset type label"
+    id="Z4zU9p"
+  />,
+  <FormattedMessage
+    defaultMessage="select..."
+    description="Asset transfer: Asset type select prompt"
+    id="Z8qLYY"
+  />,
+);
 
 function RenderAssetType({ assetType }) {
   return (
@@ -67,7 +64,7 @@ function SelectAssetType({ input, meta }) {
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
       <label className="label" {...getLabelProps()}>
-        {$['Asset type']}
+        {$('Asset type')}
       </label>
       <div className="control">
         <button
@@ -79,7 +76,7 @@ function SelectAssetType({ input, meta }) {
           {selectedItem ? (
             <RenderAssetType assetType={selectedItem} />
           ) : (
-            $['select...']
+            $('select...')
           )}
         </button>
       </div>

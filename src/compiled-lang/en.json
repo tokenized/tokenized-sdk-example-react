@@ -23,6 +23,22 @@
       "value": "Title"
     }
   ],
+  "/zXPuJ": [
+    {
+      "type": 0,
+      "value": "Maximum: "
+    },
+    {
+      "type": 1,
+      "value": "max"
+    }
+  ],
+  "00bEzj": [
+    {
+      "type": 0,
+      "value": "Fee"
+    }
+  ],
   "0EfTim": [
     {
       "type": 0,
@@ -155,6 +171,12 @@
       "value": "Restore"
     }
   ],
+  "AHUNQG": [
+    {
+      "type": 0,
+      "value": "Quantity"
+    }
+  ],
   "BDkKXS": [
     {
       "type": 0,
@@ -177,6 +199,12 @@
     {
       "type": 0,
       "value": "Postpone backup"
+    }
+  ],
+  "BnZgJS": [
+    {
+      "type": 0,
+      "value": "Estimated miner fee"
     }
   ],
   "C6Pp9+": [
@@ -367,6 +395,12 @@
     {
       "type": 0,
       "value": "Last name"
+    }
+  ],
+  "MGVbsq": [
+    {
+      "type": 0,
+      "value": "To"
     }
   ],
   "N6Mi0p": [
@@ -668,6 +702,12 @@
       "value": "Asset quantity"
     }
   ],
+  "f5SHXC": [
+    {
+      "type": 0,
+      "value": "Memo"
+    }
+  ],
   "fFkbdo": [
     {
       "type": 0,
@@ -752,21 +792,16 @@
       "value": "Account recovery"
     }
   ],
-  "kEIuFa": [
-    {
-      "type": 0,
-      "value": "Maximum: "
-    },
-    {
-      "style": null,
-      "type": 2,
-      "value": "max"
-    }
-  ],
   "kYHpnu": [
     {
       "type": 0,
       "value": "Issued"
+    }
+  ],
+  "kxcjH1": [
+    {
+      "type": 0,
+      "value": "Asset"
     }
   ],
   "l1Zi41": [
@@ -817,6 +852,12 @@
       "value": "Primary vault"
     }
   ],
+  "p3amHf": [
+    {
+      "type": 0,
+      "value": "maximum"
+    }
+  ],
   "p8/WnA": [
     {
       "type": 0,
@@ -855,6 +896,12 @@
     {
       "type": 0,
       "value": "Total:"
+    }
+  ],
+  "qvvZcz": [
+    {
+      "type": 0,
+      "value": "Confirm"
     }
   ],
   "r+GVNN": [

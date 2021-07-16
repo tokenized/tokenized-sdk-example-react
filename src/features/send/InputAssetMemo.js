@@ -1,15 +1,14 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { findMessage } from '../../utils/messages';
 
-const $ = {
-  'Memo - optional message sent with transaction': (
-    <FormattedMessage
-      defaultMessage="Memo - optional message sent with transaction"
-      description="Asset transfer: input field label: memo - optional message sent with transaction"
-      id="5ELeq9"
-    />
-  ),
-};
+const $ = findMessage(
+  <FormattedMessage
+    defaultMessage="Memo - optional message sent with transaction"
+    description="Asset transfer: input field label: memo - optional message sent with transaction"
+    id="5ELeq9"
+  />,
+);
 
 function InputAssetMemo({ input, meta }) {
   return (
@@ -18,7 +17,7 @@ function InputAssetMemo({ input, meta }) {
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
       <label className="label">
-        {$['Memo - optional message sent with transaction']}
+        {$('Memo - optional message sent with transaction')}
         <div className="control">
           <input className="input" {...input} />
         </div>
