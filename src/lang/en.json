@@ -283,6 +283,10 @@
     "defaultMessage": "Cancel",
     "description": "New account cancel button"
   },
+  "Qt4tZb": {
+    "defaultMessage": "Send",
+    "description": "Label for button to open dialog to send assets"
+  },
   "RAmj2a": {
     "defaultMessage": "Create a new account",
     "description": "New account screen subtitle"

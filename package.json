@@ -35,6 +35,7 @@
     "build": "webpack --mode=production --config webpack.config.js",
     "extract-strings": "formatjs extract 'src/**/*.js' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
     "compile-strings": "formatjs compile-folder --ast src/lang src/compiled-lang",
+    "generate-files": "npm run extract-strings && npm run compile-strings",
     "format-all": "prettier --write ."
   },
   "eslintConfig": {
