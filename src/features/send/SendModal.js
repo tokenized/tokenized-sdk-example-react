@@ -15,6 +15,7 @@ import {
   usePrepareSendAsset,
   usePrimaryVault,
   useSendMaxEstimate,
+  useTokenizedApi,
 } from '@tokenized/sdk-react-private';
 import ChooseSendMax from './ChooseSendMax';
 import FormatQuantity from '../../utils/FormatQuantity';
@@ -50,11 +51,6 @@ const $ = findMessage(
     defaultMessage="Estimated miner fee"
     description="Asset transfer: label for estimation of miner transfer fee"
     id="BnZgJS"
-  />,
-  <FormattedMessage
-    defaultMessage="To"
-    description="Asset transfer: review details: label for send target"
-    id="MGVbsq"
   />,
   <FormattedMessage
     defaultMessage="To"
@@ -170,8 +166,9 @@ const SendFormFields = ({
 };
 
 const SendModal = ({ close }) => {
-  const submit = usePrepareSendAsset();
+  const prepare = usePrepareSendAsset();
   const confirm = useConfirmSendAsset();
+  const tokenizedApi = useTokenizedApi();
   let vaultId = usePrimaryVault()?.id;
 
   const [pending, setPending] = useState(null);
@@ -187,7 +184,7 @@ const SendModal = ({ close }) => {
           handle: data.to,
         },
       ];
-      let sendRequest = await submit.mutateAsync({
+      let sendRequest = await prepare.mutateAsync({
         vaultId,
         assetId,
         description,
@@ -197,7 +194,7 @@ const SendModal = ({ close }) => {
       setPending(sendRequest);
     } else {
       await confirm.mutateAsync(pending);
-
+      tokenizedApi.transfers.afterSendAsset();
       close();
     }
   };
