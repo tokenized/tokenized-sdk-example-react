@@ -205,14 +205,11 @@ const SendModal = ({ close }) => {
   return (
     <Form
       onSubmit={onSubmit}
-      validate={(values) => {
-        let errors = {};
-        errors.assetQuantity = values.sendMax
+      validate={(values) => ({
+        assetQuantity: values.sendMax
           ? undefined
-          : greaterThanZero(values.assetQuantity); /* ||
-            notMoreThan(maxSendEstimate.data?.available?.number)(value)*/
-        return errors;
-      }}
+          : greaterThanZero(values.assetQuantity),
+      })}
       render={({ handleSubmit, hasValidationErrors, submitting, values }) => (
         <form onSubmit={handleSubmit}>
           <div className="modal is-active" style={{ overflow: 'visible ' }}>

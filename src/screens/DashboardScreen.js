@@ -108,8 +108,7 @@ function DashboardScreen({ children }) {
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
-              <SendButton/>
-
+              <SendButton />
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">
