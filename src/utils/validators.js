@@ -84,7 +84,7 @@ export function makeFieldIsNotMoreThan(max) {
         description: 'Form field validation failure: number <= max is required',
         id: '/zXPuJ',
       },
-      { max: max.toString() },
+      { max: `${max}` },
     );
   };
 }

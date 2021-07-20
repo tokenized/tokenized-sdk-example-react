@@ -3,6 +3,7 @@ import SelectPaymail from './SelectPaymail';
 import SelectAssetType from './SelectAssetType';
 import InputAssetQuantity from './InputAssetQuantity';
 import { Field, Form } from 'react-final-form';
+import { FORM_ERROR } from 'final-form';
 import {
   fieldIsRequired,
   makeFieldIsNotMoreThan,
@@ -155,12 +156,16 @@ const SendFormFields = ({
         )}
       />
       <Field name="assetMemo" render={InputAssetMemo} />
-      {!!maxSendEstimate.data?.minerFee.number && (
-        <div>
-          {$('Estimated miner fee')}:
-          <FormatQuantity quantity={maxSendEstimate.data?.minerFee} />
-        </div>
-      )}
+      <div
+        style={{
+          visibility: maxSendEstimate.data?.minerFee.number
+            ? 'visible'
+            : 'hidden',
+        }}
+      >
+        {$('Estimated miner fee')}:
+        <FormatQuantity quantity={maxSendEstimate.data?.minerFee} />
+      </div>
     </>
   );
 };
@@ -174,28 +179,33 @@ const SendModal = ({ close }) => {
   const [pending, setPending] = useState(null);
 
   const onSubmit = async (data) => {
-    if (!pending) {
-      let assetId = data.assetType.assetId;
-      let description = data.assetMemo;
-      let recipients = [
-        {
-          amount: data.assetQuantity,
-          sendMax: data.sendMax,
-          handle: data.to,
-        },
-      ];
-      let sendRequest = await prepare.mutateAsync({
-        vaultId,
-        assetId,
-        description,
-        recipients,
-      });
+    try {
+      if (!pending) {
+        let assetId = data.assetType.assetId;
+        let description = data.assetMemo;
+        let recipients = [
+          {
+            amount: Number(data.assetQuantity),
+            sendMax: data.sendMax,
+            handle: data.to,
+          },
+        ];
+        let sendRequest = await prepare.mutateAsync({
+          vaultId,
+          assetId,
+          description,
+          recipients,
+        });
 
-      setPending(sendRequest);
-    } else {
-      await confirm.mutateAsync(pending);
-      tokenizedApi.transfers.afterSendAsset();
-      close();
+        setPending(sendRequest);
+      } else {
+        await confirm.mutateAsync(pending);
+        tokenizedApi.transfers.afterSendAsset();
+        close();
+      }
+    } catch (error) {
+      console.log(error);
+      return { [FORM_ERROR]: `${error}` };
     }
   };
 
@@ -207,7 +217,13 @@ const SendModal = ({ close }) => {
           ? undefined
           : greaterThanZero(values.assetQuantity),
       })}
-      render={({ handleSubmit, hasValidationErrors, submitting, values }) => (
+      render={({
+        handleSubmit,
+        hasValidationErrors,
+        submitting,
+        values,
+        submitError,
+      }) => (
         <form onSubmit={handleSubmit}>
           <div className="modal is-active" style={{ overflow: 'visible ' }}>
             <div className="modal-background" onClick={close}></div>
@@ -228,6 +244,9 @@ const SendModal = ({ close }) => {
                   <SendShowConfirmation values={values} fee={pending.fee} />
                 ) : (
                   <SendFormFields values={values} />
+                )}
+                {submitError && (
+                  <div className="has-text-danger	">{submitError}</div>
                 )}
               </section>
               <footer className="modal-card-foot">
