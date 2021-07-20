@@ -1,16 +1,8 @@
 import React from 'react';
-import { FormattedDate, FormattedMessage, FormattedNumber } from 'react-intl';
+import { FormattedDate, FormattedMessage } from 'react-intl';
+import FormatQuantity from '../../utils/FormatQuantity';
 
-function FormatQuantity({ quantity: { tokens, assetName, assetCurrency } }) {
-  return tokens ? (
-    `${tokens?.formatted} (${assetName})`
-  ) : (
-    <FormattedNumber
-      value={assetCurrency.number}
-      {...assetCurrency.NumberFormatOptions}
-    />
-  );
-}
+
 
 export function ActivityHeader() {
   return (

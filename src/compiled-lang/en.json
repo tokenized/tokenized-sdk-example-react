@@ -23,6 +23,22 @@
       "value": "Title"
     }
   ],
+  "/zXPuJ": [
+    {
+      "type": 0,
+      "value": "Maximum: "
+    },
+    {
+      "type": 1,
+      "value": "max"
+    }
+  ],
+  "00bEzj": [
+    {
+      "type": 0,
+      "value": "Fee"
+    }
+  ],
   "0EfTim": [
     {
       "type": 0,
@@ -51,6 +67,12 @@
     {
       "type": 0,
       "value": "Verification code"
+    }
+  ],
+  "2boX6x": [
+    {
+      "type": 0,
+      "value": "Review"
     }
   ],
   "2vbsAo": [
@@ -95,6 +117,12 @@
       "value": "That handle is already in use"
     }
   ],
+  "5ELeq9": [
+    {
+      "type": 0,
+      "value": "Memo - optional message sent with transaction"
+    }
+  ],
   "5Kq5jW": [
     {
       "type": 0,
@@ -111,6 +139,12 @@
     {
       "type": 0,
       "value": "Tokenized SDK demo"
+    }
+  ],
+  "6dfGQZ": [
+    {
+      "type": 0,
+      "value": "To"
     }
   ],
   "7BgPWf": [
@@ -137,6 +171,12 @@
       "value": "Restore"
     }
   ],
+  "AHUNQG": [
+    {
+      "type": 0,
+      "value": "Quantity"
+    }
+  ],
   "BDkKXS": [
     {
       "type": 0,
@@ -159,6 +199,12 @@
     {
       "type": 0,
       "value": "Postpone backup"
+    }
+  ],
+  "BnZgJS": [
+    {
+      "type": 0,
+      "value": "Estimated miner fee"
     }
   ],
   "C6Pp9+": [
@@ -351,6 +397,12 @@
       "value": "Last name"
     }
   ],
+  "MGVbsq": [
+    {
+      "type": 0,
+      "value": "To"
+    }
+  ],
   "N6Mi0p": [
     {
       "type": 0,
@@ -399,6 +451,12 @@
       "value": "Cancel"
     }
   ],
+  "Qt4tZb": [
+    {
+      "type": 0,
+      "value": "Send"
+    }
+  ],
   "RAmj2a": [
     {
       "type": 0,
@@ -409,6 +467,24 @@
     {
       "type": 0,
       "value": "Confirm registered email"
+    }
+  ],
+  "RcSq+h": [
+    {
+      "type": 0,
+      "value": "max: "
+    },
+    {
+      "type": 1,
+      "value": "max"
+    },
+    {
+      "type": 0,
+      "value": " ≈ "
+    },
+    {
+      "type": 1,
+      "value": "maxConvert"
     }
   ],
   "SIRX3t": [
@@ -530,10 +606,22 @@
       "value": "Please sign in with your Tokenized account credentials"
     }
   ],
+  "Z4zU9p": [
+    {
+      "type": 0,
+      "value": "Asset type"
+    }
+  ],
   "Z5nasz": [
     {
       "type": 0,
       "value": "Create account"
+    }
+  ],
+  "Z8qLYY": [
+    {
+      "type": 0,
+      "value": "select..."
     }
   ],
   "ZCEz8Q": [
@@ -552,6 +640,12 @@
     {
       "type": 0,
       "value": "Phone"
+    }
+  ],
+  "aoZTnl": [
+    {
+      "type": 0,
+      "value": "Too much"
     }
   ],
   "b37V5u": [
@@ -608,6 +702,18 @@
       "value": ". Carefully write down all 24 words, or copy them into a password manager."
     }
   ],
+  "f1KzmK": [
+    {
+      "type": 0,
+      "value": "Asset quantity"
+    }
+  ],
+  "f5SHXC": [
+    {
+      "type": 0,
+      "value": "Memo"
+    }
+  ],
   "fFkbdo": [
     {
       "type": 0,
@@ -662,6 +768,12 @@
       "value": "Tokenized SDK demo"
     }
   ],
+  "iBTSzG": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
   "iQHcoy": [
     {
       "type": 0,
@@ -686,27 +798,34 @@
       "value": "Account recovery"
     }
   ],
-  "kEIuFa": [
-    {
-      "type": 0,
-      "value": "Maximum: "
-    },
-    {
-      "style": null,
-      "type": 2,
-      "value": "max"
-    }
-  ],
   "kYHpnu": [
     {
       "type": 0,
       "value": "Issued"
     }
   ],
+  "kxcjH1": [
+    {
+      "type": 0,
+      "value": "Asset"
+    }
+  ],
   "l1Zi41": [
     {
       "type": 0,
       "value": "Show phrase"
+    }
+  ],
+  "mZ+5PJ": [
+    {
+      "type": 0,
+      "value": "Should be a quantity greater than zero"
+    }
+  ],
+  "mi6NAe": [
+    {
+      "type": 0,
+      "value": "Send maximum quantity"
     }
   ],
   "n0cMeX": [
@@ -737,6 +856,12 @@
     {
       "type": 0,
       "value": "Primary vault"
+    }
+  ],
+  "p3amHf": [
+    {
+      "type": 0,
+      "value": "maximum"
     }
   ],
   "p8/WnA": [
@@ -777,6 +902,12 @@
     {
       "type": 0,
       "value": "Total:"
+    }
+  ],
+  "qvvZcz": [
+    {
+      "type": 0,
+      "value": "Confirm"
     }
   ],
   "r+GVNN": [

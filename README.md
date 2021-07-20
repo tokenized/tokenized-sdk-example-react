@@ -161,6 +161,10 @@ Tokenized JavaScript SDK bindings for React
   - [.useFilteredBalances(vaultId, filterOptions)](#module_@tokenized/sdk-react-private.useFilteredBalances)
     ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
   - [.useActivity(filters)](#module_@tokenized/sdk-react-private.useActivity)
+  - [.useHandles(search, filters)](#module_@tokenized/sdk-react-private.useHandles)
+  - [.useSendMaxEstimate(search, filters)](#module_@tokenized/sdk-react-private.useSendMaxEstimate)
+  - [.usePrepareSendAsset()](#module_@tokenized/sdk-react-private.usePrepareSendAsset)
+  - [.useConfirmSendAsset()](#module_@tokenized/sdk-react-private.useConfirmSendAsset)
 
 <a name="module_@tokenized/sdk-react-private.TokenizedApiProvider"></a>
 
@@ -825,10 +829,12 @@ function FormatQuantity({ quantity }) {
 
 ### @tokenized/sdk-react-private.useActivity(filters)
 
-**`React hook`** Filtered and sorted list of the activity of the default profile
-of an account.
+**`React Query hook`** Filtered and sorted list of the activity of the default
+profile of an account.
 
-Each object in the results array describes an event:
+See https://react-query.tanstack.com/guides/queries
+
+Each object in the data array describes an event:
 
 - `txId`: Transaction Id
 - `dateCreated`: Time of event (in milliseconds since Unix epoch)
@@ -890,6 +896,102 @@ Will be refreshed automatically **every 60 seconds**.
 | filters         | <code>Object</code>  | Filters                                                                                                                                                 |
 | filters.pending | <code>boolean</code> | Only return pending activities (by default all are returned). Pending activities are awaiting action by the activity owner, counterparty or smart agent |
 
+<a name="module_@tokenized/sdk-react-private.useHandles"></a>
+
+### @tokenized/sdk-react-private.useHandles(search, filters)
+
+**`React Query hook`** Filtered list of paymail handles matching a search term
+
+See https://react-query.tanstack.com/guides/queries
+
+Each object in the data array describes a paymail handle:
+
+- `displayHandle`: Full-length paymail handle of the associated entity.
+- `displayName`: Display name of the associated entity.
+- `isActive`: true if this handle is active or false if it has been deactivated
+  and shouldn't be used.
+- `avatarURL`: Full URL to the entity's avatar image.
+
+Will be refreshed automatically **every 60 seconds**.
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
+
+| Param               | Type                 | Description                         |
+| ------------------- | -------------------- | ----------------------------------- |
+| search              | <code>String</code>  | Search text                         |
+| filters             | <code>Object</code>  | Filters                             |
+| filters.excludeSelf | <code>boolean</code> | Exclude logged in user from results |
+
+<a name="module_@tokenized/sdk-react-private.useSendMaxEstimate"></a>
+
+### @tokenized/sdk-react-private.useSendMaxEstimate(search, filters)
+
+**`React Query hook`** Filtered list of paymail handles matching a search term
+
+See https://react-query.tanstack.com/guides/queries
+
+Each object in the data array describes a paymail handle:
+
+- `displayHandle`: Full-length paymail handle of the associated entity.
+- `displayName`: Display name of the associated entity.
+- `isActive`: true if this handle is active or false if it has been deactivated
+  and shouldn't be used.
+- `avatarURL`: Full URL to the entity's avatar image.
+
+Will be refreshed automatically **every 60 seconds**.
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
+
+| Param               | Type                 | Description                         |
+| ------------------- | -------------------- | ----------------------------------- |
+| search              | <code>String</code>  | Search text                         |
+| filters             | <code>Object</code>  | Filters                             |
+| filters.excludeSelf | <code>boolean</code> | Exclude logged in user from results |
+
+<a name="module_@tokenized/sdk-react-private.usePrepareSendAsset"></a>
+
+### @tokenized/sdk-react-private.usePrepareSendAsset()
+
+**`React Query mutation hook`** Prepare a transaction for sending an asset
+
+See https://react-query.tanstack.com/guides/mutations
+
+The mutation has parameters:
+
+- `vaultId`: The id of the sending vault
+- `assetId`: The id of the asset to send
+- `description`: An optional free text description (memo) to be sent with the
+  transaction
+- `recipients`: A list of recipients, each of which is an object, either amount
+  or sendMax are required:
+  - `amount`: number - optional amount of asset, for example 1 for 1 BSV or for
+    $1
+  - `sendMax`: boolean - optionally to indicate sending maximum possible
+    quantity
+  - `handle`: Send to this paymail address. Only Tokenized entities supported
+    for non-BSV transfers
+
+Resolves to an object containing the supplied parameters and also the fee:
+
+- `fee`: Quantity, see above, describing computed fee in BSV
+
+The resolved object can be passed to the useConfirmSendAsset mutation to
+complete the transfer.
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+<a name="module_@tokenized/sdk-react-private.useConfirmSendAsset"></a>
+
+### @tokenized/sdk-react-private.useConfirmSendAsset()
+
+**`React Query mutation hook`** Prepare a transaction for sending an asset
+
+See documentation for usePrepareSendAsset
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 <a name="module_@tokenized/sdk-js-private"></a>
 
 ## @tokenized/sdk-js-private
