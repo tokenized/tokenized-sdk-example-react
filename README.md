@@ -160,7 +160,10 @@ Tokenized JavaScript SDK bindings for React
     [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
   - [.useFilteredBalances(vaultId, filterOptions)](#module_@tokenized/sdk-react-private.useFilteredBalances)
     ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
-  - [.useActivity(filters)](#module_@tokenized/sdk-react-private.useActivity)
+  - [.useActivity(filters)](#module_@tokenized/sdk-react-private.useActivity) ⇒
+    [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+  - [.useActivityEvent(eventTxId)](#module_@tokenized/sdk-react-private.useActivityEvent)
+    ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
   - [.useHandles(search, filters)](#module_@tokenized/sdk-react-private.useHandles)
   - [.useSendMaxEstimate(search, filters)](#module_@tokenized/sdk-react-private.useSendMaxEstimate)
   - [.usePrepareSendAsset()](#module_@tokenized/sdk-react-private.usePrepareSendAsset)
@@ -649,12 +652,14 @@ and the values are the contract objects. For example (not all properties shown):
 
 ### @tokenized/sdk-react-private.useFilteredBalances(vaultId, filterOptions) ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
 
-**`React hook`** Filtered and sorted list of the quantities (balances) of assets
-and liabilities in a specified vault. While the hook is mounted, balances will
-be refreshed automatically **every 60 seconds**.
+**`React Query hook`** Filtered and sorted list of the quantities (balances) of
+assets and liabilities in a specified vault. While the hook is mounted, balances
+will be refreshed automatically **every 60 seconds**.
 
-Each object in the results array describes a selection of relevant quantities
-for the particular asset:
+See https://react-query.tanstack.com/guides/queries for general information
+about using a React Query `UseQueryResults` object. Once loaded, the `data`
+property will contain an array of objects, one for each asset balance. Each
+object describes a selection of relevant quantities for the particular asset:
 
 - `balance`: Quantity of the asset held in this vault
 - `reserved`: Quantity of balance reserved for pending transactions
@@ -827,15 +832,21 @@ function FormatQuantity({ quantity }) {
 
 <a name="module_@tokenized/sdk-react-private.useActivity"></a>
 
-### @tokenized/sdk-react-private.useActivity(filters)
+### @tokenized/sdk-react-private.useActivity(filters) ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
 
 **`React Query hook`** Filtered and sorted list of the activity of the default
-profile of an account.
+profile of an account. While the hook is mounted, activity will be refreshed
+automatically **every 60 seconds**.
 
-See https://react-query.tanstack.com/guides/queries
+See https://react-query.tanstack.com/guides/queries for general information
+about using a React Query `UseQueryResults` object. Once loaded, the `data`
+property will contain an array of objects, one for each activity event, each
+containing:
 
-Each object in the data array describes an event:
-
+- `activityEventType`: Object with `id` and `name` describing the type of the
+  event
+- `activityEventStatus`: Object with `id` and `name` describing the status of
+  the event
 - `txId`: Transaction Id
 - `dateCreated`: Time of event (in milliseconds since Unix epoch)
 - `vaultId`: Id of the vault fufilling this activity
@@ -843,32 +854,37 @@ Each object in the data array describes an event:
 - `contract`: Optional object describing the contract
   - `name`: Name given to contract
 - `assets`: Array of assets related to event
-  - `name`: Name of asset
+  - `assetId`: ID of the asset
+  - `assetName`: Display name of asset
   - `total`: Total `quantity` of authorized assets
   - `delta`: Change in `quantity` of authorized assets due to this activity
-- `activityEventType`: Object with `id` and `name` describing the type of the
-  event
-- `activityEventStatus`: Object with `id` and `name` describing the status of
-  the event
-- `counterParties`: Array of parties to a transaction (eg, 2 in the case of a
+- `counterparties`: Array of parties to a transaction (eg, 2 in the case of a
   trade)
   - `displayName`: User's name
   - `displayHandle`: User's paymail handle
   - `transfers`: Array of transferred assets
-    - `direction`: "sent" or "received"
-    - `quantity`: The transferred `quantity`
+    - `direction`: `sent` or `received`
+    - `assetId`: ID of the asset transferred
+    - `assetName`: Display name of the asset transferred
+    - `quantity`: The transferred `quantity` – see below
+- `fees`: Describes the network fees incurred by the event
+  - `all`: The `quantity` of network fees paid by the current entity for this
+    event
 
-A quantity is an object containing:
+`activityEventType` can be:
 
-- `assetName`: "Currency" or the name of a token
-- `assetCurrency`: Object representing the face value of that quantity
-  - `number`: Number of currency units
-  - `NumberFormatOptions`: Object to be supplied to Intl.NumberFormat
-- `tokens`: Object describing the number of tokens, if applicable
-  - `number`: Number of tokens
-  - `formatted`: Localised display string
+- `payment`
+- `trade_offer`
+- `contract_formation`
+- `contract_amendment`
+- `contract_expire`
+- `asset_creation`
+- `asset_amendment`
+- `asset_expire`
+- `vault_creation_proposal`
+- `vault_deletion_proposal`
 
-Status can be:
+`activityEventStatus` can be:
 
 - `proposed_offer`: initial pending status for all activity events.
 - `awaiting_acceptance`: the current profile owner needs to respond to a pending
@@ -882,19 +898,63 @@ Status can be:
 - `executed`: final activity the event has concluded, no further actions are
   expected.
 
-Status can be: `payment`, `trade_offer`, `vault_creation_proposal`,
-`vault_deletion_proposal`, `contract_formation`, `contract_amendment`,
-`contract_expire`, `asset_creation`, `asset_amendment` or `asset_expire`
+A quantity is an object containing:
 
-Will be refreshed automatically **every 60 seconds**.
+- `tokens`: the quantity in the natural units of the asset, for non-currency
+  assets – “48 coupons”.
+  - `number`: Number of tokens transferred
+  - `formatted`: Localized display string
+- `assetCurrency`: the value transferred in the asset’s own currency, if
+  specified – “$59,184.00”.
+  - `number`: Currency value transferred
+  - `NumberFormatOptions`: Object to be supplied to Intl.NumberFormat
+- `displayCurrency`: the value transferred, converted to the user’s selected
+  display currency – “£41,737.68”.
+  - `number`: Currency value transferred
+  - `NumberFormatOptions`: Object to be supplied to Intl.NumberFormat
 
 **Kind**: static method of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**:
+[<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - An array
+of activity events as the `data` property within a React Query
+[`UseQueryResult`](#external_react-query.UseQueryResult) object.
 
-| Param           | Type                 | Description                                                                                                                                             |
-| --------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| filters         | <code>Object</code>  | Filters                                                                                                                                                 |
-| filters.pending | <code>boolean</code> | Only return pending activities (by default all are returned). Pending activities are awaiting action by the activity owner, counterparty or smart agent |
+| Param                                | Type                 | Description                                                                                                          |
+| ------------------------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| filters                              | <code>Object</code>  | Filters                                                                                                              |
+| filters.includeIncompleteEvents      | <code>boolean</code> | Controls whether incomplete and invalid events are included. Default is `false`.                                     |
+| filters.includeSuccessfulEvents      | <code>boolean</code> | Controls whether events that have completed successfully are included. Default is `true`.                            |
+| filters.includeFailedEvents          | <code>boolean</code> | Controls whether events that have failed or beeen rejected are included. Default is `true`.                          |
+| filters.includeExpiredEvents         | <code>boolean</code> | Controls whether events that have expired (like a trade offer) are included. Default is `true`.                      |
+| filters.includeEventsRequiringAction | <code>boolean</code> | Controls whether events that are waiting for a response from the current entity are included. Default is `true`.     |
+| filters.includeEventsPendingOthers   | <code>boolean</code> | Controls whether events that are pending the response of a counterparty or an agent are included. Default is `true`. |
+| filters.includeEventsForAssetId      | <code>string</code>  | Set this to an assetId in order to include only events involving that asset. Default is `undefined`.                 |
+
+<a name="module_@tokenized/sdk-react-private.useActivityEvent"></a>
+
+### @tokenized/sdk-react-private.useActivityEvent(eventTxId) ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+
+**`React Query hook`** Gets the details of a specific activity event. While the
+hook is mounted, the activity event will be refreshed automatically **every 60
+seconds**. Use this to show details for one specific user event.
+
+See https://react-query.tanstack.com/guides/queries for general information
+about using a React Query `UseQueryResults` object. Once loaded, the `data`
+property will contain an object containing event details in the same format as
+for [`useActivity`](#module_@tokenized/sdk-react-private.useActivity).
+
+**Kind**: static method of
+[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**:
+[<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - An object
+describing the event, as the `data` property within a React Query
+[`UseQueryResult`](#external_react-query.UseQueryResult) object, or `null` if
+the event can’t be found.
+
+| Param     | Type                | Description                     |
+| --------- | ------------------- | ------------------------------- |
+| eventTxId | <code>string</code> | The ID of the event to retrieve |
 
 <a name="module_@tokenized/sdk-react-private.useHandles"></a>
 
