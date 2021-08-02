@@ -93,7 +93,7 @@ export function makeFieldIsNotMoreThan(max) {
 export function makeFieldIsMoreThan(min) {
   return (intl, value) => {
     // implies must be number
-    const errorIfNotNumber = fieldIsNumber(value);
+    const errorIfNotNumber = fieldIsNumber(intl, value);
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
