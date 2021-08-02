@@ -79,7 +79,7 @@ function App() {
           <DashboardScreen />
         </PrivateRoute>
         <Route path="*">
-          <Redirect to="/treasury" />
+          <Redirect to="/activity" />
         </Route>
       </Switch>
     </Router>
