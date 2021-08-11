@@ -171,7 +171,6 @@ Tokenized JavaScript SDK bindings for React
     - [.useVerificationEmailAddress](#module_@tokenized/sdk-react-private.useVerificationEmailAddress)
       ⇒ <code>string</code>
   - _hooks/transfer_
-    - [.useConfirmSendAsset](#module_@tokenized/sdk-react-private.useConfirmSendAsset)
     - [.usePrepareSendAsset](#module_@tokenized/sdk-react-private.usePrepareSendAsset)
     - [.useSendMaxEstimate](#module_@tokenized/sdk-react-private.useSendMaxEstimate)
   - _hooks/treasury_
@@ -864,17 +863,6 @@ longer be necessary._
 **Returns**: <code>string</code> - The email address that a verification code
 was sent to.  
 **Category**: hooks/login  
-<a name="module_@tokenized/sdk-react-private.useConfirmSendAsset"></a>
-
-### @tokenized/sdk-react-private.useConfirmSendAsset
-
-**`React Query mutation hook`** Prepare a transaction for sending an asset
-
-See documentation for usePrepareSendAsset
-
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
-**Category**: hooks/transfer  
 <a name="module_@tokenized/sdk-react-private.usePrepareSendAsset"></a>
 
 ### @tokenized/sdk-react-private.usePrepareSendAsset
@@ -898,12 +886,8 @@ The mutation has parameters:
   - `handle`: Send to this paymail address. Only Tokenized entities supported
     for non-BSV transfers
 
-Resolves to an object containing the supplied parameters and also the fee:
-
-- `fee`: Quantity, see above, describing computed fee in BSV
-
-The resolved object can be passed to the useConfirmSendAsset mutation to
-complete the transfer.
+Resolves to an object representing the progress of the send. If incomplete, the
+mutation can be called again with the progress object to complete the send.
 
 **Kind**: static property of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
