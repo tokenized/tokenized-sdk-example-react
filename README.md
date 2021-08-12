@@ -358,12 +358,12 @@ about using a React Query `UseQueryResults` object. Once loaded, the `data`
 property will contain an array of objects, one for each activity event, each
 containing:
 
+- `id`: Unique ID for the activity event
 - `activityEventType`: Object with `id` and `name` describing the type of the
   event
 - `activityEventStatus`: Object with `id` and `name` describing the status of
   the event
 - `txId`: Transaction Id
-- `dateCreated`: Time of event (in milliseconds since Unix epoch)
 - `vaultId`: Id of the vault fufilling this activity
 - `memo`: String describing transaction (supplied by the trade initiating user)
 - `contract`: Optional object describing the contract
@@ -385,6 +385,9 @@ containing:
 - `fees`: Describes the network fees incurred by the event
   - `all`: The `quantity` of network fees paid by the current entity for this
     event
+- `dateModified`: Last time the event state changed (in milliseconds since Unix
+  epoch)
+- `dateCreated`: Time of event creation (in milliseconds since Unix epoch)
 
 `activityEventType` can be:
 
@@ -469,9 +472,9 @@ describing the event, as the `data` property within a React Query
 the event can’t be found.  
 **Category**: hooks/activity
 
-| Param     | Type                | Description                     |
-| --------- | ------------------- | ------------------------------- |
-| eventTxId | <code>string</code> | The ID of the event to retrieve |
+| Param | Type                | Description                     |
+| ----- | ------------------- | ------------------------------- |
+| id    | <code>string</code> | The ID of the event to retrieve |
 
 <a name="module_@tokenized/sdk-react-private.useContact"></a>
 
