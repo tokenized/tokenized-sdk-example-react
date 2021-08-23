@@ -12,11 +12,9 @@ import {
 import { FormattedMessage } from 'react-intl';
 import InputAssetMemo from './InputAssetMemo';
 import {
-  useConfirmSendAsset,
-  usePrepareSendAsset,
+  useSendAsset,
   usePrimaryVault,
   useSendMaxEstimate,
-  useTokenizedApi,
 } from '@tokenized/sdk-react-private';
 import ChooseSendMax from './ChooseSendMax';
 import FormatQuantity from '../../utils/FormatQuantity';
@@ -171,36 +169,33 @@ const SendFormFields = ({
 };
 
 const SendModal = ({ close }) => {
-  const prepare = usePrepareSendAsset();
-  const confirm = useConfirmSendAsset();
-  const tokenizedApi = useTokenizedApi();
+  const send = useSendAsset();
   let vaultId = usePrimaryVault()?.id;
 
   const [pending, setPending] = useState(null);
 
   const onSubmit = async (data) => {
     try {
+      const assetId = data.assetType.assetId;
+      const description = data.assetMemo;
+      const recipients = [
+        {
+          amount: Number(data.assetQuantity),
+          sendMax: data.sendMax,
+          handle: data.to,
+        },
+      ];
+      const sendOptions = {
+        vaultId,
+        assetId,
+        description,
+        recipients,
+      };
       if (!pending) {
-        let assetId = data.assetType.assetId;
-        let description = data.assetMemo;
-        let recipients = [
-          {
-            amount: Number(data.assetQuantity),
-            sendMax: data.sendMax,
-            handle: data.to,
-          },
-        ];
-        let sendRequest = await prepare.mutateAsync({
-          vaultId,
-          assetId,
-          description,
-          recipients,
-        });
-
+        const sendRequest = await send.mutateAsync(sendOptions, false);
         setPending(sendRequest);
       } else {
-        await confirm.mutateAsync(pending);
-        tokenizedApi.transfers.afterSendAsset();
+        await send.mutateAsync(sendOptions, true, pending);
         close();
       }
     } catch (error) {
