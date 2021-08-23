@@ -65,7 +65,6 @@ function CredentialsForm({ identifierType }) {
                     <FormattedMessage
                       description="Login screen failed login error message title"
                       defaultMessage="Unable to sign in"
-                      id="/QSoyN"
                     />
                   </p>
                   <button
@@ -99,7 +98,6 @@ function CredentialsForm({ identifierType }) {
                       <FormattedMessage
                         description="Login identification method selection: use your handle"
                         defaultMessage="Handle"
-                        id="KoV/4d"
                       />
                     </span>
                   </Link>
@@ -122,7 +120,6 @@ function CredentialsForm({ identifierType }) {
                       <FormattedMessage
                         defaultMessage="Email"
                         description="Login identification method selection: use your email address"
-                        id="oLcK9U"
                       />
                     </span>
                   </Link>
@@ -145,7 +142,6 @@ function CredentialsForm({ identifierType }) {
                       <FormattedMessage
                         defaultMessage="Phone"
                         description="Login identification method selection: use your phone number"
-                        id="a7iBE2"
                       />
                     </span>
                   </Link>
@@ -160,7 +156,6 @@ function CredentialsForm({ identifierType }) {
                       <FormattedMessage
                         defaultMessage="Account handle"
                         description="Login input field label: handle"
-                        id="cjeVpa"
                       />
                     </label>
                     <div className="field has-addons">
@@ -198,7 +193,6 @@ function CredentialsForm({ identifierType }) {
                       <FormattedMessage
                         defaultMessage="Account email address"
                         description="Login input field label: email"
-                        id="YFXmr+"
                       />
                     </label>
                     <div className="control">
@@ -228,7 +222,6 @@ function CredentialsForm({ identifierType }) {
                       <FormattedMessage
                         defaultMessage="Account phone number"
                         description="Login input field label: phone number"
-                        id="2yLUnh"
                       />
                     </label>
                     <div className="control">
@@ -257,7 +250,6 @@ function CredentialsForm({ identifierType }) {
                     <FormattedMessage
                       description="Login input field label: passphrase"
                       defaultMessage="Passphrase"
-                      id="Kg4KGH"
                     />
                   </label>
                   <div className="control">
@@ -294,7 +286,6 @@ function CredentialsForm({ identifierType }) {
                   <FormattedMessage
                     defaultMessage="Forgot passphrase?"
                     description="Login screen forgot passphrase button"
-                    id="HuJPE4"
                   />
                 </Link>
               ) : (
@@ -302,7 +293,6 @@ function CredentialsForm({ identifierType }) {
                   <FormattedMessage
                     defaultMessage="Forgot passphrase?"
                     description="Login screen forgot passphrase button"
-                    id="HuJPE4"
                   />
                 </button>
               )}
@@ -318,7 +308,6 @@ function CredentialsForm({ identifierType }) {
                 <FormattedMessage
                   description="Login screen sign in button"
                   defaultMessage="Sign in"
-                  id="Vt7Ozj"
                 />
               </button>
             </div>

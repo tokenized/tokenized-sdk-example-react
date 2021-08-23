@@ -9,70 +9,60 @@ function BalanceRow({ isHeader, balance }) {
           <FormattedMessage
             defaultMessage="Asset"
             description="Balance table column header: asset name"
-            id="41ypwV"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Type"
             description="Balance table column header: asset type"
-            id="hTxeee"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Issuer"
             description="Balance table column header: asset issuer"
-            id="isZs2i"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="In vault"
             description="Balance table column header: quantity held in vault"
-            id="QaB4nu"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Reserved"
             description="Balance table column header: quantity of balance reserved"
-            id="D6bG5X"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Issued"
             description="Balance table column header: quantity issued by me"
-            id="kYHpnu"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Authorized"
             description="Balance table column header: quantity of assets authorized in contract"
-            id="Ih3sF+"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="One unit"
             description="Balance table column header: value of one asset unit"
-            id="SOA+3t"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Liability"
             description="Balance table column header: liability (owed on issued assets)"
-            id="6I1l1I"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Value"
             description="Balance table column header: value (of assets to me)"
-            id="VyIxs7"
           />
         </th>
       </tr>

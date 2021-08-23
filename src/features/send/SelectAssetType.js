@@ -13,12 +13,10 @@ const $ = findMessage(
   <FormattedMessage
     defaultMessage="Asset type"
     description="Asset transfer: Asset type label"
-    id="Z4zU9p"
   />,
   <FormattedMessage
     defaultMessage="select..."
     description="Asset transfer: Asset type select prompt"
-    id="Z8qLYY"
   />,
 );
 

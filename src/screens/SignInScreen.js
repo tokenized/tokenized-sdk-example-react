@@ -86,7 +86,6 @@ function SignInScreen() {
               <FormattedMessage
                 description="Sign in screen title"
                 defaultMessage="Tokenized SDK demo"
-                id="GbFjMQ"
               />
             </h1>
             <p className="subtitle">
@@ -94,13 +93,11 @@ function SignInScreen() {
                 <FormattedMessage
                   defaultMessage="Signing in to your account…"
                   description="Sign in screen in progress subtitle"
-                  id="H84siG"
                 />
               ) : (
                 <FormattedMessage
                   defaultMessage="Please sign in with your Tokenized account credentials"
                   description="Sign in screen ready subtitle"
-                  id="YrL2I7"
                 />
               )}
             </p>
@@ -133,7 +130,6 @@ function SignInScreen() {
               >
                 <FormattedMessage
                   defaultMessage="Create a new account…"
-                  id="w00rFA"
                   description="Sign in screen create new account link"
                 />
               </Link>

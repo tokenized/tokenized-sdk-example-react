@@ -11,7 +11,6 @@ function InputAssetQuantity({ input, meta, disabled }) {
         <FormattedMessage
           defaultMessage="Asset quantity"
           description="Asset transfer: input field label: asset quantity"
-          id="f1KzmK"
         />
         <div className="control">
           {disabled ? (

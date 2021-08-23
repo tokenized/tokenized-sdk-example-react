@@ -44,7 +44,6 @@ function App() {
     document.title = intl.formatMessage({
       description: 'The app’s browser page title',
       defaultMessage: 'Tokenized SDK demo',
-      id: '6amK0i',
     });
   }, [intl]);
 

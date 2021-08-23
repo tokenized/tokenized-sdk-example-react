@@ -9,7 +9,6 @@ const $ = findMessage(
   <FormattedMessage
     defaultMessage="To"
     description="Asset transfer: input field label: paymail address of transfer target"
-    id="6dfGQZ"
   />,
 );
 

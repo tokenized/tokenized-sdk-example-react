@@ -12,7 +12,6 @@ function ContractsPage() {
         <FormattedMessage
           defaultMessage="Contracts"
           description="Contracts page title"
-          id="2vbsAo"
         />
       </h1>
       {contracts?.isLoading && (

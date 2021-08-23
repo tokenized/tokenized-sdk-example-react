@@ -18,7 +18,6 @@ export default function ActivityPage() {
         <FormattedMessage
           defaultMessage="Activity"
           description="Activity page title"
-          id="IEpphI"
         />
       </h1>
       <div className="buttons has-addons">
@@ -31,7 +30,6 @@ export default function ActivityPage() {
             <FormattedMessage
               defaultMessage="All"
               description="All activity tab"
-              id="nIjgF+"
             />
           </span>
         </NavLink>
@@ -44,7 +42,6 @@ export default function ActivityPage() {
             <FormattedMessage
               defaultMessage="Pending"
               description="Pending activity tab"
-              id="xFJvp5"
             />
           </span>
         </NavLink>

@@ -77,25 +77,22 @@ function BackUpSeedPhrase() {
                   tagName="span"
                   defaultMessage="Account backup (essential)"
                   description="Back up seed phrase description title"
-                  id="JvW0S/"
                 />
               </p>
             </div>
             <div className="message-body content">
               <p>
                 <FormattedMessage
-                  defaultMessage="Transactions in your <boldText>non-custodial</boldText> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us."
+                  defaultMessage="Transactions in your <bold>non-custodial</bold> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us."
                   description="Back up seed phrase intro 1"
-                  values={{ boldText }}
-                  id="IaE9fj"
+                  values={{ bold: boldText }}
                 />
               </p>
               <p>
                 <FormattedMessage
-                  defaultMessage="However, that means we can’t restore access for you if you forget your passphrase. It’s therefore <boldText>essential that you record your digital key now</boldText>, in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds."
+                  defaultMessage="However, that means we can’t restore access for you if you forget your passphrase. It’s therefore <bold>essential that you record your digital key now</bold>, in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds."
                   description="Back up seed phrase intro 2"
-                  values={{ boldText }}
-                  id="v9a1op"
+                  values={{ bold: boldText }}
                 />
               </p>
             </div>
@@ -110,7 +107,6 @@ function BackUpSeedPhrase() {
             <FormattedMessage
               defaultMessage="I’m ready to record my private recovery phrase, and nobody’s watching"
               description="Back up seed phrase confirm safe to show"
-              id="Wefkn1"
             />
           </label>
           <div className="buttons is-right mt-6">
@@ -122,7 +118,6 @@ function BackUpSeedPhrase() {
               <FormattedMessage
                 defaultMessage="Cancel"
                 description="Back up seed phrase cancel button"
-                id="Qi6Vpw"
               />
             </button>
             <button
@@ -133,7 +128,6 @@ function BackUpSeedPhrase() {
               <FormattedMessage
                 defaultMessage="Later…"
                 description="Back up seed phrase later button"
-                id="UIi3Ix"
               />
             </button>
             <button
@@ -146,7 +140,6 @@ function BackUpSeedPhrase() {
                 tagName="span"
                 defaultMessage="Show phrase"
                 description="Back up seed phrase confirm button"
-                id="l1Zi41"
               />
               <span className="icon is-small">
                 <i className="fas fa-chevron-right"></i>
@@ -168,7 +161,6 @@ function BackUpSeedPhrase() {
                   tagName="span"
                   defaultMessage="Postpone backup"
                   description="Postpone seed phrase backup title"
-                  id="Bb9qyJ"
                 />
               </p>
             </div>
@@ -176,7 +168,6 @@ function BackUpSeedPhrase() {
               <FormattedMessage
                 defaultMessage="Are you sure? Taking an account backup only takes a few minutes, and without it your funds will be permanently lost if you ever forget your passphrase"
                 description="Postpone seed phrase backup risks 1"
-                id="8HgVfG"
               />
             </div>
           </article>
@@ -190,7 +181,6 @@ function BackUpSeedPhrase() {
             <FormattedMessage
               defaultMessage="I understand the risks"
               description="Postpone seed phrase backup risks confirmation"
-              id="Pgb70J"
             />
           </label>
           <div className="buttons is-left mt-6">
@@ -206,7 +196,6 @@ function BackUpSeedPhrase() {
                 tagName="span"
                 defaultMessage="I’ve changed my mind"
                 description="Postpone seed phrase backup cancel (back up after all) button"
-                id="xu36fu"
               />
             </button>
             <div className="is-flex-grow-1" />
@@ -219,7 +208,6 @@ function BackUpSeedPhrase() {
               <FormattedMessage
                 defaultMessage="Sign in without backup"
                 description="Postpone seed phrase backup confirm button"
-                id="3eaHIh"
               />
             </button>
           </div>
@@ -238,16 +226,14 @@ function BackUpSeedPhrase() {
                   tagName="span"
                   defaultMessage="Record your recovery phrase"
                   description="Back up seed phrase description title"
-                  id="+WML42"
                 />
               </p>
             </div>
             <div className="message-body">
               <FormattedMessage
-                defaultMessage="This is the master key to your account. <veryImportantText>Do not share these words with anyone</veryImportantText>. Carefully write down all 24 words, or copy them into a password manager."
+                defaultMessage="This is the master key to your account. <important>Do not share these words with anyone</important>. Carefully write down all 24 words, or copy them into a password manager."
                 description="Back up seed phrase instructions"
-                values={{ veryImportantText }}
-                id="emC2Xv"
+                values={{ important: veryImportantText }}
               />
             </div>
           </article>
@@ -274,7 +260,6 @@ function BackUpSeedPhrase() {
               <FormattedMessage
                 defaultMessage="Cancel"
                 description="Back up seed phrase cancel button"
-                id="Qi6Vpw"
               />
             </button>
             <button
@@ -286,7 +271,6 @@ function BackUpSeedPhrase() {
                 tagName="span"
                 defaultMessage="Next"
                 description="Back up seed phrase next button"
-                id="fFkbdo"
               />
               <span className="icon is-small">
                 <i className="fas fa-chevron-right"></i>
@@ -312,7 +296,6 @@ function BackUpSeedPhrase() {
                           tagName="span"
                           defaultMessage="Verify your backup"
                           description="Verify seed phrase backup description title"
-                          id="Vt0wGh"
                         />
                       </p>
                     </div>
@@ -320,7 +303,6 @@ function BackUpSeedPhrase() {
                       <FormattedMessage
                         defaultMessage="Enter your recovery phrase from your backup to verify it. Note you can paste the whole phrase in one go from a password manager."
                         description="Verify seed phrase backup instructions"
-                        id="J7uwgI"
                       />
                     </div>
                   </article>
@@ -341,7 +323,6 @@ function BackUpSeedPhrase() {
                         tagName="span"
                         defaultMessage="Back"
                         description="Back up seed phrase show phrase again button"
-                        id="b37V5u"
                       />
                     </button>
                     <div className="is-flex-grow-1" />
@@ -353,7 +334,6 @@ function BackUpSeedPhrase() {
                       <FormattedMessage
                         defaultMessage="Cancel"
                         description="Back up seed phrase cancel button"
-                        id="Qi6Vpw"
                       />
                     </button>
                     <button
@@ -369,7 +349,6 @@ function BackUpSeedPhrase() {
                         tagName="span"
                         defaultMessage="Confirm"
                         description="Verify seed phrase backup confirm button"
-                        id="Hg69xV"
                       />
                       {valid && (
                         <span className="icon is-small">

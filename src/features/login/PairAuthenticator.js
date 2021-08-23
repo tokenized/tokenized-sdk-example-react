@@ -24,15 +24,13 @@ function PairAuthenticator() {
           <FormattedMessage
             description="Login screen mobile authenticator pairing title"
             defaultMessage="Pair with authenticator"
-            id="fFr3qj"
           />
         </p>
         <p className="subtitle has-text-centered">
           <FormattedMessage
             description="Login screen mobile authenticator pairing subtitle"
-            defaultMessage="Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in"
-            id="C6Pp9+"
-            values={{ fullName: ownFormattedName }}
+            defaultMessage="Scan this code in the Tokenized authenticator app to pair with account {name} and approve sign in"
+            values={{ name: ownFormattedName }}
           />
         </p>
         <div className="buttons is-centered">
@@ -44,7 +42,6 @@ function PairAuthenticator() {
             <FormattedMessage
               description="Login screen cancel button"
               defaultMessage="Cancel"
-              id="GCPZxk"
             />
           </button>
         </div>

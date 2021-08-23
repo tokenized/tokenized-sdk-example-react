@@ -45,6 +45,26 @@
       "value": "Choose a unique ID for connecting with others and receiving payments"
     }
   ],
+  "1G/gOd": [
+    {
+      "type": 0,
+      "value": "To restore full access to the account "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "identifier"
+        }
+      ],
+      "type": 8,
+      "value": "bold"
+    },
+    {
+      "type": 0,
+      "value": ", you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process."
+    }
+  ],
   "1HHb9u": [
     {
       "type": 0,
@@ -207,20 +227,6 @@
       "value": "Estimated miner fee"
     }
   ],
-  "C6Pp9+": [
-    {
-      "type": 0,
-      "value": "Scan this code in the Tokenized authenticator app to pair with account "
-    },
-    {
-      "type": 1,
-      "value": "fullName"
-    },
-    {
-      "type": 0,
-      "value": " and approve sign in"
-    }
-  ],
   "C6R5We": [
     {
       "type": 0,
@@ -239,6 +245,26 @@
       "value": "Reserved"
     }
   ],
+  "E85IhZ": [
+    {
+      "type": 0,
+      "value": "A confirmation code has been sent to "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "maskedEmail"
+        }
+      ],
+      "type": 8,
+      "value": "bold"
+    },
+    {
+      "type": 0,
+      "value": ". Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase."
+    }
+  ],
   "EStIqe": [
     {
       "type": 0,
@@ -255,6 +281,26 @@
     {
       "type": 0,
       "value": "Checking for paired authenticator"
+    }
+  ],
+  "F37D2c": [
+    {
+      "type": 0,
+      "value": "Transactions in your "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "non-custodial"
+        }
+      ],
+      "type": 8,
+      "value": "bold"
+    },
+    {
+      "type": 0,
+      "value": " account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us."
     }
   ],
   "FEJ3nB": [
@@ -315,26 +361,6 @@
     {
       "type": 0,
       "value": "Activity"
-    }
-  ],
-  "IaE9fj": [
-    {
-      "type": 0,
-      "value": "Transactions in your "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "non-custodial"
-        }
-      ],
-      "type": 8,
-      "value": "boldText"
-    },
-    {
-      "type": 0,
-      "value": " account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us."
     }
   ],
   "Ih3sF+": [
@@ -469,24 +495,6 @@
       "value": "Confirm registered email"
     }
   ],
-  "RcSq+h": [
-    {
-      "type": 0,
-      "value": "max: "
-    },
-    {
-      "type": 1,
-      "value": "max"
-    },
-    {
-      "type": 0,
-      "value": " ≈ "
-    },
-    {
-      "type": 1,
-      "value": "maxConvert"
-    }
-  ],
   "SIRX3t": [
     {
       "type": 0,
@@ -508,6 +516,22 @@
       "style": null,
       "type": 2,
       "value": "min"
+    }
+  ],
+  "T7+TFd": [
+    {
+      "type": 0,
+      "value": "To verify the account, enter the code sent to "
+    },
+    {
+      "children": [
+        {
+          "type": 1,
+          "value": "email"
+        }
+      ],
+      "type": 8,
+      "value": "bold"
     }
   ],
   "TBHu30": [
@@ -532,6 +556,24 @@
     {
       "type": 0,
       "value": "Treasury"
+    }
+  ],
+  "V8ri+5": [
+    {
+      "type": 0,
+      "value": "max: "
+    },
+    {
+      "type": 1,
+      "value": "max"
+    },
+    {
+      "type": 0,
+      "value": " ≈ "
+    },
+    {
+      "type": 1,
+      "value": "converted"
     }
   ],
   "VYmTOm": [
@@ -642,6 +684,26 @@
       "value": "Phone"
     }
   ],
+  "aNijVy": [
+    {
+      "type": 0,
+      "value": "This is the master key to your account. "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "Do not share these words with anyone"
+        }
+      ],
+      "type": 8,
+      "value": "important"
+    },
+    {
+      "type": 0,
+      "value": ". Carefully write down all 24 words, or copy them into a password manager."
+    }
+  ],
   "aoZTnl": [
     {
       "type": 0,
@@ -652,16 +714,6 @@
     {
       "type": 0,
       "value": "Back"
-    }
-  ],
-  "cEaRXX": [
-    {
-      "type": 0,
-      "value": "Welcome "
-    },
-    {
-      "type": 1,
-      "value": "fullName"
     }
   ],
   "cjeVpa": [
@@ -680,26 +732,6 @@
     {
       "type": 0,
       "value": "Issuer / counterparty"
-    }
-  ],
-  "emC2Xv": [
-    {
-      "type": 0,
-      "value": "This is the master key to your account. "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "Do not share these words with anyone"
-        }
-      ],
-      "type": 8,
-      "value": "veryImportantText"
-    },
-    {
-      "type": 0,
-      "value": ". Carefully write down all 24 words, or copy them into a password manager."
     }
   ],
   "f1KzmK": [
@@ -816,6 +848,16 @@
       "value": "Show phrase"
     }
   ],
+  "mArnAT": [
+    {
+      "type": 0,
+      "value": "Welcome "
+    },
+    {
+      "type": 1,
+      "value": "name"
+    }
+  ],
   "mZ+5PJ": [
     {
       "type": 0,
@@ -838,6 +880,16 @@
     {
       "type": 0,
       "value": "All"
+    }
+  ],
+  "narDvl": [
+    {
+      "type": 0,
+      "value": "Welcome "
+    },
+    {
+      "type": 1,
+      "value": "name"
     }
   ],
   "oLcK9U": [
@@ -870,20 +922,24 @@
       "value": "Checking credentials"
     }
   ],
-  "q5NAaz": [
+  "pM5GxV": [
     {
       "type": 0,
-      "value": "To verify the account, enter the code sent to "
+      "value": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore "
     },
     {
       "children": [
         {
-          "type": 1,
-          "value": "email"
+          "type": 0,
+          "value": "essential that you record your digital key now"
         }
       ],
       "type": 8,
-      "value": "boldText"
+      "value": "bold"
+    },
+    {
+      "type": 0,
+      "value": ", in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds."
     }
   ],
   "qHI9UA": [
@@ -914,26 +970,6 @@
     {
       "type": 0,
       "value": "Cancel"
-    }
-  ],
-  "rFtb0p": [
-    {
-      "type": 0,
-      "value": "A confirmation code has been sent to "
-    },
-    {
-      "children": [
-        {
-          "type": 1,
-          "value": "maskedEmail"
-        }
-      ],
-      "type": 8,
-      "value": "boldText"
-    },
-    {
-      "type": 0,
-      "value": ". Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase."
     }
   ],
   "sChJWn": [
@@ -978,26 +1014,6 @@
       "value": "Treasury"
     }
   ],
-  "v9a1op": [
-    {
-      "type": 0,
-      "value": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "essential that you record your digital key now"
-        }
-      ],
-      "type": 8,
-      "value": "boldText"
-    },
-    {
-      "type": 0,
-      "value": ", in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds."
-    }
-  ],
   "vELQTJ": [
     {
       "type": 0,
@@ -1022,20 +1038,24 @@
       "value": "Checking vault and signing keys"
     }
   ],
+  "wXoUed": [
+    {
+      "type": 0,
+      "value": "Scan this code in the Tokenized authenticator app to pair with account "
+    },
+    {
+      "type": 1,
+      "value": "name"
+    },
+    {
+      "type": 0,
+      "value": " and approve sign in"
+    }
+  ],
   "wejkZs": [
     {
       "type": 0,
       "value": "Assets"
-    }
-  ],
-  "wurpXL": [
-    {
-      "type": 0,
-      "value": "Welcome "
-    },
-    {
-      "type": 1,
-      "value": "fullName"
     }
   ],
   "wvIglH": [
@@ -1066,26 +1086,6 @@
     {
       "type": 0,
       "value": "Title"
-    }
-  ],
-  "zjXve4": [
-    {
-      "type": 0,
-      "value": "To restore full access to the account "
-    },
-    {
-      "children": [
-        {
-          "type": 1,
-          "value": "identifier"
-        }
-      ],
-      "type": 8,
-      "value": "boldText"
-    },
-    {
-      "type": 0,
-      "value": ", you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process."
     }
   ],
   "zolMCa": [

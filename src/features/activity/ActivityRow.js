@@ -2,8 +2,6 @@ import React from 'react';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import FormatQuantity from '../../utils/FormatQuantity';
 
-
-
 export function ActivityHeader() {
   return (
     <tr>
@@ -11,7 +9,6 @@ export function ActivityHeader() {
         <FormattedMessage
           defaultMessage="With"
           description="Activity table header: with"
-          id="WFpQ7G"
         />
       </th>
       <th className="has-text-left">
@@ -19,14 +16,12 @@ export function ActivityHeader() {
           <FormattedMessage
             defaultMessage="Type"
             description="Activity table header: activity type"
-            id="QOJ75c"
           />
         </div>
         <div>
           <FormattedMessage
             defaultMessage="Status"
             description="Activity table header: activity status"
-            id="/j2Yi1"
           />
         </div>
       </th>
@@ -34,21 +29,18 @@ export function ActivityHeader() {
         <FormattedMessage
           defaultMessage="Title"
           description="Activity table header: title"
-          id="y2ZMIl"
         />
       </th>
       <th className="has-text-left">
         <FormattedMessage
           defaultMessage="Details"
           description="Activity table header: details"
-          id="1HHb9u"
         />
       </th>
       <th className="has-text-left">
         <FormattedMessage
           defaultMessage="When"
           description="Activity table header: when"
-          id="fyfIW2"
         />
       </th>
     </tr>
@@ -87,7 +79,6 @@ export function ActivityRow({
                 <FormattedMessage
                   defaultMessage="Total:"
                   description="Activity table assets label: total"
-                  id="qq2T4k"
                 />
                 &nbsp;
                 <FormatQuantity quantity={total} />
@@ -96,7 +87,6 @@ export function ActivityRow({
                 <FormattedMessage
                   defaultMessage="Change:"
                   description="Activity table assets label: change"
-                  id="Vetw5f"
                 />
                 &nbsp;
                 <FormatQuantity quantity={delta} />

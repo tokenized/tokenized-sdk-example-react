@@ -22,9 +22,8 @@ function WaitForMFA() {
         <p className="title">
           <FormattedMessage
             description="Login screen mobile authentication prompt title"
-            defaultMessage="Welcome {fullName}"
-            id="wurpXL"
-            values={{ fullName: ownFormattedName }}
+            defaultMessage="Welcome {name}"
+            values={{ name: ownFormattedName }}
           />
         </p>
         <progress className="progress is-small is-primary" max="100" />
@@ -32,7 +31,6 @@ function WaitForMFA() {
           <FormattedMessage
             description="Login screen mobile authentication prompt subtitle"
             defaultMessage="Please confirm your identity in the authenticator app"
-            id="FEJ3nB"
           />
         </p>
         <div className="buttons">
@@ -44,7 +42,6 @@ function WaitForMFA() {
             <FormattedMessage
               description="Login screen cancel button"
               defaultMessage="Cancel"
-              id="GCPZxk"
             />
           </button>
           <button
@@ -55,7 +52,6 @@ function WaitForMFA() {
             <FormattedMessage
               description="Login screen display pairing code button"
               defaultMessage="Display pairing code…"
-              id="8MXtG4"
             />
           </button>
         </div>

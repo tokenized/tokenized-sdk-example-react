@@ -36,7 +36,6 @@ function DashboardScreen({ children }) {
             <FormattedMessage
               description="Nav bar main title"
               defaultMessage="Tokenized SDK demo"
-              id="PVFFBa"
             />
           </strong>
           <a
@@ -62,7 +61,6 @@ function DashboardScreen({ children }) {
                 <FormattedMessage
                   description="Nav bar activity tab"
                   defaultMessage="Activity"
-                  id="iuWj8R"
                 />
               </span>
             </NavLink>
@@ -75,7 +73,6 @@ function DashboardScreen({ children }) {
                 <FormattedMessage
                   description="Nav bar treasury tab"
                   defaultMessage="Treasury"
-                  id="Uq6/ag"
                 />
               </span>
             </NavLink>
@@ -88,7 +85,6 @@ function DashboardScreen({ children }) {
                 <FormattedMessage
                   description="Nav bar contracts tab"
                   defaultMessage="Contracts"
-                  id="FvzCUW"
                 />
               </span>
             </NavLink>
@@ -101,7 +97,6 @@ function DashboardScreen({ children }) {
                 <FormattedMessage
                   description="Nav bar relationships tab"
                   defaultMessage="Relationships"
-                  id="qZNWyi"
                 />
               </span>
             </NavLink>
@@ -129,7 +124,6 @@ function DashboardScreen({ children }) {
                   <span>
                     <FormattedMessage
                       defaultMessage="Sign out"
-                      id="a6TlyZ"
                       description="Nav bar user menu sign out action"
                     />
                   </span>

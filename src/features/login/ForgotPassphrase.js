@@ -78,19 +78,17 @@ function ForgotPassphrase() {
                         tagName="span"
                         defaultMessage="Forgot your passphrase?"
                         description="Forgot passphrase introduction title"
-                        id="HddaKA"
                       />
                     </p>
                   </div>
                   <div className="message-body content">
                     <FormattedMessage
-                      defaultMessage="To restore full access to the account <boldText>{identifier}</boldText>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process."
+                      defaultMessage="To restore full access to the account <bold>{identifier}</bold>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process."
                       values={{
-                        boldText,
+                        bold: boldText,
                         identifier: handle || email || phoneNumber,
                       }}
                       description="Forgot passphrase introduction"
-                      id="zjXve4"
                     />
                   </div>
                 </article>
@@ -104,7 +102,6 @@ function ForgotPassphrase() {
                     <FormattedMessage
                       defaultMessage="Cancel"
                       description="Forgot passphrase cancel button"
-                      id="iQHcoy"
                     />
                   </Link>
                   <button
@@ -120,7 +117,6 @@ function ForgotPassphrase() {
                       tagName="span"
                       defaultMessage="Begin recovery"
                       description="Forgot passphrase start button"
-                      id="N6Mi0p"
                     />
                     <span className="icon is-small">
                       <i className="fas fa-chevron-right"></i>
@@ -146,16 +142,14 @@ function ForgotPassphrase() {
                           <FormattedMessage
                             defaultMessage="Confirm registered email"
                             description="Forgot passphrase confirm email title"
-                            id="RXjxnq"
                           />
                         </p>
                       </div>
                       <div className="message-body">
                         <FormattedMessage
-                          defaultMessage="A confirmation code has been sent to <boldText>{maskedEmail}</boldText>. Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase."
-                          values={{ maskedEmail, boldText }}
+                          defaultMessage="A confirmation code has been sent to <bold>{maskedEmail}</bold>. Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase."
+                          values={{ maskedEmail, bold: boldText }}
                           description="Forgot passphrase confirm email description"
-                          id="rFtb0p"
                         />
                       </div>
                     </article>
@@ -166,7 +160,6 @@ function ForgotPassphrase() {
                             <FormattedMessage
                               defaultMessage="Confirmation code"
                               description="Forgot passphrase input field label: email confirmation code"
-                              id="C6R5We"
                             />
                           </label>
                           <div className="control">
@@ -190,7 +183,6 @@ function ForgotPassphrase() {
                         <FormattedMessage
                           defaultMessage="Cancel"
                           description="Forgot passphrase cancel button"
-                          id="iQHcoy"
                         />
                       </Link>
                       <button
@@ -203,7 +195,6 @@ function ForgotPassphrase() {
                           tagName="span"
                           defaultMessage="Continue"
                           description="Forgot passphrase confirm email continue button"
-                          id="wvIglH"
                         />
                         <span className="icon is-small">
                           <i className="fas fa-chevron-right"></i>

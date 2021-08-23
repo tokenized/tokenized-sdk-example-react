@@ -46,14 +46,12 @@ function TreasuryPage() {
           <FormattedMessage
             defaultMessage="Treasury"
             description="Treasury page title (if no vault name)"
-            id="uQj7Yo"
           />
         )}
         <span className="tag is-info ml-4">
           <FormattedMessage
             defaultMessage="Primary vault"
             description="Treasury primary vault tag"
-            id="oneuwr"
           />
         </span>
       </h1>
@@ -67,7 +65,6 @@ function TreasuryPage() {
             <FormattedMessage
               defaultMessage="Assets"
               description="Treasury assets tab"
-              id="wejkZs"
             />
           </span>
           <span className="tag is-link is-light is-rounded ml-2">
@@ -83,7 +80,6 @@ function TreasuryPage() {
             <FormattedMessage
               defaultMessage="Liabilities"
               description="Treasury liabilities tab"
-              id="31KHio"
             />
           </span>
           <span className="tag is-link is-light is-rounded ml-2">
@@ -99,7 +95,6 @@ function TreasuryPage() {
             <FormattedMessage
               defaultMessage="Inactive"
               description="Treasury inactive tab"
-              id="VYmTOm"
             />
           </span>
           <span className="tag is-link is-light is-rounded ml-2">

@@ -27,6 +27,10 @@
     "defaultMessage": "Choose a unique ID for connecting with others and receiving payments",
     "description": "New account handle field help: explanation of paymail"
   },
+  "1G/gOd": {
+    "defaultMessage": "To restore full access to the account <bold>{identifier}</bold>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",
+    "description": "Forgot passphrase introduction"
+  },
   "1HHb9u": {
     "defaultMessage": "Details",
     "description": "Activity table header: details"
@@ -135,10 +139,6 @@
     "defaultMessage": "Estimated miner fee",
     "description": "Asset transfer: label for estimation of miner transfer fee"
   },
-  "C6Pp9+": {
-    "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
-    "description": "Login screen mobile authenticator pairing subtitle"
-  },
   "C6R5We": {
     "defaultMessage": "Confirmation code",
     "description": "Forgot passphrase input field label: email confirmation code"
@@ -151,6 +151,10 @@
     "defaultMessage": "Reserved",
     "description": "Balance table column header: quantity of balance reserved"
   },
+  "E85IhZ": {
+    "defaultMessage": "A confirmation code has been sent to <bold>{maskedEmail}</bold>. Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase.",
+    "description": "Forgot passphrase confirm email description"
+  },
   "EStIqe": {
     "defaultMessage": "Checking account",
     "description": "Log-in status: Checking email verification"
@@ -162,6 +166,10 @@
   "F347da": {
     "defaultMessage": "Checking for paired authenticator",
     "description": "Log-in status: Checking for paired authenticator"
+  },
+  "F37D2c": {
+    "defaultMessage": "Transactions in your <bold>non-custodial</bold> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
+    "description": "Back up seed phrase intro 1"
   },
   "FEJ3nB": {
     "defaultMessage": "Please confirm your identity in the authenticator app",
@@ -202,10 +210,6 @@
   "IEpphI": {
     "defaultMessage": "Activity",
     "description": "Activity page title"
-  },
-  "IaE9fj": {
-    "defaultMessage": "Transactions in your <boldText>non-custodial</boldText> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
-    "description": "Back up seed phrase intro 1"
   },
   "Ih3sF+": {
     "defaultMessage": "Authorized",
@@ -295,10 +299,6 @@
     "defaultMessage": "Confirm registered email",
     "description": "Forgot passphrase confirm email title"
   },
-  "RcSq+h": {
-    "defaultMessage": "max: {max} ≈ {maxConvert}",
-    "description": "Asset transfer: asset transfer maximum in original units and display currency"
-  },
   "SIRX3t": {
     "defaultMessage": "Reset your passphrase",
     "description": "Reset passphrase screen subtitle"
@@ -310,6 +310,10 @@
   "Ssp7dT": {
     "defaultMessage": "Must be greater than {min, number}",
     "description": "Form field validation failure: number > min is required"
+  },
+  "T7+TFd": {
+    "defaultMessage": "To verify the account, enter the code sent to <bold>{email}</bold>",
+    "description": "Verify account email description"
   },
   "TBHu30": {
     "defaultMessage": "Create a passphrase",
@@ -326,6 +330,10 @@
   "Uq6/ag": {
     "defaultMessage": "Treasury",
     "description": "Nav bar treasury tab"
+  },
+  "V8ri+5": {
+    "defaultMessage": "max: {max} ≈ {converted}",
+    "description": "Asset transfer: asset transfer maximum in original units and display currency"
   },
   "VYmTOm": {
     "defaultMessage": "Inactive",
@@ -399,6 +407,10 @@
     "defaultMessage": "Phone",
     "description": "Login identification method selection: use your phone number"
   },
+  "aNijVy": {
+    "defaultMessage": "This is the master key to your account. <important>Do not share these words with anyone</important>. Carefully write down all 24 words, or copy them into a password manager.",
+    "description": "Back up seed phrase instructions"
+  },
   "aoZTnl": {
     "defaultMessage": "Too much",
     "description": "Asset transfer: error message: quantity larger than available assets"
@@ -406,10 +418,6 @@
   "b37V5u": {
     "defaultMessage": "Back",
     "description": "Back up seed phrase show phrase again button"
-  },
-  "cEaRXX": {
-    "defaultMessage": "Welcome {fullName}",
-    "description": "Log-in screen progress title"
   },
   "cjeVpa": {
     "defaultMessage": "Account handle",
@@ -422,10 +430,6 @@
   "cxOmHD": {
     "defaultMessage": "Issuer / counterparty",
     "description": "Contracts table column header: contract issuer / counterparty"
-  },
-  "emC2Xv": {
-    "defaultMessage": "This is the master key to your account. <veryImportantText>Do not share these words with anyone</veryImportantText>. Carefully write down all 24 words, or copy them into a password manager.",
-    "description": "Back up seed phrase instructions"
   },
   "f1KzmK": {
     "defaultMessage": "Asset quantity",
@@ -503,6 +507,10 @@
     "defaultMessage": "Show phrase",
     "description": "Back up seed phrase confirm button"
   },
+  "mArnAT": {
+    "defaultMessage": "Welcome {name}",
+    "description": "Login screen mobile authentication prompt title"
+  },
   "mZ+5PJ": {
     "defaultMessage": "Should be a quantity greater than zero",
     "description": "Asset transfer: error message: asset quantity should be greater than zero"
@@ -518,6 +526,10 @@
   "nIjgF+": {
     "defaultMessage": "All",
     "description": "All activity tab"
+  },
+  "narDvl": {
+    "defaultMessage": "Welcome {name}",
+    "description": "Log-in screen progress title"
   },
   "oLcK9U": {
     "defaultMessage": "Email",
@@ -539,9 +551,9 @@
     "defaultMessage": "Checking credentials",
     "description": "Log-in status: Checking credentials"
   },
-  "q5NAaz": {
-    "defaultMessage": "To verify the account, enter the code sent to <boldText>{email}</boldText>",
-    "description": "Verify account email description"
+  "pM5GxV": {
+    "defaultMessage": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore <bold>essential that you record your digital key now</bold>, in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds.",
+    "description": "Back up seed phrase intro 2"
   },
   "qHI9UA": {
     "defaultMessage": "Cancel",
@@ -563,10 +575,6 @@
     "defaultMessage": "Cancel",
     "description": "New account or reset passphrase cancel button"
   },
-  "rFtb0p": {
-    "defaultMessage": "A confirmation code has been sent to <boldText>{maskedEmail}</boldText>. Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase.",
-    "description": "Forgot passphrase confirm email description"
-  },
   "sChJWn": {
     "defaultMessage": "Must be {min, number} characters or more",
     "description": "Form field validation failure: min characters or more required"
@@ -582,10 +590,6 @@
   "uQj7Yo": {
     "defaultMessage": "Treasury",
     "description": "Treasury page title (if no vault name)"
-  },
-  "v9a1op": {
-    "defaultMessage": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore <boldText>essential that you record your digital key now</boldText>, in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds.",
-    "description": "Back up seed phrase intro 2"
   },
   "vELQTJ": {
     "defaultMessage": "Verify your email",
@@ -603,13 +607,13 @@
     "defaultMessage": "Checking vault and signing keys",
     "description": "Log-in status: Checking vault and signing keys"
   },
+  "wXoUed": {
+    "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {name} and approve sign in",
+    "description": "Login screen mobile authenticator pairing subtitle"
+  },
   "wejkZs": {
     "defaultMessage": "Assets",
     "description": "Treasury assets tab"
-  },
-  "wurpXL": {
-    "defaultMessage": "Welcome {fullName}",
-    "description": "Login screen mobile authentication prompt title"
   },
   "wvIglH": {
     "defaultMessage": "Continue",
@@ -630,10 +634,6 @@
   "y2ZMIl": {
     "defaultMessage": "Title",
     "description": "Activity table header: title"
-  },
-  "zjXve4": {
-    "defaultMessage": "To restore full access to the account <boldText>{identifier}</boldText>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",
-    "description": "Forgot passphrase introduction"
   },
   "zolMCa": {
     "defaultMessage": "Minimum: {min, number}",

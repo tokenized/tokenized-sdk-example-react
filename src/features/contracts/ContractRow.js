@@ -9,21 +9,18 @@ function ContractRow({ isHeader, contract }) {
           <FormattedMessage
             defaultMessage="Title"
             description="Contracts table column header: contract title"
-            id="/lBke1"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Issuer / counterparty"
             description="Contracts table column header: contract issuer / counterparty"
-            id="cxOmHD"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Type"
             description="Contracts table column header: contract type"
-            id="cnwMLl"
           />
         </th>
       </tr>

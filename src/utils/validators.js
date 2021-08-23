@@ -23,7 +23,6 @@ export const fieldIsRequired = (intl, value) =>
     : intl.formatMessage({
         defaultMessage: 'Required',
         description: 'Form field validation failure: a value is required',
-        id: 'gHRR9x',
       });
 
 // Any number, or any string that converts to a number
@@ -41,7 +40,6 @@ export const fieldIsNumber = (intl, value) => {
   return intl.formatMessage({
     defaultMessage: 'Must be a number',
     description: 'Form field validation failure: a number is required',
-    id: 'KByFkD',
   });
 };
 
@@ -60,7 +58,6 @@ export function makeFieldIsNotLessThan(min) {
       {
         defaultMessage: 'Minimum: {min, number}',
         description: 'Form field validation failure: number >= min is required',
-        id: 'zolMCa',
       },
       { min },
     );
@@ -82,7 +79,6 @@ export function makeFieldIsNotMoreThan(max) {
       {
         defaultMessage: 'Maximum: {max}',
         description: 'Form field validation failure: number <= max is required',
-        id: '/zXPuJ',
       },
       { max: `${max}` },
     );
@@ -104,7 +100,6 @@ export function makeFieldIsMoreThan(min) {
       {
         defaultMessage: 'Must be greater than {min, number}',
         description: 'Form field validation failure: number > min is required',
-        id: 'Ssp7dT',
       },
       { min },
     );
@@ -123,7 +118,6 @@ export function makeFieldIsNotLongerThan(max) {
         defaultMessage: 'Must be {max, number} characters or fewer',
         description:
           'Form field validation failure: max characters or fewer required',
-        id: 'uN85Mi',
       },
       { max },
     );
@@ -141,7 +135,6 @@ export function makeFieldIsNotShorterThan(min) {
         defaultMessage: 'Must be {min, number} characters or more',
         description:
           'Form field validation failure: min characters or more required',
-        id: 'sChJWn',
       },
       { min },
     );
@@ -156,7 +149,6 @@ export const fieldIsAlphaNumeric = (intl, value) => {
       defaultMessage: 'Only alphanumeric characters allowed',
       description:
         'Form field validation failure: alphanumeric string is required',
-      id: 'xlJ5FF',
     });
   }
   return undefined;
@@ -174,6 +166,5 @@ export const fieldIsEmail = (intl, value) => {
     defaultMessage: 'Must be an email address',
     description:
       'Form field validation failure: valid email address is required',
-    id: 'BQRMqg',
   });
 };

@@ -37,16 +37,14 @@ function AccountVerification() {
                   <FormattedMessage
                     defaultMessage="Verify your email"
                     description="Verify account email description title"
-                    id="vELQTJ"
                   />
                 </p>
               </div>
               <div className="message-body">
                 <FormattedMessage
-                  defaultMessage="To verify the account, enter the code sent to <boldText>{email}</boldText>"
-                  values={{ email, boldText }}
+                  defaultMessage="To verify the account, enter the code sent to <bold>{email}</bold>"
+                  values={{ email, bold: boldText }}
                   description="Verify account email description"
-                  id="q5NAaz"
                 />
               </div>
             </article>
@@ -57,7 +55,6 @@ function AccountVerification() {
                     <FormattedMessage
                       defaultMessage="Verification code"
                       description="Verify account input field label: email verification code"
-                      id="2ST6ee"
                     />
                   </label>
                   <div className="control">
@@ -85,7 +82,6 @@ function AccountVerification() {
                 <FormattedMessage
                   defaultMessage="Cancel"
                   description="Verify account cancel button"
-                  id="Pu+yE/"
                 />
               </button>
               <button
@@ -100,7 +96,6 @@ function AccountVerification() {
                 <FormattedMessage
                   defaultMessage="Verify"
                   description="Verify account confirm button"
-                  id="3dxT5H"
                 />
               </button>
             </div>

@@ -24,62 +24,50 @@ const $ = findMessage(
   <FormattedMessage
     defaultMessage="Should be a quantity greater than zero"
     description="Asset transfer: error message: asset quantity should be greater than zero"
-    id="mZ+5PJ"
   />,
   <FormattedMessage
     defaultMessage="Too much"
     description="Asset transfer: error message: quantity larger than available assets"
-    id="aoZTnl"
   />,
   <FormattedMessage
     defaultMessage="Review"
     description="Asset transfer: review button"
-    id="2boX6x"
   />,
   <FormattedMessage
     defaultMessage="Confirm"
     description="Asset transfer: confirm button"
-    id="qvvZcz"
   />,
   <FormattedMessage
     defaultMessage="Cancel"
     description="Asset transfer: cancel button"
-    id="iBTSzG"
   />,
   <FormattedMessage
     defaultMessage="Estimated miner fee"
     description="Asset transfer: label for estimation of miner transfer fee"
-    id="BnZgJS"
   />,
   <FormattedMessage
     defaultMessage="To"
     description="Asset transfer: review details: label for send target"
-    id="MGVbsq"
   />,
   <FormattedMessage
     defaultMessage="Asset"
     description="Asset transfer: review details: label for asset to send"
-    id="kxcjH1"
   />,
   <FormattedMessage
     defaultMessage="Quantity"
     description="Asset transfer: review details: label for asset quantity to send"
-    id="AHUNQG"
   />,
   <FormattedMessage
     defaultMessage="maximum"
     description="Asset transfer: review details: indicator that the maximum will be sent"
-    id="p3amHf"
   />,
   <FormattedMessage
     defaultMessage="Memo"
     description="Asset transfer: review details: label for memo to add to transfer"
-    id="f5SHXC"
   />,
   <FormattedMessage
     defaultMessage="Fee"
     description="Asset transfer: review details: label for computed fee for transfer"
-    id="00bEzj"
   />,
 );
 

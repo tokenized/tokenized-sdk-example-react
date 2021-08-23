@@ -6,7 +6,6 @@ const $ = findMessage(
   <FormattedMessage
     defaultMessage="Memo - optional message sent with transaction"
     description="Asset transfer: input field label: memo - optional message sent with transaction"
-    id="5ELeq9"
   />,
 );
 
