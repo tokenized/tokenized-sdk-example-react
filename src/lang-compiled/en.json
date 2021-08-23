@@ -1,4 +1,10 @@
 {
+  "+0tm8x": [
+    {
+      "type": 0,
+      "value": "History"
+    }
+  ],
   "+WML42": [
     {
       "type": 0,
@@ -9,12 +15,6 @@
     {
       "type": 0,
       "value": "Unable to sign in"
-    }
-  ],
-  "/j2Yi1": [
-    {
-      "type": 0,
-      "value": "Status"
     }
   ],
   "/lBke1": [
@@ -63,12 +63,6 @@
     {
       "type": 0,
       "value": ", you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process."
-    }
-  ],
-  "1HHb9u": [
-    {
-      "type": 0,
-      "value": "Details"
     }
   ],
   "1s3HAo": [
@@ -147,6 +141,12 @@
     {
       "type": 0,
       "value": "Checking seed phrase has been recorded"
+    }
+  ],
+  "5SQjL8": [
+    {
+      "type": 0,
+      "value": "Details"
     }
   ],
   "6I1l1I": [
@@ -309,6 +309,18 @@
       "value": "Please confirm your identity in the authenticator app"
     }
   ],
+  "FHD1XP": [
+    {
+      "type": 0,
+      "value": "Pending others"
+    }
+  ],
+  "FdOoQ5": [
+    {
+      "type": 0,
+      "value": "Last updated"
+    }
+  ],
   "FvzCUW": [
     {
       "type": 0,
@@ -435,6 +447,12 @@
       "value": "Begin recovery"
     }
   ],
+  "OnWIBb": [
+    {
+      "type": 0,
+      "value": "Event"
+    }
+  ],
   "PVFFBa": [
     {
       "type": 0,
@@ -451,12 +469,6 @@
     {
       "type": 0,
       "value": "Cancel"
-    }
-  ],
-  "QOJ75c": [
-    {
-      "type": 0,
-      "value": "Type"
     }
   ],
   "QaB4nu": [
@@ -582,12 +594,6 @@
       "value": "Inactive"
     }
   ],
-  "Vetw5f": [
-    {
-      "type": 0,
-      "value": "Change:"
-    }
-  ],
   "Vt0wGh": [
     {
       "type": 0,
@@ -604,12 +610,6 @@
     {
       "type": 0,
       "value": "Value"
-    }
-  ],
-  "WFpQ7G": [
-    {
-      "type": 0,
-      "value": "With"
     }
   ],
   "Wefkn1": [
@@ -770,12 +770,6 @@
       "value": "Unable to reset passphrase"
     }
   ],
-  "fyfIW2": [
-    {
-      "type": 0,
-      "value": "When"
-    }
-  ],
   "g+bpPs": [
     {
       "type": 0,
@@ -804,6 +798,12 @@
     {
       "type": 0,
       "value": "Cancel"
+    }
+  ],
+  "iNnboO": [
+    {
+      "type": 0,
+      "value": "Amounts"
     }
   ],
   "iQHcoy": [
@@ -874,12 +874,6 @@
     {
       "type": 0,
       "value": "Doesn’t match entered passphrase"
-    }
-  ],
-  "nIjgF+": [
-    {
-      "type": 0,
-      "value": "All"
     }
   ],
   "narDvl": [
@@ -954,12 +948,6 @@
       "value": "Relationships"
     }
   ],
-  "qq2T4k": [
-    {
-      "type": 0,
-      "value": "Total:"
-    }
-  ],
   "qvvZcz": [
     {
       "type": 0,
@@ -1020,6 +1008,12 @@
       "value": "Verify your email"
     }
   ],
+  "vUD6Fj": [
+    {
+      "type": 0,
+      "value": "My open items"
+    }
+  ],
   "vutAZJ": [
     {
       "type": 0,
@@ -1064,12 +1058,6 @@
       "value": "Continue"
     }
   ],
-  "xFJvp5": [
-    {
-      "type": 0,
-      "value": "Pending"
-    }
-  ],
   "xlJ5FF": [
     {
       "type": 0,
@@ -1080,12 +1068,6 @@
     {
       "type": 0,
       "value": "I’ve changed my mind"
-    }
-  ],
-  "y2ZMIl": [
-    {
-      "type": 0,
-      "value": "Title"
     }
   ],
   "zolMCa": [
