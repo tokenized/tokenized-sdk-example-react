@@ -171,7 +171,7 @@ Tokenized JavaScript SDK bindings for React
     - [.useVerificationEmailAddress](#module_@tokenized/sdk-react-private.useVerificationEmailAddress)
       ⇒ <code>string</code>
   - _hooks/transfer_
-    - [.usePrepareSendAsset](#module_@tokenized/sdk-react-private.usePrepareSendAsset)
+    - [.useSendAsset](#module_@tokenized/sdk-react-private.useSendAsset)
     - [.useSendMaxEstimate](#module_@tokenized/sdk-react-private.useSendMaxEstimate)
   - _hooks/treasury_
     - [.useFilteredBalances](#module_@tokenized/sdk-react-private.useFilteredBalances)
@@ -866,11 +866,13 @@ longer be necessary._
 **Returns**: <code>string</code> - The email address that a verification code
 was sent to.  
 **Category**: hooks/login  
-<a name="module_@tokenized/sdk-react-private.usePrepareSendAsset"></a>
+<a name="module_@tokenized/sdk-react-private.useSendAsset"></a>
 
-### @tokenized/sdk-react-private.usePrepareSendAsset
+### @tokenized/sdk-react-private.useSendAsset
 
-**`React Query mutation hook`** Prepare a transaction for sending an asset
+**`React Query mutation hook`** Send some assets from a vault to a specified
+recipient. The transfer can either be executed immediately, or two mutations can
+be performed, the first prepares the transfer, and the second executes it.
 
 See https://react-query.tanstack.com/guides/mutations
 
@@ -890,7 +892,7 @@ The mutation has parameters:
     for non-BSV transfers
 
 Resolves to an object representing the progress of the send. If incomplete, the
-mutation can be called again with the progress object to complete the send.
+mutation can be called again with the progress object to execute the transfer.
 
 **Kind**: static property of
 [<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
