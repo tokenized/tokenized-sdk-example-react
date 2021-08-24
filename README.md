@@ -412,7 +412,6 @@ containing:
 - `rejected`: rejected or declined by the counterparty.
 - `expired`: pending activity event has expired.
 - `failed`: response to an event did not meet the criteria of the request.
-- `signed`: a signature request was sent with a signed transaction within.
 - `executed`: final activity the event has concluded, no further actions are
   expected.
 
@@ -442,12 +441,13 @@ of activity events as the `data` property within a React Query
 | Param                                | Type                 | Description                                                                                                          |
 | ------------------------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | filters                              | <code>Object</code>  | Filters                                                                                                              |
-| filters.includeIncompleteEvents      | <code>boolean</code> | Controls whether incomplete and invalid events are included. Default is `false`.                                     |
+| filters.includeIncompleteEvents      | <code>boolean</code> | Controls whether incomplete events are included. Default is `true`.                                                  |
 | filters.includeSuccessfulEvents      | <code>boolean</code> | Controls whether events that have completed successfully are included. Default is `true`.                            |
 | filters.includeFailedEvents          | <code>boolean</code> | Controls whether events that have failed or beeen rejected are included. Default is `true`.                          |
 | filters.includeExpiredEvents         | <code>boolean</code> | Controls whether events that have expired (like a trade offer) are included. Default is `true`.                      |
 | filters.includeEventsRequiringAction | <code>boolean</code> | Controls whether events that are waiting for a response from the current entity are included. Default is `true`.     |
 | filters.includeEventsPendingOthers   | <code>boolean</code> | Controls whether events that are pending the response of a counterparty or an agent are included. Default is `true`. |
+| filters.includeUnrecognizedEvents    | <code>boolean</code> | Controls whether events that are not understood by the current SDK are included. Default is `false`.                 |
 | filters.includeEventsForAssetId      | <code>string</code>  | Set this to an assetId in order to include only events involving that asset. Default is `undefined`.                 |
 
 <a name="module_@tokenized/sdk-react-private.useActivityEvent"></a>
