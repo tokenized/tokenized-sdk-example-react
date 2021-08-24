@@ -89,7 +89,6 @@ function SeedPhraseRecovery() {
                           tagName="span"
                           defaultMessage="Account recovery"
                           description="Account recovery description title"
-                          id="jOID+q"
                         />
                       </p>
                     </div>
@@ -97,7 +96,6 @@ function SeedPhraseRecovery() {
                       <FormattedMessage
                         defaultMessage="Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery phrase that you noted down when you created the account."
                         description="Account recovery description"
-                        id="g+bpPs"
                       />
                     </div>
                   </article>
@@ -118,7 +116,6 @@ function SeedPhraseRecovery() {
                       <FormattedMessage
                         defaultMessage="Cancel"
                         description="Account recovery cancel button"
-                        id="qHI9UA"
                       />
                     </button>
                     <button
@@ -129,7 +126,6 @@ function SeedPhraseRecovery() {
                       <FormattedMessage
                         defaultMessage="Later…"
                         description="Account recovery later button"
-                        id="2F0CgA"
                       />
                     </button>
                     <button
@@ -150,7 +146,6 @@ function SeedPhraseRecovery() {
                         tagName="span"
                         defaultMessage="Restore"
                         description="Account recovery confirm button"
-                        id="9maDsa"
                       />
                     </button>
                   </div>
@@ -173,7 +168,6 @@ function SeedPhraseRecovery() {
                   tagName="span"
                   defaultMessage="Sign in with invalid key"
                   description="Confirm skip account restore title"
-                  id="IssfGQ"
                 />
               </p>
             </div>
@@ -181,7 +175,6 @@ function SeedPhraseRecovery() {
               <FormattedMessage
                 defaultMessage="Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail."
                 description="Confirm skip account restore description"
-                id="vutAZJ"
               />
             </div>
           </article>
@@ -195,7 +188,6 @@ function SeedPhraseRecovery() {
             <FormattedMessage
               defaultMessage="I understand my account is not fully operational"
               description="Skip account restore confirmation"
-              id="KGfoNb"
             />
           </label>
           <div className="buttons is-left mt-6">
@@ -211,7 +203,6 @@ function SeedPhraseRecovery() {
                 tagName="span"
                 defaultMessage="Restore account now"
                 description="Skip account restore cancel (restore after all) button"
-                id="H6n8rw"
               />
             </button>
             <div className="is-flex-grow-1" />
@@ -224,7 +215,6 @@ function SeedPhraseRecovery() {
               <FormattedMessage
                 defaultMessage="Sign in anyway"
                 description="Confirm skip account restore button"
-                id="XIPU1j"
               />
             </button>
           </div>

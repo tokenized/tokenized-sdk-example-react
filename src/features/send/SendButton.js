@@ -11,7 +11,6 @@ const SendButton = () => {
         <FormattedMessage
           defaultMessage="Send"
           description="Label for button to open dialog to send assets"
-          id="Qt4tZb"
         />
       </button>
       {open && <SendModal close={() => setOpen(false)} />}

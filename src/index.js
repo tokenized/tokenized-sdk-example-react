@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import 'bulma/css/bulma.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { IntlProvider } from 'react-intl';
-import messagesEn from './compiled-lang/en.json';
+import messagesEn from './lang-compiled/en.json';
 import { Provider as ReduxProvider } from 'react-redux';
 import { TokenizedApi } from '@tokenized/sdk-js-private';
 import { TokenizedApiProvider } from '@tokenized/sdk-react-private';

@@ -3,25 +3,14 @@ import { useCombobox } from 'downshift';
 import { useHandles } from '@tokenized/sdk-react-private';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
-import { findMessage } from '../../utils/messages';
-
-const $ = findMessage(
-  <FormattedMessage
-    defaultMessage="To"
-    description="Asset transfer: input field label: paymail address of transfer target"
-    id="6dfGQZ"
-  />,
-);
 
 function SelectPaymail({ input, meta }) {
   const [search, setSearch] = useState('');
 
   const handles = useHandles(search, { excludeSelf: true });
-
   const items = handles?.data?.map(({ displayHandle }) => displayHandle) || [];
 
   const { onBlur, onChange } = input;
-
   const {
     isOpen,
     getLabelProps,
@@ -50,7 +39,10 @@ function SelectPaymail({ input, meta }) {
             </span>
           )}
           <label className="label" {...getLabelProps()}>
-            {$('To')}
+            <FormattedMessage
+              defaultMessage="To"
+              description="Recipient selection label"
+            />
           </label>
           <div className="control">
             <input
@@ -59,9 +51,6 @@ function SelectPaymail({ input, meta }) {
               {...getInputProps({ onBlur, onChange })}
             />
           </div>
-          {/* {JSON.stringify(Object.keys(input))}
-          {JSON.stringify(Object.keys(getInputProps()))}
-          {JSON.stringify(Object.keys(getInputProps(input)))} */}
         </div>
         <div className="dropdown-menu" style={{ right: 0 }}>
           <div

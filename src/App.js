@@ -44,7 +44,6 @@ function App() {
     document.title = intl.formatMessage({
       description: 'The app’s browser page title',
       defaultMessage: 'Tokenized SDK demo',
-      id: '6amK0i',
     });
   }, [intl]);
 
@@ -79,7 +78,7 @@ function App() {
           <DashboardScreen />
         </PrivateRoute>
         <Route path="*">
-          <Redirect to="/treasury" />
+          <Redirect to="/activity" />
         </Route>
       </Switch>
     </Router>

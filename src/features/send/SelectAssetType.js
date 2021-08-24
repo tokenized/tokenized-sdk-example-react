@@ -7,20 +7,6 @@ import {
 } from '@tokenized/sdk-react-private';
 import { FormattedMessage } from 'react-intl';
 import FormatQuantity from '../../utils/FormatQuantity';
-import { findMessage } from '../../utils/messages';
-
-const $ = findMessage(
-  <FormattedMessage
-    defaultMessage="Asset type"
-    description="Asset transfer: Asset type label"
-    id="Z4zU9p"
-  />,
-  <FormattedMessage
-    defaultMessage="select..."
-    description="Asset transfer: Asset type select prompt"
-    id="Z8qLYY"
-  />,
-);
 
 function RenderAssetType({ assetType }) {
   return (
@@ -37,8 +23,10 @@ function RenderAssetType({ assetType }) {
 }
 
 function SelectAssetType({ input, meta }) {
-  const assetBalances = useFilteredBalances(usePrimaryVault()?.id, {});
-  //const items = assetBalances?.data?.map(({ assetName }) => assetName) || [];
+  const vaultId = usePrimaryVault()?.id;
+  const assetBalances = useFilteredBalances(vaultId, {
+    includeInactive: false,
+  });
   const items = assetBalances?.data || [];
 
   const {
@@ -64,20 +52,24 @@ function SelectAssetType({ input, meta }) {
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
       <label className="label" {...getLabelProps()}>
-        {$('Asset type')}
+        <FormattedMessage defaultMessage="Asset" />
       </label>
       <div className="control">
         <button
           type="button"
           {...getToggleButtonProps()}
-          className="input"
-          style={{ justifyContent: 'space-between' }}
+          className="input is-justify-content-space-between"
         >
-          {selectedItem ? (
-            <RenderAssetType assetType={selectedItem} />
-          ) : (
-            $('select...')
-          )}
+          <span className="is-flex-grow-1 is-flex is-justify-content-space-between">
+            {selectedItem ? (
+              <RenderAssetType assetType={selectedItem} />
+            ) : (
+              <FormattedMessage defaultMessage="Select an asset" />
+            )}
+          </span>
+          <span className="icon is-small ml-3">
+            <i className="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
         </button>
       </div>
       <div className="dropdown-menu" style={{ right: 0 }}>

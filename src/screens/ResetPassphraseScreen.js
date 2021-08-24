@@ -33,14 +33,12 @@ function ResetPassphraseScreen() {
               <FormattedMessage
                 defaultMessage="Tokenized SDK demo"
                 description="Reset passphrase screen title"
-                id="oWlHUa"
               />
             </h1>
             <p className="subtitle">
               <FormattedMessage
                 defaultMessage="Reset your passphrase"
                 description="Reset passphrase screen subtitle"
-                id="SIRX3t"
               />
             </p>
           </div>

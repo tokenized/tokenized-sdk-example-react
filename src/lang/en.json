@@ -1,4 +1,8 @@
 {
+  "+0tm8x": {
+    "defaultMessage": "History",
+    "description": "All activity tab"
+  },
   "+WML42": {
     "defaultMessage": "Record your recovery phrase",
     "description": "Back up seed phrase description title"
@@ -6,10 +10,6 @@
   "/QSoyN": {
     "defaultMessage": "Unable to sign in",
     "description": "Login screen failed login error message title"
-  },
-  "/j2Yi1": {
-    "defaultMessage": "Status",
-    "description": "Activity table header: activity status"
   },
   "/lBke1": {
     "defaultMessage": "Title",
@@ -19,17 +19,17 @@
     "defaultMessage": "Maximum: {max}",
     "description": "Form field validation failure: number <= max is required"
   },
-  "00bEzj": {
-    "defaultMessage": "Fee",
-    "description": "Asset transfer: review details: label for computed fee for transfer"
-  },
   "0EfTim": {
     "defaultMessage": "Choose a unique ID for connecting with others and receiving payments",
     "description": "New account handle field help: explanation of paymail"
   },
-  "1HHb9u": {
-    "defaultMessage": "Details",
-    "description": "Activity table header: details"
+  "13P/gz": {
+    "defaultMessage": "max: {max}",
+    "description": "Asset transfer max quantity"
+  },
+  "1G/gOd": {
+    "defaultMessage": "To restore full access to the account <bold>{identifier}</bold>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",
+    "description": "Forgot passphrase introduction"
   },
   "1s3HAo": {
     "defaultMessage": "Avoid workplace or educational emails you might lose access to",
@@ -42,10 +42,6 @@
   "2ST6ee": {
     "defaultMessage": "Verification code",
     "description": "Verify account input field label: email verification code"
-  },
-  "2boX6x": {
-    "defaultMessage": "Review",
-    "description": "Asset transfer: review button"
   },
   "2vbsAo": {
     "defaultMessage": "Contracts",
@@ -71,17 +67,20 @@
     "defaultMessage": "Asset",
     "description": "Balance table column header: asset name"
   },
+  "47FYwb": {
+    "defaultMessage": "Cancel"
+  },
   "4Ud2UA": {
     "defaultMessage": "That handle is already in use",
     "description": "New account field validation error: handle in use"
   },
-  "5ELeq9": {
-    "defaultMessage": "Memo - optional message sent with transaction",
-    "description": "Asset transfer: input field label: memo - optional message sent with transaction"
-  },
   "5Kq5jW": {
     "defaultMessage": "Checking seed phrase has been recorded",
     "description": "Log-in status: Checking seed phrase backup"
+  },
+  "5SQjL8": {
+    "defaultMessage": "Details",
+    "description": "Activity table column header"
   },
   "6I1l1I": {
     "defaultMessage": "Liability",
@@ -90,10 +89,6 @@
   "6amK0i": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "The app’s browser page title"
-  },
-  "6dfGQZ": {
-    "defaultMessage": "To",
-    "description": "Asset transfer: input field label: paymail address of transfer target"
   },
   "7BgPWf": {
     "defaultMessage": "Continue",
@@ -107,13 +102,13 @@
     "defaultMessage": "Display pairing code…",
     "description": "Login screen display pairing code button"
   },
+  "8q60YO": {
+    "defaultMessage": "Send maximum quantity",
+    "description": "Field label (checkbox yes/no)"
+  },
   "9maDsa": {
     "defaultMessage": "Restore",
     "description": "Account recovery confirm button"
-  },
-  "AHUNQG": {
-    "defaultMessage": "Quantity",
-    "description": "Asset transfer: review details: label for asset quantity to send"
   },
   "BDkKXS": {
     "defaultMessage": "Paymail handle",
@@ -131,14 +126,6 @@
     "defaultMessage": "Postpone backup",
     "description": "Postpone seed phrase backup title"
   },
-  "BnZgJS": {
-    "defaultMessage": "Estimated miner fee",
-    "description": "Asset transfer: label for estimation of miner transfer fee"
-  },
-  "C6Pp9+": {
-    "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {fullName} and approve sign in",
-    "description": "Login screen mobile authenticator pairing subtitle"
-  },
   "C6R5We": {
     "defaultMessage": "Confirmation code",
     "description": "Forgot passphrase input field label: email confirmation code"
@@ -147,9 +134,16 @@
     "defaultMessage": "Loading…",
     "description": "App loading screen title"
   },
+  "D5NqQO": {
+    "defaultMessage": "Memo"
+  },
   "D6bG5X": {
     "defaultMessage": "Reserved",
     "description": "Balance table column header: quantity of balance reserved"
+  },
+  "E85IhZ": {
+    "defaultMessage": "A confirmation code has been sent to <bold>{maskedEmail}</bold>. Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase.",
+    "description": "Forgot passphrase confirm email description"
   },
   "EStIqe": {
     "defaultMessage": "Checking account",
@@ -163,9 +157,21 @@
     "defaultMessage": "Checking for paired authenticator",
     "description": "Log-in status: Checking for paired authenticator"
   },
+  "F37D2c": {
+    "defaultMessage": "Transactions in your <bold>non-custodial</bold> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
+    "description": "Back up seed phrase intro 1"
+  },
   "FEJ3nB": {
     "defaultMessage": "Please confirm your identity in the authenticator app",
     "description": "Login screen mobile authentication prompt subtitle"
+  },
+  "FHD1XP": {
+    "defaultMessage": "Pending others",
+    "description": "All activity tab"
+  },
+  "FdOoQ5": {
+    "defaultMessage": "Last updated",
+    "description": "Activity table column header"
   },
   "FvzCUW": {
     "defaultMessage": "Contracts",
@@ -174,6 +180,9 @@
   "GCPZxk": {
     "defaultMessage": "Cancel",
     "description": "Login screen cancel button"
+  },
+  "GHNmw1": {
+    "defaultMessage": "Send assets"
   },
   "GbFjMQ": {
     "defaultMessage": "Tokenized SDK demo",
@@ -202,10 +211,6 @@
   "IEpphI": {
     "defaultMessage": "Activity",
     "description": "Activity page title"
-  },
-  "IaE9fj": {
-    "defaultMessage": "Transactions in your <boldText>non-custodial</boldText> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
-    "description": "Back up seed phrase intro 1"
   },
   "Ih3sF+": {
     "defaultMessage": "Authorized",
@@ -251,9 +256,16 @@
     "defaultMessage": "To",
     "description": "Asset transfer: review details: label for send target"
   },
+  "N2IrpM": {
+    "defaultMessage": "Confirm"
+  },
   "N6Mi0p": {
     "defaultMessage": "Begin recovery",
     "description": "Forgot passphrase start button"
+  },
+  "OnWIBb": {
+    "defaultMessage": "Event",
+    "description": "Activity table column header"
   },
   "PVFFBa": {
     "defaultMessage": "Tokenized SDK demo",
@@ -266,10 +278,6 @@
   "Pu+yE/": {
     "defaultMessage": "Cancel",
     "description": "Verify account cancel button"
-  },
-  "QOJ75c": {
-    "defaultMessage": "Type",
-    "description": "Activity table header: activity type"
   },
   "QaB4nu": {
     "defaultMessage": "In vault",
@@ -287,6 +295,9 @@
     "defaultMessage": "Send",
     "description": "Label for button to open dialog to send assets"
   },
+  "R+J5ox": {
+    "defaultMessage": "Review"
+  },
   "RAmj2a": {
     "defaultMessage": "Create a new account",
     "description": "New account screen subtitle"
@@ -294,10 +305,6 @@
   "RXjxnq": {
     "defaultMessage": "Confirm registered email",
     "description": "Forgot passphrase confirm email title"
-  },
-  "RcSq+h": {
-    "defaultMessage": "max: {max} ≈ {maxConvert}",
-    "description": "Asset transfer: asset transfer maximum in original units and display currency"
   },
   "SIRX3t": {
     "defaultMessage": "Reset your passphrase",
@@ -310,6 +317,10 @@
   "Ssp7dT": {
     "defaultMessage": "Must be greater than {min, number}",
     "description": "Form field validation failure: number > min is required"
+  },
+  "T7+TFd": {
+    "defaultMessage": "To verify the account, enter the code sent to <bold>{email}</bold>",
+    "description": "Verify account email description"
   },
   "TBHu30": {
     "defaultMessage": "Create a passphrase",
@@ -331,10 +342,6 @@
     "defaultMessage": "Inactive",
     "description": "Treasury inactive tab"
   },
-  "Vetw5f": {
-    "defaultMessage": "Change:",
-    "description": "Activity table assets label: change"
-  },
   "Vt0wGh": {
     "defaultMessage": "Verify your backup",
     "description": "Verify seed phrase backup description title"
@@ -347,9 +354,8 @@
     "defaultMessage": "Value",
     "description": "Balance table column header: value (of assets to me)"
   },
-  "WFpQ7G": {
-    "defaultMessage": "With",
-    "description": "Activity table header: with"
+  "WKCp0D": {
+    "defaultMessage": "Asset"
   },
   "Wefkn1": {
     "defaultMessage": "I’m ready to record my private recovery phrase, and nobody’s watching",
@@ -375,17 +381,9 @@
     "defaultMessage": "Please sign in with your Tokenized account credentials",
     "description": "Sign in screen ready subtitle"
   },
-  "Z4zU9p": {
-    "defaultMessage": "Asset type",
-    "description": "Asset transfer: Asset type label"
-  },
   "Z5nasz": {
     "defaultMessage": "Create account",
     "description": "New account create button"
-  },
-  "Z8qLYY": {
-    "defaultMessage": "select...",
-    "description": "Asset transfer: Asset type select prompt"
   },
   "ZCEz8Q": {
     "defaultMessage": "Confirm your identity in the authenticator app",
@@ -399,17 +397,13 @@
     "defaultMessage": "Phone",
     "description": "Login identification method selection: use your phone number"
   },
-  "aoZTnl": {
-    "defaultMessage": "Too much",
-    "description": "Asset transfer: error message: quantity larger than available assets"
+  "aNijVy": {
+    "defaultMessage": "This is the master key to your account. <important>Do not share these words with anyone</important>. Carefully write down all 24 words, or copy them into a password manager.",
+    "description": "Back up seed phrase instructions"
   },
   "b37V5u": {
     "defaultMessage": "Back",
     "description": "Back up seed phrase show phrase again button"
-  },
-  "cEaRXX": {
-    "defaultMessage": "Welcome {fullName}",
-    "description": "Log-in screen progress title"
   },
   "cjeVpa": {
     "defaultMessage": "Account handle",
@@ -423,17 +417,11 @@
     "defaultMessage": "Issuer / counterparty",
     "description": "Contracts table column header: contract issuer / counterparty"
   },
-  "emC2Xv": {
-    "defaultMessage": "This is the master key to your account. <veryImportantText>Do not share these words with anyone</veryImportantText>. Carefully write down all 24 words, or copy them into a password manager.",
-    "description": "Back up seed phrase instructions"
+  "eH9ssJ": {
+    "defaultMessage": "Enter a message for the recipient (optional)"
   },
-  "f1KzmK": {
-    "defaultMessage": "Asset quantity",
-    "description": "Asset transfer: input field label: asset quantity"
-  },
-  "f5SHXC": {
-    "defaultMessage": "Memo",
-    "description": "Asset transfer: review details: label for memo to add to transfer"
+  "f5IQQs": {
+    "defaultMessage": "Select an asset"
   },
   "fFkbdo": {
     "defaultMessage": "Next",
@@ -451,10 +439,6 @@
     "defaultMessage": "Unable to reset passphrase",
     "description": "Reset passphrase failed error message title"
   },
-  "fyfIW2": {
-    "defaultMessage": "When",
-    "description": "Activity table header: when"
-  },
   "g+bpPs": {
     "defaultMessage": "Your account’s digital key is invalid, or has been reset. To restore full access to your funds, please enter the 24-word recovery phrase that you noted down when you created the account.",
     "description": "Account recovery description"
@@ -462,6 +446,9 @@
   "gHRR9x": {
     "defaultMessage": "Required",
     "description": "Form field validation failure: a value is required"
+  },
+  "gKtJ35": {
+    "defaultMessage": "Estimated network fee"
   },
   "hTxeee": {
     "defaultMessage": "Type",
@@ -471,9 +458,9 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "New account screen title"
   },
-  "iBTSzG": {
-    "defaultMessage": "Cancel",
-    "description": "Asset transfer: cancel button"
+  "iNnboO": {
+    "defaultMessage": "Amounts",
+    "description": "Activity table column header"
   },
   "iQHcoy": {
     "defaultMessage": "Cancel",
@@ -495,29 +482,21 @@
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
   },
-  "kxcjH1": {
-    "defaultMessage": "Asset",
-    "description": "Asset transfer: review details: label for asset to send"
-  },
   "l1Zi41": {
     "defaultMessage": "Show phrase",
     "description": "Back up seed phrase confirm button"
   },
-  "mZ+5PJ": {
-    "defaultMessage": "Should be a quantity greater than zero",
-    "description": "Asset transfer: error message: asset quantity should be greater than zero"
-  },
-  "mi6NAe": {
-    "defaultMessage": "Send maximum quantity",
-    "description": "Asset transfer: input field label: Send maximum quantity (checkbox yes/no)"
+  "mArnAT": {
+    "defaultMessage": "Welcome {name}",
+    "description": "Login screen mobile authentication prompt title"
   },
   "n0cMeX": {
     "defaultMessage": "Doesn’t match entered passphrase",
     "description": "Form field validation failure: matching passphrase confirmation is required"
   },
-  "nIjgF+": {
-    "defaultMessage": "All",
-    "description": "All activity tab"
+  "narDvl": {
+    "defaultMessage": "Welcome {name}",
+    "description": "Log-in screen progress title"
   },
   "oLcK9U": {
     "defaultMessage": "Email",
@@ -539,33 +518,24 @@
     "defaultMessage": "Checking credentials",
     "description": "Log-in status: Checking credentials"
   },
-  "q5NAaz": {
-    "defaultMessage": "To verify the account, enter the code sent to <boldText>{email}</boldText>",
-    "description": "Verify account email description"
+  "pM5GxV": {
+    "defaultMessage": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore <bold>essential that you record your digital key now</bold>, in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds.",
+    "description": "Back up seed phrase intro 2"
   },
   "qHI9UA": {
     "defaultMessage": "Cancel",
     "description": "Account recovery cancel button"
   },
+  "qVGRIE": {
+    "defaultMessage": "Quantity"
+  },
   "qZNWyi": {
     "defaultMessage": "Relationships",
     "description": "Nav bar relationships tab"
   },
-  "qq2T4k": {
-    "defaultMessage": "Total:",
-    "description": "Activity table assets label: total"
-  },
-  "qvvZcz": {
-    "defaultMessage": "Confirm",
-    "description": "Asset transfer: confirm button"
-  },
   "r+GVNN": {
     "defaultMessage": "Cancel",
     "description": "New account or reset passphrase cancel button"
-  },
-  "rFtb0p": {
-    "defaultMessage": "A confirmation code has been sent to <boldText>{maskedEmail}</boldText>. Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase.",
-    "description": "Forgot passphrase confirm email description"
   },
   "sChJWn": {
     "defaultMessage": "Must be {min, number} characters or more",
@@ -583,13 +553,20 @@
     "defaultMessage": "Treasury",
     "description": "Treasury page title (if no vault name)"
   },
-  "v9a1op": {
-    "defaultMessage": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore <boldText>essential that you record your digital key now</boldText>, in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds.",
-    "description": "Back up seed phrase intro 2"
+  "uT4OlP": {
+    "defaultMessage": "Fee"
   },
   "vELQTJ": {
     "defaultMessage": "Verify your email",
     "description": "Verify account email description title"
+  },
+  "vG0gfW": {
+    "defaultMessage": "max: {max} ≈ {converted}",
+    "description": "Asset transfer max quantity"
+  },
+  "vUD6Fj": {
+    "defaultMessage": "My open items",
+    "description": "All activity tab"
   },
   "vutAZJ": {
     "defaultMessage": "Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail.",
@@ -603,21 +580,21 @@
     "defaultMessage": "Checking vault and signing keys",
     "description": "Log-in status: Checking vault and signing keys"
   },
+  "wXoUed": {
+    "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {name} and approve sign in",
+    "description": "Login screen mobile authenticator pairing subtitle"
+  },
   "wejkZs": {
     "defaultMessage": "Assets",
     "description": "Treasury assets tab"
   },
-  "wurpXL": {
-    "defaultMessage": "Welcome {fullName}",
-    "description": "Login screen mobile authentication prompt title"
+  "wkgAd3": {
+    "defaultMessage": "To",
+    "description": "Recipient selection label"
   },
   "wvIglH": {
     "defaultMessage": "Continue",
     "description": "Forgot passphrase confirm email continue button"
-  },
-  "xFJvp5": {
-    "defaultMessage": "Pending",
-    "description": "Pending activity tab"
   },
   "xlJ5FF": {
     "defaultMessage": "Only alphanumeric characters allowed",
@@ -626,14 +603,6 @@
   "xu36fu": {
     "defaultMessage": "I’ve changed my mind",
     "description": "Postpone seed phrase backup cancel (back up after all) button"
-  },
-  "y2ZMIl": {
-    "defaultMessage": "Title",
-    "description": "Activity table header: title"
-  },
-  "zjXve4": {
-    "defaultMessage": "To restore full access to the account <boldText>{identifier}</boldText>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",
-    "description": "Forgot passphrase introduction"
   },
   "zolMCa": {
     "defaultMessage": "Minimum: {min, number}",

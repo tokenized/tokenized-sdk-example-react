@@ -77,14 +77,12 @@ function NewAccountScreen() {
               <FormattedMessage
                 defaultMessage="Tokenized SDK demo"
                 description="New account screen title"
-                id="iA3+G9"
               />
             </h1>
             <p className="subtitle">
               <FormattedMessage
                 defaultMessage="Create a new account"
                 description="New account screen subtitle"
-                id="RAmj2a"
               />
             </p>
           </div>
@@ -103,7 +101,6 @@ function NewAccountScreen() {
                 <FormattedMessage
                   defaultMessage="Sign in…"
                   description="New account screen back to sign in link"
-                  id="ETFPN0"
                 />
               </Link>
             </section>

@@ -33,7 +33,6 @@ function NewAccount({
         return intl.formatMessage({
           defaultMessage: 'That email is already in use',
           description: 'New account field validation error: email in use',
-          id: 'fnlNdQ',
         });
       }
     },
@@ -52,7 +51,6 @@ function NewAccount({
         return intl.formatMessage({
           defaultMessage: 'That handle is already in use',
           description: 'New account field validation error: handle in use',
-          id: '4Ud2UA',
         });
       }
     },
@@ -75,7 +73,6 @@ function NewAccount({
                 <FormattedMessage
                   defaultMessage="Unable to create account"
                   description="New account failed error message title"
-                  id="UBuArm"
                 />
               </p>
               <button
@@ -100,7 +97,6 @@ function NewAccount({
                     <FormattedMessage
                       defaultMessage="First name"
                       description="New account input field label: first name"
-                      id="LfU0vg"
                     />
                   </label>
                   <div className="control">
@@ -133,7 +129,6 @@ function NewAccount({
                     <FormattedMessage
                       defaultMessage="Last name"
                       description="New account input field label: last name"
-                      id="LwJoyw"
                     />
                   </label>
                   <div className="control">
@@ -162,7 +157,6 @@ function NewAccount({
                 <FormattedMessage
                   defaultMessage="Personal email"
                   description="New account input field label: email"
-                  id="BFmRsr"
                 />
               </label>
               <div className="control">
@@ -182,7 +176,6 @@ function NewAccount({
                   <FormattedMessage
                     defaultMessage="Avoid workplace or educational emails you might lose access to"
                     description="New account email field help: advice to pick personal accounts"
-                    id="1s3HAo"
                   />
                 </p>
                 {(fieldIsEmail(intl, input?.value) === undefined || touched) &&
@@ -198,7 +191,6 @@ function NewAccount({
                 <FormattedMessage
                   defaultMessage="Paymail handle"
                   description="New account input field label: handle"
-                  id="BDkKXS"
                 />
               </label>
               <div className="field has-addons">
@@ -217,7 +209,6 @@ function NewAccount({
                     <FormattedMessage
                       defaultMessage="Choose a unique ID for connecting with others and receiving payments"
                       description="New account handle field help: explanation of paymail"
-                      id="0EfTim"
                     />
                   </p>
                   {(!!input?.value || touched) && !!error && (
@@ -242,7 +233,6 @@ function NewAccount({
             <FormattedMessage
               defaultMessage="Cancel"
               description="New account cancel button"
-              id="QoOTpE"
             />
           </Link>
           <button
@@ -257,7 +247,6 @@ function NewAccount({
             <FormattedMessage
               defaultMessage="Continue"
               description="New account continue button"
-              id="7BgPWf"
             />
           </button>
         </div>

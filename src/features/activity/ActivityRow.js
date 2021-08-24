@@ -1,54 +1,35 @@
 import React from 'react';
+import classNames from 'classnames';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import FormatQuantity from '../../utils/FormatQuantity';
-
-
 
 export function ActivityHeader() {
   return (
     <tr>
       <th className="has-text-left">
-        <FormattedMessage
-          defaultMessage="With"
-          description="Activity table header: with"
-          id="WFpQ7G"
-        />
-      </th>
-      <th className="has-text-left">
         <div>
           <FormattedMessage
-            defaultMessage="Type"
-            description="Activity table header: activity type"
-            id="QOJ75c"
+            defaultMessage="Event"
+            description="Activity table column header"
           />
         </div>
-        <div>
-          <FormattedMessage
-            defaultMessage="Status"
-            description="Activity table header: activity status"
-            id="/j2Yi1"
-          />
-        </div>
-      </th>
-      <th className="has-text-left">
-        <FormattedMessage
-          defaultMessage="Title"
-          description="Activity table header: title"
-          id="y2ZMIl"
-        />
       </th>
       <th className="has-text-left">
         <FormattedMessage
           defaultMessage="Details"
-          description="Activity table header: details"
-          id="1HHb9u"
+          description="Activity table column header"
         />
       </th>
       <th className="has-text-left">
         <FormattedMessage
-          defaultMessage="When"
-          description="Activity table header: when"
-          id="fyfIW2"
+          defaultMessage="Amounts"
+          description="Activity table column header"
+        />
+      </th>
+      <th className="has-text-left">
+        <FormattedMessage
+          defaultMessage="Last updated"
+          description="Activity table column header"
         />
       </th>
     </tr>
@@ -58,56 +39,50 @@ export function ActivityHeader() {
 export function ActivityRow({
   item: {
     txId,
-    dateCreated,
-    activityEventStatus: { name: activityEventStatus },
-    activityEventType: { name: activityEventType },
-    counterParties,
+    dateModified,
+    formatted: { description, counterparty, tradeAction, tradeResponse },
+    counterparties,
     memo,
     assets,
     contract,
   },
 }) {
-  let [{ displayName = '', transfers = [] } = {}] = counterParties || [];
+  let [{ transfers = [] } = {}] = counterparties || [];
   return (
     <tr style={{ whiteSpace: 'nowrap' }}>
-      <td>{displayName}</td>
       <td>
-        <div>{activityEventType}</div>
-        <div>{activityEventStatus}</div>
+        <div className="has-text-weight-bold">{description}</div>
+        <div>{counterparty}</div>
       </td>
       <td>
-        {memo}
-        {contract?.name}
+        {!!tradeAction && <div>{tradeAction}</div>}
+        {!!tradeResponse && <div>{tradeResponse}</div>}
+        {!!memo && <div>{memo}</div>}
       </td>
       <td>
         {!transfers.length &&
-          assets?.map(({ total, delta }, index) => (
-            <div key={index}>
-              <div>
-                <FormattedMessage
-                  defaultMessage="Total:"
-                  description="Activity table assets label: total"
-                  id="qq2T4k"
-                />
-                &nbsp;
-                <FormatQuantity quantity={total} />
-              </div>
-              <div>
-                <FormattedMessage
-                  defaultMessage="Change:"
-                  description="Activity table assets label: change"
-                  id="Vetw5f"
-                />
-                &nbsp;
-                <FormatQuantity quantity={delta} />
-              </div>
-            </div>
-          ))}
-
-        {transfers.map(({ direction, quantity }, index) => (
-          <div key={index}>
-            {direction == 'received' ? '+' : '-'}
-            &nbsp;
+          assets?.map(
+            ({ delta }, index) =>
+              !!delta?.tokens?.number && (
+                <div
+                  key={index}
+                  className={classNames({
+                    'has-text-danger-dark': delta?.tokens?.number < 0,
+                    'has-text-success-dark': delta?.tokens?.number > 0,
+                  })}
+                >
+                  <FormatQuantity quantity={delta} />
+                </div>
+              ),
+          )}
+        {transfers.map(({ quantity, direction }, index) => (
+          <div
+            key={index}
+            className={classNames({
+              'has-text-danger-dark': direction === 'sent',
+              'has-text-success-dark': direction === 'received',
+            })}
+          >
             <FormatQuantity quantity={quantity} />
           </div>
         ))}
@@ -115,7 +90,7 @@ export function ActivityRow({
       <td>
         <div>
           <FormattedDate
-            value={new Date(dateCreated)}
+            value={new Date(dateModified)}
             dateStyle="short"
             timeStyle="short"
           />

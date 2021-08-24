@@ -12,7 +12,6 @@ const doesFieldMatchPassphrase = (intl, passphraseConfirm, { passphrase }) => {
       defaultMessage: 'Doesn’t match entered passphrase',
       description:
         'Form field validation failure: matching passphrase confirmation is required',
-      id: 'n0cMeX',
     });
   }
 };
@@ -97,13 +96,11 @@ function NewPassphrase({
                   <FormattedMessage
                     defaultMessage="Unable to create account"
                     description="New account failed error message title"
-                    id="UBuArm"
                   />
                 ) : (
                   <FormattedMessage
                     defaultMessage="Unable to reset passphrase"
                     description="Reset passphrase failed error message title"
-                    id="fqwQxw"
                   />
                 )}
               </p>
@@ -151,7 +148,6 @@ function NewPassphrase({
                       <FormattedMessage
                         defaultMessage="Create a passphrase"
                         description="New account or reset passphrase input field label: create passphrase"
-                        id="TBHu30"
                       />
                     </span>
                   </div>
@@ -218,7 +214,6 @@ function NewPassphrase({
                 <FormattedMessage
                   defaultMessage="Verify passphrase"
                   description="New account or reset passphrase input field label: verify passphrase"
-                  id="WmUjxK"
                 />
               </label>
               <div className="field has-addons">
@@ -282,7 +277,6 @@ function NewPassphrase({
             <FormattedMessage
               defaultMessage="Cancel"
               description="New account or reset passphrase cancel button"
-              id="r+GVNN"
             />
           </Link>
           <button
@@ -302,13 +296,11 @@ function NewPassphrase({
               <FormattedMessage
                 defaultMessage="Create account"
                 description="New account create button"
-                id="Z5nasz"
               />
             ) : (
               <FormattedMessage
                 defaultMessage="Reset and sign in"
                 description="Reset passphrase button"
-                id="X9RXVm"
               />
             )}
           </button>

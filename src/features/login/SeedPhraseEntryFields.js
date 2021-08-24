@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useCallback } from 'react';
 import classNames from 'classnames';
 import { Field } from 'react-final-form';

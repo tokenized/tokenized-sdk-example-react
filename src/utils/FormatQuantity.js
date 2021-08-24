@@ -2,13 +2,13 @@ import React from 'react';
 import FormatCurrency from './FormatCurrency';
 
 export default function FormatQuantity({
-  quantity: { tokens, assetName, assetCurrency } = {},
-  showCouponName = true,
+  quantity: { tokens, assetCurrency } = {},
 }) {
-  if (tokens)
-    return `${tokens?.formatted} ${showCouponName ? `(${assetName})` : ''}`;
-
-  if (assetCurrency) return <FormatCurrency currency={assetCurrency} />;
-
-  return '';
+  if (tokens) {
+    return `${tokens.formatted}`;
+  }
+  if (assetCurrency) {
+    return <FormatCurrency currency={assetCurrency} />;
+  }
+  return null;
 }

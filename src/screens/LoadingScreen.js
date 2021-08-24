@@ -12,7 +12,6 @@ function LoadingScreen() {
                 <FormattedMessage
                   description="App loading screen title"
                   defaultMessage="Loading…"
-                  id="CYyLJH"
                 />
               </h1>
               <progress className="progress is-small is-primary" max="100" />
@@ -20,7 +19,6 @@ function LoadingScreen() {
                 <FormattedMessage
                   description="App loading screen subtitle (below animated progress bar)"
                   defaultMessage="Checking for previous session"
-                  id="slLQlj"
                 />
               </p>
             </div>
