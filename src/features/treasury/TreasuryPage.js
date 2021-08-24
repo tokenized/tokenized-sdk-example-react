@@ -12,6 +12,7 @@ import {
   usePrimaryVault,
   useFilteredBalances,
 } from '@tokenized/sdk-react-private';
+import NavTab from '../../utils/NavTab';
 import TreasuryAssetsTable from './TreasuryAssetsTable';
 import TreasuryLiabilitiesTable from './TreasuryLiabilitiesTable';
 import TreasuryInactiveTable from './TreasuryInactiveTable';
@@ -55,52 +56,51 @@ function TreasuryPage() {
           />
         </span>
       </h1>
-      <div className="buttons has-addons">
-        <NavLink
-          to={`${url}/assets`}
-          className="button"
-          activeClassName="is-link is-selected"
-        >
-          <span>
-            <FormattedMessage
-              defaultMessage="Assets"
-              description="Treasury assets tab"
-            />
-          </span>
-          <span className="tag is-link is-light is-rounded ml-2">
-            <FormattedNumber value={assetsCount} />
-          </span>
-        </NavLink>
-        <NavLink
-          to={`${url}/liabilities`}
-          className="button"
-          activeClassName="is-link is-selected"
-        >
-          <span>
-            <FormattedMessage
-              defaultMessage="Liabilities"
-              description="Treasury liabilities tab"
-            />
-          </span>
-          <span className="tag is-link is-light is-rounded ml-2">
-            <FormattedNumber value={liabilitiesCount} />
-          </span>
-        </NavLink>
-        <NavLink
-          to={`${url}/inactive`}
-          className="button"
-          activeClassName="is-link is-selected"
-        >
-          <span>
-            <FormattedMessage
-              defaultMessage="Inactive"
-              description="Treasury inactive tab"
-            />
-          </span>
-          <span className="tag is-link is-light is-rounded ml-2">
-            <FormattedNumber value={inactiveCount} />
-          </span>
-        </NavLink>
+      <div className="tabs is-boxed">
+        <ul>
+          <NavTab to={`${url}/assets`}>
+            <span className="icon is-small">
+              <i className="fas fa-folder-plus" aria-hidden="true"></i>
+            </span>
+            <span>
+              <FormattedMessage
+                defaultMessage="Assets"
+                description="Treasury assets tab"
+              />
+              <span className="tag is-link is-light is-rounded ml-2">
+                <FormattedNumber value={assetsCount} />
+              </span>
+            </span>
+          </NavTab>
+          <NavTab to={`${url}/liabilities`}>
+            <span className="icon is-small">
+              <i className="fas fa-folder-minus" aria-hidden="true"></i>
+            </span>
+            <span>
+              <FormattedMessage
+                defaultMessage="Liabilities"
+                description="Treasury liabilities tab"
+              />
+            </span>
+            <span className="tag is-link is-light is-rounded ml-2">
+              <FormattedNumber value={liabilitiesCount} />
+            </span>
+          </NavTab>
+          <NavTab to={`${url}/inactive`}>
+            <span className="icon is-small">
+              <i className="fas fa-ban" aria-hidden="true"></i>
+            </span>
+            <span>
+              <FormattedMessage
+                defaultMessage="Inactive"
+                description="Treasury inactive tab"
+              />
+            </span>
+            <span className="tag is-link is-light is-rounded ml-2">
+              <FormattedNumber value={inactiveCount} />
+            </span>
+          </NavTab>
+        </ul>
       </div>
       <Switch>
         <Route path={`${path}/assets`}>

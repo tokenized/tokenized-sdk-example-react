@@ -1,36 +1,9 @@
 import React from 'react';
-import {
-  NavLink,
-  Switch,
-  Route,
-  Redirect,
-  useRouteMatch,
-} from 'react-router-dom';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
 import { useActivity } from '@tokenized/sdk-react-private';
+import NavTab from '../../utils/NavTab';
 import ActivityTable from './ActivityTable';
-
-// eslint-disable-next-line react/display-name
-const TabLink = React.forwardRef(
-  ({ className, style, children, navigate, ...props }, ref) => (
-    <li style={style} className={className}>
-      <a
-        ref={ref}
-        {...props}
-        onClick={(event) => {
-          event.preventDefault();
-          navigate();
-        }}
-      >
-        {children}
-      </a>
-    </li>
-  ),
-);
-
-const NavTab = (props) => {
-  return <NavLink {...props} component={TabLink} activeClassName="is-active" />;
-};
 
 export default function ActivityPage() {
   const { url, path } = useRouteMatch();
@@ -66,7 +39,7 @@ export default function ActivityPage() {
         <ul>
           <NavTab to={`${url}/history`}>
             <span className="icon is-small">
-              <i className="fas fa-id-badge" aria-hidden="true"></i>
+              <i className="fas fa-history" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage
@@ -77,7 +50,7 @@ export default function ActivityPage() {
           </NavTab>
           <NavTab to={`${url}/open`}>
             <span className="icon is-small">
-              <i className="fas fa-id-badge" aria-hidden="true"></i>
+              <i className="fas fa-exclamation-circle" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage
@@ -91,7 +64,7 @@ export default function ActivityPage() {
           </NavTab>
           <NavTab to={`${url}/pending`}>
             <span className="icon is-small">
-              <i className="fas fa-id-badge" aria-hidden="true"></i>
+              <i className="fas fa-pause-circle" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage
