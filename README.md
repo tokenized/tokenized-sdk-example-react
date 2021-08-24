@@ -12,7 +12,7 @@ customers building web-based apps, the
 handles all the details of the REST API for you, and is the quickest way to
 integrate the power of the Tokenized platform.
 
-_This is **SDK release 0.5.5**, an early-access preview release with many
+_This is **SDK release 0.6.1**, an early-access preview release with many
 features not yet implemented. At this early stage significant changes are
 possible to the SDK interface between releases._
 
@@ -1776,6 +1776,16 @@ The SDK is always released together in three parts:
 and
 [`tokenized/tokenized-sdk-example-react` (GitHub repo)](https://github.com/tokenized/tokenized-sdk-example-react).
 
+- **`0.6.1` 2021-08-24**
+  - Major update to the formatting of activity lists, making it easier to
+    separate events clearly into historical, actionable, and pending items, and
+    sharing the same implementation as the next update to the Tokenized desktop
+    app. See the updated example app activity page for more details of the
+    improved query data.
+  - Support for updating activity lists immediately in response to new activity
+    pushed by the server, without needing any additional code in your
+    application.
+  - Some improvements to the “Send assets” dialog in the example app.
 - **`0.5.5` 2021-07-20**
   - The SDK now supports sending of assets
   - When pairing devices it is no longer necessary to select the backend as this
