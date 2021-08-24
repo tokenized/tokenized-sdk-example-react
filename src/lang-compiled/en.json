@@ -33,16 +33,20 @@
       "value": "max"
     }
   ],
-  "00bEzj": [
-    {
-      "type": 0,
-      "value": "Fee"
-    }
-  ],
   "0EfTim": [
     {
       "type": 0,
       "value": "Choose a unique ID for connecting with others and receiving payments"
+    }
+  ],
+  "13P/gz": [
+    {
+      "type": 0,
+      "value": "max: "
+    },
+    {
+      "type": 1,
+      "value": "max"
     }
   ],
   "1G/gOd": [
@@ -83,12 +87,6 @@
       "value": "Verification code"
     }
   ],
-  "2boX6x": [
-    {
-      "type": 0,
-      "value": "Review"
-    }
-  ],
   "2vbsAo": [
     {
       "type": 0,
@@ -125,16 +123,16 @@
       "value": "Asset"
     }
   ],
+  "47FYwb": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
   "4Ud2UA": [
     {
       "type": 0,
       "value": "That handle is already in use"
-    }
-  ],
-  "5ELeq9": [
-    {
-      "type": 0,
-      "value": "Memo - optional message sent with transaction"
     }
   ],
   "5Kq5jW": [
@@ -161,12 +159,6 @@
       "value": "Tokenized SDK demo"
     }
   ],
-  "6dfGQZ": [
-    {
-      "type": 0,
-      "value": "To"
-    }
-  ],
   "7BgPWf": [
     {
       "type": 0,
@@ -185,16 +177,16 @@
       "value": "Display pairing code…"
     }
   ],
+  "8q60YO": [
+    {
+      "type": 0,
+      "value": "Send maximum quantity"
+    }
+  ],
   "9maDsa": [
     {
       "type": 0,
       "value": "Restore"
-    }
-  ],
-  "AHUNQG": [
-    {
-      "type": 0,
-      "value": "Quantity"
     }
   ],
   "BDkKXS": [
@@ -221,12 +213,6 @@
       "value": "Postpone backup"
     }
   ],
-  "BnZgJS": [
-    {
-      "type": 0,
-      "value": "Estimated miner fee"
-    }
-  ],
   "C6R5We": [
     {
       "type": 0,
@@ -237,6 +223,12 @@
     {
       "type": 0,
       "value": "Loading…"
+    }
+  ],
+  "D5NqQO": [
+    {
+      "type": 0,
+      "value": "Memo"
     }
   ],
   "D6bG5X": [
@@ -331,6 +323,12 @@
     {
       "type": 0,
       "value": "Cancel"
+    }
+  ],
+  "GHNmw1": [
+    {
+      "type": 0,
+      "value": "Send assets"
     }
   ],
   "GbFjMQ": [
@@ -441,6 +439,12 @@
       "value": "To"
     }
   ],
+  "N2IrpM": [
+    {
+      "type": 0,
+      "value": "Confirm"
+    }
+  ],
   "N6Mi0p": [
     {
       "type": 0,
@@ -493,6 +497,12 @@
     {
       "type": 0,
       "value": "Send"
+    }
+  ],
+  "R+J5ox": [
+    {
+      "type": 0,
+      "value": "Review"
     }
   ],
   "RAmj2a": [
@@ -570,24 +580,6 @@
       "value": "Treasury"
     }
   ],
-  "V8ri+5": [
-    {
-      "type": 0,
-      "value": "max: "
-    },
-    {
-      "type": 1,
-      "value": "max"
-    },
-    {
-      "type": 0,
-      "value": " ≈ "
-    },
-    {
-      "type": 1,
-      "value": "converted"
-    }
-  ],
   "VYmTOm": [
     {
       "type": 0,
@@ -610,6 +602,12 @@
     {
       "type": 0,
       "value": "Value"
+    }
+  ],
+  "WKCp0D": [
+    {
+      "type": 0,
+      "value": "Asset"
     }
   ],
   "Wefkn1": [
@@ -648,22 +646,10 @@
       "value": "Please sign in with your Tokenized account credentials"
     }
   ],
-  "Z4zU9p": [
-    {
-      "type": 0,
-      "value": "Asset type"
-    }
-  ],
   "Z5nasz": [
     {
       "type": 0,
       "value": "Create account"
-    }
-  ],
-  "Z8qLYY": [
-    {
-      "type": 0,
-      "value": "select..."
     }
   ],
   "ZCEz8Q": [
@@ -704,12 +690,6 @@
       "value": ". Carefully write down all 24 words, or copy them into a password manager."
     }
   ],
-  "aoZTnl": [
-    {
-      "type": 0,
-      "value": "Too much"
-    }
-  ],
   "b37V5u": [
     {
       "type": 0,
@@ -734,16 +714,16 @@
       "value": "Issuer / counterparty"
     }
   ],
-  "f1KzmK": [
+  "eH9ssJ": [
     {
       "type": 0,
-      "value": "Asset quantity"
+      "value": "Enter a message for the recipient (optional)"
     }
   ],
-  "f5SHXC": [
+  "f5IQQs": [
     {
       "type": 0,
-      "value": "Memo"
+      "value": "Select an asset"
     }
   ],
   "fFkbdo": [
@@ -782,6 +762,12 @@
       "value": "Required"
     }
   ],
+  "gKtJ35": [
+    {
+      "type": 0,
+      "value": "Estimated network fee"
+    }
+  ],
   "hTxeee": [
     {
       "type": 0,
@@ -792,12 +778,6 @@
     {
       "type": 0,
       "value": "Tokenized SDK demo"
-    }
-  ],
-  "iBTSzG": [
-    {
-      "type": 0,
-      "value": "Cancel"
     }
   ],
   "iNnboO": [
@@ -836,12 +816,6 @@
       "value": "Issued"
     }
   ],
-  "kxcjH1": [
-    {
-      "type": 0,
-      "value": "Asset"
-    }
-  ],
   "l1Zi41": [
     {
       "type": 0,
@@ -856,18 +830,6 @@
     {
       "type": 1,
       "value": "name"
-    }
-  ],
-  "mZ+5PJ": [
-    {
-      "type": 0,
-      "value": "Should be a quantity greater than zero"
-    }
-  ],
-  "mi6NAe": [
-    {
-      "type": 0,
-      "value": "Send maximum quantity"
     }
   ],
   "n0cMeX": [
@@ -942,16 +904,16 @@
       "value": "Cancel"
     }
   ],
+  "qVGRIE": [
+    {
+      "type": 0,
+      "value": "Quantity"
+    }
+  ],
   "qZNWyi": [
     {
       "type": 0,
       "value": "Relationships"
-    }
-  ],
-  "qvvZcz": [
-    {
-      "type": 0,
-      "value": "Confirm"
     }
   ],
   "r+GVNN": [
@@ -1002,10 +964,34 @@
       "value": "Treasury"
     }
   ],
+  "uT4OlP": [
+    {
+      "type": 0,
+      "value": "Fee"
+    }
+  ],
   "vELQTJ": [
     {
       "type": 0,
       "value": "Verify your email"
+    }
+  ],
+  "vG0gfW": [
+    {
+      "type": 0,
+      "value": "max: "
+    },
+    {
+      "type": 1,
+      "value": "max"
+    },
+    {
+      "type": 0,
+      "value": " ≈ "
+    },
+    {
+      "type": 1,
+      "value": "converted"
     }
   ],
   "vUD6Fj": [
@@ -1050,6 +1036,12 @@
     {
       "type": 0,
       "value": "Assets"
+    }
+  ],
+  "wkgAd3": [
+    {
+      "type": 0,
+      "value": "To"
     }
   ],
   "wvIglH": [

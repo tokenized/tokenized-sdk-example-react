@@ -2,14 +2,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import FormatCurrency from '../../utils/FormatCurrency';
 import FormatQuantity from '../../utils/FormatQuantity';
-import { findMessage } from '../../utils/messages';
-
-const $ = findMessage(
-  <FormattedMessage
-    defaultMessage="Send maximum quantity"
-    description="Asset transfer: input field label: Send maximum quantity (checkbox yes/no)"
-  />,
-);
 
 function ChooseSendMax({ input, max, meta }) {
   return (
@@ -19,20 +11,34 @@ function ChooseSendMax({ input, max, meta }) {
       )}
       {max && (
         <span className="is-pulled-right">
-          <FormattedMessage
-            defaultMessage="max: {max} ≈ {converted}"
-            description="Asset transfer: asset transfer maximum in original units and display currency"
-            values={{
-              max: <FormatQuantity quantity={max} />,
-              converted: <FormatCurrency currency={max?.displayCurrency} />,
-            }}
-          />
+          {!!max?.displayCurrency && (
+            <FormattedMessage
+              defaultMessage="max: {max} ≈ {converted}"
+              description="Asset transfer max quantity"
+              values={{
+                max: <FormatQuantity quantity={max} />,
+                converted: <FormatCurrency currency={max?.displayCurrency} />,
+              }}
+            />
+          )}
+          {!max?.displayCurrency && (
+            <FormattedMessage
+              defaultMessage="max: {max}"
+              description="Asset transfer max quantity"
+              values={{
+                max: <FormatQuantity quantity={max} />,
+              }}
+            />
+          )}
         </span>
       )}
       <label className="checkbox">
         <input type="checkbox" {...input} />
         &nbsp;
-        {$('Send maximum quantity')}
+        <FormattedMessage
+          defaultMessage="Send maximum quantity"
+          description="Field label (checkbox yes/no)"
+        />
       </label>
     </div>
   );

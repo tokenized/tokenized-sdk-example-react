@@ -19,13 +19,13 @@
     "defaultMessage": "Maximum: {max}",
     "description": "Form field validation failure: number <= max is required"
   },
-  "00bEzj": {
-    "defaultMessage": "Fee",
-    "description": "Asset transfer: review details: label for computed fee for transfer"
-  },
   "0EfTim": {
     "defaultMessage": "Choose a unique ID for connecting with others and receiving payments",
     "description": "New account handle field help: explanation of paymail"
+  },
+  "13P/gz": {
+    "defaultMessage": "max: {max}",
+    "description": "Asset transfer max quantity"
   },
   "1G/gOd": {
     "defaultMessage": "To restore full access to the account <bold>{identifier}</bold>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",
@@ -42,10 +42,6 @@
   "2ST6ee": {
     "defaultMessage": "Verification code",
     "description": "Verify account input field label: email verification code"
-  },
-  "2boX6x": {
-    "defaultMessage": "Review",
-    "description": "Asset transfer: review button"
   },
   "2vbsAo": {
     "defaultMessage": "Contracts",
@@ -71,13 +67,12 @@
     "defaultMessage": "Asset",
     "description": "Balance table column header: asset name"
   },
+  "47FYwb": {
+    "defaultMessage": "Cancel"
+  },
   "4Ud2UA": {
     "defaultMessage": "That handle is already in use",
     "description": "New account field validation error: handle in use"
-  },
-  "5ELeq9": {
-    "defaultMessage": "Memo - optional message sent with transaction",
-    "description": "Asset transfer: input field label: memo - optional message sent with transaction"
   },
   "5Kq5jW": {
     "defaultMessage": "Checking seed phrase has been recorded",
@@ -95,10 +90,6 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "The app’s browser page title"
   },
-  "6dfGQZ": {
-    "defaultMessage": "To",
-    "description": "Asset transfer: input field label: paymail address of transfer target"
-  },
   "7BgPWf": {
     "defaultMessage": "Continue",
     "description": "New account continue button"
@@ -111,13 +102,13 @@
     "defaultMessage": "Display pairing code…",
     "description": "Login screen display pairing code button"
   },
+  "8q60YO": {
+    "defaultMessage": "Send maximum quantity",
+    "description": "Field label (checkbox yes/no)"
+  },
   "9maDsa": {
     "defaultMessage": "Restore",
     "description": "Account recovery confirm button"
-  },
-  "AHUNQG": {
-    "defaultMessage": "Quantity",
-    "description": "Asset transfer: review details: label for asset quantity to send"
   },
   "BDkKXS": {
     "defaultMessage": "Paymail handle",
@@ -135,10 +126,6 @@
     "defaultMessage": "Postpone backup",
     "description": "Postpone seed phrase backup title"
   },
-  "BnZgJS": {
-    "defaultMessage": "Estimated miner fee",
-    "description": "Asset transfer: label for estimation of miner transfer fee"
-  },
   "C6R5We": {
     "defaultMessage": "Confirmation code",
     "description": "Forgot passphrase input field label: email confirmation code"
@@ -146,6 +133,9 @@
   "CYyLJH": {
     "defaultMessage": "Loading…",
     "description": "App loading screen title"
+  },
+  "D5NqQO": {
+    "defaultMessage": "Memo"
   },
   "D6bG5X": {
     "defaultMessage": "Reserved",
@@ -190,6 +180,9 @@
   "GCPZxk": {
     "defaultMessage": "Cancel",
     "description": "Login screen cancel button"
+  },
+  "GHNmw1": {
+    "defaultMessage": "Send assets"
   },
   "GbFjMQ": {
     "defaultMessage": "Tokenized SDK demo",
@@ -263,6 +256,9 @@
     "defaultMessage": "To",
     "description": "Asset transfer: review details: label for send target"
   },
+  "N2IrpM": {
+    "defaultMessage": "Confirm"
+  },
   "N6Mi0p": {
     "defaultMessage": "Begin recovery",
     "description": "Forgot passphrase start button"
@@ -298,6 +294,9 @@
   "Qt4tZb": {
     "defaultMessage": "Send",
     "description": "Label for button to open dialog to send assets"
+  },
+  "R+J5ox": {
+    "defaultMessage": "Review"
   },
   "RAmj2a": {
     "defaultMessage": "Create a new account",
@@ -339,10 +338,6 @@
     "defaultMessage": "Treasury",
     "description": "Nav bar treasury tab"
   },
-  "V8ri+5": {
-    "defaultMessage": "max: {max} ≈ {converted}",
-    "description": "Asset transfer: asset transfer maximum in original units and display currency"
-  },
   "VYmTOm": {
     "defaultMessage": "Inactive",
     "description": "Treasury inactive tab"
@@ -358,6 +353,9 @@
   "VyIxs7": {
     "defaultMessage": "Value",
     "description": "Balance table column header: value (of assets to me)"
+  },
+  "WKCp0D": {
+    "defaultMessage": "Asset"
   },
   "Wefkn1": {
     "defaultMessage": "I’m ready to record my private recovery phrase, and nobody’s watching",
@@ -383,17 +381,9 @@
     "defaultMessage": "Please sign in with your Tokenized account credentials",
     "description": "Sign in screen ready subtitle"
   },
-  "Z4zU9p": {
-    "defaultMessage": "Asset type",
-    "description": "Asset transfer: Asset type label"
-  },
   "Z5nasz": {
     "defaultMessage": "Create account",
     "description": "New account create button"
-  },
-  "Z8qLYY": {
-    "defaultMessage": "select...",
-    "description": "Asset transfer: Asset type select prompt"
   },
   "ZCEz8Q": {
     "defaultMessage": "Confirm your identity in the authenticator app",
@@ -411,10 +401,6 @@
     "defaultMessage": "This is the master key to your account. <important>Do not share these words with anyone</important>. Carefully write down all 24 words, or copy them into a password manager.",
     "description": "Back up seed phrase instructions"
   },
-  "aoZTnl": {
-    "defaultMessage": "Too much",
-    "description": "Asset transfer: error message: quantity larger than available assets"
-  },
   "b37V5u": {
     "defaultMessage": "Back",
     "description": "Back up seed phrase show phrase again button"
@@ -431,13 +417,11 @@
     "defaultMessage": "Issuer / counterparty",
     "description": "Contracts table column header: contract issuer / counterparty"
   },
-  "f1KzmK": {
-    "defaultMessage": "Asset quantity",
-    "description": "Asset transfer: input field label: asset quantity"
+  "eH9ssJ": {
+    "defaultMessage": "Enter a message for the recipient (optional)"
   },
-  "f5SHXC": {
-    "defaultMessage": "Memo",
-    "description": "Asset transfer: review details: label for memo to add to transfer"
+  "f5IQQs": {
+    "defaultMessage": "Select an asset"
   },
   "fFkbdo": {
     "defaultMessage": "Next",
@@ -463,6 +447,9 @@
     "defaultMessage": "Required",
     "description": "Form field validation failure: a value is required"
   },
+  "gKtJ35": {
+    "defaultMessage": "Estimated network fee"
+  },
   "hTxeee": {
     "defaultMessage": "Type",
     "description": "Balance table column header: asset type"
@@ -470,10 +457,6 @@
   "iA3+G9": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "New account screen title"
-  },
-  "iBTSzG": {
-    "defaultMessage": "Cancel",
-    "description": "Asset transfer: cancel button"
   },
   "iNnboO": {
     "defaultMessage": "Amounts",
@@ -499,10 +482,6 @@
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
   },
-  "kxcjH1": {
-    "defaultMessage": "Asset",
-    "description": "Asset transfer: review details: label for asset to send"
-  },
   "l1Zi41": {
     "defaultMessage": "Show phrase",
     "description": "Back up seed phrase confirm button"
@@ -510,14 +489,6 @@
   "mArnAT": {
     "defaultMessage": "Welcome {name}",
     "description": "Login screen mobile authentication prompt title"
-  },
-  "mZ+5PJ": {
-    "defaultMessage": "Should be a quantity greater than zero",
-    "description": "Asset transfer: error message: asset quantity should be greater than zero"
-  },
-  "mi6NAe": {
-    "defaultMessage": "Send maximum quantity",
-    "description": "Asset transfer: input field label: Send maximum quantity (checkbox yes/no)"
   },
   "n0cMeX": {
     "defaultMessage": "Doesn’t match entered passphrase",
@@ -555,13 +526,12 @@
     "defaultMessage": "Cancel",
     "description": "Account recovery cancel button"
   },
+  "qVGRIE": {
+    "defaultMessage": "Quantity"
+  },
   "qZNWyi": {
     "defaultMessage": "Relationships",
     "description": "Nav bar relationships tab"
-  },
-  "qvvZcz": {
-    "defaultMessage": "Confirm",
-    "description": "Asset transfer: confirm button"
   },
   "r+GVNN": {
     "defaultMessage": "Cancel",
@@ -583,9 +553,16 @@
     "defaultMessage": "Treasury",
     "description": "Treasury page title (if no vault name)"
   },
+  "uT4OlP": {
+    "defaultMessage": "Fee"
+  },
   "vELQTJ": {
     "defaultMessage": "Verify your email",
     "description": "Verify account email description title"
+  },
+  "vG0gfW": {
+    "defaultMessage": "max: {max} ≈ {converted}",
+    "description": "Asset transfer max quantity"
   },
   "vUD6Fj": {
     "defaultMessage": "My open items",
@@ -610,6 +587,10 @@
   "wejkZs": {
     "defaultMessage": "Assets",
     "description": "Treasury assets tab"
+  },
+  "wkgAd3": {
+    "defaultMessage": "To",
+    "description": "Recipient selection label"
   },
   "wvIglH": {
     "defaultMessage": "Continue",

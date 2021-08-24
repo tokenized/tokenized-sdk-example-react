@@ -8,18 +8,15 @@ function InputAssetQuantity({ input, meta, disabled }) {
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
       <label className="label">
-        <FormattedMessage
-          defaultMessage="Asset quantity"
-          description="Asset transfer: input field label: asset quantity"
-        />
-        <div className="control">
-          {disabled ? (
-            <input className="input" {...{ input, value: '' }} disabled />
-          ) : (
-            <input className="input" {...input} />
-          )}
-        </div>
+        <FormattedMessage defaultMessage="Quantity" />
       </label>
+      <div className="control">
+        {disabled ? (
+          <input className="input" {...{ input, value: '' }} disabled />
+        ) : (
+          <input className="input" {...input} />
+        )}
+      </div>
     </div>
   );
 }
