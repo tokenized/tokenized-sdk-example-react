@@ -59,11 +59,15 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
+    static: {
+      publicPath: absolute('public'),
+    },
+    devMiddleware: {
+      stats: 'minimal',
+    },
     port: process.env.PORT || 3000,
-    stats: 'minimal',
     historyApiFallback: true,
-    contentBase: absolute('public'),
-    disableHostCheck: !!process.env.DISABLE_HOST_CHECK,
+    allowedHosts: ['.localhost'],
   },
   plugins: [
     new ProvidePlugin({

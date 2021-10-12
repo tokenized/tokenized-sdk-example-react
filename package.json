@@ -31,7 +31,7 @@
     "redux": "^4.1.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --config webpack.config.js --mode development --progress --hot --inline",
+    "start": "cross-env NODE_ENV=development webpack serve --config webpack.config.js --mode development --progress --hot",
     "build": "webpack --mode=production --config webpack.config.js",
     "update-strings": "formatjs extract 'src/**/*.js' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]' && npm run compile-translations",
     "compile-translations": "formatjs compile-folder --ast src/lang src/lang-compiled",
@@ -100,7 +100,7 @@
     "@babel/preset-env": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
     "@formatjs/cli": "^4.2.15",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "babel-loader": "^8.2.2",
     "babel-plugin-formatjs": "^10.3.1",
     "buffer": "^6.0.3",
@@ -113,12 +113,12 @@
     "jsdoc-to-markdown": "^7.0.1",
     "prettier": "^2.3.2",
     "process": "^0.11.10",
-    "react-refresh": "^0.9.0",
+    "react-refresh": "^0.10.0",
     "stream-browserify": "^3.0.0",
     "style-loader": "^2.0.0",
     "util": "^0.12.4",
     "webpack": "^5.39.0",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.3.1"
   }
 }

@@ -96,9 +96,11 @@ export function ActivityRow({
           />
         </div>
         <div>
-          <a href={`https://whatsonchain.com/tx/${txId}`} title={txId}>
-            {txId.slice(0, 8) + '…'}
-          </a>
+          {txId && (
+            <a href={`https://whatsonchain.com/tx/${txId}`} title={txId}>
+              {txId.slice(0, 8) + '…'}
+            </a>
+          )}
         </div>
       </td>
     </tr>
