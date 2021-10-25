@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import SendModal from './SendModal';
 import TradeModal from './TradeModal';
 
 export default function TradeButton() {

@@ -24,7 +24,12 @@ function RenderAssetType({ assetType, showQuantity }) {
   );
 }
 
-export default function SelectAssetType({ input, meta, showQuantity = true }) {
+export default function SelectAssetType({
+  input,
+  meta,
+  showQuantity = true,
+  disabled,
+}) {
   const vaultId = usePrimaryVault()?.id;
   const assetBalances = useFilteredBalances(vaultId, {
     includeInactive: false,
@@ -35,7 +40,6 @@ export default function SelectAssetType({ input, meta, showQuantity = true }) {
     isOpen,
     selectedItem,
     getToggleButtonProps,
-    getLabelProps,
     getMenuProps,
     highlightedIndex,
     getItemProps,
@@ -53,13 +57,10 @@ export default function SelectAssetType({ input, meta, showQuantity = true }) {
       {meta.touched && meta.error && (
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
-      {/* <label className="label" {...getLabelProps()}>
-        <FormattedMessage defaultMessage="Asset" />
-      </label> */}
       <div className="control">
         <button
           type="button"
-          {...getToggleButtonProps()}
+          {...getToggleButtonProps({ disabled })}
           className="input is-justify-content-space-between"
         >
           <span className="is-flex-grow-1 is-flex is-justify-content-space-between">

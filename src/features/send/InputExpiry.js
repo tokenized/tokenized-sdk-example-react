@@ -11,7 +11,7 @@ export default function InputExpiry({ input, meta, disabled }) {
         <FormattedMessage defaultMessage="Offer expires after (hours)" />
       </label>
       <div className="control">
-        <input className="input" type="number" {...input} />
+        <input className="input" type="number" {...input} disabled={disabled} />
       </div>
     </div>
   );

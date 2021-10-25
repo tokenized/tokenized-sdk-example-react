@@ -13,35 +13,29 @@ import {
 import { FormattedMessage } from 'react-intl';
 import InputAssetMemo from './InputAssetMemo';
 import {
-  useSendAsset,
+  useAvailableAmount,
   usePrimaryVault,
-  useSendMaxEstimate,
   useTokenizedApi,
 } from '@tokenized/sdk-react-private';
 import FormatQuantity from '../../utils/FormatQuantity';
 import InputExpiry from './InputExpiry';
 import { hours } from '@tokenized/sdk-js-private/src/tokenized-api/modules/Service';
 
-const SendFormFields = ({
-  values: { sendAssetType: { assetId } = {}, assetMemo },
-  pending,
-}) => {
+const SendFormFields = ({ values: { sendAssetType }, pending }) => {
   const vaultId = usePrimaryVault()?.id;
+
+  const sendMaximum = useAvailableAmount(vaultId, sendAssetType?.assetId);
+
   const validateRequired = useValidators(fieldIsRequired);
-  const maxSendEstimate = useSendMaxEstimate(vaultId, assetId, 1, assetMemo, {
-    enabled: !!assetId,
-  })?.data;
-  const maxSendEstimateNumber = maxSendEstimate?.available?.tokens
-    ? maxSendEstimate?.available?.tokens.number
-    : maxSendEstimate?.available?.assetCurrency?.number;
-  const maxSendEstimateValidator = useMemo(
-    () => makeFieldIsNotMoreThan(maxSendEstimateNumber),
-    [maxSendEstimateNumber],
+
+  const maximumSendValidator = useMemo(
+    () => makeFieldIsNotMoreThan(sendMaximum ?? Infinity),
+    [sendMaximum],
   );
   const validateSendQuantity = useValidators(
     fieldIsRequired,
     fieldIsMoreThanZero,
-    maxSendEstimateValidator,
+    maximumSendValidator,
   );
 
   const validateReceiveQuantity = useValidators(
@@ -59,7 +53,9 @@ const SendFormFields = ({
         render={SelectPaymail}
         disabled={disabled}
       />
-      <h2 className="label">Request</h2>
+      <h2 className="label">
+        <FormattedMessage defaultMessage="Request" />
+      </h2>
       <Field
         name="receiveAssetType"
         validate={validateRequired}
@@ -72,8 +68,11 @@ const SendFormFields = ({
         name="receiveAmount"
         render={InputAssetQuantity}
         validate={validateReceiveQuantity}
+        disabled={disabled}
       />
-      <h2 className="label">Send</h2>
+      <h2 className="label">
+        <FormattedMessage defaultMessage="Send" />
+      </h2>
       <Field
         name="sendAssetType"
         validate={validateRequired}
@@ -87,8 +86,10 @@ const SendFormFields = ({
         render={InputAssetQuantity}
         validate={validateSendQuantity}
         disabled={disabled}
+        key={sendMaximum}
       />
-      <Field name="description" render={InputAssetMemo} />
+      <Field name="description" render={InputAssetMemo} disabled={disabled} />
+      <Field name="expiryHours" render={InputExpiry} disabled={disabled} />
       {pending && (
         <div>
           <FormattedMessage defaultMessage="Computed network fee" />
@@ -96,13 +97,11 @@ const SendFormFields = ({
           <FormatQuantity quantity={pending.fee} />
         </div>
       )}
-      <Field name="expiryHours" render={InputExpiry} />
     </>
   );
 };
 
-const TradeModal = ({ close }) => {
-  const send = useSendAsset();
+export default function TradeModal({ close }) {
   const tokenizedApi = useTokenizedApi();
   const vaultId = usePrimaryVault()?.id;
 
@@ -136,7 +135,7 @@ const TradeModal = ({ close }) => {
           }),
         );
       } else {
-        await send.mutateAsync({
+        await tokenizedApi.transfers.initiateTrade({
           ...options,
           doFinalBroadcast: true,
           inProgressState: pending,
@@ -212,6 +211,4 @@ const TradeModal = ({ close }) => {
       )}
     />
   );
-};
-
-export default TradeModal;
+}

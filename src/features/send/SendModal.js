@@ -15,7 +15,7 @@ import InputAssetMemo from './InputAssetMemo';
 import {
   useSendAsset,
   usePrimaryVault,
-  useSendMaxEstimate,
+  useAvailableAmount,
 } from '@tokenized/sdk-react-private';
 import ChooseSendMax from './ChooseSendMax';
 import FormatQuantity from '../../utils/FormatQuantity';
@@ -72,20 +72,16 @@ const SendShowConfirmation = ({
 };
 
 const SendFormFields = ({
-  values: { assetType: { assetId } = {}, assetMemo, sendMax },
+  values: { assetType: { assetId } = {}, sendMax },
   disabled,
 }) => {
   const vaultId = usePrimaryVault()?.id;
   const validateRequired = useValidators(fieldIsRequired);
-  const maxSendEstimate = useSendMaxEstimate(vaultId, assetId, 1, assetMemo, {
-    enabled: !!assetId,
-  })?.data;
-  const maxSendEstimateNumber = maxSendEstimate?.available?.tokens
-    ? maxSendEstimate?.available?.tokens.number
-    : maxSendEstimate?.available?.assetCurrency?.number;
+  const sendMaximum = useAvailableAmount(vaultId, assetId);
+
   const maxSendEstimateValidator = useMemo(
-    () => makeFieldIsNotMoreThan(maxSendEstimateNumber),
-    [maxSendEstimateNumber],
+    () => makeFieldIsNotMoreThan(sendMaximum),
+    [sendMaximum],
   );
   const validateQuantity = useValidators(
     fieldIsRequired,
@@ -97,36 +93,27 @@ const SendFormFields = ({
   return (
     <>
       <Field name="to" validate={validateRequired} render={SelectPaymail} />
+      <h2 className="label">
+        <FormattedMessage defaultMessage="Send" />
+      </h2>
       <Field
         name="assetType"
         validate={validateRequired}
         render={SelectAssetType}
         disabled={disabled}
       />
-      <Field
-        name="sendMax"
-        render={ChooseSendMax}
-        max={maxSendEstimate?.available}
-      />
-      <Field
-        name="assetQuantity"
-        render={InputAssetQuantity}
-        disabled={sendMax}
-        validate={validateQuantityWhenNotMax}
-        key={`${sendMax ? 'max' : maxSendEstimateNumber}`}
-      />
+      <Field name="sendMax" render={ChooseSendMax} type="checkbox" />
+
+      {!sendMax && (
+        <Field
+          name="assetQuantity"
+          render={InputAssetQuantity}
+          disabled={sendMax}
+          validate={validateQuantityWhenNotMax}
+          key={`${sendMax ? 'max' : sendMaximum}`}
+        />
+      )}
       <Field name="assetMemo" render={InputAssetMemo} />
-      <div
-        style={{
-          visibility: maxSendEstimate?.minerFee?.assetCurrency?.number
-            ? 'visible'
-            : 'hidden',
-        }}
-      >
-        <FormattedMessage defaultMessage="Estimated network fee" />
-        {': '}
-        <FormatQuantity quantity={maxSendEstimate?.minerFee} />
-      </div>
     </>
   );
 };

@@ -94,6 +94,9 @@
     "defaultMessage": "Continue",
     "description": "New account continue button"
   },
+  "7zwGmp": {
+    "defaultMessage": "Computed network fee"
+  },
   "8HgVfG": {
     "defaultMessage": "Are you sure? Taking an account backup only takes a few minutes, and without it your funds will be permanently lost if you ever forget your passphrase",
     "description": "Postpone seed phrase backup risks 1"
@@ -105,6 +108,9 @@
   "8q60YO": {
     "defaultMessage": "Send maximum quantity",
     "description": "Field label (checkbox yes/no)"
+  },
+  "9WRlF4": {
+    "defaultMessage": "Send"
   },
   "9maDsa": {
     "defaultMessage": "Restore",
@@ -160,6 +166,10 @@
   "F37D2c": {
     "defaultMessage": "Transactions in your <bold>non-custodial</bold> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
     "description": "Back up seed phrase intro 1"
+  },
+  "F6p5oa": {
+    "defaultMessage": "Trade",
+    "description": "Label for button to open dialog to trade assets"
   },
   "FEJ3nB": {
     "defaultMessage": "Please confirm your identity in the authenticator app",
@@ -251,6 +261,9 @@
   "LwJoyw": {
     "defaultMessage": "Last name",
     "description": "New account input field label: last name"
+  },
+  "M3QTvW": {
+    "defaultMessage": "Trade assets"
   },
   "MGVbsq": {
     "defaultMessage": "To",
@@ -405,6 +418,9 @@
     "defaultMessage": "Back",
     "description": "Back up seed phrase show phrase again button"
   },
+  "bzs/a8": {
+    "defaultMessage": "Offer expires after (hours)"
+  },
   "cjeVpa": {
     "defaultMessage": "Account handle",
     "description": "Login input field label: handle"
@@ -446,9 +462,6 @@
   "gHRR9x": {
     "defaultMessage": "Required",
     "description": "Form field validation failure: a value is required"
-  },
-  "gKtJ35": {
-    "defaultMessage": "Estimated network fee"
   },
   "hTxeee": {
     "defaultMessage": "Type",
@@ -509,6 +522,9 @@
   "oneuwr": {
     "defaultMessage": "Primary vault",
     "description": "Treasury primary vault tag"
+  },
+  "p1P+hQ": {
+    "defaultMessage": "Request"
   },
   "p3amHf": {
     "defaultMessage": "maximum",

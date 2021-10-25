@@ -165,6 +165,12 @@
       "value": "Continue"
     }
   ],
+  "7zwGmp": [
+    {
+      "type": 0,
+      "value": "Computed network fee"
+    }
+  ],
   "8HgVfG": [
     {
       "type": 0,
@@ -181,6 +187,12 @@
     {
       "type": 0,
       "value": "Send maximum quantity"
+    }
+  ],
+  "9WRlF4": [
+    {
+      "type": 0,
+      "value": "Send"
     }
   ],
   "9maDsa": [
@@ -293,6 +305,12 @@
     {
       "type": 0,
       "value": " account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us."
+    }
+  ],
+  "F6p5oa": [
+    {
+      "type": 0,
+      "value": "Trade"
     }
   ],
   "FEJ3nB": [
@@ -431,6 +449,12 @@
     {
       "type": 0,
       "value": "Last name"
+    }
+  ],
+  "M3QTvW": [
+    {
+      "type": 0,
+      "value": "Trade assets"
     }
   ],
   "MGVbsq": [
@@ -696,6 +720,12 @@
       "value": "Back"
     }
   ],
+  "bzs/a8": [
+    {
+      "type": 0,
+      "value": "Offer expires after (hours)"
+    }
+  ],
   "cjeVpa": [
     {
       "type": 0,
@@ -760,12 +790,6 @@
     {
       "type": 0,
       "value": "Required"
-    }
-  ],
-  "gKtJ35": [
-    {
-      "type": 0,
-      "value": "Estimated network fee"
     }
   ],
   "hTxeee": [
@@ -864,6 +888,12 @@
     {
       "type": 0,
       "value": "Primary vault"
+    }
+  ],
+  "p1P+hQ": [
+    {
+      "type": 0,
+      "value": "Request"
     }
   ],
   "p3amHf": [
