@@ -7,9 +7,9 @@ function InputAssetQuantity({ input, meta, disabled }) {
       {meta.touched && meta.error && (
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
-      <label className="label">
+      {/* <label className="label">
         <FormattedMessage defaultMessage="Quantity" />
-      </label>
+      </label> */}
       <div className="control">
         {disabled ? (
           <input className="input" {...{ input, value: '' }} disabled />

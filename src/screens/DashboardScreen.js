@@ -9,6 +9,7 @@ import {
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 import SendButton from '../features/send/SendButton';
+import TradeButton from '../features/send/TradeButton';
 
 function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
@@ -102,6 +103,9 @@ function DashboardScreen({ children }) {
             </NavLink>
           </div>
           <div className="navbar-end">
+            <div className="navbar-item">
+              <TradeButton />
+            </div>
             <div className="navbar-item">
               <SendButton />
             </div>
