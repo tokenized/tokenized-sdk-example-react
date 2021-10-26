@@ -119,7 +119,7 @@ export default function TradeModal({ close }) {
     try {
       const options = {
         vaultId,
-        expiry: new Date(Date.now() + expiryHours * hours(24)).toISOString(),
+        expiry: new Date(Date.now() + hours(expiryHours)).toISOString(),
         receiveAssetId: receiveAssetType.assetId,
         receiveAmount: Number(receiveAmount),
         sendAssetId: sendAssetType.assetId,

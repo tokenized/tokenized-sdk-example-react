@@ -1,37 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import FormatQuantity from '../../utils/FormatQuantity';
 
-export function ActivityHeader() {
+export function ActivityHeader({ showAction }) {
   return (
     <tr>
       <th className="has-text-left">
-        <div>
-          <FormattedMessage
-            defaultMessage="Event"
-            description="Activity table column header"
-          />
-        </div>
+        <FormattedMessage defaultMessage="Event" />
       </th>
       <th className="has-text-left">
-        <FormattedMessage
-          defaultMessage="Details"
-          description="Activity table column header"
-        />
+        <FormattedMessage defaultMessage="Details" />
       </th>
       <th className="has-text-left">
-        <FormattedMessage
-          defaultMessage="Amounts"
-          description="Activity table column header"
-        />
+        <FormattedMessage defaultMessage="Amounts" />
       </th>
       <th className="has-text-left">
-        <FormattedMessage
-          defaultMessage="Last updated"
-          description="Activity table column header"
-        />
+        <FormattedMessage defaultMessage="Last updated" />
       </th>
+      {showAction && (
+        <th className="has-text-left">
+          <FormattedMessage defaultMessage="Action" />
+        </th>
+      )}
     </tr>
   );
 }
@@ -45,9 +36,25 @@ export function ActivityRow({
     memo,
     assets,
     contract,
+    signTrade,
+    executeTrade,
+    acceptTrade,
   },
 }) {
   let [{ transfers = [] } = {}] = counterparties || [];
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+  const buttonClass = classNames('button', 'is-loading' && isLoading);
+  const load = (fn) => async () => {
+    setIsLoading(true);
+    try {
+      await fn();
+    } catch (e) {
+      setError(e.toString());
+    }
+  };
+
   return (
     <tr style={{ whiteSpace: 'nowrap' }}>
       <td>
@@ -102,6 +109,24 @@ export function ActivityRow({
             </a>
           )}
         </div>
+      </td>
+      <td>
+        {error}
+        {!error && executeTrade && (
+          <button className={buttonClass} onClick={load(executeTrade)}>
+            Execute trade
+          </button>
+        )}
+        {!error && signTrade && (
+          <button className={buttonClass} onClick={load(signTrade)}>
+            Sign trade
+          </button>
+        )}
+        {!error && acceptTrade && (
+          <button className={buttonClass} onClick={load(acceptTrade)}>
+            Accept trade
+          </button>
+        )}
       </td>
     </tr>
   );
