@@ -45,7 +45,7 @@ export function ActivityRow({
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
-  const buttonClass = classNames('button', 'is-loading' && isLoading);
+  const buttonClass = classNames('button', isLoading && 'is-loading');
   const load = (fn) => async () => {
     setIsLoading(true);
     try {
@@ -114,17 +114,17 @@ export function ActivityRow({
         {error}
         {!error && executeTrade && (
           <button className={buttonClass} onClick={load(executeTrade)}>
-            Execute trade
+            <FormattedMessage defaultMessage="Execute trade" />
           </button>
         )}
         {!error && signTrade && (
           <button className={buttonClass} onClick={load(signTrade)}>
-            Sign trade
+            <FormattedMessage defaultMessage="Sign trade" />
           </button>
         )}
         {!error && acceptTrade && (
           <button className={buttonClass} onClick={load(acceptTrade)}>
-            Accept trade
+            <FormattedMessage defaultMessage="Accept trade" />
           </button>
         )}
       </td>
