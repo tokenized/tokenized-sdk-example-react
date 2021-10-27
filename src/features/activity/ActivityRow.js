@@ -35,10 +35,10 @@ export function ActivityRow({
     counterparties,
     memo,
     assets,
-    contract,
     signTrade,
     executeTrade,
     acceptTrade,
+    acceptRequest,
   },
 }) {
   let [{ transfers = [] } = {}] = counterparties || [];
@@ -125,6 +125,11 @@ export function ActivityRow({
         {!error && acceptTrade && (
           <button className={buttonClass} onClick={load(acceptTrade)}>
             <FormattedMessage defaultMessage="Accept trade" />
+          </button>
+        )}
+        {!error && acceptRequest && (
+          <button className={buttonClass} onClick={load(acceptRequest)}>
+            <FormattedMessage defaultMessage="Accept request" />
           </button>
         )}
       </td>

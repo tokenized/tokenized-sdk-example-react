@@ -21,7 +21,10 @@ import FormatQuantity from '../../utils/FormatQuantity';
 import InputExpiry from './InputExpiry';
 import { hours } from '@tokenized/sdk-js-private/src/tokenized-api/modules/Service';
 
-const SendFormFields = ({ values: { sendAssetType }, pending }) => {
+export const MODE_TRADE = 'trade';
+export const MODE_REQUEST = 'request';
+
+const SendFormFields = ({ mode, values: { sendAssetType }, pending }) => {
   const vaultId = usePrimaryVault()?.id;
 
   const sendMaximum = useAvailableAmount(vaultId, sendAssetType?.assetId);
@@ -70,24 +73,28 @@ const SendFormFields = ({ values: { sendAssetType }, pending }) => {
         validate={validateReceiveQuantity}
         disabled={disabled}
       />
-      <h2 className="label">
-        <FormattedMessage defaultMessage="Send" />
-      </h2>
-      <Field
-        name="sendAssetType"
-        validate={validateRequired}
-        render={({ ...props }) =>
-          SelectAssetType({ ...props, showQuantity: true })
-        }
-        disabled={disabled}
-      />
-      <Field
-        name="sendAmount"
-        render={InputAssetQuantity}
-        validate={validateSendQuantity}
-        disabled={disabled}
-        key={sendMaximum}
-      />
+      {mode === MODE_TRADE && (
+        <>
+          <h2 className="label">
+            <FormattedMessage defaultMessage="Send" />
+          </h2>
+          <Field
+            name="sendAssetType"
+            validate={validateRequired}
+            render={({ ...props }) =>
+              SelectAssetType({ ...props, showQuantity: true })
+            }
+            disabled={disabled}
+          />
+          <Field
+            name="sendAmount"
+            render={InputAssetQuantity}
+            validate={validateSendQuantity}
+            disabled={disabled}
+            key={sendMaximum}
+          />
+        </>
+      )}
       <Field name="description" render={InputAssetMemo} disabled={disabled} />
       <Field name="expiryHours" render={InputExpiry} disabled={disabled} />
       {pending && (
@@ -101,7 +108,7 @@ const SendFormFields = ({ values: { sendAssetType }, pending }) => {
   );
 };
 
-export default function TradeModal({ close }) {
+export default function TradeModal({ mode, close }) {
   const tokenizedApi = useTokenizedApi();
   const vaultId = usePrimaryVault()?.id;
 
@@ -120,22 +127,32 @@ export default function TradeModal({ close }) {
       const options = {
         vaultId,
         expiry: new Date(Date.now() + hours(expiryHours)).toISOString(),
-        receiveAssetId: receiveAssetType.assetId,
-        receiveAmount: Number(receiveAmount),
-        sendAssetId: sendAssetType.assetId,
-        sendAmount: Number(sendAmount),
         description,
         recipient,
+        ...(mode === MODE_TRADE
+          ? {
+              receiveAssetId: receiveAssetType.assetId,
+              receiveAmount: Number(receiveAmount),
+              sendAssetId: sendAssetType.assetId,
+              sendAmount: Number(sendAmount),
+            }
+          : {
+              assetId: receiveAssetType.assetId,
+              amount: Number(receiveAmount),
+            }),
       };
+
+      const method = mode === MODE_TRADE ? 'initiateTrade' : 'requestSend';
+
       if (!pending) {
         setPending(
-          await tokenizedApi.transfers.initiateTrade({
+          await tokenizedApi.transfers[method]({
             ...options,
             doFinalBroadcast: false,
           }),
         );
       } else {
-        await tokenizedApi.transfers.initiateTrade({
+        await tokenizedApi.transfers[method]({
           ...options,
           doFinalBroadcast: true,
           inProgressState: pending,
@@ -166,7 +183,12 @@ export default function TradeModal({ close }) {
             <div className="modal-card" style={{ overflow: 'visible ' }}>
               <header className="modal-card-head">
                 <p className="modal-card-title">
-                  <FormattedMessage defaultMessage="Trade assets" />
+                  {mode === MODE_TRADE && (
+                    <FormattedMessage defaultMessage="Trade assets" />
+                  )}
+                  {mode === MODE_REQUEST && (
+                    <FormattedMessage defaultMessage="Request assets" />
+                  )}
                 </p>
                 <button
                   className="delete"
@@ -178,7 +200,7 @@ export default function TradeModal({ close }) {
                 className="modal-card-body"
                 style={{ overflow: 'visible' }}
               >
-                <SendFormFields values={values} pending={pending} />
+                <SendFormFields mode={mode} values={values} pending={pending} />
                 {submitError && (
                   <div className="has-text-danger">{submitError}</div>
                 )}
