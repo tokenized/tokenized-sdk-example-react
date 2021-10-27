@@ -39,6 +39,12 @@
       "value": "Choose a unique ID for connecting with others and receiving payments"
     }
   ],
+  "0ICwq5": [
+    {
+      "type": 0,
+      "value": "Last updated"
+    }
+  ],
   "13P/gz": [
     {
       "type": 0,
@@ -139,12 +145,6 @@
     {
       "type": 0,
       "value": "Checking seed phrase has been recorded"
-    }
-  ],
-  "5SQjL8": [
-    {
-      "type": 0,
-      "value": "Details"
     }
   ],
   "6I1l1I": [
@@ -249,6 +249,12 @@
       "value": "Reserved"
     }
   ],
+  "E0IEpB": [
+    {
+      "type": 0,
+      "value": "Amounts"
+    }
+  ],
   "E85IhZ": [
     {
       "type": 0,
@@ -325,12 +331,6 @@
       "value": "Pending others"
     }
   ],
-  "FdOoQ5": [
-    {
-      "type": 0,
-      "value": "Last updated"
-    }
-  ],
   "FvzCUW": [
     {
       "type": 0,
@@ -391,6 +391,12 @@
       "value": "Activity"
     }
   ],
+  "IJKyYg": [
+    {
+      "type": 0,
+      "value": "Sign trade"
+    }
+  ],
   "Ih3sF+": [
     {
       "type": 0,
@@ -445,6 +451,12 @@
       "value": "First name"
     }
   ],
+  "Lv0zJu": [
+    {
+      "type": 0,
+      "value": "Details"
+    }
+  ],
   "LwJoyw": [
     {
       "type": 0,
@@ -475,12 +487,6 @@
       "value": "Begin recovery"
     }
   ],
-  "OnWIBb": [
-    {
-      "type": 0,
-      "value": "Event"
-    }
-  ],
   "PVFFBa": [
     {
       "type": 0,
@@ -509,6 +515,12 @@
     {
       "type": 0,
       "value": "Cancel"
+    }
+  ],
+  "QlsDcr": [
+    {
+      "type": 0,
+      "value": "Action"
     }
   ],
   "QoOTpE": [
@@ -632,6 +644,12 @@
     {
       "type": 0,
       "value": "Asset"
+    }
+  ],
+  "Waga+E": [
+    {
+      "type": 0,
+      "value": "Execute trade"
     }
   ],
   "Wefkn1": [
@@ -804,12 +822,6 @@
       "value": "Tokenized SDK demo"
     }
   ],
-  "iNnboO": [
-    {
-      "type": 0,
-      "value": "Amounts"
-    }
-  ],
   "iQHcoy": [
     {
       "type": 0,
@@ -844,6 +856,12 @@
     {
       "type": 0,
       "value": "Show phrase"
+    }
+  ],
+  "m1czzY": [
+    {
+      "type": 0,
+      "value": "Event"
     }
   ],
   "mArnAT": [
@@ -1028,6 +1046,12 @@
     {
       "type": 0,
       "value": "My open items"
+    }
+  ],
+  "vnO22B": [
+    {
+      "type": 0,
+      "value": "Accept trade"
     }
   ],
   "vutAZJ": [

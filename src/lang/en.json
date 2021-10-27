@@ -23,6 +23,9 @@
     "defaultMessage": "Choose a unique ID for connecting with others and receiving payments",
     "description": "New account handle field help: explanation of paymail"
   },
+  "0ICwq5": {
+    "defaultMessage": "Last updated"
+  },
   "13P/gz": {
     "defaultMessage": "max: {max}",
     "description": "Asset transfer max quantity"
@@ -77,10 +80,6 @@
   "5Kq5jW": {
     "defaultMessage": "Checking seed phrase has been recorded",
     "description": "Log-in status: Checking seed phrase backup"
-  },
-  "5SQjL8": {
-    "defaultMessage": "Details",
-    "description": "Activity table column header"
   },
   "6I1l1I": {
     "defaultMessage": "Liability",
@@ -147,6 +146,9 @@
     "defaultMessage": "Reserved",
     "description": "Balance table column header: quantity of balance reserved"
   },
+  "E0IEpB": {
+    "defaultMessage": "Amounts"
+  },
   "E85IhZ": {
     "defaultMessage": "A confirmation code has been sent to <bold>{maskedEmail}</bold>. Enter the code below to continue recovery. In the next step we’ll ask you for a new passphrase.",
     "description": "Forgot passphrase confirm email description"
@@ -178,10 +180,6 @@
   "FHD1XP": {
     "defaultMessage": "Pending others",
     "description": "All activity tab"
-  },
-  "FdOoQ5": {
-    "defaultMessage": "Last updated",
-    "description": "Activity table column header"
   },
   "FvzCUW": {
     "defaultMessage": "Contracts",
@@ -222,6 +220,9 @@
     "defaultMessage": "Activity",
     "description": "Activity page title"
   },
+  "IJKyYg": {
+    "defaultMessage": "Sign trade"
+  },
   "Ih3sF+": {
     "defaultMessage": "Authorized",
     "description": "Balance table column header: quantity of assets authorized in contract"
@@ -258,6 +259,9 @@
     "defaultMessage": "First name",
     "description": "New account input field label: first name"
   },
+  "Lv0zJu": {
+    "defaultMessage": "Details"
+  },
   "LwJoyw": {
     "defaultMessage": "Last name",
     "description": "New account input field label: last name"
@@ -275,10 +279,6 @@
   "N6Mi0p": {
     "defaultMessage": "Begin recovery",
     "description": "Forgot passphrase start button"
-  },
-  "OnWIBb": {
-    "defaultMessage": "Event",
-    "description": "Activity table column header"
   },
   "PVFFBa": {
     "defaultMessage": "Tokenized SDK demo",
@@ -299,6 +299,9 @@
   "Qi6Vpw": {
     "defaultMessage": "Cancel",
     "description": "Back up seed phrase cancel button"
+  },
+  "QlsDcr": {
+    "defaultMessage": "Action"
   },
   "QoOTpE": {
     "defaultMessage": "Cancel",
@@ -369,6 +372,9 @@
   },
   "WKCp0D": {
     "defaultMessage": "Asset"
+  },
+  "Waga+E": {
+    "defaultMessage": "Execute trade"
   },
   "Wefkn1": {
     "defaultMessage": "I’m ready to record my private recovery phrase, and nobody’s watching",
@@ -471,10 +477,6 @@
     "defaultMessage": "Tokenized SDK demo",
     "description": "New account screen title"
   },
-  "iNnboO": {
-    "defaultMessage": "Amounts",
-    "description": "Activity table column header"
-  },
   "iQHcoy": {
     "defaultMessage": "Cancel",
     "description": "Forgot passphrase cancel button"
@@ -498,6 +500,9 @@
   "l1Zi41": {
     "defaultMessage": "Show phrase",
     "description": "Back up seed phrase confirm button"
+  },
+  "m1czzY": {
+    "defaultMessage": "Event"
   },
   "mArnAT": {
     "defaultMessage": "Welcome {name}",
@@ -583,6 +588,9 @@
   "vUD6Fj": {
     "defaultMessage": "My open items",
     "description": "All activity tab"
+  },
+  "vnO22B": {
+    "defaultMessage": "Accept trade"
   },
   "vutAZJ": {
     "defaultMessage": "Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail.",
