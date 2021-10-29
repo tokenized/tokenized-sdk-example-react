@@ -8,21 +8,28 @@ import {
 import { FormattedMessage } from 'react-intl';
 import FormatQuantity from '../../utils/FormatQuantity';
 
-function RenderAssetType({ assetType }) {
+function RenderAssetType({ assetType, showQuantity }) {
   return (
     <>
       <span>{assetType.assetName}</span>
-      <span>
-        <FormatQuantity
-          quantity={assetType.quantities?.balance}
-          showCouponName={false}
-        />
-      </span>
+      {showQuantity && (
+        <span>
+          <FormatQuantity
+            quantity={assetType.quantities?.balance}
+            showCouponName={false}
+          />
+        </span>
+      )}
     </>
   );
 }
 
-function SelectAssetType({ input, meta }) {
+export default function SelectAssetType({
+  input,
+  meta,
+  showQuantity = true,
+  disabled,
+}) {
   const vaultId = usePrimaryVault()?.id;
   const assetBalances = useFilteredBalances(vaultId, {
     includeInactive: false,
@@ -33,7 +40,6 @@ function SelectAssetType({ input, meta }) {
     isOpen,
     selectedItem,
     getToggleButtonProps,
-    getLabelProps,
     getMenuProps,
     highlightedIndex,
     getItemProps,
@@ -51,18 +57,18 @@ function SelectAssetType({ input, meta }) {
       {meta.touched && meta.error && (
         <span className="has-text-danger is-pulled-right">{meta.error}</span>
       )}
-      <label className="label" {...getLabelProps()}>
-        <FormattedMessage defaultMessage="Asset" />
-      </label>
       <div className="control">
         <button
           type="button"
-          {...getToggleButtonProps()}
+          {...getToggleButtonProps({ disabled })}
           className="input is-justify-content-space-between"
         >
           <span className="is-flex-grow-1 is-flex is-justify-content-space-between">
             {selectedItem ? (
-              <RenderAssetType assetType={selectedItem} />
+              <RenderAssetType
+                assetType={selectedItem}
+                showQuantity={showQuantity}
+              />
             ) : (
               <FormattedMessage defaultMessage="Select an asset" />
             )}
@@ -88,7 +94,7 @@ function SelectAssetType({ input, meta }) {
               {...getItemProps({ item, index })}
               style={{ justifyContent: 'space-between', display: 'flex' }}
             >
-              <RenderAssetType assetType={item} />
+              <RenderAssetType assetType={item} showQuantity={showQuantity} />
             </a>
           ))}
         </div>
@@ -96,5 +102,3 @@ function SelectAssetType({ input, meta }) {
     </div>
   );
 }
-
-export default SelectAssetType;

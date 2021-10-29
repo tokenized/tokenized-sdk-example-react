@@ -48,7 +48,7 @@ export default function ActivityTable({ type }) {
     <div className="table-container">
       <table className="table is-hoverable">
         <thead>
-          <ActivityHeader />
+          <ActivityHeader showAction={type === 'open'} />
         </thead>
         <tbody>
           {activity?.data?.map((activityItem) => (

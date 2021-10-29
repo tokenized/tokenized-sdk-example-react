@@ -39,6 +39,12 @@
       "value": "Choose a unique ID for connecting with others and receiving payments"
     }
   ],
+  "0ICwq5": [
+    {
+      "type": 0,
+      "value": "Last updated"
+    }
+  ],
   "13P/gz": [
     {
       "type": 0,
@@ -73,6 +79,12 @@
     {
       "type": 0,
       "value": "Avoid workplace or educational emails you might lose access to"
+    }
+  ],
+  "1s6Cy7": [
+    {
+      "type": 0,
+      "value": "Request assets"
     }
   ],
   "2F0CgA": [
@@ -141,12 +153,6 @@
       "value": "Checking seed phrase has been recorded"
     }
   ],
-  "5SQjL8": [
-    {
-      "type": 0,
-      "value": "Details"
-    }
-  ],
   "6I1l1I": [
     {
       "type": 0,
@@ -165,6 +171,12 @@
       "value": "Continue"
     }
   ],
+  "7zwGmp": [
+    {
+      "type": 0,
+      "value": "Computed network fee"
+    }
+  ],
   "8HgVfG": [
     {
       "type": 0,
@@ -181,6 +193,12 @@
     {
       "type": 0,
       "value": "Send maximum quantity"
+    }
+  ],
+  "9WRlF4": [
+    {
+      "type": 0,
+      "value": "Send"
     }
   ],
   "9maDsa": [
@@ -235,6 +253,12 @@
     {
       "type": 0,
       "value": "Reserved"
+    }
+  ],
+  "E0IEpB": [
+    {
+      "type": 0,
+      "value": "Amounts"
     }
   ],
   "E85IhZ": [
@@ -295,6 +319,12 @@
       "value": " account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us."
     }
   ],
+  "F6p5oa": [
+    {
+      "type": 0,
+      "value": "Trade"
+    }
+  ],
   "FEJ3nB": [
     {
       "type": 0,
@@ -305,12 +335,6 @@
     {
       "type": 0,
       "value": "Pending others"
-    }
-  ],
-  "FdOoQ5": [
-    {
-      "type": 0,
-      "value": "Last updated"
     }
   ],
   "FvzCUW": [
@@ -373,6 +397,12 @@
       "value": "Activity"
     }
   ],
+  "IJKyYg": [
+    {
+      "type": 0,
+      "value": "Sign trade"
+    }
+  ],
   "Ih3sF+": [
     {
       "type": 0,
@@ -427,10 +457,22 @@
       "value": "First name"
     }
   ],
+  "Lv0zJu": [
+    {
+      "type": 0,
+      "value": "Details"
+    }
+  ],
   "LwJoyw": [
     {
       "type": 0,
       "value": "Last name"
+    }
+  ],
+  "M3QTvW": [
+    {
+      "type": 0,
+      "value": "Trade assets"
     }
   ],
   "MGVbsq": [
@@ -449,12 +491,6 @@
     {
       "type": 0,
       "value": "Begin recovery"
-    }
-  ],
-  "OnWIBb": [
-    {
-      "type": 0,
-      "value": "Event"
     }
   ],
   "PVFFBa": [
@@ -485,6 +521,12 @@
     {
       "type": 0,
       "value": "Cancel"
+    }
+  ],
+  "QlsDcr": [
+    {
+      "type": 0,
+      "value": "Action"
     }
   ],
   "QoOTpE": [
@@ -527,6 +569,12 @@
     {
       "type": 0,
       "value": "One unit"
+    }
+  ],
+  "Sm4O4X": [
+    {
+      "type": 0,
+      "value": "Request"
     }
   ],
   "Ssp7dT": [
@@ -608,6 +656,12 @@
     {
       "type": 0,
       "value": "Asset"
+    }
+  ],
+  "Waga+E": [
+    {
+      "type": 0,
+      "value": "Execute trade"
     }
   ],
   "Wefkn1": [
@@ -696,6 +750,12 @@
       "value": "Back"
     }
   ],
+  "bzs/a8": [
+    {
+      "type": 0,
+      "value": "Offer expires after (hours)"
+    }
+  ],
   "cjeVpa": [
     {
       "type": 0,
@@ -762,12 +822,6 @@
       "value": "Required"
     }
   ],
-  "gKtJ35": [
-    {
-      "type": 0,
-      "value": "Estimated network fee"
-    }
-  ],
   "hTxeee": [
     {
       "type": 0,
@@ -778,12 +832,6 @@
     {
       "type": 0,
       "value": "Tokenized SDK demo"
-    }
-  ],
-  "iNnboO": [
-    {
-      "type": 0,
-      "value": "Amounts"
     }
   ],
   "iQHcoy": [
@@ -822,6 +870,12 @@
       "value": "Show phrase"
     }
   ],
+  "m1czzY": [
+    {
+      "type": 0,
+      "value": "Event"
+    }
+  ],
   "mArnAT": [
     {
       "type": 0,
@@ -830,6 +884,12 @@
     {
       "type": 1,
       "value": "name"
+    }
+  ],
+  "midrUq": [
+    {
+      "type": 0,
+      "value": "Accept request"
     }
   ],
   "n0cMeX": [
@@ -864,6 +924,12 @@
     {
       "type": 0,
       "value": "Primary vault"
+    }
+  ],
+  "p1P+hQ": [
+    {
+      "type": 0,
+      "value": "Request"
     }
   ],
   "p3amHf": [
@@ -998,6 +1064,12 @@
     {
       "type": 0,
       "value": "My open items"
+    }
+  ],
+  "vnO22B": [
+    {
+      "type": 0,
+      "value": "Accept trade"
     }
   ],
   "vutAZJ": [

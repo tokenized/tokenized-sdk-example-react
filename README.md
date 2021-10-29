@@ -136,7 +136,8 @@ Tokenized JavaScript SDK bindings for React
     - [.useActivityEvent](#module_@tokenized/sdk-react-private.useActivityEvent)
       ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
   - _hooks/contact_
-    - [.useContact](#module_@tokenized/sdk-react-private.useContact)
+    - [.useContact](#module_@tokenized/sdk-react-private.useContact) ⇒
+      <code>object</code>
     - [.useHandles](#module_@tokenized/sdk-react-private.useHandles)
   - _hooks/contracts_
     - [.useContracts](#module_@tokenized/sdk-react-private.useContracts) ⇒
@@ -172,7 +173,6 @@ Tokenized JavaScript SDK bindings for React
       ⇒ <code>string</code>
   - _hooks/transfer_
     - [.useSendAsset](#module_@tokenized/sdk-react-private.useSendAsset)
-    - [.useSendMaxEstimate](#module_@tokenized/sdk-react-private.useSendMaxEstimate)
   - _hooks/treasury_
     - [.useFilteredBalances](#module_@tokenized/sdk-react-private.useFilteredBalances)
       ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
@@ -191,8 +191,6 @@ _Note that in an upcoming release of the SDK, device pairing will be handled by
 a redirect to a secure, Tokenized-hosted mini-web-app, and this component will
 no longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Category**: components
 
 | Param        | Type                | Default          | Description                                                         |
@@ -224,8 +222,6 @@ component. In the Redux devtools browser extension, you should be able to select
 
     window.localStorage.removeItem('tokenized-sdk-devtools-enable');
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Category**: components
 
 | Param              | Type                                                                        | Description                                        |
@@ -257,29 +253,42 @@ ReactDOM.render(
 
 ### @tokenized/sdk-react-private.Avatar
 
-**`React Component`** Render a user's avatar image
+**`React Component`** Render an avatar icon for a paymail handle
 
 Props:
 
-- `handle`: A user's handle, eg "user.name@tokenized.id"
-- `renderMissing`: Optional. Called when a user's contact is not yet loaded or
-  in case of error
-- `render`: Optional. Called when a user's contact is loaded, or if
-  `renderMissing` is not supplied
+- `handle`: A paymail handle, for example "user.name@tokenized.id"
+- `renderMissing`: Optional. Called when not yet loaded or in case of error
+- `render`: Optional. Called with the display details, or if `renderMissing` is
+  not supplied
 
 If an appropriate render prop is not supplied then an <img> will be rendered.
 
 Rendering props (passed to the render or renderMissing functions):
 
+- `isValid`: The definition of valid depends on the type of handle:
+  - For Tokenized paymails: `valid` is `true` when the account exists.
+  - For well-formed external paymails: `valid` is always `true`.
+  - For well-formed BSV addresses: `valid` is always `true`.
+  - `valid` is `false` in all other cases.
 - `src`: The URL of an image to use as the avatar for the user
-- `contact`: A React Query result containing contact information for the user,
-  see useContact
+- `address`: The BSV address for the contact, if known.
+- `displayHandle`: Full-length paymail handle of the associated entity.
+- `displayName`: Display name of the associated entity.
+- `initials`: Up to two characters extracted from the name that can be used as
+  an icon.
+- `isAnonymous` If `true`, indicates this contact is an anonymous BSV address.
+- `isInternal`: If `true`, indicates the handle is the paymail for a Tokenized
+  account. If `false` then `handle` is an external paymail, and supports BSV
+  transfers only.
+- `isVerified`: Indicates whether the paymail has been verified.
+- `avatarURL`: The URL of an image to use as the avatar for the user
 - `...`: all other props supplied to the Avatar component
 
 Use like this for example:
 
 ```js
-<Avatar handle={userHandle} width={30} height={30} className={'avatarImage'} />
+<Avatar handle={userHandle} className={'avatarImage'} />
 ```
 
 or this with a render prop:
@@ -287,17 +296,15 @@ or this with a render prop:
 ```js
 <Avatar
   handle={userHandle}
-  render={(src, contact) => (
+  render={({src, displayName}) => (
     <div className={"avatarComponent"}>
       <img src={src}/>
-      {contact.data?.display_name}
+      {displayName}
     </div>
   }
 />
 ```
 
-**Kind**: static constant of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Category**: components  
 <a name="module_@tokenized/sdk-react-private.useTokenizedApi"></a>
 
@@ -306,8 +313,6 @@ or this with a render prop:
 **`React hook`** providing access to the
 [TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi) session manager.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**:
 [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi) -
 The session manager you passed into
@@ -328,8 +333,6 @@ management of the vaults, assets, and contracts allowed by the user’s role
 within the entity selected by the profile. _Currently only the user’s personal
 “Individual” entity and its default profile is supported._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>string</code> - The current profile name  
 **Category**: hooks/account  
 <a name="module_@tokenized/sdk-react-private.useOwnFormattedName"></a>
@@ -341,8 +344,6 @@ name in an account menu, for example. The name is available as soon as the login
 credentials are verified, so you can display it in the MFA prompt before full
 authentication.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>string</code> - The user’s full name  
 **Category**: hooks/account  
 <a name="module_@tokenized/sdk-react-private.useActivity"></a>
@@ -430,8 +431,6 @@ A quantity is an object containing:
   - `number`: Currency value transferred
   - `NumberFormatOptions`: Object to be supplied to Intl.NumberFormat
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**:
 [<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - An array
 of activity events as the `data` property within a React Query
@@ -463,8 +462,6 @@ about using a React Query `UseQueryResults` object. Once loaded, the `data`
 property will contain an object containing event details in the same format as
 for [`useActivity`](#module_@tokenized/sdk-react-private.useActivity).
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**:
 [<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - An object
 describing the event, as the `data` property within a React Query
@@ -478,27 +475,33 @@ the event can’t be found.
 
 <a name="module_@tokenized/sdk-react-private.useContact"></a>
 
-### @tokenized/sdk-react-private.useContact
+### @tokenized/sdk-react-private.useContact ⇒ <code>object</code>
 
-**`React Query hook`** Contact information for a user's handle
+**`React hook`** Returns display information about a paymail handle
 
-See https://react-query.tanstack.com/guides/queries
+The returned object has the following properties:
 
-Data object contains properties:
-
+- `address`: The BSV address for the contact, if known.
 - `displayHandle`: Full-length paymail handle of the associated entity.
 - `displayName`: Display name of the associated entity.
+- `initials`: Up to two characters extracted from the name that can be used as
+  an icon.
+- `isAnonymous` If `true`, indicates this contact is an anonymous BSV address.
+- `isInternal`: If `true`, indicates the handle is the paymail for a Tokenized
+  account. If `false` then `handle` is an external paymail, and supports BSV
+  transfers only.
+- `isVerified`: Indicates whether the paymail has been verified.
 - `avatarURL`: Full URL to the entity's avatar image.
 
-Will be refreshed automatically **every 60 seconds**.
+Will be refreshed automatically **every 10 minutes**.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
+**Returns**: <code>object</code> - Describes the contact (see above).  
 **Category**: hooks/contact
 
-| Param  | Type                | Description   |
-| ------ | ------------------- | ------------- |
-| handle | <code>String</code> | User's handle |
+| Param      | Type                 | Description                                                                            |
+| ---------- | -------------------- | -------------------------------------------------------------------------------------- |
+| handle     | <code>string</code>  | User's handle                                                                          |
+| isVerified | <code>boolean</code> | Supply the value of `isVerified`, which can’t currently be determined from the handle. |
 
 <a name="module_@tokenized/sdk-react-private.useHandles"></a>
 
@@ -518,8 +521,6 @@ Each object in the data array describes a paymail handle:
 
 Will be refreshed automatically **every 60 seconds**.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Category**: hooks/contact
 
 | Param               | Type                 | Description                         |
@@ -540,8 +541,6 @@ that can be edited and contracts that can only be viewed.
 _The contract data structure is not finalized, and will be reorganized and
 transformed for easier usage in a future SDK release._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**:
 [<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - The data
 property of the [`UseQueryResult`](#external_react-query.UseQueryResult) object
@@ -609,8 +608,6 @@ and the values are the contract objects. For example (not all properties shown):
 **`React hook`** Initial loading status. Show a loading screen when
 `useIsLoading` is `true`.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - Remains `true` until the Tokenized SDK has
 finished restoring the session on startup.  
 **Category**: hooks/login  
@@ -621,8 +618,6 @@ finished restoring the session on startup.
 **`React hook`** Valid user session status. Check this on every normal page of
 your app, and switch to the login prompt if `useIsLoggedIn` is `false`.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when a user session is fully
 authenticated and not expired, `false` during the log in process, and when
 there’s no valid session.  
@@ -664,8 +659,6 @@ function PrivateRoute({ children, ...rest }) {
 
 **`React hook`** Current “no session” status.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when there’s no valid user session,
 and also no log-in process happening.  
 **Category**: hooks/login  
@@ -680,8 +673,6 @@ _Note that in an upcoming release of the SDK, log in will be handled by a
 redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when the log-in process has started
 (credentials entered), but the user has not been fully authenticated yet.  
 **Category**: hooks/login  
@@ -706,8 +697,6 @@ _Note that in an upcoming release of the SDK, device pairing will be handled by
 a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when a device pairing process is
 active.  
 **Category**: hooks/login  
@@ -722,8 +711,6 @@ _Note that in an upcoming release of the SDK, log in will be handled by a
 redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>Error</code> - The error that caused a log in attempt to
 fail. Cleared to `null` when a new log in process is started.  
 **Category**: hooks/login  
@@ -739,8 +726,6 @@ _Note that in an upcoming release of the SDK, log in (including MFA) will be
 handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
 will no longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when the log in process is polling
 for MFA confirmation.  
 **Category**: hooks/login  
@@ -756,8 +741,6 @@ _Note that in an upcoming release of the SDK, account recovery will be handled
 by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when the log in process has paused
 for account restoration.  
 **Category**: hooks/login  
@@ -773,8 +756,6 @@ _Note that in an upcoming release of the SDK, seed phrase backup will be handled
 by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when the log in process has paused
 for seed phrase backup.  
 **Category**: hooks/login  
@@ -790,8 +771,6 @@ _Note that in an upcoming release of the SDK, account verification will be
 handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
 will no longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>boolean</code> - `true` when the log-in process has paused
 for email verification.  
 **Category**: hooks/login  
@@ -806,8 +785,6 @@ _Note that in an upcoming release of the SDK, log in will be handled by a
 redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>object</code> - The progress through the log-in process
 (`percent` property), and the stage reached (`checking` property).  
 **Category**: hooks/login  
@@ -823,8 +800,6 @@ _Note that in an upcoming release of the SDK, seed passphrase reset will be
 handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
 will no longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>string</code> - The email address to display, with the middle
 part masked with asterisks to prevent revealing sensitive information outside an
 authenticated session.  
@@ -845,8 +820,6 @@ _Note that in an upcoming release of the SDK, seed phrase backup will be handled
 by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>Array.&lt;string&gt;</code> - An array of 24 English words
 from which the root key is derived.  
 **Category**: hooks/login  
@@ -861,8 +834,6 @@ _Note that in an upcoming release of the SDK, verification codes will be handled
 by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
 longer be necessary._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**: <code>string</code> - The email address that a verification code
 was sent to.  
 **Category**: hooks/login  
@@ -894,37 +865,7 @@ The mutation has parameters:
 Resolves to an object representing the progress of the send. If incomplete, the
 mutation can be called again with the progress object to execute the transfer.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Category**: hooks/transfer  
-<a name="module_@tokenized/sdk-react-private.useSendMaxEstimate"></a>
-
-### @tokenized/sdk-react-private.useSendMaxEstimate
-
-**`React Query hook`** Filtered list of paymail handles matching a search term
-
-See https://react-query.tanstack.com/guides/queries
-
-Each object in the data array describes a paymail handle:
-
-- `displayHandle`: Full-length paymail handle of the associated entity.
-- `displayName`: Display name of the associated entity.
-- `isActive`: true if this handle is active or false if it has been deactivated
-  and shouldn't be used.
-- `avatarURL`: Full URL to the entity's avatar image.
-
-Will be refreshed automatically **every 60 seconds**.
-
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
-**Category**: hooks/transfer
-
-| Param               | Type                 | Description                         |
-| ------------------- | -------------------- | ----------------------------------- |
-| search              | <code>String</code>  | Search text                         |
-| filters             | <code>Object</code>  | Filters                             |
-| filters.excludeSelf | <code>boolean</code> | Exclude logged in user from results |
-
 <a name="module_@tokenized/sdk-react-private.useFilteredBalances"></a>
 
 ### @tokenized/sdk-react-private.useFilteredBalances ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
@@ -960,8 +901,6 @@ that can be passed directly (or with your own modifications) to
 [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat)
 for localized currency formatting.
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**:
 [<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - An array
 of balances as the `data` property within a React Query
@@ -1119,8 +1058,6 @@ to get a list of the assets in the vault.
 
 _Currently only a single primary vault is supported per profile._
 
-**Kind**: static property of
-[<code>@tokenized/sdk-react-private</code>](#module_@tokenized/sdk-react-private)  
 **Returns**:
 [<code>UseQueryResult</code>](#external_react-query.UseQueryResult) - The user’s
 primary vault as the `data` property within a React Query
@@ -1189,6 +1126,11 @@ specific UI libraries)
       - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
         ⇒ <code>string</code>
+    - [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
+      - [.requestSend(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+requestSend)
+        ⇒ <code>object</code>
+      - [.initiateTrade(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+initiateTrade)
+        ⇒ <code>object</code>
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
     - [.activity](#module_@tokenized/sdk-js-private.TokenizedApi+activity)
@@ -1218,9 +1160,6 @@ In the Redux devtools browser extension, you should be able to select
 run:
 
     window.localStorage.removeItem('tokenized-sdk-devtools-enable');
-
-**Kind**: static class of
-[<code>@tokenized/sdk-js-private</code>](#module_@tokenized/sdk-js-private)
 
 - [.TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi)
   - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
@@ -1253,6 +1192,11 @@ run:
     - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
       ⇒ <code>string</code>
+  - [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
+    - [.requestSend(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+requestSend)
+      ⇒ <code>object</code>
+    - [.initiateTrade(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+initiateTrade)
+      ⇒ <code>object</code>
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
   - [.activity](#module_@tokenized/sdk-js-private.TokenizedApi+activity)
@@ -1299,8 +1243,7 @@ const tokenizedApi = new TokenizedApi({
 
 #### tokenizedApi.account
 
-**Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
+Manages the authentication token for the session and handles the sign in process
 
 - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
   - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
@@ -1338,8 +1281,6 @@ const tokenizedApi = new TokenizedApi({
 
 The minimum length of passphrase that will be accepted to secure an account
 
-**Kind**: instance property of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength"></a>
 
 ##### account.analyzePassphraseStrength ⇒ <code>object</code>
@@ -1353,9 +1294,6 @@ whether or not this password will be accepted by
 The core analysis is performed by the [`zxcvbn`](#external_zxcvbn) package, with
 some additional formatting (including localization) and feedback specific to the
 Tokenized service added to the result.
-
-**Kind**: instance property of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
 
 | Param      | Type                              | Description                                                                                                                                                                                                               |
 | ---------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1378,8 +1316,6 @@ separate timer for debouncing, so if you call
 memoize the result with `useMemo` or similar, to maintain the same validator for
 the lifetime of your component.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>function</code> - The async validation function, which takes
 one argument, the handle string to check, and returns a promise that resolves to
 `true` if the _most recent_ handle that was checked is available (because the
@@ -1402,8 +1338,6 @@ separate timer for debouncing, so if you call
 memoize the result with `useMemo` or similar, to maintain the same validator for
 the lifetime of your component.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>function</code> - The async validation function, which takes
 one argument, the email address to check, and returns a promise that resolves to
 `true` if the _most recent_ email that was checked is available (because the
@@ -1427,8 +1361,6 @@ separate timer for debouncing, so if you call
 memoize the result with `useMemo` or similar, to maintain the same validator for
 the lifetime of your component.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>function</code> - The async validation function, which takes
 one argument, the 24 words of the seed phrase as an array of strings, and
 returns a promise that resolves to `undefined` if the _most recent_ phrase that
@@ -1443,9 +1375,6 @@ Create a new account, and send a verification code to the specified email
 address, The code will need to be provided during the first log-in to complete
 the creation process. On success, this function starts a new log-in process
 automatically with the account credentials.
-
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
 
 | Param                     | Type                | Description                                                                                                                                                                                                                                                                     |
 | ------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1465,8 +1394,6 @@ Begin a new asynchronous log in process with the specified account credentials.
 If a log in attempt is currently in progress, it will be cancelled and replaced
 with the new one. Fails if there’s already a valid authenticated session.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>undefined</code> \| <code>boolean</code> - A `Promise` that
 resolves to one of three possible values:
 
@@ -1493,9 +1420,6 @@ sent to the account email address (triggered by an earlier call to
 [`createNewAccount`](module:@tokenized/sdk-js-private.TokenizedApi#account.createNewAccount)).
 If the code is correct, the log in process will continue automatically.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
-
 | Param | Type                | Description                                    |
 | ----- | ------------------- | ---------------------------------------------- |
 | code  | <code>string</code> | The verification code from the received email. |
@@ -1512,8 +1436,6 @@ Note that for security reasons, the actual words are only provided when a seed
 phrase backup is needed – at other times every item in the array will be
 `undefined`.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>Array.&lt;string&gt;</code> - An array of 24 English words
 from which the root key is derived.  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord"></a>
@@ -1528,8 +1450,6 @@ Note that this function has to search the complete list of about two thousand
 seed words, so you should ensure it’s only called when really needed – don’t
 call it unconditionally in the render function for every seed word.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>Array.&lt;string&gt;</code> - An array of seed phrase words
 that roughly match what the user typed, ordered by best match first.
 
@@ -1546,8 +1466,6 @@ phrase, you can call this to skip the backup and start the session. You should
 warn the user that this is a dangerous action that might lead to loss of the
 account.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup"></a>
 
 ##### account.confirmSeedPhraseBackup()
@@ -1557,8 +1475,6 @@ Confirms that the user has recorded their seed phrase, and sets `isBackedUp` to
 user is able to re-enter the seed phrase correctly. The log in process will
 continue automatically after the returned promise resolves.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey"></a>
 
 ##### account.skipRestoreRootKey()
@@ -1567,8 +1483,6 @@ When trying to log in to an account that needs recovery due to an invalid root
 key, you can call this to skip the restore and start the session anyway. You
 should warn the user that all transactions will fail in this state.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey"></a>
 
 ##### account.restoreRootKey(words)
@@ -1576,9 +1490,6 @@ should warn the user that all transactions will fail in this state.
 Restores the user’s default root key using the entered backup seed phrase, which
 is checked first to make sure it matches the registered vault public key. The
 log-in process will continue automatically after the returned promise resolves.
-
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
 
 | Param | Type                              | Description                                        |
 | ----- | --------------------------------- | -------------------------------------------------- |
@@ -1598,8 +1509,6 @@ prompt). Call
 [`resetPassphrase`](module:@tokenized/sdk-js-private.TokenizedApi#account.resetPassphrase)
 with the entered confirmation code and new passphrase to complete the process.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>string</code> - (In a `Promise`) the email address that the
 confirmation code was sent to, partly masked for privacy. In React apps it’s
 more convenient to retrieve this via the dedicated hook
@@ -1625,9 +1534,6 @@ process to the account. Unless the user re-entered their old passphrase, the
 root key will now be unusable, and the log-in process will request the recovery
 seed phrase to restore it.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)
-
 | Param                     | Type                | Description                                    |
 | ------------------------- | ------------------- | ---------------------------------------------- |
 | options                   | <code>object</code> |                                                |
@@ -1644,8 +1550,6 @@ sign in, this will be done automatically if the user has no active authenticator
 devices. Use this function when the user explicitly chooses to re-pair, or if
 you need to regenerate an expired code.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logOut"></a>
 
 ##### account.logOut()
@@ -1653,8 +1557,6 @@ you need to regenerate an expired code.
 End the current authenticated session and clear all internal state associated
 with it. If a log in attempt is currently in progress then cancel it.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix"></a>
 
 ##### account.getUserHandlePostfix() ⇒ <code>string</code>
@@ -1665,34 +1567,94 @@ user for a handle. Since the postfix is determined by the back end
 (`production`, `test`, or `development`), it remains fixed for the lifetime of
 each `TokenizedApi` object.
 
-**Kind**: instance method of
-[<code>account</code>](#module_@tokenized/sdk-js-private.TokenizedApi+account)  
 **Returns**: <code>string</code> - The handle postfix, for example
 `'@tokenized.id'`.  
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers"></a>
+
+#### tokenizedApi.transfers
+
+Asset transfers - send and trade assets.
+
+Note that methods in this module can be called in one or two steps, with two
+steps allowing reporting of errors before the transaction is broadcast.
+
+Single step usage:
+
+Call the function with `doFinalBroadcast` = `true` to complete the transaction
+in one call.
+
+Dual step usage:
+
+Call the function with `doFinalBroadcast` = `false` and then call again with the
+returned object from the previous call in `inProgressState` and
+`doFinalBroadcast` = `true` to complete the trade offer.
+
+Amounts are in major units (e.g. 1 = BSV 1, 1 = $1)
+
+- [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
+  - [.requestSend(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+requestSend)
+    ⇒ <code>object</code>
+  - [.initiateTrade(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+initiateTrade)
+    ⇒ <code>object</code>
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+requestSend"></a>
+
+##### transfers.requestSend(options) ⇒ <code>object</code>
+
+Make a request for an asset to a recipient.
+
+**Returns**: <code>object</code> - State of transaction.
+
+| Param                    | Type                 | Description                                                    |
+| ------------------------ | -------------------- | -------------------------------------------------------------- |
+| options                  | <code>object</code>  |                                                                |
+| options.vaultId          | <code>string</code>  | Vault containing assets to be traded                           |
+| options.assetId          | <code>string</code>  | The asset which is requested from the recipient                |
+| options.amount           | <code>number</code>  | The amount of asset being requested                            |
+| options.description      | <code>string</code>  | A message which will be sent with the offer to the recipient   |
+| options.recipient        | <code>string</code>  | Paymail handle (only Tokenized handles supported) of recipient |
+| options.doFinalBroadcast | <code>boolean</code> | True to complete a trade.                                      |
+| options.inProgressState  | <code>object</code>  | Supply the result from a previous call.                        |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+initiateTrade"></a>
+
+##### transfers.initiateTrade(options) ⇒ <code>object</code>
+
+Make an offer of a trade to a recipient.
+
+**Returns**: <code>object</code> - State of transaction.
+
+| Param                    | Type                 | Description                                                    |
+| ------------------------ | -------------------- | -------------------------------------------------------------- |
+| options                  | <code>object</code>  |                                                                |
+| options.vaultId          | <code>string</code>  | Vault containing assets to be traded                           |
+| options.receiveAssetId   | <code>string</code>  | The asset which is requested from the recipient                |
+| options.receiveAmount    | <code>number</code>  | The amount of asset being requested                            |
+| options.sendAssetId      | <code>string</code>  | The asset which is offered to the recipient                    |
+| options.sendAmount       | <code>number</code>  | The amount of asset being offered                              |
+| options.description      | <code>string</code>  | A message which will be sent with the offer to the recipient   |
+| options.recipient        | <code>string</code>  | Paymail handle (only Tokenized handles supported) of recipient |
+| options.doFinalBroadcast | <code>boolean</code> | True to complete a trade.                                      |
+| options.inProgressState  | <code>object</code>  | Supply the result from a previous call.                        |
+
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+treasury"></a>
 
 #### tokenizedApi.treasury
 
 Access to balances and assets
 
-**Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+contracts"></a>
 
 #### tokenizedApi.contracts
 
 Access to contracts
 
-**Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+activity"></a>
 
 #### tokenizedApi.activity
 
 Access to activity
 
-**Kind**: instance property of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient"></a>
 
 #### tokenizedApi.getQueryClient() ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
@@ -1702,8 +1664,6 @@ Provides the
 that manages the API data cache for the current user session. Use to observe
 query data and perform mutations.
 
-**Kind**: instance method of
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)  
 <a name="external_zxcvbn"></a>
 
 ## zxcvbn
@@ -1714,7 +1674,6 @@ significant amount of static string data, and so installing
 `@tokenized/sdk-js-private` can increase your Webpack bundle size by several
 hundred kilobytes.
 
-**Kind**: global external  
 **See**: https://github.com/dropbox/zxcvbn#usage  
 <a name="external_react-query"></a>
 
@@ -1726,7 +1685,6 @@ Some knowledge of how React Query works is useful, since the SDK exposes some of
 its details directly, like the `UseQueryResult` objects returned by the
 `@tokenized/sdk-react-private` query hooks.
 
-**Kind**: global external  
 **See**: https://react-query.tanstack.com/overview
 
 - [react-query](#external_react-query)
@@ -1747,7 +1705,6 @@ status of a query, including the data once it becomes available, in a
 - `.data`: The latest query results, once they’re available.
 - `.error`: The error object if the query fails.
 
-**Kind**: static typedef of [<code>react-query</code>](#external_react-query)  
 **See**: https://react-query.tanstack.com/reference/useQuery  
 <a name="external_react-query.QueryClient"></a>
 
@@ -1763,7 +1720,6 @@ The `QueryClient` object encapsulates a React Query data cache. It provides
   for a particular query, which can then be bound to UI using the observer
   pattern.
 
-**Kind**: static typedef of [<code>react-query</code>](#external_react-query)  
 **See**: https://react-query.tanstack.com/reference/QueryClient
 
 ---
