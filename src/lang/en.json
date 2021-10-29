@@ -38,6 +38,9 @@
     "defaultMessage": "Avoid workplace or educational emails you might lose access to",
     "description": "New account email field help: advice to pick personal accounts"
   },
+  "1s6Cy7": {
+    "defaultMessage": "Request assets"
+  },
   "2F0CgA": {
     "defaultMessage": "Later…",
     "description": "Account recovery later button"
@@ -330,6 +333,10 @@
     "defaultMessage": "One unit",
     "description": "Balance table column header: value of one asset unit"
   },
+  "Sm4O4X": {
+    "defaultMessage": "Request",
+    "description": "Label for button to open dialog to request assets"
+  },
   "Ssp7dT": {
     "defaultMessage": "Must be greater than {min, number}",
     "description": "Form field validation failure: number > min is required"
@@ -507,6 +514,9 @@
   "mArnAT": {
     "defaultMessage": "Welcome {name}",
     "description": "Login screen mobile authentication prompt title"
+  },
+  "midrUq": {
+    "defaultMessage": "Accept request"
   },
   "n0cMeX": {
     "defaultMessage": "Doesn’t match entered passphrase",

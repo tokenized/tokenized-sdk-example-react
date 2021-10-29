@@ -81,6 +81,12 @@
       "value": "Avoid workplace or educational emails you might lose access to"
     }
   ],
+  "1s6Cy7": [
+    {
+      "type": 0,
+      "value": "Request assets"
+    }
+  ],
   "2F0CgA": [
     {
       "type": 0,
@@ -565,6 +571,12 @@
       "value": "One unit"
     }
   ],
+  "Sm4O4X": [
+    {
+      "type": 0,
+      "value": "Request"
+    }
+  ],
   "Ssp7dT": [
     {
       "type": 0,
@@ -872,6 +884,12 @@
     {
       "type": 1,
       "value": "name"
+    }
+  ],
+  "midrUq": [
+    {
+      "type": 0,
+      "value": "Accept request"
     }
   ],
   "n0cMeX": [
