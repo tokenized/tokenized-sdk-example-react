@@ -13,7 +13,7 @@ import {
 import { FormattedMessage } from 'react-intl';
 import InputAssetMemo from './InputAssetMemo';
 import {
-  useSendAsset,
+  useTokenizedApi,
   usePrimaryVault,
   useAvailableAmount,
 } from '@tokenized/sdk-react-private';
@@ -119,40 +119,36 @@ const SendFormFields = ({
 };
 
 const SendModal = ({ close }) => {
-  const send = useSendAsset();
-  const vaultId = usePrimaryVault()?.id;
+  const tokenizedApi = useTokenizedApi();
+  const lockboxId = usePrimaryVault()?.primaryLockboxId;
 
   const [pending, setPending] = useState(null);
 
   const onSubmit = async (data) => {
     try {
       const assetId = data.assetType.assetId;
-      const description = data.assetMemo;
+      const memo = data.assetMemo;
       const recipients = [
         {
+          handle: data.to,
           amount: Number(data.assetQuantity),
           sendMax: data.sendMax,
-          handle: data.to,
         },
       ];
       const sendOptions = {
-        vaultId,
+        lockboxId,
         assetId,
-        description,
+        memo,
         recipients,
       };
       if (!pending) {
-        const sendRequest = await send.mutateAsync({
+        const sendRequest = await tokenizedApi.transfers.send({
           ...sendOptions,
-          doFinalBroadcast: false,
+          dryRun: true,
         });
         setPending(sendRequest);
       } else {
-        await send.mutateAsync({
-          ...sendOptions,
-          doFinalBroadcast: true,
-          inProgressState: pending,
-        });
+        await tokenizedApi.transfers.send(sendOptions);
         setPending(null);
         close();
       }
@@ -192,7 +188,7 @@ const SendModal = ({ close }) => {
                 style={{ overflow: 'visible' }}
               >
                 {pending ? (
-                  <SendShowConfirmation values={values} fee={pending.fee} />
+                  <SendShowConfirmation values={values} />
                 ) : (
                   <SendFormFields values={values} />
                 )}
