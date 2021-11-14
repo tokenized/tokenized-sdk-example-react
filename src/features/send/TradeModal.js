@@ -95,13 +95,18 @@ const SendFormFields = ({ mode, values: { sendAssetType }, pending }) => {
           />
         </>
       )}
-      <Field name="description" render={InputAssetMemo} disabled={disabled} />
-      <Field name="expiryHours" render={InputExpiry} disabled={disabled} />
+      <Field name="memo" render={InputAssetMemo} disabled={disabled} />
+      <Field
+        name="expiryHours"
+        render={InputExpiry}
+        initialValue={48}
+        disabled={disabled}
+      />
       {pending && (
         <div>
           <FormattedMessage defaultMessage="Computed network fee" />
           {': '}
-          <FormatQuantity quantity={pending.fee} />
+          <FormatQuantity quantity={pending?.fee} />
         </div>
       )}
     </>
@@ -110,7 +115,7 @@ const SendFormFields = ({ mode, values: { sendAssetType }, pending }) => {
 
 export default function TradeModal({ mode, close }) {
   const tokenizedApi = useTokenizedApi();
-  const vaultId = usePrimaryVault()?.id;
+  const lockboxId = usePrimaryVault()?.primaryLockboxId;
 
   const [pending, setPending] = useState(null);
 
@@ -119,15 +124,15 @@ export default function TradeModal({ mode, close }) {
     receiveAmount,
     sendAssetType,
     sendAmount,
-    description,
+    memo,
     recipient,
     expiryHours,
   }) => {
     try {
       const options = {
-        vaultId,
+        lockboxId,
         expiry: new Date(Date.now() + hours(expiryHours)).toISOString(),
-        description,
+        memo,
         recipient,
         ...(mode === MODE_TRADE
           ? {
@@ -142,21 +147,17 @@ export default function TradeModal({ mode, close }) {
             }),
       };
 
-      const method = mode === MODE_TRADE ? 'initiateTrade' : 'requestSend';
+      const method = mode === MODE_TRADE ? 'trade' : 'request';
 
       if (!pending) {
         setPending(
           await tokenizedApi.transfers[method]({
             ...options,
-            doFinalBroadcast: false,
+            dryRun: true,
           }),
         );
       } else {
-        await tokenizedApi.transfers[method]({
-          ...options,
-          doFinalBroadcast: true,
-          inProgressState: pending,
-        });
+        await tokenizedApi.transfers[method](options);
         setPending(null);
         close();
       }

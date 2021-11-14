@@ -171,8 +171,6 @@ Tokenized JavaScript SDK bindings for React
       ⇒ <code>Array.&lt;string&gt;</code>
     - [.useVerificationEmailAddress](#module_@tokenized/sdk-react-private.useVerificationEmailAddress)
       ⇒ <code>string</code>
-  - _hooks/transfer_
-    - [.useSendAsset](#module_@tokenized/sdk-react-private.useSendAsset)
   - _hooks/treasury_
     - [.useFilteredBalances](#module_@tokenized/sdk-react-private.useFilteredBalances)
       ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
@@ -186,10 +184,6 @@ Tokenized JavaScript SDK bindings for React
 `<DevicePairingCode>` is a React component that renders the authenticator device
 pairing QR code. Present this to the user and prompt them to “Scan this code
 with the authenticator app”.
-
-_Note that in an upcoming release of the SDK, device pairing will be handled by
-a redirect to a secure, Tokenized-hosted mini-web-app, and this component will
-no longer be necessary._
 
 **Category**: components
 
@@ -360,11 +354,10 @@ property will contain an array of objects, one for each activity event, each
 containing:
 
 - `id`: Unique ID for the activity event
-- `activityEventType`: Object with `id` and `name` describing the type of the
+- `activityEventType`: The type of the operation represented by the activity
   event
-- `activityEventStatus`: Object with `id` and `name` describing the status of
-  the event
-- `txId`: Transaction Id
+- `stage`: Describes what stage of the operation has been reached so far
+- `txIds`: The transactions that make up the operation’s on-chain representation
 - `vaultId`: Id of the vault fufilling this activity
 - `memo`: String describing transaction (supplied by the trade initiating user)
 - `contract`: Optional object describing the contract
@@ -394,6 +387,7 @@ containing:
 
 - `payment`
 - `trade_offer`
+- `bank_transfer`
 - `contract_formation`
 - `contract_amendment`
 - `contract_expire`
@@ -402,19 +396,23 @@ containing:
 - `asset_expire`
 - `vault_creation_proposal`
 - `vault_deletion_proposal`
+- `bank_account_creation`
+- `bank_account_deletion`
 
-`activityEventStatus` can be:
+`stage` can be:
 
-- `proposed_offer`: initial pending status for all activity events.
-- `awaiting_acceptance`: the current profile owner needs to respond to a pending
-  action.
-- `awaiting_counterparty`: a response is being awaited from the counterparty.
-- `awaiting_agent`: a smart contract agent is currently processing this event.
-- `rejected`: rejected or declined by the counterparty.
+- `proposal`: a proposed operation that still needs more signatures.
+- `reviewing`: a trade offer waiting for acceptance by the recipient.
+- `countersigning`: an accepted trade offer waiting for execution.
+- `agent_processing`: a smart contract agent is currently processing this event.
+- `executed`: the event has completed successfully.
+
+`terminationReason` can be:
+
+- `revoked`: revoked by the initiator/proposer before being accepted.
+- `rejected`: rejected or declined by either party.
 - `expired`: pending activity event has expired.
-- `failed`: response to an event did not meet the criteria of the request.
-- `executed`: final activity the event has concluded, no further actions are
-  expected.
+- `failed`: an unexpected error occurred.
 
 A quantity is an object containing:
 
@@ -669,10 +667,6 @@ and also no log-in process happening.
 **`React hook`** Current log-in process status. Show a spinner and disable user
 input on your log-in screen when `useIsLoggingIn` is `true`.
 
-_Note that in an upcoming release of the SDK, log in will be handled by a
-redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
-longer be necessary._
-
 **Returns**: <code>boolean</code> - `true` when the log-in process has started
 (credentials entered), but the user has not been fully authenticated yet.  
 **Category**: hooks/login  
@@ -693,10 +687,6 @@ re-pairing code has also been explicitly requested by calling
 You should show the pairing QR code, but be prepared for MFA to complete without
 it being used.
 
-_Note that in an upcoming release of the SDK, device pairing will be handled by
-a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
-longer be necessary._
-
 **Returns**: <code>boolean</code> - `true` when a device pairing process is
 active.  
 **Category**: hooks/login  
@@ -706,10 +696,6 @@ active.
 
 **`React hook`** Current log in error. Display the error message on your login
 screen to inform the user why their log in attempt was unsuccessful.
-
-_Note that in an upcoming release of the SDK, log in will be handled by a
-redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
-longer be necessary._
 
 **Returns**: <code>Error</code> - The error that caused a log in attempt to
 fail. Cleared to `null` when a new log in process is started.  
@@ -722,10 +708,6 @@ fail. Cleared to `null` when a new log in process is started.
 authentication. Show a prompt to “Confirm your identity in the authenticator
 app” on your login screen when `useLogInNeedsMfa` is `true`.
 
-_Note that in an upcoming release of the SDK, log in (including MFA) will be
-handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
-will no longer be necessary._
-
 **Returns**: <code>boolean</code> - `true` when the log in process is polling
 for MFA confirmation.  
 **Category**: hooks/login  
@@ -736,10 +718,6 @@ for MFA confirmation.
 **`React hook`** Signals that the log-in process is paused waiting for account
 restoration. Show a prompt to enter the seed phrase for recovery when
 `useLogInNeedsRestoreRootKey` is `true`.
-
-_Note that in an upcoming release of the SDK, account recovery will be handled
-by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
-longer be necessary._
 
 **Returns**: <code>boolean</code> - `true` when the log in process has paused
 for account restoration.  
@@ -752,10 +730,6 @@ for account restoration.
 phrase backup. Show the seed phrase, and confirm the user has correctly recorded
 it when `useLogInNeedsSeedPhraseBackup` is `true`.
 
-_Note that in an upcoming release of the SDK, seed phrase backup will be handled
-by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
-longer be necessary._
-
 **Returns**: <code>boolean</code> - `true` when the log in process has paused
 for seed phrase backup.  
 **Category**: hooks/login  
@@ -767,10 +741,6 @@ for seed phrase backup.
 verification. Show a prompt to “Verify your account with the email code” on your
 login screen when `useLogInNeedsVerifyEmail` is `true`.
 
-_Note that in an upcoming release of the SDK, account verification will be
-handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
-will no longer be necessary._
-
 **Returns**: <code>boolean</code> - `true` when the log-in process has paused
 for email verification.  
 **Category**: hooks/login  
@@ -780,10 +750,6 @@ for email verification.
 
 **`React hook`** Provides indication of the current stage of the log-in process.
 Use this to show a progress bar and/or status message on your log-in screen.
-
-_Note that in an upcoming release of the SDK, log in will be handled by a
-redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
-longer be necessary._
 
 **Returns**: <code>object</code> - The progress through the log-in process
 (`percent` property), and the stage reached (`checking` property).  
@@ -795,10 +761,6 @@ longer be necessary._
 **`React hook`** Masked email address that a passphrase reset confirmation email
 was sent to. Display this after the user begins the recovery (forgot passphrase)
 process, as part of the prompt to enter the confirmation code.
-
-_Note that in an upcoming release of the SDK, seed passphrase reset will be
-handled by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook
-will no longer be necessary._
 
 **Returns**: <code>string</code> - The email address to display, with the middle
 part masked with asterisks to prevent revealing sensitive information outside an
@@ -816,10 +778,6 @@ Use the hook in a component that only gets mounted when the log-in process
 requests a seed phrase backup. In other situations, every word in the returned
 array will be `undefined`.
 
-_Note that in an upcoming release of the SDK, seed phrase backup will be handled
-by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
-longer be necessary._
-
 **Returns**: <code>Array.&lt;string&gt;</code> - An array of 24 English words
 from which the root key is derived.  
 **Category**: hooks/login  
@@ -830,42 +788,9 @@ from which the root key is derived.
 **`React hook`** Provides the email address that a verification code was sent
 to. Use this to prompt the user to retrieve the code and enter it to continue.
 
-_Note that in an upcoming release of the SDK, verification codes will be handled
-by a redirect to a secure, Tokenized-hosted mini-web-app, and this hook will no
-longer be necessary._
-
 **Returns**: <code>string</code> - The email address that a verification code
 was sent to.  
 **Category**: hooks/login  
-<a name="module_@tokenized/sdk-react-private.useSendAsset"></a>
-
-### @tokenized/sdk-react-private.useSendAsset
-
-**`React Query mutation hook`** Send some assets from a vault to a specified
-recipient. The transfer can either be executed immediately, or two mutations can
-be performed, the first prepares the transfer, and the second executes it.
-
-See https://react-query.tanstack.com/guides/mutations
-
-The mutation has parameters:
-
-- `vaultId`: The id of the sending vault
-- `assetId`: The id of the asset to send
-- `description`: An optional free text description (memo) to be sent with the
-  transaction
-- `recipients`: A list of recipients, each of which is an object, either amount
-  or sendMax are required:
-  - `amount`: number - optional amount of asset, for example 1 for 1 BSV or for
-    $1
-  - `sendMax`: boolean - optionally to indicate sending maximum possible
-    quantity
-  - `handle`: Send to this paymail address. Only Tokenized entities supported
-    for non-BSV transfers
-
-Resolves to an object representing the progress of the send. If incomplete, the
-mutation can be called again with the progress object to execute the transfer.
-
-**Category**: hooks/transfer  
 <a name="module_@tokenized/sdk-react-private.useFilteredBalances"></a>
 
 ### @tokenized/sdk-react-private.useFilteredBalances ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
@@ -880,6 +805,7 @@ property will contain an array of objects, one for each asset balance. Each
 object describes a selection of relevant quantities for the particular asset:
 
 - `balance`: Quantity of the asset held in this vault
+- `available`: Quantity of balance available to use in transfers
 - `reserved`: Quantity of balance reserved for pending transactions
 - `authorizedQuantity`: Total quantity of asset in existence
 - `unitValue`: The value of one “unit” of the asset
@@ -914,6 +840,7 @@ example for details of the data structure and how to use it.
 | filterOptions                     | <code>object</code>  |                                                                                                                                                                                                                                                                                     |
 | filterOptions.includeLiabilities  | <code>boolean</code> | Asset/liability filtering: Set `includeLiabilities: true` to only include assets created by the current entity. Set `includeLiabilities: false` to only include assets issued to the current entity by another entity, Omit `includeLiabilities` to include assets and liabilities. |
 | filterOptions.includeInactive     | <code>boolean</code> | Active/inactive filtering: Set `includeInactive: true` to only include assets that are inactive or expired. Set `includeInactive: false` to only include assets that are active and not expired. Omit `includeInactive` to include active and inactive assets.                      |
+| filterOptions.includeMoney        | <code>boolean</code> | Currency/token filtering: Set `includeMoney: true` to only include currency assets. Set `includeMoney: false` to only include non-currency (token) assets. Omit `includeMoney` to include both types of asset.                                                                      |
 | filterOptions.displayCurrencyCode | <code>string</code>  | Override the display currency from the user’s profile for currency conversions. For example setting `displayCurrencyCode: 'USD'` will return quantities with display currency conversions to US dollars.                                                                            |
 
 **Example**
@@ -966,6 +893,7 @@ export default function BalancesExample() {
 
             const {
               balance, // Quantity of the asset held in this vault
+              available, // Quantity of balance available to use in transfers
               reserved, // Quantity of balance reserved for pending transactions
               authorizedQuantity, // Total quantity of asset in existence
               unitValue, // The value of one “unit” of the asset
@@ -979,6 +907,9 @@ export default function BalancesExample() {
                 <ul>
                   <li>
                     balance: <FormatQuantity quantity={balance} />
+                  </li>
+                  <li>
+                    available: <FormatQuantity quantity={available} />
                   </li>
                   <li>
                     reserved: <FormatQuantity quantity={reserved} />
@@ -1127,10 +1058,16 @@ specific UI libraries)
       - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
         ⇒ <code>string</code>
     - [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
-      - [.requestSend(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+requestSend)
-        ⇒ <code>object</code>
-      - [.initiateTrade(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+initiateTrade)
-        ⇒ <code>object</code>
+      - [.send(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+send)
+        ⇒ <code>Array.&lt;string&gt;</code>
+      - [.request(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+request)
+        ⇒ <code>Array.&lt;string&gt;</code>
+      - [.tradeOffer(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+tradeOffer)
+        ⇒ <code>Array.&lt;string&gt;</code>
+      - [.approve(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+approve)
+        ⇒ <code>Array.&lt;string&gt;</code>
+      - [.reject(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+reject)
+        ⇒ <code>Array.&lt;string&gt;</code>
     - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
     - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
     - [.activity](#module_@tokenized/sdk-js-private.TokenizedApi+activity)
@@ -1193,10 +1130,16 @@ run:
     - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
       ⇒ <code>string</code>
   - [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
-    - [.requestSend(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+requestSend)
-      ⇒ <code>object</code>
-    - [.initiateTrade(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+initiateTrade)
-      ⇒ <code>object</code>
+    - [.send(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+send)
+      ⇒ <code>Array.&lt;string&gt;</code>
+    - [.request(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+request)
+      ⇒ <code>Array.&lt;string&gt;</code>
+    - [.tradeOffer(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+tradeOffer)
+      ⇒ <code>Array.&lt;string&gt;</code>
+    - [.approve(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+approve)
+      ⇒ <code>Array.&lt;string&gt;</code>
+    - [.reject(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+reject)
+      ⇒ <code>Array.&lt;string&gt;</code>
   - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
   - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
   - [.activity](#module_@tokenized/sdk-js-private.TokenizedApi+activity)
@@ -1349,15 +1292,15 @@ will actually be checked).
 
 Use this during account recovery when prompting the user to enter their recovery
 seed phrase, to feed back as they type whether they’ve got the words correct
-(they’re checked against the primary vault’s public key). You can call the
-returned async function as often as you like (on every keystroke), and it won’t
-do the calculation (which is expensive) more than once every 500ms. Each time a
-check is done, the result will become the resolved value of all unresolved
-promises previously returned.
+(they’re checked against a derived public key). You can call the returned async
+function as often as you like (on every keystroke), and it won’t do the
+calculation (which is expensive) more than once every 500ms. Each time a check
+is done, the result will become the resolved value of all unresolved promises
+previously returned.
 
 Note that each validator function returned by this method maintains its own
 separate timer for debouncing, so if you call
-`makeDebouncedEmailAvailabilityChecker` in a React render function, you must
+`makeDebouncedRecoveryPhraseValidator` in a React render function, you must
 memoize the result with `useMemo` or similar, to maintain the same validator for
 the lifetime of your component.
 
@@ -1575,67 +1518,121 @@ each `TokenizedApi` object.
 
 Asset transfers - send and trade assets.
 
-Note that methods in this module can be called in one or two steps, with two
-steps allowing reporting of errors before the transaction is broadcast.
-
-Single step usage:
-
-Call the function with `doFinalBroadcast` = `true` to complete the transaction
-in one call.
-
-Dual step usage:
-
-Call the function with `doFinalBroadcast` = `false` and then call again with the
-returned object from the previous call in `inProgressState` and
-`doFinalBroadcast` = `true` to complete the trade offer.
-
 Amounts are in major units (e.g. 1 = BSV 1, 1 = $1)
 
 - [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
-  - [.requestSend(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+requestSend)
-    ⇒ <code>object</code>
-  - [.initiateTrade(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+initiateTrade)
-    ⇒ <code>object</code>
+  - [.send(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+send)
+    ⇒ <code>Array.&lt;string&gt;</code>
+  - [.request(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+request)
+    ⇒ <code>Array.&lt;string&gt;</code>
+  - [.tradeOffer(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+tradeOffer)
+    ⇒ <code>Array.&lt;string&gt;</code>
+  - [.approve(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+approve)
+    ⇒ <code>Array.&lt;string&gt;</code>
+  - [.reject(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+reject)
+    ⇒ <code>Array.&lt;string&gt;</code>
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+requestSend"></a>
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+send"></a>
 
-##### transfers.requestSend(options) ⇒ <code>object</code>
+##### transfers.send(options) ⇒ <code>Array.&lt;string&gt;</code>
 
-Make a request for an asset to a recipient.
+Send an amount of a specified asset to one or more other entities.
 
-**Returns**: <code>object</code> - State of transaction.
+**Returns**: <code>Array.&lt;string&gt;</code> - Array of pending transaction
+IDs completed.
 
-| Param                    | Type                 | Description                                                    |
-| ------------------------ | -------------------- | -------------------------------------------------------------- |
-| options                  | <code>object</code>  |                                                                |
-| options.vaultId          | <code>string</code>  | Vault containing assets to be traded                           |
-| options.assetId          | <code>string</code>  | The asset which is requested from the recipient                |
-| options.amount           | <code>number</code>  | The amount of asset being requested                            |
-| options.description      | <code>string</code>  | A message which will be sent with the offer to the recipient   |
-| options.recipient        | <code>string</code>  | Paymail handle (only Tokenized handles supported) of recipient |
-| options.doFinalBroadcast | <code>boolean</code> | True to complete a trade.                                      |
-| options.inProgressState  | <code>object</code>  | Supply the result from a previous call.                        |
+| Param                        | Type                              | Description                                                                                                                                          |
+| ---------------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options                      | <code>Object</code>               |                                                                                                                                                      |
+| options.lockboxId            | <code>string</code>               | The lockbox containing the assets to be sent                                                                                                         |
+| options.assetId              | <code>string</code>               | The asset to send                                                                                                                                    |
+| options.recipients           | <code>Array.&lt;Object&gt;</code> | The entities to send to (paymail handles or addresses), and the amount to send to each                                                               |
+| options.recipients[].handle  | <code>string</code>               | The paymail handle of the recipient. Note that non-Tokenized paymail handles are only accepted when sending BSV amounts.                             |
+| options.recipients[].address | <code>string</code>               | (Instead of `handle`) the BSV address of the recipient. Only accepted when sending BSV amounts.                                                      |
+| options.recipients[].amount  | <code>number</code>               | The amount of the asset to send to this recipient, for example 1 for 1 BSV or for $1                                                                 |
+| options.recipients[].sendMax | <code>boolean</code>              | (Instead of `amount`) When `true`, send the maximum available amount of the asset (minus fees) to this recipient. Can only be set for one recipient. |
+| options.memo                 | <code>string</code>               | An optional message for the recipients                                                                                                               |
+| options.dryRun               | <code>boolean</code>              | If `true` then the arguments will be checked, but no transfer performed                                                                              |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+initiateTrade"></a>
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+request"></a>
 
-##### transfers.initiateTrade(options) ⇒ <code>object</code>
+##### transfers.request(options) ⇒ <code>Array.&lt;string&gt;</code>
 
-Make an offer of a trade to a recipient.
+Request an asset to be sent to you by another entity. Requests ar received in
+the form of an open activity item, which can be accepted or declined by the
+recipient using the `accept` and `decline` methods below.
 
-**Returns**: <code>object</code> - State of transaction.
+**Returns**: <code>Array.&lt;string&gt;</code> - Array of pending transaction
+IDs completed.
 
-| Param                    | Type                 | Description                                                    |
-| ------------------------ | -------------------- | -------------------------------------------------------------- |
-| options                  | <code>object</code>  |                                                                |
-| options.vaultId          | <code>string</code>  | Vault containing assets to be traded                           |
-| options.receiveAssetId   | <code>string</code>  | The asset which is requested from the recipient                |
-| options.receiveAmount    | <code>number</code>  | The amount of asset being requested                            |
-| options.sendAssetId      | <code>string</code>  | The asset which is offered to the recipient                    |
-| options.sendAmount       | <code>number</code>  | The amount of asset being offered                              |
-| options.description      | <code>string</code>  | A message which will be sent with the offer to the recipient   |
-| options.recipient        | <code>string</code>  | Paymail handle (only Tokenized handles supported) of recipient |
-| options.doFinalBroadcast | <code>boolean</code> | True to complete a trade.                                      |
-| options.inProgressState  | <code>object</code>  | Supply the result from a previous call.                        |
+| Param             | Type                 | Description                                                                                              |
+| ----------------- | -------------------- | -------------------------------------------------------------------------------------------------------- |
+| options           | <code>Object</code>  |                                                                                                          |
+| options.lockboxId | <code>string</code>  | Your lockbox into which the amount will be transferred                                                   |
+| options.recipient | <code>string</code>  | Paymail handle (only Tokenized handles supported) of the recipient                                       |
+| options.assetId   | <code>string</code>  | The asset which is being requested from the recipient                                                    |
+| options.amount    | <code>number</code>  | The amount of asset being requested                                                                      |
+| options.memo      | <code>string</code>  | An optional message to show the recipient with the request                                               |
+| options.expiry    | <code>string</code>  | An ISO-8601-format timestamp in the future when the request should expire (default is two days from now) |
+| options.dryRun    | <code>boolean</code> | If `true` then the arguments will be checked, but no request sent                                        |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+tradeOffer"></a>
+
+##### transfers.tradeOffer(options) ⇒ <code>Array.&lt;string&gt;</code>
+
+Initiate a trade of assets with another entity by sending them an offer. Offers
+are received in the form of an open activity item, which can be accepted or
+declined using the `accept` and `decline` methods below. The final step is for
+the initiator to countersign (or decline) the resulting accepted activity event
+(using the same methods).
+
+**Returns**: <code>Array.&lt;string&gt;</code> - Array of pending transaction
+IDs completed.
+
+| Param                  | Type                 | Description                                                                                                       |
+| ---------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| options                | <code>Object</code>  |                                                                                                                   |
+| options.lockboxId      | <code>string</code>  | Your lockbox from which the offered amount will be taken, and into which the requested amount will be transferred |
+| options.recipient      | <code>string</code>  | Paymail handle (only Tokenized handles supported) of the recipient of the offer                                   |
+| options.sendAssetId    | <code>string</code>  | The asset which is offered to the recipient                                                                       |
+| options.sendAmount     | <code>number</code>  | The amount of asset being offered                                                                                 |
+| options.receiveAssetId | <code>string</code>  | The asset which is requested from the recipient                                                                   |
+| options.receiveAmount  | <code>number</code>  | The amount of asset being requested                                                                               |
+| options.memo           | <code>string</code>  | An optional message to show the recipient with the offer                                                          |
+| options.expiry         | <code>string</code>  | An ISO-8601-format timestamp in the future when the request should expire (default is two days from now)          |
+| options.dryRun         | <code>boolean</code> | If `true` then the arguments will be checked, but no request sent                                                 |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+approve"></a>
+
+##### transfers.approve(options) ⇒ <code>Array.&lt;string&gt;</code>
+
+Accept a received trade offer or transfer request (as the recipient), or execute
+an accepted trade (as the initiator).
+
+**Returns**: <code>Array.&lt;string&gt;</code> - Array of pending transaction
+IDs completed.
+
+| Param              | Type                | Description                                                                                             |
+| ------------------ | ------------------- | ------------------------------------------------------------------------------------------------------- |
+| options            | <code>Object</code> |                                                                                                         |
+| options.lockboxId  | <code>string</code> | Your lockbox from which sent amounts will be taken, and into which received amounts will be transferred |
+| options.activityId | <code>string</code> | The ID of the open activity event being accepted/executed.                                              |
+
+<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+reject"></a>
+
+##### transfers.reject(options) ⇒ <code>Array.&lt;string&gt;</code>
+
+Decline a received trade offer or transfer request (as the recipient), or
+decline an accepted trade (as the initiator).
+
+**Returns**: <code>Array.&lt;string&gt;</code> - Array of pending transaction
+IDs completed.
+
+| Param              | Type                | Description                                                                                             |
+| ------------------ | ------------------- | ------------------------------------------------------------------------------------------------------- |
+| options            | <code>Object</code> |                                                                                                         |
+| options.lockboxId  | <code>string</code> | Your lockbox from which sent amounts will be taken, and into which received amounts will be transferred |
+| options.activityId | <code>string</code> | The ID of the open activity event being declined.                                                       |
 
 <a name="module_@tokenized/sdk-js-private.TokenizedApi+treasury"></a>
 

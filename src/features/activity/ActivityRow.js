@@ -29,15 +29,14 @@ export function ActivityHeader({ showAction }) {
 
 export function ActivityRow({
   item: {
-    txId,
+    txIds,
     dateModified,
     formatted: { description, counterparty, tradeAction, tradeResponse },
     counterparties,
     memo,
     assets,
-    signTrade,
-    executeTrade,
     acceptTrade,
+    executeTrade,
     acceptRequest,
   },
 }) {
@@ -54,6 +53,7 @@ export function ActivityRow({
       setError(e.toString());
     }
   };
+  const txId = txIds?.length ? txIds[txIds.length - 1] : null;
 
   return (
     <tr style={{ whiteSpace: 'nowrap' }}>
@@ -112,19 +112,14 @@ export function ActivityRow({
       </td>
       <td>
         {error}
-        {!error && executeTrade && (
-          <button className={buttonClass} onClick={load(executeTrade)}>
-            <FormattedMessage defaultMessage="Execute trade" />
-          </button>
-        )}
-        {!error && signTrade && (
-          <button className={buttonClass} onClick={load(signTrade)}>
-            <FormattedMessage defaultMessage="Sign trade" />
-          </button>
-        )}
         {!error && acceptTrade && (
           <button className={buttonClass} onClick={load(acceptTrade)}>
             <FormattedMessage defaultMessage="Accept trade" />
+          </button>
+        )}
+        {!error && executeTrade && (
+          <button className={buttonClass} onClick={load(executeTrade)}>
+            <FormattedMessage defaultMessage="Execute trade" />
           </button>
         )}
         {!error && acceptRequest && (
