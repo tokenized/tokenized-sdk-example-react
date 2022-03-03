@@ -14,7 +14,7 @@ function ChooseSendMax({ input, max, meta }) {
           {!!max?.displayCurrency && (
             <FormattedMessage
               defaultMessage="max: {max} ≈ {converted}"
-              description="Asset transfer max quantity"
+              description="Instrument transfer max quantity"
               values={{
                 max: <FormatQuantity quantity={max} />,
                 converted: <FormatCurrency currency={max?.displayCurrency} />,
@@ -24,7 +24,7 @@ function ChooseSendMax({ input, max, meta }) {
           {!max?.displayCurrency && (
             <FormattedMessage
               defaultMessage="max: {max}"
-              description="Asset transfer max quantity"
+              description="Instrument transfer max quantity"
               values={{
                 max: <FormatQuantity quantity={max} />,
               }}

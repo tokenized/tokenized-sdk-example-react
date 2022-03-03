@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import SelectPaymail from './SelectPaymail';
-import SelectAssetType from './SelectAssetType';
-import InputAssetQuantity from './InputAssetQuantity';
+import SelectInstrumentType from './SelectInstrumentType';
+import InputInstrumentQuantity from './InputInstrumentQuantity';
 import { Field, Form } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 import {
@@ -11,7 +11,7 @@ import {
   useValidators,
 } from '../../utils/validators';
 import { FormattedMessage } from 'react-intl';
-import InputAssetMemo from './InputAssetMemo';
+import InputInstrumentMemo from './InputInstrumentMemo';
 import {
   useTokenizedApi,
   usePrimaryVault,
@@ -22,9 +22,9 @@ import FormatQuantity from '../../utils/FormatQuantity';
 
 const SendShowConfirmation = ({
   values: {
-    assetType: { assetName } = {},
-    assetQuantity,
-    assetMemo,
+    instrumentType: { instrumentName } = {},
+    instrumentQuantity,
+    instrumentMemo,
     sendMax,
     to,
   },
@@ -35,15 +35,15 @@ const SendShowConfirmation = ({
       <div>
         <FormattedMessage
           defaultMessage="To"
-          description="Asset transfer: review details: label for send target"
+          description="Instrument transfer: review details: label for send target"
         />
         {': '}
         {to}
       </div>
       <div>
-        <FormattedMessage defaultMessage="Asset" />
+        <FormattedMessage defaultMessage="Instrument" />
         {': '}
-        {assetName}
+        {instrumentName}
       </div>
       <div>
         <FormattedMessage defaultMessage="Quantity" />
@@ -51,16 +51,16 @@ const SendShowConfirmation = ({
         {sendMax ? (
           <FormattedMessage
             defaultMessage="maximum"
-            description="Asset transfer: review details: indicator that the maximum will be sent"
+            description="Instrument transfer: review details: indicator that the maximum will be sent"
           />
         ) : (
-          assetQuantity
+          instrumentQuantity
         )}
       </div>
       <div>
         <FormattedMessage defaultMessage="Memo" />
         {': '}
-        {assetMemo}
+        {instrumentMemo}
       </div>
       <div>
         <FormattedMessage defaultMessage="Fee" />
@@ -72,12 +72,12 @@ const SendShowConfirmation = ({
 };
 
 const SendFormFields = ({
-  values: { assetType: { assetId } = {}, sendMax },
+  values: { instrumentType: { instrumentId } = {}, sendMax },
   disabled,
 }) => {
   const vaultId = usePrimaryVault()?.id;
   const validateRequired = useValidators(fieldIsRequired);
-  const sendMaximum = useAvailableAmount(vaultId, assetId);
+  const sendMaximum = useAvailableAmount(vaultId, instrumentId);
 
   const maxSendEstimateValidator = useMemo(
     () => makeFieldIsNotMoreThan(sendMaximum),
@@ -97,23 +97,23 @@ const SendFormFields = ({
         <FormattedMessage defaultMessage="Send" />
       </h2>
       <Field
-        name="assetType"
+        name="instrumentType"
         validate={validateRequired}
-        render={SelectAssetType}
+        render={SelectInstrumentType}
         disabled={disabled}
       />
       <Field name="sendMax" render={ChooseSendMax} type="checkbox" />
 
       {!sendMax && (
         <Field
-          name="assetQuantity"
-          render={InputAssetQuantity}
+          name="instrumentQuantity"
+          render={InputInstrumentQuantity}
           disabled={sendMax}
           validate={validateQuantityWhenNotMax}
           key={`${sendMax ? 'max' : sendMaximum}`}
         />
       )}
-      <Field name="assetMemo" render={InputAssetMemo} />
+      <Field name="instrumentMemo" render={InputInstrumentMemo} />
     </>
   );
 };
@@ -126,18 +126,18 @@ const SendModal = ({ close }) => {
 
   const onSubmit = async (data) => {
     try {
-      const assetId = data.assetType.assetId;
-      const memo = data.assetMemo;
+      const instrumentId = data.instrumentType.instrumentId;
+      const memo = data.instrumentMemo;
       const recipients = [
         {
           handle: data.to,
-          amount: Number(data.assetQuantity),
+          amount: Number(data.instrumentQuantity),
           sendMax: data.sendMax,
         },
       ];
       const sendOptions = {
         lockboxId,
-        assetId,
+        instrumentId,
         memo,
         recipients,
       };
@@ -175,7 +175,7 @@ const SendModal = ({ close }) => {
             <div className="modal-card" style={{ overflow: 'visible ' }}>
               <header className="modal-card-head">
                 <p className="modal-card-title">
-                  <FormattedMessage defaultMessage="Send assets" />
+                  <FormattedMessage defaultMessage="Send instruments" />
                 </p>
                 <button
                   className="delete"

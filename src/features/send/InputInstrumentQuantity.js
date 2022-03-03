@@ -1,6 +1,6 @@
 import React from 'react';
 
-function InputAssetQuantity({ input, meta, disabled }) {
+function InputInstrumentQuantity({ input, meta, disabled }) {
   return (
     <div className="field">
       {meta.touched && meta.error && (
@@ -13,4 +13,4 @@ function InputAssetQuantity({ input, meta, disabled }) {
   );
 }
 
-export default InputAssetQuantity;
+export default InputInstrumentQuantity;

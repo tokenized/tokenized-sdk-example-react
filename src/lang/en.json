@@ -26,20 +26,17 @@
   "0ICwq5": {
     "defaultMessage": "Last updated"
   },
-  "13P/gz": {
-    "defaultMessage": "max: {max}",
-    "description": "Asset transfer max quantity"
-  },
   "1G/gOd": {
     "defaultMessage": "To restore full access to the account <bold>{identifier}</bold>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",
     "description": "Forgot passphrase introduction"
   },
+  "1khPtj": {
+    "defaultMessage": "One unit",
+    "description": "Balance table column header: value of one instrument unit"
+  },
   "1s3HAo": {
     "defaultMessage": "Avoid workplace or educational emails you might lose access to",
     "description": "New account email field help: advice to pick personal accounts"
-  },
-  "1s6Cy7": {
-    "defaultMessage": "Request assets"
   },
   "2F0CgA": {
     "defaultMessage": "Later…",
@@ -52,6 +49,10 @@
   "2vbsAo": {
     "defaultMessage": "Contracts",
     "description": "Contracts page title"
+  },
+  "2xwoem": {
+    "defaultMessage": "max: {max}",
+    "description": "Instrument transfer max quantity"
   },
   "2yLUnh": {
     "defaultMessage": "Account phone number",
@@ -69,10 +70,6 @@
     "defaultMessage": "Sign in without backup",
     "description": "Postpone seed phrase backup confirm button"
   },
-  "41ypwV": {
-    "defaultMessage": "Asset",
-    "description": "Balance table column header: asset name"
-  },
   "47FYwb": {
     "defaultMessage": "Cancel"
   },
@@ -84,10 +81,6 @@
     "defaultMessage": "Checking seed phrase has been recorded",
     "description": "Log-in status: Checking seed phrase backup"
   },
-  "6I1l1I": {
-    "defaultMessage": "Liability",
-    "description": "Balance table column header: liability (owed on issued assets)"
-  },
   "6amK0i": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "The app’s browser page title"
@@ -98,6 +91,10 @@
   },
   "7zwGmp": {
     "defaultMessage": "Computed network fee"
+  },
+  "84zKt1": {
+    "defaultMessage": "To",
+    "description": "Instrument transfer: review details: label for send target"
   },
   "8HgVfG": {
     "defaultMessage": "Are you sure? Taking an account backup only takes a few minutes, and without it your funds will be permanently lost if you ever forget your passphrase",
@@ -118,6 +115,17 @@
     "defaultMessage": "Restore",
     "description": "Account recovery confirm button"
   },
+  "9xGR3s": {
+    "defaultMessage": "Send instruments"
+  },
+  "BAN8L+": {
+    "defaultMessage": "Issuer",
+    "description": "Balance table column header: instrument issuer"
+  },
+  "BC/SA+": {
+    "defaultMessage": "max: {max} ≈ {converted}",
+    "description": "Instrument transfer max quantity"
+  },
   "BDkKXS": {
     "defaultMessage": "Paymail handle",
     "description": "New account input field label: handle"
@@ -137,6 +145,9 @@
   "C6R5We": {
     "defaultMessage": "Confirmation code",
     "description": "Forgot passphrase input field label: email confirmation code"
+  },
+  "CBiAjw": {
+    "defaultMessage": "Request instruments"
   },
   "CYyLJH": {
     "defaultMessage": "Loading…",
@@ -164,6 +175,10 @@
     "defaultMessage": "Sign in…",
     "description": "New account screen back to sign in link"
   },
+  "Ejt0VK": {
+    "defaultMessage": "Request",
+    "description": "Label for button to open dialog to request instruments"
+  },
   "F347da": {
     "defaultMessage": "Checking for paired authenticator",
     "description": "Log-in status: Checking for paired authenticator"
@@ -171,10 +186,6 @@
   "F37D2c": {
     "defaultMessage": "Transactions in your <bold>non-custodial</bold> account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us.",
     "description": "Back up seed phrase intro 1"
-  },
-  "F6p5oa": {
-    "defaultMessage": "Trade",
-    "description": "Label for button to open dialog to trade assets"
   },
   "FEJ3nB": {
     "defaultMessage": "Please confirm your identity in the authenticator app",
@@ -192,12 +203,17 @@
     "defaultMessage": "Cancel",
     "description": "Login screen cancel button"
   },
-  "GHNmw1": {
-    "defaultMessage": "Send assets"
-  },
   "GbFjMQ": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "Sign in screen title"
+  },
+  "GlenFy": {
+    "defaultMessage": "Please be aware that you’ll be able to see your activity and treasury, but all instrument transfers and contract operations will fail.",
+    "description": "Confirm skip account restore description"
+  },
+  "H5J5dr": {
+    "defaultMessage": "Authorized",
+    "description": "Balance table column header: quantity of instruments authorized in contract"
   },
   "H6n8rw": {
     "defaultMessage": "Restore account now",
@@ -223,13 +239,6 @@
     "defaultMessage": "Activity",
     "description": "Activity page title"
   },
-  "IJKyYg": {
-    "defaultMessage": "Sign trade"
-  },
-  "Ih3sF+": {
-    "defaultMessage": "Authorized",
-    "description": "Balance table column header: quantity of assets authorized in contract"
-  },
   "IssfGQ": {
     "defaultMessage": "Sign in with invalid key",
     "description": "Confirm skip account restore title"
@@ -237,6 +246,10 @@
   "J7uwgI": {
     "defaultMessage": "Enter your recovery phrase from your backup to verify it. Note you can paste the whole phrase in one go from a password manager.",
     "description": "Verify seed phrase backup instructions"
+  },
+  "JMjcWw": {
+    "defaultMessage": "Instrument",
+    "description": "Balance table column header: instrument name"
   },
   "JvW0S/": {
     "defaultMessage": "Account backup (essential)",
@@ -269,13 +282,6 @@
     "defaultMessage": "Last name",
     "description": "New account input field label: last name"
   },
-  "M3QTvW": {
-    "defaultMessage": "Trade assets"
-  },
-  "MGVbsq": {
-    "defaultMessage": "To",
-    "description": "Asset transfer: review details: label for send target"
-  },
   "N2IrpM": {
     "defaultMessage": "Confirm"
   },
@@ -295,6 +301,10 @@
     "defaultMessage": "Cancel",
     "description": "Verify account cancel button"
   },
+  "PxaB28": {
+    "defaultMessage": "Liability",
+    "description": "Balance table column header: liability (owed on issued instruments)"
+  },
   "QaB4nu": {
     "defaultMessage": "In vault",
     "description": "Balance table column header: quantity held in vault"
@@ -310,16 +320,15 @@
     "defaultMessage": "Cancel",
     "description": "New account cancel button"
   },
-  "Qt4tZb": {
-    "defaultMessage": "Send",
-    "description": "Label for button to open dialog to send assets"
-  },
   "R+J5ox": {
     "defaultMessage": "Review"
   },
   "RAmj2a": {
     "defaultMessage": "Create a new account",
     "description": "New account screen subtitle"
+  },
+  "REpsfK": {
+    "defaultMessage": "Trade instruments"
   },
   "RXjxnq": {
     "defaultMessage": "Confirm registered email",
@@ -328,14 +337,6 @@
   "SIRX3t": {
     "defaultMessage": "Reset your passphrase",
     "description": "Reset passphrase screen subtitle"
-  },
-  "SOA+3t": {
-    "defaultMessage": "One unit",
-    "description": "Balance table column header: value of one asset unit"
-  },
-  "Sm4O4X": {
-    "defaultMessage": "Request",
-    "description": "Label for button to open dialog to request assets"
   },
   "Ssp7dT": {
     "defaultMessage": "Must be greater than {min, number}",
@@ -373,13 +374,6 @@
     "defaultMessage": "Sign in",
     "description": "Login screen sign in button"
   },
-  "VyIxs7": {
-    "defaultMessage": "Value",
-    "description": "Balance table column header: value (of assets to me)"
-  },
-  "WKCp0D": {
-    "defaultMessage": "Asset"
-  },
   "Waga+E": {
     "defaultMessage": "Execute trade"
   },
@@ -415,6 +409,10 @@
     "defaultMessage": "Confirm your identity in the authenticator app",
     "description": "Log-in status: waiting for MFA"
   },
+  "ZFbOTU": {
+    "defaultMessage": "Type",
+    "description": "Balance table column header: instrument type"
+  },
   "a6TlyZ": {
     "defaultMessage": "Sign out",
     "description": "Nav bar user menu sign out action"
@@ -446,11 +444,16 @@
     "defaultMessage": "Issuer / counterparty",
     "description": "Contracts table column header: contract issuer / counterparty"
   },
+  "dihTKc": {
+    "defaultMessage": "maximum",
+    "description": "Instrument transfer: review details: indicator that the maximum will be sent"
+  },
   "eH9ssJ": {
     "defaultMessage": "Enter a message for the recipient (optional)"
   },
-  "f5IQQs": {
-    "defaultMessage": "Select an asset"
+  "ez0GyO": {
+    "defaultMessage": "Send",
+    "description": "Label for button to open dialog to send instruments"
   },
   "fFkbdo": {
     "defaultMessage": "Next",
@@ -476,10 +479,6 @@
     "defaultMessage": "Required",
     "description": "Form field validation failure: a value is required"
   },
-  "hTxeee": {
-    "defaultMessage": "Type",
-    "description": "Balance table column header: asset type"
-  },
   "iA3+G9": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "New account screen title"
@@ -488,10 +487,6 @@
     "defaultMessage": "Cancel",
     "description": "Forgot passphrase cancel button"
   },
-  "isZs2i": {
-    "defaultMessage": "Issuer",
-    "description": "Balance table column header: asset issuer"
-  },
   "iuWj8R": {
     "defaultMessage": "Activity",
     "description": "Nav bar activity tab"
@@ -499,6 +494,9 @@
   "jOID+q": {
     "defaultMessage": "Account recovery",
     "description": "Account recovery description title"
+  },
+  "kChwAg": {
+    "defaultMessage": "Select an instrument"
   },
   "kYHpnu": {
     "defaultMessage": "Issued",
@@ -522,6 +520,10 @@
     "defaultMessage": "Doesn’t match entered passphrase",
     "description": "Form field validation failure: matching passphrase confirmation is required"
   },
+  "nYvVZP": {
+    "defaultMessage": "Trade",
+    "description": "Label for button to open dialog to trade instruments"
+  },
   "narDvl": {
     "defaultMessage": "Welcome {name}",
     "description": "Log-in screen progress title"
@@ -540,10 +542,6 @@
   },
   "p1P+hQ": {
     "defaultMessage": "Request"
-  },
-  "p3amHf": {
-    "defaultMessage": "maximum",
-    "description": "Asset transfer: review details: indicator that the maximum will be sent"
   },
   "p8/WnA": {
     "defaultMessage": "Checking credentials",
@@ -591,10 +589,6 @@
     "defaultMessage": "Verify your email",
     "description": "Verify account email description title"
   },
-  "vG0gfW": {
-    "defaultMessage": "max: {max} ≈ {converted}",
-    "description": "Asset transfer max quantity"
-  },
   "vUD6Fj": {
     "defaultMessage": "My open items",
     "description": "All activity tab"
@@ -602,9 +596,9 @@
   "vnO22B": {
     "defaultMessage": "Accept trade"
   },
-  "vutAZJ": {
-    "defaultMessage": "Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail.",
-    "description": "Confirm skip account restore description"
+  "w+J0Wq": {
+    "defaultMessage": "Value",
+    "description": "Balance table column header: value (of instruments to me)"
   },
   "w00rFA": {
     "defaultMessage": "Create a new account…",
@@ -617,6 +611,9 @@
   "wXoUed": {
     "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {name} and approve sign in",
     "description": "Login screen mobile authenticator pairing subtitle"
+  },
+  "wduJme": {
+    "defaultMessage": "Instrument"
   },
   "wejkZs": {
     "defaultMessage": "Assets",

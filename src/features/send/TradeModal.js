@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import SelectPaymail from './SelectPaymail';
-import SelectAssetType from './SelectAssetType';
-import InputAssetQuantity from './InputAssetQuantity';
+import SelectInstrumentType from './SelectInstrumentType';
+import InputInstrumentQuantity from './InputInstrumentQuantity';
 import { Field, Form } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 import {
@@ -11,7 +11,7 @@ import {
   useValidators,
 } from '../../utils/validators';
 import { FormattedMessage } from 'react-intl';
-import InputAssetMemo from './InputAssetMemo';
+import InputInstrumentMemo from './InputInstrumentMemo';
 import {
   useAvailableAmount,
   usePrimaryVault,
@@ -24,10 +24,10 @@ import { hours } from '@tokenized/sdk-js-private/src/tokenized-api/modules/Servi
 export const MODE_TRADE = 'trade';
 export const MODE_REQUEST = 'request';
 
-const SendFormFields = ({ mode, values: { sendAssetType }, pending }) => {
+const SendFormFields = ({ mode, values: { sendInstrumentType }, pending }) => {
   const vaultId = usePrimaryVault()?.id;
 
-  const sendMaximum = useAvailableAmount(vaultId, sendAssetType?.assetId);
+  const sendMaximum = useAvailableAmount(vaultId, sendInstrumentType?.instrumentId);
 
   const validateRequired = useValidators(fieldIsRequired);
 
@@ -60,16 +60,16 @@ const SendFormFields = ({ mode, values: { sendAssetType }, pending }) => {
         <FormattedMessage defaultMessage="Request" />
       </h2>
       <Field
-        name="receiveAssetType"
+        name="receiveInstrumentType"
         validate={validateRequired}
         render={({ ...props }) =>
-          SelectAssetType({ ...props, showQuantity: false })
+          SelectInstrumentType({ ...props, showQuantity: false })
         }
         disabled={disabled}
       />
       <Field
         name="receiveAmount"
-        render={InputAssetQuantity}
+        render={InputInstrumentQuantity}
         validate={validateReceiveQuantity}
         disabled={disabled}
       />
@@ -79,23 +79,23 @@ const SendFormFields = ({ mode, values: { sendAssetType }, pending }) => {
             <FormattedMessage defaultMessage="Send" />
           </h2>
           <Field
-            name="sendAssetType"
+            name="sendInstrumentType"
             validate={validateRequired}
             render={({ ...props }) =>
-              SelectAssetType({ ...props, showQuantity: true })
+              SelectInstrumentType({ ...props, showQuantity: true })
             }
             disabled={disabled}
           />
           <Field
             name="sendAmount"
-            render={InputAssetQuantity}
+            render={InputInstrumentQuantity}
             validate={validateSendQuantity}
             disabled={disabled}
             key={sendMaximum}
           />
         </>
       )}
-      <Field name="memo" render={InputAssetMemo} disabled={disabled} />
+      <Field name="memo" render={InputInstrumentMemo} disabled={disabled} />
       <Field
         name="expiryHours"
         render={InputExpiry}
@@ -120,9 +120,9 @@ export default function TradeModal({ mode, close }) {
   const [pending, setPending] = useState(null);
 
   const onSubmit = async ({
-    receiveAssetType,
+    receiveInstrumentType,
     receiveAmount,
-    sendAssetType,
+    sendInstrumentType,
     sendAmount,
     memo,
     recipient,
@@ -136,13 +136,13 @@ export default function TradeModal({ mode, close }) {
         recipient,
         ...(mode === MODE_TRADE
           ? {
-              receiveAssetId: receiveAssetType.assetId,
+              receiveInstrumentId: receiveInstrumentType.instrumentId,
               receiveAmount: Number(receiveAmount),
-              sendAssetId: sendAssetType.assetId,
+              sendInstrumentId: sendInstrumentType.instrumentId,
               sendAmount: Number(sendAmount),
             }
           : {
-              assetId: receiveAssetType.assetId,
+              instrumentId: receiveInstrumentType.instrumentId,
               amount: Number(receiveAmount),
             }),
       };
@@ -185,10 +185,10 @@ export default function TradeModal({ mode, close }) {
               <header className="modal-card-head">
                 <p className="modal-card-title">
                   {mode === MODE_TRADE && (
-                    <FormattedMessage defaultMessage="Trade assets" />
+                    <FormattedMessage defaultMessage="Trade instruments" />
                   )}
                   {mode === MODE_REQUEST && (
-                    <FormattedMessage defaultMessage="Request assets" />
+                    <FormattedMessage defaultMessage="Request instruments" />
                   )}
                 </p>
                 <button

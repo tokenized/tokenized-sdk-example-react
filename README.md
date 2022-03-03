@@ -1,11 +1,11 @@
 # Tokenized JavaScript SDK example app
 
 [Tokenized](https://tokenized.com) is a platform for issuing, managing and
-trading digital assets. The platform is built on the open source
+trading digital instruments. The platform is built on the open source
 [Tokenized Protocol](https://tokenized.com/docs/intro/preface), which specifies
 how smart legal contracts and financial interactions are represented on the
 blockchain. Tokenized provides a first-party app for managing contracts and
-assets, and provides the same capabilities in customers’ own financial apps
+instruments, and provides the same capabilities in customers’ own financial apps
 through a [fully-documented REST API](https://docs.api.tokenized.com). For
 customers building web-based apps, the
 [Tokenized JavaScript SDK](https://www.npmjs.com/package/@tokenized/sdk-react-private)
@@ -124,17 +124,15 @@ Tokenized JavaScript SDK bindings for React
     - [.Avatar](#module_@tokenized/sdk-react-private.Avatar)
   - _hooks_
     - [.useTokenizedApi](#module_@tokenized/sdk-react-private.useTokenizedApi) ⇒
-      [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
+      [<code>TokenizedApi</code>](#TokenizedApi)
   - _hooks/account_
-    - [.useCurrentProfileName](#module_@tokenized/sdk-react-private.useCurrentProfileName)
-      ⇒ <code>string</code>
     - [.useOwnFormattedName](#module_@tokenized/sdk-react-private.useOwnFormattedName)
       ⇒ <code>string</code>
   - _hooks/activity_
     - [.useActivity](#module_@tokenized/sdk-react-private.useActivity) ⇒
       [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
-    - [.useActivityEvent](#module_@tokenized/sdk-react-private.useActivityEvent)
-      ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+    - [.useActivityId](#module_@tokenized/sdk-react-private.useActivityId) ⇒
+      [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
   - _hooks/contact_
     - [.useContact](#module_@tokenized/sdk-react-private.useContact) ⇒
       <code>object</code>
@@ -195,10 +193,11 @@ with the authenticator app”.
 
 ### @tokenized/sdk-react-private.TokenizedApiProvider
 
-`<TokenizedApiProvider>` is a React context provider component, for passing your
-[TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi) session manager
-down to components that use queries and mutations. Use this once at the top of
-your app’s component tree.
+`<TokenizedApiProvider>` is a React context provider component, for passing the
+[TokenizedApi](#TokenizedApi) session manager down to components that use
+queries and mutations. Use this once at the top of your app’s component tree.
+Either supply configuration to enable React Query context sharing between the
+host application and this SDK or supply a previously created TokenizedApi
 
 #### Devtools
 
@@ -218,29 +217,30 @@ component. In the Redux devtools browser extension, you should be able to select
 
 **Category**: components
 
-| Param              | Type                                                                        | Description                                        |
-| ------------------ | --------------------------------------------------------------------------- | -------------------------------------------------- |
-| props.tokenizedApi | [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi) | The session manager object you created on startup. |
+| Param              | Type                                       | Description                                                                    |
+| ------------------ | ------------------------------------------ | ------------------------------------------------------------------------------ |
+| props.config       | <code>Object</code>                        | Supply configuration for creating an instance of [TokenizedApi](#TokenizedApi) |
+| props.tokenizedApi | [<code>TokenizedApi</code>](#TokenizedApi) | Alternatively - supply the session manager object you created on startup.      |
 
 **Example**
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { TokenizedApi } from '@tokenized/sdk-js-private';
-import App from './App';
+  import ReactDOM from 'react-dom';
+  import { TokenizedApi } from '@tokenized/sdk-js-private';
+  import App from './App';
 
-const tokenizedApi = new TokenizedApi({
-  tokenizedBackend: 'development',
-  applicationIdentifier: 'tokenized-example-react',
-});
+  const config = {
+    tokenizedBackend: 'development',
+    applicationIdentifier: 'tokenized-example-react',
+  });
 
-ReactDOM.render(
-  <TokenizedApiProvider tokenizedApi={tokenizedApi}>
-    <App />
-  </TokenizedApiProvider>,
-  document.getElementById('root'),
-);
+  ReactDOM.render(
+    <TokenizedApiProvider tokenizedApi={tokenizedApi}>
+      <App />
+    </TokenizedApiProvider>,
+    document.getElementById('root'),
+  );
 ```
 
 <a name="module_@tokenized/sdk-react-private.Avatar"></a>
@@ -302,33 +302,14 @@ or this with a render prop:
 **Category**: components  
 <a name="module_@tokenized/sdk-react-private.useTokenizedApi"></a>
 
-### @tokenized/sdk-react-private.useTokenizedApi ⇒ [<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi)
+### @tokenized/sdk-react-private.useTokenizedApi ⇒ [<code>TokenizedApi</code>](#TokenizedApi)
 
-**`React hook`** providing access to the
-[TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi) session manager.
+**`React hook`** providing access to the [TokenizedApi](#TokenizedApi) session
+manager.
 
-**Returns**:
-[<code>TokenizedApi</code>](#module_@tokenized/sdk-js-private.TokenizedApi) -
-The session manager you passed into
-[`<TokenizedApiProvider>`](TokenizedApiProvider).  
+**Returns**: [<code>TokenizedApi</code>](#TokenizedApi) - The session manager
+you passed into [`<TokenizedApiProvider>`](TokenizedApiProvider).  
 **Category**: hooks  
-<a name="module_@tokenized/sdk-react-private.useCurrentProfileName"></a>
-
-### @tokenized/sdk-react-private.useCurrentProfileName ⇒ <code>string</code>
-
-**`React hook`** The name of the user’s current profile. Display in an account
-menu next to the user’s name. Currently the profile name will always be
-“Individual”.
-
-#### About profiles
-
-The SDK interacts with a single current profile per session, providing
-management of the vaults, assets, and contracts allowed by the user’s role
-within the entity selected by the profile. _Currently only the user’s personal
-“Individual” entity and its default profile is supported._
-
-**Returns**: <code>string</code> - The current profile name  
-**Category**: hooks/account  
 <a name="module_@tokenized/sdk-react-private.useOwnFormattedName"></a>
 
 ### @tokenized/sdk-react-private.useOwnFormattedName ⇒ <code>string</code>
@@ -357,24 +338,25 @@ containing:
 - `activityEventType`: The type of the operation represented by the activity
   event
 - `stage`: Describes what stage of the operation has been reached so far
-- `txIds`: The transactions that make up the operation’s on-chain representation
+- `transactions`: The transactions that make up the operation’s on-chain
+  representation
 - `vaultId`: Id of the vault fufilling this activity
 - `memo`: String describing transaction (supplied by the trade initiating user)
 - `contract`: Optional object describing the contract
   - `name`: Name given to contract
-- `assets`: Array of assets related to event
-  - `assetId`: ID of the asset
-  - `assetName`: Display name of asset
-  - `total`: Total `quantity` of authorized assets
-  - `delta`: Change in `quantity` of authorized assets due to this activity
+- `instruments`: Array of instruments related to event
+  - `instrumentId`: ID of the instrument
+  - `instrumentName`: Display name of instrument
+  - `total`: Total `quantity` of authorized instruments
+  - `delta`: Change in `quantity` of authorized instruments due to this activity
 - `counterparties`: Array of parties to a transaction (eg, 2 in the case of a
   trade)
   - `displayName`: User's name
   - `displayHandle`: User's paymail handle
-  - `transfers`: Array of transferred assets
+  - `transfers`: Array of transferred instruments
     - `direction`: `sent` or `received`
-    - `assetId`: ID of the asset transferred
-    - `assetName`: Display name of the asset transferred
+    - `instrumentId`: ID of the instrument transferred
+    - `instrumentName`: Display name of the instrument transferred
     - `quantity`: The transferred `quantity` – see below
 - `fees`: Describes the network fees incurred by the event
   - `all`: The `quantity` of network fees paid by the current entity for this
@@ -416,12 +398,12 @@ containing:
 
 A quantity is an object containing:
 
-- `tokens`: the quantity in the natural units of the asset, for non-currency
-  assets – “48 coupons”.
+- `tokens`: the quantity in the natural units of the instrument, for
+  non-currency instruments – “48 coupons”.
   - `number`: Number of tokens transferred
   - `formatted`: Localized display string
-- `assetCurrency`: the value transferred in the asset’s own currency, if
-  specified – “$59,184.00”.
+- `instrumentCurrency`: the value transferred in the instrument’s own currency,
+  if specified – “$59,184.00”.
   - `number`: Currency value transferred
   - `NumberFormatOptions`: Object to be supplied to Intl.NumberFormat
 - `displayCurrency`: the value transferred, converted to the user’s selected
@@ -445,11 +427,11 @@ of activity events as the `data` property within a React Query
 | filters.includeEventsRequiringAction | <code>boolean</code> | Controls whether events that are waiting for a response from the current entity are included. Default is `true`.     |
 | filters.includeEventsPendingOthers   | <code>boolean</code> | Controls whether events that are pending the response of a counterparty or an agent are included. Default is `true`. |
 | filters.includeUnrecognizedEvents    | <code>boolean</code> | Controls whether events that are not understood by the current SDK are included. Default is `false`.                 |
-| filters.includeEventsForAssetId      | <code>string</code>  | Set this to an assetId in order to include only events involving that asset. Default is `undefined`.                 |
+| filters.includeEventsForInstrumentId | <code>string</code>  | Set this to an instrumentId in order to include only events involving that instrument. Default is `undefined`.       |
 
-<a name="module_@tokenized/sdk-react-private.useActivityEvent"></a>
+<a name="module_@tokenized/sdk-react-private.useActivityId"></a>
 
-### @tokenized/sdk-react-private.useActivityEvent ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
+### @tokenized/sdk-react-private.useActivityId ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
 
 **`React Query hook`** Gets the details of a specific activity event. While the
 hook is mounted, the activity event will be refreshed automatically **every 60
@@ -505,11 +487,9 @@ Will be refreshed automatically **every 10 minutes**.
 
 ### @tokenized/sdk-react-private.useHandles
 
-**`React Query hook`** Filtered list of paymail handles matching a search term
+Filtered list of paymail handles matching a search term
 
-See https://react-query.tanstack.com/guides/queries
-
-Each object in the data array describes a paymail handle:
+Each object in the returned array describes a paymail handle:
 
 - `displayHandle`: Full-length paymail handle of the associated entity.
 - `displayName`: Display name of the associated entity.
@@ -533,8 +513,8 @@ Will be refreshed automatically **every 60 seconds**.
 
 **`React hook`** Provides a list of the contracts accessible in the current
 profile, including all those that the profile’s entity is a counterparty to, and
-the contracts for all assets held by the entity. The list includes contracts
-that can be edited and contracts that can only be viewed.
+the contracts for all instruments held by the entity. The list includes
+contracts that can be edited and contracts that can only be viewed.
 
 _The contract data structure is not finalized, and will be reorganized and
 transformed for easier usage in a future SDK release._
@@ -683,7 +663,7 @@ Note that `useIsWaitingForDevicePairing` can be `true` at the same time as
 `useLogInNeedsMfa` is `true`. That occurs when there is an active authenticator
 device already paired with the account, so MFA can proceed, but a device
 re-pairing code has also been explicitly requested by calling
-[`tokenizedApi.account.initiateDevicePairing`](module:@tokenized/sdk-js-private.TokenizedApi#account.initiateDevicePairing).
+[`tokenizedApi.account.initiateDevicePairing`](TokenizedApi#account.initiateDevicePairing).
 You should show the pairing QR code, but be prepared for MFA to complete without
 it being used.
 
@@ -796,31 +776,33 @@ was sent to.
 ### @tokenized/sdk-react-private.useFilteredBalances ⇒ [<code>UseQueryResult</code>](#external_react-query.UseQueryResult)
 
 **`React Query hook`** Filtered and sorted list of the quantities (balances) of
-assets and liabilities in a specified vault. While the hook is mounted, balances
-will be refreshed automatically **every 60 seconds**.
+instruments and liabilities in a specified vault. While the hook is mounted,
+balances will be refreshed automatically **every 60 seconds**.
 
 See https://react-query.tanstack.com/guides/queries for general information
 about using a React Query `UseQueryResults` object. Once loaded, the `data`
-property will contain an array of objects, one for each asset balance. Each
-object describes a selection of relevant quantities for the particular asset:
+property will contain an array of objects, one for each instrument balance. Each
+object describes a selection of relevant quantities for the particular
+instrument:
 
-- `balance`: Quantity of the asset held in this vault
+- `balance`: Quantity of the instrument held in this vault
 - `available`: Quantity of balance available to use in transfers
 - `reserved`: Quantity of balance reserved for pending transactions
-- `authorizedQuantity`: Total quantity of asset in existence
-- `unitValue`: The value of one “unit” of the asset
-- `issuedLiability`: For the entity’s own assets: the quantity issued to others
-- `value`: The quantity of the asset issued to this vault
+- `authorizedQuantity`: Total quantity of instrument in existence
+- `unitValue`: The value of one “unit” of the instrument
+- `issuedLiability`: For the entity’s own instruments: the quantity issued to
+  others
+- `value`: The quantity of the instrument issued to this vault
 
 Every quantity provides the necessary information to format the number in a
 variety of different ways, depending on your requirements:
 
-- `tokens`: the quantity in the natural units of the asset – “48 coupons”.
-- `assetCurrency`: the value of the assets in their own currencies, if specified
-  – “$59,184.00”.
-- `displayCurrency`: the value of the assets converted to the user’s selected
-  display currency (the currency can be overridden in the `filterOptions`
-  argument) – “£41,737.68”.
+- `tokens`: the quantity in the natural units of the instrument – “48 coupons”.
+- `instrumentCurrency`: the value of the instruments in their own currencies, if
+  specified – “$59,184.00”.
+- `displayCurrency`: the value of the instruments converted to the user’s
+  selected display currency (the currency can be overridden in the
+  `filterOptions` argument) – “£41,737.68”.
 
 For the currency quantitiesimport `NumberFormatOptions` objects are provided
 that can be passed directly (or with your own modifications) to
@@ -834,14 +816,13 @@ of balances as the `data` property within a React Query
 example for details of the data structure and how to use it.  
 **Category**: hooks/treasury
 
-| Param                             | Type                 | Description                                                                                                                                                                                                                                                                         |
-| --------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| vaultId                           | <code>string</code>  | The id of the vault to query for balances. The id of the user’s primary vault can be obtained via [`usePrimaryVault()?.id`](#module_@tokenized/sdk-react-private.usePrimaryVault).                                                                                                  |
-| filterOptions                     | <code>object</code>  |                                                                                                                                                                                                                                                                                     |
-| filterOptions.includeLiabilities  | <code>boolean</code> | Asset/liability filtering: Set `includeLiabilities: true` to only include assets created by the current entity. Set `includeLiabilities: false` to only include assets issued to the current entity by another entity, Omit `includeLiabilities` to include assets and liabilities. |
-| filterOptions.includeInactive     | <code>boolean</code> | Active/inactive filtering: Set `includeInactive: true` to only include assets that are inactive or expired. Set `includeInactive: false` to only include assets that are active and not expired. Omit `includeInactive` to include active and inactive assets.                      |
-| filterOptions.includeMoney        | <code>boolean</code> | Currency/token filtering: Set `includeMoney: true` to only include currency assets. Set `includeMoney: false` to only include non-currency (token) assets. Omit `includeMoney` to include both types of asset.                                                                      |
-| filterOptions.displayCurrencyCode | <code>string</code>  | Override the display currency from the user’s profile for currency conversions. For example setting `displayCurrencyCode: 'USD'` will return quantities with display currency conversions to US dollars.                                                                            |
+| Param                            | Type                 | Description                                                                                                                                                                                                                                                                                             |
+| -------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| vaultId                          | <code>string</code>  | The id of the vault to query for balances. The id of the user’s primary vault can be obtained via [`usePrimaryVault()?.id`](#module_@tokenized/sdk-react-private.usePrimaryVault).                                                                                                                      |
+| options                          | <code>object</code>  |                                                                                                                                                                                                                                                                                                         |
+| filterOptions.includeLiabilities | <code>boolean</code> | Instrument/liability filtering: Set `includeLiabilities: true` to only include instruments created by the current entity. Set `includeLiabilities: false` to only include instruments issued to the current entity by another entity, Omit `includeLiabilities` to include instruments and liabilities. |
+| filterOptions.includeInactive    | <code>boolean</code> | Active/inactive filtering: Set `includeInactive: true` to only include instruments that are inactive or expired. Set `includeInactive: false` to only include instruments that are active and not expired. Omit `includeInactive` to include active and inactive instruments.                           |
+| filterOptions.includeMoney       | <code>boolean</code> | Currency/token filtering: Set `includeMoney: true` to only include currency instruments. Set `includeMoney: false` to only include non-currency (token) instruments. Omit `includeMoney` to include both types of instrument.                                                                           |
 
 **Example**
 
@@ -871,11 +852,11 @@ export default function BalancesExample() {
         {balances.data &&
           balances.data.map((balanceData) => {
             const {
-              assetId, // "COUEtBdhD4FHnm6FT7wyNnMnPH7aBbMfJPMk"
-              assetName, // "Example coupon"
-              assetType: {
-                code: assetTypeCode, // "COU"
-                formatted: assetTypeName, // "Coupon"
+              instrumentId, // "COUEtBdhD4FHnm6FT7wyNnMnPH7aBbMfJPMk"
+              instrumentName, // "Example coupon"
+              instrumentType: {
+                code: instrumentTypeCode, // "COU"
+                formatted: instrumentTypeName, // "Coupon"
               },
               isActive,
               isExpired,
@@ -892,18 +873,18 @@ export default function BalancesExample() {
             } = balanceData;
 
             const {
-              balance, // Quantity of the asset held in this vault
+              balance, // Quantity of the instrument held in this vault
               available, // Quantity of balance available to use in transfers
               reserved, // Quantity of balance reserved for pending transactions
-              authorizedQuantity, // Total quantity of asset in existence
-              unitValue, // The value of one “unit” of the asset
-              issuedLiability, // For the entity’s own assets: the quantity issued to others
-              value, // The quantity of the asset issued to this vault
+              authorizedQuantity, // Total quantity of instrument in existence
+              unitValue, // The value of one “unit” of the instrument
+              issuedLiability, // For the entity’s own instruments: the quantity issued to others
+              value, // The quantity of the instrument issued to this vault
             } = quantities;
 
             return (
-              <li key={assetId}>
-                {assetName} ({assetTypeName})
+              <li key={instrumentId}>
+                {instrumentName} ({instrumentTypeName})
                 <ul>
                   <li>
                     balance: <FormatQuantity quantity={balance} />
@@ -944,10 +925,10 @@ function FormatQuantity({ quantity }) {
       number: tokenNumber,
       formatted: tokenFormatted,
     } = {},
-    assetCurrency: {
+    instrumentCurrency: {
       // "$59,184.00"
-      number: assetCurrencyNumber,
-      NumberFormatOptions: assetCurrencyOptions,
+      number: instrumentCurrencyNumber,
+      NumberFormatOptions: instrumentCurrencyOptions,
     } = {},
     displayCurrency: {
       // "£41,737.68"
@@ -960,10 +941,10 @@ function FormatQuantity({ quantity }) {
   if (tokenFormatted) {
     formats.push(tokenFormatted);
   }
-  if (assetCurrencyOptions) {
+  if (instrumentCurrencyOptions) {
     formats.push(
-      new Intl.NumberFormat(undefined, assetCurrencyOptions).format(
-        assetCurrencyNumber,
+      new Intl.NumberFormat(undefined, instrumentCurrencyOptions).format(
+        instrumentCurrencyNumber,
       ),
     );
   }
@@ -985,7 +966,7 @@ function FormatQuantity({ quantity }) {
 **`React hook`** Provides information about the primary vault in the user’s
 current profile. Pass the `id` of the vault into
 [`useFilteredBalances`](#module_@tokenized/sdk-react-private.useFilteredBalances)
-to get a list of the assets in the vault.
+to get a list of the instruments in the vault.
 
 _Currently only a single primary vault is supported per profile._
 
@@ -1026,57 +1007,58 @@ Tokenized JavaScript SDK, cached queries and mutations (excludes bindings to
 specific UI libraries)
 
 - [@tokenized/sdk-js-private](#module_@tokenized/sdk-js-private)
-  - [.TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi)
-    - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
-    - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
-      - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
-      - [.analyzePassphraseStrength](#module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength)
+  - [~TokenizedApi](#TokenizedApi)
+    - [new TokenizedApi(config)](#new_TokenizedApi_new)
+    - [.account](#TokenizedApi+account)
+      - [.PASSPHRASE_MIN_LENGTH](#TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
+      - [.analyzePassphraseStrength](#TokenizedApi+account+analyzePassphraseStrength)
         ⇒ <code>object</code>
-      - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
+      - [.makeDebouncedHandleAvailabilityChecker()](#TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
         ⇒ <code>function</code>
-      - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
+      - [.makeDebouncedEmailAvailabilityChecker()](#TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
         ⇒ <code>function</code>
-      - [.makeDebouncedRecoveryPhraseValidator()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
+      - [.makeDebouncedRecoveryPhraseValidator()](#TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
         ⇒ <code>function</code>
-      - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
-      - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
-        ⇒ <code>undefined</code> \| <code>boolean</code>
-      - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
-      - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
+      - [.createNewAccount(options)](#TokenizedApi+account+createNewAccount)
+      - [.logIn(options)](#TokenizedApi+account+logIn) ⇒ <code>undefined</code>
+        \| <code>boolean</code>
+      - [.verifyNewAccount(code)](#TokenizedApi+account+verifyNewAccount)
+      - [.getSeedPhraseWordsForBackup()](#TokenizedApi+account+getSeedPhraseWordsForBackup)
         ⇒ <code>Array.&lt;string&gt;</code>
-      - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
+      - [.autocompleteSeedWord(inputValue)](#TokenizedApi+account+autocompleteSeedWord)
         ⇒ <code>Array.&lt;string&gt;</code>
-      - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
-      - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
-      - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-      - [.restoreRootKey(words)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
-      - [.requestPassphraseReset(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+requestPassphraseReset)
+      - [.skipSeedPhraseBackup()](#TokenizedApi+account+skipSeedPhraseBackup)
+      - [.confirmSeedPhraseBackup()](#TokenizedApi+account+confirmSeedPhraseBackup)
+      - [.skipRestoreRootKey()](#TokenizedApi+account+skipRestoreRootKey)
+      - [.restoreRootKey(words)](#TokenizedApi+account+restoreRootKey)
+      - [.requestPassphraseReset(options)](#TokenizedApi+account+requestPassphraseReset)
         ⇒ <code>string</code>
-      - [.resetPassphrase(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+resetPassphrase)
-      - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
-      - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
-      - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
-        ⇒ <code>string</code>
-    - [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
-      - [.send(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+send)
-        ⇒ <code>Array.&lt;string&gt;</code>
-      - [.request(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+request)
-        ⇒ <code>Array.&lt;string&gt;</code>
-      - [.tradeOffer(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+tradeOffer)
-        ⇒ <code>Array.&lt;string&gt;</code>
-      - [.approve(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+approve)
-        ⇒ <code>Array.&lt;string&gt;</code>
-      - [.reject(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+reject)
-        ⇒ <code>Array.&lt;string&gt;</code>
-    - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
-    - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
-    - [.activity](#module_@tokenized/sdk-js-private.TokenizedApi+activity)
-    - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
-      ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
+      - [.resetPassphrase(options)](#TokenizedApi+account+resetPassphrase)
+      - [.initiateDevicePairing()](#TokenizedApi+account+initiateDevicePairing)
+      - [.logOut()](#TokenizedApi+account+logOut)
+      - [.getUserHandlePostfix()](#TokenizedApi+account+getUserHandlePostfix) ⇒
+        <code>string</code>
+    - [.transfers](#TokenizedApi+transfers)
+      - [.send(options)](#TokenizedApi+transfers+send) ⇒
+        <code>Array.&lt;string&gt;</code>
+      - [.request(options)](#TokenizedApi+transfers+request) ⇒
+        <code>Array.&lt;string&gt;</code>
+      - [.trade(options)](#TokenizedApi+transfers+trade) ⇒
+        <code>Array.&lt;string&gt;</code>
+      - [.approve(options)](#TokenizedApi+transfers+approve) ⇒
+        <code>Array.&lt;string&gt;</code>
+      - [.reject(options)](#TokenizedApi+transfers+reject) ⇒
+        <code>Array.&lt;string&gt;</code>
+    - [.treasury](#TokenizedApi+treasury)
+    - [.contracts](#TokenizedApi+contracts)
+    - [.activity](#TokenizedApi+activity)
+    - [.getQueryClient()](#TokenizedApi+getQueryClient) ⇒
+      [<code>QueryClient</code>](#external_react-query.QueryClient)
+    - [.reloadAll()](#TokenizedApi+reloadAll)
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi"></a>
+<a name="TokenizedApi"></a>
 
-### @tokenized/sdk-js-private.TokenizedApi
+### @tokenized/sdk-js-private~TokenizedApi
 
 A TokenizedApi object manages user sign-ins and sessions, one at a time, and
 provides the user’s Tokenized profile data to your app’s UI code. Create one
@@ -1098,55 +1080,56 @@ run:
 
     window.localStorage.removeItem('tokenized-sdk-devtools-enable');
 
-- [.TokenizedApi](#module_@tokenized/sdk-js-private.TokenizedApi)
-  - [new TokenizedApi(config)](#new_module_@tokenized/sdk-js-private.TokenizedApi_new)
-  - [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
-    - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
-    - [.analyzePassphraseStrength](#module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength)
+- [~TokenizedApi](#TokenizedApi)
+  - [new TokenizedApi(config)](#new_TokenizedApi_new)
+  - [.account](#TokenizedApi+account)
+    - [.PASSPHRASE_MIN_LENGTH](#TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
+    - [.analyzePassphraseStrength](#TokenizedApi+account+analyzePassphraseStrength)
       ⇒ <code>object</code>
-    - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
+    - [.makeDebouncedHandleAvailabilityChecker()](#TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
       ⇒ <code>function</code>
-    - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
+    - [.makeDebouncedEmailAvailabilityChecker()](#TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
       ⇒ <code>function</code>
-    - [.makeDebouncedRecoveryPhraseValidator()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
+    - [.makeDebouncedRecoveryPhraseValidator()](#TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
       ⇒ <code>function</code>
-    - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
-    - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
-      ⇒ <code>undefined</code> \| <code>boolean</code>
-    - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
-    - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
+    - [.createNewAccount(options)](#TokenizedApi+account+createNewAccount)
+    - [.logIn(options)](#TokenizedApi+account+logIn) ⇒ <code>undefined</code> \|
+      <code>boolean</code>
+    - [.verifyNewAccount(code)](#TokenizedApi+account+verifyNewAccount)
+    - [.getSeedPhraseWordsForBackup()](#TokenizedApi+account+getSeedPhraseWordsForBackup)
       ⇒ <code>Array.&lt;string&gt;</code>
-    - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
+    - [.autocompleteSeedWord(inputValue)](#TokenizedApi+account+autocompleteSeedWord)
       ⇒ <code>Array.&lt;string&gt;</code>
-    - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
-    - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
-    - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-    - [.restoreRootKey(words)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
-    - [.requestPassphraseReset(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+requestPassphraseReset)
+    - [.skipSeedPhraseBackup()](#TokenizedApi+account+skipSeedPhraseBackup)
+    - [.confirmSeedPhraseBackup()](#TokenizedApi+account+confirmSeedPhraseBackup)
+    - [.skipRestoreRootKey()](#TokenizedApi+account+skipRestoreRootKey)
+    - [.restoreRootKey(words)](#TokenizedApi+account+restoreRootKey)
+    - [.requestPassphraseReset(options)](#TokenizedApi+account+requestPassphraseReset)
       ⇒ <code>string</code>
-    - [.resetPassphrase(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+resetPassphrase)
-    - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
-    - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
-    - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
-      ⇒ <code>string</code>
-  - [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
-    - [.send(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+send)
-      ⇒ <code>Array.&lt;string&gt;</code>
-    - [.request(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+request)
-      ⇒ <code>Array.&lt;string&gt;</code>
-    - [.tradeOffer(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+tradeOffer)
-      ⇒ <code>Array.&lt;string&gt;</code>
-    - [.approve(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+approve)
-      ⇒ <code>Array.&lt;string&gt;</code>
-    - [.reject(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+reject)
-      ⇒ <code>Array.&lt;string&gt;</code>
-  - [.treasury](#module_@tokenized/sdk-js-private.TokenizedApi+treasury)
-  - [.contracts](#module_@tokenized/sdk-js-private.TokenizedApi+contracts)
-  - [.activity](#module_@tokenized/sdk-js-private.TokenizedApi+activity)
-  - [.getQueryClient()](#module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient)
-    ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
+    - [.resetPassphrase(options)](#TokenizedApi+account+resetPassphrase)
+    - [.initiateDevicePairing()](#TokenizedApi+account+initiateDevicePairing)
+    - [.logOut()](#TokenizedApi+account+logOut)
+    - [.getUserHandlePostfix()](#TokenizedApi+account+getUserHandlePostfix) ⇒
+      <code>string</code>
+  - [.transfers](#TokenizedApi+transfers)
+    - [.send(options)](#TokenizedApi+transfers+send) ⇒
+      <code>Array.&lt;string&gt;</code>
+    - [.request(options)](#TokenizedApi+transfers+request) ⇒
+      <code>Array.&lt;string&gt;</code>
+    - [.trade(options)](#TokenizedApi+transfers+trade) ⇒
+      <code>Array.&lt;string&gt;</code>
+    - [.approve(options)](#TokenizedApi+transfers+approve) ⇒
+      <code>Array.&lt;string&gt;</code>
+    - [.reject(options)](#TokenizedApi+transfers+reject) ⇒
+      <code>Array.&lt;string&gt;</code>
+  - [.treasury](#TokenizedApi+treasury)
+  - [.contracts](#TokenizedApi+contracts)
+  - [.activity](#TokenizedApi+activity)
+  - [.getQueryClient()](#TokenizedApi+getQueryClient) ⇒
+    [<code>QueryClient</code>](#external_react-query.QueryClient)
+  - [.reloadAll()](#TokenizedApi+reloadAll)
 
-<a name="new_module_@tokenized/sdk-js-private.TokenizedApi_new"></a>
+<a name="new_TokenizedApi_new"></a>
 
 #### new TokenizedApi(config)
 
@@ -1182,49 +1165,49 @@ const tokenizedApi = new TokenizedApi({
 });
 ```
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account"></a>
+<a name="TokenizedApi+account"></a>
 
 #### tokenizedApi.account
 
 Manages the authentication token for the session and handles the sign in process
 
-- [.account](#module_@tokenized/sdk-js-private.TokenizedApi+account)
-  - [.PASSPHRASE_MIN_LENGTH](#module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
-  - [.analyzePassphraseStrength](#module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength)
+- [.account](#TokenizedApi+account)
+  - [.PASSPHRASE_MIN_LENGTH](#TokenizedApi+account+PASSPHRASE_MIN_LENGTH)
+  - [.analyzePassphraseStrength](#TokenizedApi+account+analyzePassphraseStrength)
     ⇒ <code>object</code>
-  - [.makeDebouncedHandleAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
+  - [.makeDebouncedHandleAvailabilityChecker()](#TokenizedApi+account+makeDebouncedHandleAvailabilityChecker)
     ⇒ <code>function</code>
-  - [.makeDebouncedEmailAvailabilityChecker()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
+  - [.makeDebouncedEmailAvailabilityChecker()](#TokenizedApi+account+makeDebouncedEmailAvailabilityChecker)
     ⇒ <code>function</code>
-  - [.makeDebouncedRecoveryPhraseValidator()](#module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
+  - [.makeDebouncedRecoveryPhraseValidator()](#TokenizedApi+account+makeDebouncedRecoveryPhraseValidator)
     ⇒ <code>function</code>
-  - [.createNewAccount(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount)
-  - [.logIn(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+logIn)
-    ⇒ <code>undefined</code> \| <code>boolean</code>
-  - [.verifyNewAccount(code)](#module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount)
-  - [.getSeedPhraseWordsForBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup)
+  - [.createNewAccount(options)](#TokenizedApi+account+createNewAccount)
+  - [.logIn(options)](#TokenizedApi+account+logIn) ⇒ <code>undefined</code> \|
+    <code>boolean</code>
+  - [.verifyNewAccount(code)](#TokenizedApi+account+verifyNewAccount)
+  - [.getSeedPhraseWordsForBackup()](#TokenizedApi+account+getSeedPhraseWordsForBackup)
     ⇒ <code>Array.&lt;string&gt;</code>
-  - [.autocompleteSeedWord(inputValue)](#module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord)
+  - [.autocompleteSeedWord(inputValue)](#TokenizedApi+account+autocompleteSeedWord)
     ⇒ <code>Array.&lt;string&gt;</code>
-  - [.skipSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup)
-  - [.confirmSeedPhraseBackup()](#module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup)
-  - [.skipRestoreRootKey()](#module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey)
-  - [.restoreRootKey(words)](#module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey)
-  - [.requestPassphraseReset(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+requestPassphraseReset)
+  - [.skipSeedPhraseBackup()](#TokenizedApi+account+skipSeedPhraseBackup)
+  - [.confirmSeedPhraseBackup()](#TokenizedApi+account+confirmSeedPhraseBackup)
+  - [.skipRestoreRootKey()](#TokenizedApi+account+skipRestoreRootKey)
+  - [.restoreRootKey(words)](#TokenizedApi+account+restoreRootKey)
+  - [.requestPassphraseReset(options)](#TokenizedApi+account+requestPassphraseReset)
     ⇒ <code>string</code>
-  - [.resetPassphrase(options)](#module_@tokenized/sdk-js-private.TokenizedApi+account+resetPassphrase)
-  - [.initiateDevicePairing()](#module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing)
-  - [.logOut()](#module_@tokenized/sdk-js-private.TokenizedApi+account+logOut)
-  - [.getUserHandlePostfix()](#module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix)
-    ⇒ <code>string</code>
+  - [.resetPassphrase(options)](#TokenizedApi+account+resetPassphrase)
+  - [.initiateDevicePairing()](#TokenizedApi+account+initiateDevicePairing)
+  - [.logOut()](#TokenizedApi+account+logOut)
+  - [.getUserHandlePostfix()](#TokenizedApi+account+getUserHandlePostfix) ⇒
+    <code>string</code>
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+PASSPHRASE_MIN_LENGTH"></a>
+<a name="TokenizedApi+account+PASSPHRASE_MIN_LENGTH"></a>
 
 ##### account.PASSPHRASE_MIN_LENGTH
 
 The minimum length of passphrase that will be accepted to secure an account
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+analyzePassphraseStrength"></a>
+<a name="TokenizedApi+account+analyzePassphraseStrength"></a>
 
 ##### account.analyzePassphraseStrength ⇒ <code>object</code>
 
@@ -1232,7 +1215,7 @@ Assess the strength of a passphrase entered by the user, providing feedback and
 suggestions for improvement. Use this in your “create account” and “change
 passphrase” dialogs. The `isAcceptable` property in the result object specifies
 whether or not this password will be accepted by
-[`createNewAccount`](module:@tokenized/sdk-js-private.TokenizedApi#account.createNewAccount).
+[`createNewAccount`](TokenizedApi#account.createNewAccount).
 
 The core analysis is performed by the [`zxcvbn`](#external_zxcvbn) package, with
 some additional formatting (including localization) and feedback specific to the
@@ -1243,7 +1226,7 @@ Tokenized service added to the result.
 | passphrase | <code>string</code>               | The user-supplied passphrase to check                                                                                                                                                                                     |
 | userInputs | <code>Array.&lt;string&gt;</code> | An optional list of strings that should be considered weak for the analysis. Use this to pass in the account identification (first and last names, email, handle), so that repeating those as the passphrase is rejected. |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedHandleAvailabilityChecker"></a>
+<a name="TokenizedApi+account+makeDebouncedHandleAvailabilityChecker"></a>
 
 ##### account.makeDebouncedHandleAvailabilityChecker() ⇒ <code>function</code>
 
@@ -1264,7 +1247,7 @@ one argument, the handle string to check, and returns a promise that resolves to
 `true` if the _most recent_ handle that was checked is available (because the
 queries are debounced, only the last of a rapid sequence of submitted strings
 will actually be checked).  
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedEmailAvailabilityChecker"></a>
+<a name="TokenizedApi+account+makeDebouncedEmailAvailabilityChecker"></a>
 
 ##### account.makeDebouncedEmailAvailabilityChecker() ⇒ <code>function</code>
 
@@ -1286,7 +1269,7 @@ one argument, the email address to check, and returns a promise that resolves to
 `true` if the _most recent_ email that was checked is available (because the
 queries are debounced, only the last of a rapid sequence of submitted strings
 will actually be checked).  
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+makeDebouncedRecoveryPhraseValidator"></a>
+<a name="TokenizedApi+account+makeDebouncedRecoveryPhraseValidator"></a>
 
 ##### account.makeDebouncedRecoveryPhraseValidator() ⇒ <code>function</code>
 
@@ -1310,7 +1293,7 @@ returns a promise that resolves to `undefined` if the _most recent_ phrase that
 was checked is correct (because the calls are debounced, only the last of a
 rapid sequence of phrases will actually be checked). If the phrase is incorrect,
 the promise will resolve to a localized string describing the error.  
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+createNewAccount"></a>
+<a name="TokenizedApi+account+createNewAccount"></a>
 
 ##### account.createNewAccount(options)
 
@@ -1319,17 +1302,17 @@ address, The code will need to be provided during the first log-in to complete
 the creation process. On success, this function starts a new log-in process
 automatically with the account credentials.
 
-| Param                     | Type                | Description                                                                                                                                                                                                                                                                     |
-| ------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options                   | <code>object</code> |                                                                                                                                                                                                                                                                                 |
-| options.firstName         | <code>string</code> | First name of the user creating the account.                                                                                                                                                                                                                                    |
-| options.lastName          | <code>string</code> | Last name of the user creating the account.                                                                                                                                                                                                                                     |
-| options.handle            | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the new account. So for example specifying `handle: 'hankrearden'` will create the account `hankrearden@tokenized.id` on the production back end. |
-| options.email             | <code>string</code> | Used to verify the person creating the account, by sending a confirmation code.                                                                                                                                                                                                 |
-| options.passphrase        | <code>string</code> | The passphrase for the new account.                                                                                                                                                                                                                                             |
-| options.passphraseConfirm | <code>string</code> | The passphrase for the new account.                                                                                                                                                                                                                                             |
+| Param                     | Type                | Description                                                                                                                                                                                                                                    |
+| ------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options                   | <code>object</code> |                                                                                                                                                                                                                                                |
+| options.firstName         | <code>string</code> | First name of the user creating the account.                                                                                                                                                                                                   |
+| options.lastName          | <code>string</code> | Last name of the user creating the account.                                                                                                                                                                                                    |
+| options.handle            | <code>string</code> | Joined with the [user handle postfix](TokenizedApi#account.getUserHandlePostfix) to identify the new account. So for example specifying `handle: 'hankrearden'` will create the account `hankrearden@tokenized.id` on the production back end. |
+| options.email             | <code>string</code> | Used to verify the person creating the account, by sending a confirmation code.                                                                                                                                                                |
+| options.passphrase        | <code>string</code> | The passphrase for the new account.                                                                                                                                                                                                            |
+| options.passphraseConfirm | <code>string</code> | The passphrase for the new account.                                                                                                                                                                                                            |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logIn"></a>
+<a name="TokenizedApi+account+logIn"></a>
 
 ##### account.logIn(options) ⇒ <code>undefined</code> \| <code>boolean</code>
 
@@ -1346,28 +1329,28 @@ resolves to one of three possible values:
   interaction, for example email verification.
 - `true` – indicates log in completed successfully.
 
-| Param               | Type                | Description                                                                                                                                                                                                                                                                                                                 |
-| ------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options             | <code>object</code> |                                                                                                                                                                                                                                                                                                                             |
-| options.handle      | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will log in as `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
-| options.phoneNumber | <code>string</code> | Identifies the account to log into using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                               |
-| options.email       | <code>string</code> | Identifies the account to log into using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                              |
-| options.passphrase  | <code>string</code> | The passphrase to authenticate the user’s account.                                                                                                                                                                                                                                                                          |
+| Param               | Type                | Description                                                                                                                                                                                                                                                                                |
+| ------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| options             | <code>object</code> |                                                                                                                                                                                                                                                                                            |
+| options.handle      | <code>string</code> | Joined with the [user handle postfix](TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will log in as `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
+| options.phoneNumber | <code>string</code> | Identifies the account to log into using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                              |
+| options.email       | <code>string</code> | Identifies the account to log into using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                             |
+| options.passphrase  | <code>string</code> | The passphrase to authenticate the user’s account.                                                                                                                                                                                                                                         |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+verifyNewAccount"></a>
+<a name="TokenizedApi+account+verifyNewAccount"></a>
 
 ##### account.verifyNewAccount(code)
 
 Verify creation of a new account during initial log in by providing the code
 sent to the account email address (triggered by an earlier call to
-[`createNewAccount`](module:@tokenized/sdk-js-private.TokenizedApi#account.createNewAccount)).
-If the code is correct, the log in process will continue automatically.
+[`createNewAccount`](TokenizedApi#account.createNewAccount)). If the code is
+correct, the log in process will continue automatically.
 
 | Param | Type                | Description                                    |
 | ----- | ------------------- | ---------------------------------------------- |
 | code  | <code>string</code> | The verification code from the received email. |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+getSeedPhraseWordsForBackup"></a>
+<a name="TokenizedApi+account+getSeedPhraseWordsForBackup"></a>
 
 ##### account.getSeedPhraseWordsForBackup() ⇒ <code>Array.&lt;string&gt;</code>
 
@@ -1381,7 +1364,7 @@ phrase backup is needed – at other times every item in the array will be
 
 **Returns**: <code>Array.&lt;string&gt;</code> - An array of 24 English words
 from which the root key is derived.  
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+autocompleteSeedWord"></a>
+<a name="TokenizedApi+account+autocompleteSeedWord"></a>
 
 ##### account.autocompleteSeedWord(inputValue) ⇒ <code>Array.&lt;string&gt;</code>
 
@@ -1400,7 +1383,7 @@ that roughly match what the user typed, ordered by best match first.
 | ---------- | ------------------- | ----------------------------------------------- |
 | inputValue | <code>string</code> | A partially-complete recovery seed phrase word. |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+skipSeedPhraseBackup"></a>
+<a name="TokenizedApi+account+skipSeedPhraseBackup"></a>
 
 ##### account.skipSeedPhraseBackup()
 
@@ -1409,7 +1392,7 @@ phrase, you can call this to skip the backup and start the session. You should
 warn the user that this is a dangerous action that might lead to loss of the
 account.
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+confirmSeedPhraseBackup"></a>
+<a name="TokenizedApi+account+confirmSeedPhraseBackup"></a>
 
 ##### account.confirmSeedPhraseBackup()
 
@@ -1418,7 +1401,7 @@ Confirms that the user has recorded their seed phrase, and sets `isBackedUp` to
 user is able to re-enter the seed phrase correctly. The log in process will
 continue automatically after the returned promise resolves.
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+skipRestoreRootKey"></a>
+<a name="TokenizedApi+account+skipRestoreRootKey"></a>
 
 ##### account.skipRestoreRootKey()
 
@@ -1426,7 +1409,7 @@ When trying to log in to an account that needs recovery due to an invalid root
 key, you can call this to skip the restore and start the session anyway. You
 should warn the user that all transactions will fail in this state.
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+restoreRootKey"></a>
+<a name="TokenizedApi+account+restoreRootKey"></a>
 
 ##### account.restoreRootKey(words)
 
@@ -1438,40 +1421,38 @@ log-in process will continue automatically after the returned promise resolves.
 | ----- | --------------------------------- | -------------------------------------------------- |
 | words | <code>Array.&lt;string&gt;</code> | The 24-word recovery phrase as an array of strings |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+requestPassphraseReset"></a>
+<a name="TokenizedApi+account+requestPassphraseReset"></a>
 
 ##### account.requestPassphraseReset(options) ⇒ <code>string</code>
 
 Use this to implement a “forgot passphrase” flow in your sign in dialog. Call
 this method, identifying the account using one of a handle, email address, or
-phone number as for
-[`logIn`](module:@tokenized/sdk-js-private.TokenizedApi#account.logIn), If the
-account is recognized, the back end will send a confirmation code to the
-registered email address (which is provided in obfuscated form to display in a
-prompt). Call
-[`resetPassphrase`](module:@tokenized/sdk-js-private.TokenizedApi#account.resetPassphrase)
-with the entered confirmation code and new passphrase to complete the process.
+phone number as for [`logIn`](TokenizedApi#account.logIn), If the account is
+recognized, the back end will send a confirmation code to the registered email
+address (which is provided in obfuscated form to display in a prompt). Call
+[`resetPassphrase`](TokenizedApi#account.resetPassphrase) with the entered
+confirmation code and new passphrase to complete the process.
 
 **Returns**: <code>string</code> - (In a `Promise`) the email address that the
 confirmation code was sent to, partly masked for privacy. In React apps it’s
 more convenient to retrieve this via the dedicated hook
 [`useResetPassphraseMaskedEmail`](#module_@tokenized/sdk-react-private.useResetPassphraseMaskedEmail).
 
-| Param               | Type                | Description                                                                                                                                                                                                                                                                                                             |
-| ------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options             | <code>object</code> |                                                                                                                                                                                                                                                                                                                         |
-| options.handle      | <code>string</code> | Joined with the [user handle postfix](module:@tokenized/sdk-js-private.TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will reset `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
-| options.email       | <code>string</code> | Identifies the account to reset using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                             |
-| options.phoneNumber | <code>string</code> | Identifies the account to reset using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                                                              |
+| Param               | Type                | Description                                                                                                                                                                                                                                                                            |
+| ------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options             | <code>object</code> |                                                                                                                                                                                                                                                                                        |
+| options.handle      | <code>string</code> | Joined with the [user handle postfix](TokenizedApi#account.getUserHandlePostfix) to identify the account. So for example specifying `handle: 'hankrearden'` will reset `hankrearden@tokenized.id` on the production back end. Specify only one of `handle`, `phoneNumber`, or `email`. |
+| options.email       | <code>string</code> | Identifies the account to reset using the email address registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                            |
+| options.phoneNumber | <code>string</code> | Identifies the account to reset using the phone number registered to the account. Specify only one of `handle`, `phoneNumber`, or `email`.                                                                                                                                             |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+resetPassphrase"></a>
+<a name="TokenizedApi+account+resetPassphrase"></a>
 
 ##### account.resetPassphrase(options)
 
 Use this to set a new passphrase for an account when the user has forgotten
 their passphrase. After first calling
-[`requestPassphraseReset`](module:@tokenized/sdk-js-private.TokenizedApi#account.requestPassphraseReset),
-prompt the user to enter the confirmation code, and create a new passphrase. On
+[`requestPassphraseReset`](TokenizedApi#account.requestPassphraseReset), prompt
+the user to enter the confirmation code, and create a new passphrase. On
 success, the method modifies the passphrase, and automatically starts a log-in
 process to the account. Unless the user re-entered their old passphrase, the
 root key will now be unusable, and the log-in process will request the recovery
@@ -1484,7 +1465,7 @@ seed phrase to restore it.
 | options.passphrase        | <code>string</code> | The new passphrase for the account.            |
 | options.passphraseConfirm | <code>string</code> | The new passphrase for the account.            |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+initiateDevicePairing"></a>
+<a name="TokenizedApi+account+initiateDevicePairing"></a>
 
 ##### account.initiateDevicePairing()
 
@@ -1493,14 +1474,14 @@ sign in, this will be done automatically if the user has no active authenticator
 devices. Use this function when the user explicitly chooses to re-pair, or if
 you need to regenerate an expired code.
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+logOut"></a>
+<a name="TokenizedApi+account+logOut"></a>
 
 ##### account.logOut()
 
 End the current authenticated session and clear all internal state associated
 with it. If a log in attempt is currently in progress then cancel it.
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+account+getUserHandlePostfix"></a>
+<a name="TokenizedApi+account+getUserHandlePostfix"></a>
 
 ##### account.getUserHandlePostfix() ⇒ <code>string</code>
 
@@ -1512,97 +1493,94 @@ each `TokenizedApi` object.
 
 **Returns**: <code>string</code> - The handle postfix, for example
 `'@tokenized.id'`.  
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers"></a>
+<a name="TokenizedApi+transfers"></a>
 
 #### tokenizedApi.transfers
 
-Asset transfers - send and trade assets.
+Instrument transfers - send and trade instruments.
 
 Amounts are in major units (e.g. 1 = BSV 1, 1 = $1)
 
-- [.transfers](#module_@tokenized/sdk-js-private.TokenizedApi+transfers)
-  - [.send(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+send)
-    ⇒ <code>Array.&lt;string&gt;</code>
-  - [.request(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+request)
-    ⇒ <code>Array.&lt;string&gt;</code>
-  - [.tradeOffer(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+tradeOffer)
-    ⇒ <code>Array.&lt;string&gt;</code>
-  - [.approve(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+approve)
-    ⇒ <code>Array.&lt;string&gt;</code>
-  - [.reject(options)](#module_@tokenized/sdk-js-private.TokenizedApi+transfers+reject)
-    ⇒ <code>Array.&lt;string&gt;</code>
+- [.transfers](#TokenizedApi+transfers)
+  - [.send(options)](#TokenizedApi+transfers+send) ⇒
+    <code>Array.&lt;string&gt;</code>
+  - [.request(options)](#TokenizedApi+transfers+request) ⇒
+    <code>Array.&lt;string&gt;</code>
+  - [.trade(options)](#TokenizedApi+transfers+trade) ⇒
+    <code>Array.&lt;string&gt;</code>
+  - [.approve(options)](#TokenizedApi+transfers+approve) ⇒
+    <code>Array.&lt;string&gt;</code>
+  - [.reject(options)](#TokenizedApi+transfers+reject) ⇒
+    <code>Array.&lt;string&gt;</code>
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+send"></a>
+<a name="TokenizedApi+transfers+send"></a>
 
 ##### transfers.send(options) ⇒ <code>Array.&lt;string&gt;</code>
 
-Send an amount of a specified asset to one or more other entities.
+Send an amount of a specified instrument to one or more other entities.
 
 **Returns**: <code>Array.&lt;string&gt;</code> - Array of pending transaction
 IDs completed.
 
-| Param                        | Type                              | Description                                                                                                                                          |
-| ---------------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options                      | <code>Object</code>               |                                                                                                                                                      |
-| options.lockboxId            | <code>string</code>               | The lockbox containing the assets to be sent                                                                                                         |
-| options.assetId              | <code>string</code>               | The asset to send                                                                                                                                    |
-| options.recipients           | <code>Array.&lt;Object&gt;</code> | The entities to send to (paymail handles or addresses), and the amount to send to each                                                               |
-| options.recipients[].handle  | <code>string</code>               | The paymail handle of the recipient. Note that non-Tokenized paymail handles are only accepted when sending BSV amounts.                             |
-| options.recipients[].address | <code>string</code>               | (Instead of `handle`) the BSV address of the recipient. Only accepted when sending BSV amounts.                                                      |
-| options.recipients[].amount  | <code>number</code>               | The amount of the asset to send to this recipient, for example 1 for 1 BSV or for $1                                                                 |
-| options.recipients[].sendMax | <code>boolean</code>              | (Instead of `amount`) When `true`, send the maximum available amount of the asset (minus fees) to this recipient. Can only be set for one recipient. |
-| options.memo                 | <code>string</code>               | An optional message for the recipients                                                                                                               |
-| options.dryRun               | <code>boolean</code>              | If `true` then the arguments will be checked, but no transfer performed                                                                              |
+| Param                        | Type                              | Description                                                                                                                                               |
+| ---------------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| options                      | <code>Object</code>               |                                                                                                                                                           |
+| options.lockboxId            | <code>string</code>               | The lockbox containing the instruments to be sent                                                                                                         |
+| options.instrumentId         | <code>string</code>               | The instrument to send                                                                                                                                    |
+| options.recipients           | <code>Array.&lt;Object&gt;</code> | The entities to send to (paymail handles or addresses), and the amount to send to each                                                                    |
+| options.recipients[].handle  | <code>string</code>               | The paymail handle of the recipient. Note that non-Tokenized paymail handles are only accepted when sending BSV amounts.                                  |
+| options.recipients[].address | <code>string</code>               | (Instead of `handle`) the BSV address of the recipient. Only accepted when sending BSV amounts.                                                           |
+| options.recipients[].amount  | <code>number</code>               | The amount of the instrument to send to this recipient, for example 1 for 1 BSV or for $1                                                                 |
+| options.recipients[].sendMax | <code>boolean</code>              | (Instead of `amount`) When `true`, send the maximum available amount of the instrument (minus fees) to this recipient. Can only be set for one recipient. |
+| options.memo                 | <code>string</code>               | An optional message for the recipients                                                                                                                    |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+request"></a>
+<a name="TokenizedApi+transfers+request"></a>
 
 ##### transfers.request(options) ⇒ <code>Array.&lt;string&gt;</code>
 
-Request an asset to be sent to you by another entity. Requests ar received in
-the form of an open activity item, which can be accepted or declined by the
-recipient using the `accept` and `decline` methods below.
+Request an instrument to be sent to you by another entity. Requests are received
+in the form of an open activity item, which can be accepted or declined by the
+recipient using the `approve` and `reject` methods below.
 
 **Returns**: <code>Array.&lt;string&gt;</code> - Array of pending transaction
 IDs completed.
 
-| Param             | Type                 | Description                                                                                              |
-| ----------------- | -------------------- | -------------------------------------------------------------------------------------------------------- |
-| options           | <code>Object</code>  |                                                                                                          |
-| options.lockboxId | <code>string</code>  | Your lockbox into which the amount will be transferred                                                   |
-| options.recipient | <code>string</code>  | Paymail handle (only Tokenized handles supported) of the recipient                                       |
-| options.assetId   | <code>string</code>  | The asset which is being requested from the recipient                                                    |
-| options.amount    | <code>number</code>  | The amount of asset being requested                                                                      |
-| options.memo      | <code>string</code>  | An optional message to show the recipient with the request                                               |
-| options.expiry    | <code>string</code>  | An ISO-8601-format timestamp in the future when the request should expire (default is two days from now) |
-| options.dryRun    | <code>boolean</code> | If `true` then the arguments will be checked, but no request sent                                        |
+| Param                | Type                | Description                                                                                              |
+| -------------------- | ------------------- | -------------------------------------------------------------------------------------------------------- |
+| options              | <code>Object</code> |                                                                                                          |
+| options.lockboxId    | <code>string</code> | Your lockbox into which the amount will be transferred                                                   |
+| options.recipient    | <code>string</code> | Paymail handle (only Tokenized handles supported) of the recipient                                       |
+| options.instrumentId | <code>string</code> | The instrument which is being requested from the recipient                                               |
+| options.amount       | <code>number</code> | The amount of instrument being requested                                                                 |
+| options.memo         | <code>string</code> | An optional message to show the recipient with the request                                               |
+| options.expiry       | <code>string</code> | An ISO-8601-format timestamp in the future when the request should expire (default is two days from now) |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+tradeOffer"></a>
+<a name="TokenizedApi+transfers+trade"></a>
 
-##### transfers.tradeOffer(options) ⇒ <code>Array.&lt;string&gt;</code>
+##### transfers.trade(options) ⇒ <code>Array.&lt;string&gt;</code>
 
-Initiate a trade of assets with another entity by sending them an offer. Offers
-are received in the form of an open activity item, which can be accepted or
-declined using the `accept` and `decline` methods below. The final step is for
-the initiator to countersign (or decline) the resulting accepted activity event
-(using the same methods).
+Initiate a trade of instruments with another entity by sending them an offer.
+Offers are received in the form of an open activity item, which can be accepted
+or declined using the `approve` and `reject` methods below. The final step is
+for the initiator to countersign (or decline) the resulting accepted activity
+event (using the same methods).
 
 **Returns**: <code>Array.&lt;string&gt;</code> - Array of pending transaction
 IDs completed.
 
-| Param                  | Type                 | Description                                                                                                       |
-| ---------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| options                | <code>Object</code>  |                                                                                                                   |
-| options.lockboxId      | <code>string</code>  | Your lockbox from which the offered amount will be taken, and into which the requested amount will be transferred |
-| options.recipient      | <code>string</code>  | Paymail handle (only Tokenized handles supported) of the recipient of the offer                                   |
-| options.sendAssetId    | <code>string</code>  | The asset which is offered to the recipient                                                                       |
-| options.sendAmount     | <code>number</code>  | The amount of asset being offered                                                                                 |
-| options.receiveAssetId | <code>string</code>  | The asset which is requested from the recipient                                                                   |
-| options.receiveAmount  | <code>number</code>  | The amount of asset being requested                                                                               |
-| options.memo           | <code>string</code>  | An optional message to show the recipient with the offer                                                          |
-| options.expiry         | <code>string</code>  | An ISO-8601-format timestamp in the future when the request should expire (default is two days from now)          |
-| options.dryRun         | <code>boolean</code> | If `true` then the arguments will be checked, but no request sent                                                 |
+| Param                       | Type                | Description                                                                                                       |
+| --------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| options                     | <code>Object</code> |                                                                                                                   |
+| options.lockboxId           | <code>string</code> | Your lockbox from which the offered amount will be taken, and into which the requested amount will be transferred |
+| options.recipient           | <code>string</code> | Paymail handle (only Tokenized handles supported) of the recipient of the offer                                   |
+| options.sendInstrumentId    | <code>string</code> | The instrument which is offered to the recipient                                                                  |
+| options.sendAmount          | <code>number</code> | The amount of instrument being offered                                                                            |
+| options.receiveInstrumentId | <code>string</code> | The instrument which is requested from the recipient                                                              |
+| options.receiveAmount       | <code>number</code> | The amount of instrument being requested                                                                          |
+| options.memo                | <code>string</code> | An optional message to show the recipient with the offer                                                          |
+| options.expiry              | <code>string</code> | An ISO-8601-format timestamp in the future when the request should expire (default is two days from now)          |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+approve"></a>
+<a name="TokenizedApi+transfers+approve"></a>
 
 ##### transfers.approve(options) ⇒ <code>Array.&lt;string&gt;</code>
 
@@ -1618,7 +1596,7 @@ IDs completed.
 | options.lockboxId  | <code>string</code> | Your lockbox from which sent amounts will be taken, and into which received amounts will be transferred |
 | options.activityId | <code>string</code> | The ID of the open activity event being accepted/executed.                                              |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+transfers+reject"></a>
+<a name="TokenizedApi+transfers+reject"></a>
 
 ##### transfers.reject(options) ⇒ <code>Array.&lt;string&gt;</code>
 
@@ -1634,25 +1612,25 @@ IDs completed.
 | options.lockboxId  | <code>string</code> | Your lockbox from which sent amounts will be taken, and into which received amounts will be transferred |
 | options.activityId | <code>string</code> | The ID of the open activity event being declined.                                                       |
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+treasury"></a>
+<a name="TokenizedApi+treasury"></a>
 
 #### tokenizedApi.treasury
 
-Access to balances and assets
+Access to balances and instruments
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+contracts"></a>
+<a name="TokenizedApi+contracts"></a>
 
 #### tokenizedApi.contracts
 
 Access to contracts
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+activity"></a>
+<a name="TokenizedApi+activity"></a>
 
 #### tokenizedApi.activity
 
 Access to activity
 
-<a name="module_@tokenized/sdk-js-private.TokenizedApi+getQueryClient"></a>
+<a name="TokenizedApi+getQueryClient"></a>
 
 #### tokenizedApi.getQueryClient() ⇒ [<code>QueryClient</code>](#external_react-query.QueryClient)
 
@@ -1660,6 +1638,17 @@ Provides the
 [React Query `QueryClient` object](https://react-query.tanstack.com/reference/QueryClient)
 that manages the API data cache for the current user session. Use to observe
 query data and perform mutations.
+
+<a name="TokenizedApi+reloadAll"></a>
+
+#### tokenizedApi.reloadAll()
+
+Reloads all model data from the back end, automatically updating any active
+queries bound to UI. This should only be used in exceptional circumstances, for
+example when you know an external event has modified the current account and you
+want to show the change immediately. All operations performed through the SDK
+will efficiently update just the necessary queries for you: don’t call
+`reloadAll` since it will unnecessarily throw away valid data.
 
 <a name="external_zxcvbn"></a>
 

@@ -173,7 +173,7 @@ function SeedPhraseRecovery() {
             </div>
             <div className="message-body">
               <FormattedMessage
-                defaultMessage="Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail."
+                defaultMessage="Please be aware that you’ll be able to see your activity and treasury, but all instrument transfers and contract operations will fail."
                 description="Confirm skip account restore description"
               />
             </div>

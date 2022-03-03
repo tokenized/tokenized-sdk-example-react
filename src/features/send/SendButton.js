@@ -10,7 +10,7 @@ const SendButton = () => {
       <button className="button is-light" onClick={() => setOpen(true)}>
         <FormattedMessage
           defaultMessage="Send"
-          description="Label for button to open dialog to send assets"
+          description="Label for button to open dialog to send instruments"
         />
       </button>
       {open && <SendModal close={() => setOpen(false)} />}

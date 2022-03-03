@@ -27,7 +27,7 @@ function TreasuryAssetsTable({ vaultId }) {
         </thead>
         <tbody>
           {balances?.data?.map?.((balance) => (
-            <BalanceRow key={balance.assetId} balance={balance} />
+            <BalanceRow key={balance.instrumentId} balance={balance} />
           ))}
         </tbody>
       </table>

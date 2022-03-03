@@ -45,16 +45,6 @@
       "value": "Last updated"
     }
   ],
-  "13P/gz": [
-    {
-      "type": 0,
-      "value": "max: "
-    },
-    {
-      "type": 1,
-      "value": "max"
-    }
-  ],
   "1G/gOd": [
     {
       "type": 0,
@@ -75,16 +65,16 @@
       "value": ", you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process."
     }
   ],
+  "1khPtj": [
+    {
+      "type": 0,
+      "value": "One unit"
+    }
+  ],
   "1s3HAo": [
     {
       "type": 0,
       "value": "Avoid workplace or educational emails you might lose access to"
-    }
-  ],
-  "1s6Cy7": [
-    {
-      "type": 0,
-      "value": "Request assets"
     }
   ],
   "2F0CgA": [
@@ -103,6 +93,16 @@
     {
       "type": 0,
       "value": "Contracts"
+    }
+  ],
+  "2xwoem": [
+    {
+      "type": 0,
+      "value": "max: "
+    },
+    {
+      "type": 1,
+      "value": "max"
     }
   ],
   "2yLUnh": [
@@ -129,12 +129,6 @@
       "value": "Sign in without backup"
     }
   ],
-  "41ypwV": [
-    {
-      "type": 0,
-      "value": "Asset"
-    }
-  ],
   "47FYwb": [
     {
       "type": 0,
@@ -153,12 +147,6 @@
       "value": "Checking seed phrase has been recorded"
     }
   ],
-  "6I1l1I": [
-    {
-      "type": 0,
-      "value": "Liability"
-    }
-  ],
   "6amK0i": [
     {
       "type": 0,
@@ -175,6 +163,12 @@
     {
       "type": 0,
       "value": "Computed network fee"
+    }
+  ],
+  "84zKt1": [
+    {
+      "type": 0,
+      "value": "To"
     }
   ],
   "8HgVfG": [
@@ -207,6 +201,36 @@
       "value": "Restore"
     }
   ],
+  "9xGR3s": [
+    {
+      "type": 0,
+      "value": "Send instruments"
+    }
+  ],
+  "BAN8L+": [
+    {
+      "type": 0,
+      "value": "Issuer"
+    }
+  ],
+  "BC/SA+": [
+    {
+      "type": 0,
+      "value": "max: "
+    },
+    {
+      "type": 1,
+      "value": "max"
+    },
+    {
+      "type": 0,
+      "value": " ≈ "
+    },
+    {
+      "type": 1,
+      "value": "converted"
+    }
+  ],
   "BDkKXS": [
     {
       "type": 0,
@@ -235,6 +259,12 @@
     {
       "type": 0,
       "value": "Confirmation code"
+    }
+  ],
+  "CBiAjw": [
+    {
+      "type": 0,
+      "value": "Request instruments"
     }
   ],
   "CYyLJH": [
@@ -293,6 +323,12 @@
       "value": "Sign in…"
     }
   ],
+  "Ejt0VK": [
+    {
+      "type": 0,
+      "value": "Request"
+    }
+  ],
   "F347da": [
     {
       "type": 0,
@@ -319,12 +355,6 @@
       "value": " account can only be authorized on your device using your passphrase-protected digital key. Your passphrase never leaves your device, so no one else ever has access to your funds, not even us."
     }
   ],
-  "F6p5oa": [
-    {
-      "type": 0,
-      "value": "Trade"
-    }
-  ],
   "FEJ3nB": [
     {
       "type": 0,
@@ -349,16 +379,22 @@
       "value": "Cancel"
     }
   ],
-  "GHNmw1": [
-    {
-      "type": 0,
-      "value": "Send assets"
-    }
-  ],
   "GbFjMQ": [
     {
       "type": 0,
       "value": "Tokenized SDK demo"
+    }
+  ],
+  "GlenFy": [
+    {
+      "type": 0,
+      "value": "Please be aware that you’ll be able to see your activity and treasury, but all instrument transfers and contract operations will fail."
+    }
+  ],
+  "H5J5dr": [
+    {
+      "type": 0,
+      "value": "Authorized"
     }
   ],
   "H6n8rw": [
@@ -397,18 +433,6 @@
       "value": "Activity"
     }
   ],
-  "IJKyYg": [
-    {
-      "type": 0,
-      "value": "Sign trade"
-    }
-  ],
-  "Ih3sF+": [
-    {
-      "type": 0,
-      "value": "Authorized"
-    }
-  ],
   "IssfGQ": [
     {
       "type": 0,
@@ -419,6 +443,12 @@
     {
       "type": 0,
       "value": "Enter your recovery phrase from your backup to verify it. Note you can paste the whole phrase in one go from a password manager."
+    }
+  ],
+  "JMjcWw": [
+    {
+      "type": 0,
+      "value": "Instrument"
     }
   ],
   "JvW0S/": [
@@ -469,18 +499,6 @@
       "value": "Last name"
     }
   ],
-  "M3QTvW": [
-    {
-      "type": 0,
-      "value": "Trade assets"
-    }
-  ],
-  "MGVbsq": [
-    {
-      "type": 0,
-      "value": "To"
-    }
-  ],
   "N2IrpM": [
     {
       "type": 0,
@@ -511,6 +529,12 @@
       "value": "Cancel"
     }
   ],
+  "PxaB28": [
+    {
+      "type": 0,
+      "value": "Liability"
+    }
+  ],
   "QaB4nu": [
     {
       "type": 0,
@@ -535,12 +559,6 @@
       "value": "Cancel"
     }
   ],
-  "Qt4tZb": [
-    {
-      "type": 0,
-      "value": "Send"
-    }
-  ],
   "R+J5ox": [
     {
       "type": 0,
@@ -553,6 +571,12 @@
       "value": "Create a new account"
     }
   ],
+  "REpsfK": [
+    {
+      "type": 0,
+      "value": "Trade instruments"
+    }
+  ],
   "RXjxnq": [
     {
       "type": 0,
@@ -563,18 +587,6 @@
     {
       "type": 0,
       "value": "Reset your passphrase"
-    }
-  ],
-  "SOA+3t": [
-    {
-      "type": 0,
-      "value": "One unit"
-    }
-  ],
-  "Sm4O4X": [
-    {
-      "type": 0,
-      "value": "Request"
     }
   ],
   "Ssp7dT": [
@@ -646,18 +658,6 @@
       "value": "Sign in"
     }
   ],
-  "VyIxs7": [
-    {
-      "type": 0,
-      "value": "Value"
-    }
-  ],
-  "WKCp0D": [
-    {
-      "type": 0,
-      "value": "Asset"
-    }
-  ],
   "Waga+E": [
     {
       "type": 0,
@@ -710,6 +710,12 @@
     {
       "type": 0,
       "value": "Confirm your identity in the authenticator app"
+    }
+  ],
+  "ZFbOTU": [
+    {
+      "type": 0,
+      "value": "Type"
     }
   ],
   "a6TlyZ": [
@@ -774,16 +780,22 @@
       "value": "Issuer / counterparty"
     }
   ],
+  "dihTKc": [
+    {
+      "type": 0,
+      "value": "maximum"
+    }
+  ],
   "eH9ssJ": [
     {
       "type": 0,
       "value": "Enter a message for the recipient (optional)"
     }
   ],
-  "f5IQQs": [
+  "ez0GyO": [
     {
       "type": 0,
-      "value": "Select an asset"
+      "value": "Send"
     }
   ],
   "fFkbdo": [
@@ -822,12 +834,6 @@
       "value": "Required"
     }
   ],
-  "hTxeee": [
-    {
-      "type": 0,
-      "value": "Type"
-    }
-  ],
   "iA3+G9": [
     {
       "type": 0,
@@ -840,12 +846,6 @@
       "value": "Cancel"
     }
   ],
-  "isZs2i": [
-    {
-      "type": 0,
-      "value": "Issuer"
-    }
-  ],
   "iuWj8R": [
     {
       "type": 0,
@@ -856,6 +856,12 @@
     {
       "type": 0,
       "value": "Account recovery"
+    }
+  ],
+  "kChwAg": [
+    {
+      "type": 0,
+      "value": "Select an instrument"
     }
   ],
   "kYHpnu": [
@@ -898,6 +904,12 @@
       "value": "Doesn’t match entered passphrase"
     }
   ],
+  "nYvVZP": [
+    {
+      "type": 0,
+      "value": "Trade"
+    }
+  ],
   "narDvl": [
     {
       "type": 0,
@@ -930,12 +942,6 @@
     {
       "type": 0,
       "value": "Request"
-    }
-  ],
-  "p3amHf": [
-    {
-      "type": 0,
-      "value": "maximum"
     }
   ],
   "p8/WnA": [
@@ -1042,24 +1048,6 @@
       "value": "Verify your email"
     }
   ],
-  "vG0gfW": [
-    {
-      "type": 0,
-      "value": "max: "
-    },
-    {
-      "type": 1,
-      "value": "max"
-    },
-    {
-      "type": 0,
-      "value": " ≈ "
-    },
-    {
-      "type": 1,
-      "value": "converted"
-    }
-  ],
   "vUD6Fj": [
     {
       "type": 0,
@@ -1072,10 +1060,10 @@
       "value": "Accept trade"
     }
   ],
-  "vutAZJ": [
+  "w+J0Wq": [
     {
       "type": 0,
-      "value": "Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail."
+      "value": "Value"
     }
   ],
   "w00rFA": [
@@ -1102,6 +1090,12 @@
     {
       "type": 0,
       "value": " and approve sign in"
+    }
+  ],
+  "wduJme": [
+    {
+      "type": 0,
+      "value": "Instrument"
     }
   ],
   "wejkZs": [

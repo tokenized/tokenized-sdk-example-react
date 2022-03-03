@@ -7,20 +7,20 @@ function BalanceRow({ isHeader, balance }) {
       <tr>
         <th className="has-text-left">
           <FormattedMessage
-            defaultMessage="Asset"
-            description="Balance table column header: asset name"
+            defaultMessage="Instrument"
+            description="Balance table column header: instrument name"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Type"
-            description="Balance table column header: asset type"
+            description="Balance table column header: instrument type"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Issuer"
-            description="Balance table column header: asset issuer"
+            description="Balance table column header: instrument issuer"
           />
         </th>
         <th className="has-text-left">
@@ -44,25 +44,25 @@ function BalanceRow({ isHeader, balance }) {
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Authorized"
-            description="Balance table column header: quantity of assets authorized in contract"
+            description="Balance table column header: quantity of instruments authorized in contract"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="One unit"
-            description="Balance table column header: value of one asset unit"
+            description="Balance table column header: value of one instrument unit"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Liability"
-            description="Balance table column header: liability (owed on issued assets)"
+            description="Balance table column header: liability (owed on issued instruments)"
           />
         </th>
         <th className="has-text-left">
           <FormattedMessage
             defaultMessage="Value"
-            description="Balance table column header: value (of assets to me)"
+            description="Balance table column header: value (of instruments to me)"
           />
         </th>
       </tr>
@@ -72,11 +72,11 @@ function BalanceRow({ isHeader, balance }) {
   let quantity;
   if (balance?.quantities?.balance?.tokens) {
     quantity = balance?.quantities?.balance?.tokens.formatted;
-  } else if (balance?.quantities?.balance?.assetCurrency) {
+  } else if (balance?.quantities?.balance?.instrumentCurrency) {
     quantity = (
       <FormattedNumber
-        value={balance.quantities.balance.assetCurrency.number}
-        {...balance.quantities.balance.assetCurrency.NumberFormatOptions}
+        value={balance.quantities.balance.instrumentCurrency.number}
+        {...balance.quantities.balance.instrumentCurrency.NumberFormatOptions}
       />
     );
   }
@@ -86,19 +86,19 @@ function BalanceRow({ isHeader, balance }) {
     reserved =
       balance?.quantities?.reserved?.tokens.number > 0 &&
       balance?.quantities?.reserved?.tokens.formatted;
-  } else if (balance?.quantities?.reserved?.assetCurrency) {
-    reserved = balance.quantities.reserved.assetCurrency.number > 0 && (
+  } else if (balance?.quantities?.reserved?.instrumentCurrency) {
+    reserved = balance.quantities.reserved.instrumentCurrency.number > 0 && (
       <FormattedNumber
-        value={balance.quantities.reserved.assetCurrency.number}
-        {...balance.quantities.reserved.assetCurrency.NumberFormatOptions}
+        value={balance.quantities.reserved.instrumentCurrency.number}
+        {...balance.quantities.reserved.instrumentCurrency.NumberFormatOptions}
       />
     );
   }
 
   return (
     <tr style={{ whiteSpace: 'nowrap' }}>
-      <th className="has-text-left">{balance?.assetName}</th>
-      <td>{balance?.assetType?.formatted}</td>
+      <th className="has-text-left">{balance?.instrumentName}</th>
+      <td>{balance?.instrumentType?.formatted}</td>
       <td>{balance?.issuer?.formatted}</td>
       <td>{quantity}</td>
       <td>{reserved}</td>

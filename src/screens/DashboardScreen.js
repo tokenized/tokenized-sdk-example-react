@@ -106,7 +106,7 @@ function DashboardScreen({ children }) {
               <TradeButton mode={MODE_REQUEST}>
                 <FormattedMessage
                   defaultMessage="Request"
-                  description="Label for button to open dialog to request assets"
+                  description="Label for button to open dialog to request instruments"
                 />
               </TradeButton>
             </div>
@@ -114,7 +114,7 @@ function DashboardScreen({ children }) {
               <TradeButton mode={MODE_TRADE}>
                 <FormattedMessage
                   defaultMessage="Trade"
-                  description="Label for button to open dialog to trade assets"
+                  description="Label for button to open dialog to trade instruments"
                 />
               </TradeButton>
             </div>

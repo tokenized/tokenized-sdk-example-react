@@ -36,7 +36,7 @@ export function ActivityRow({ item }) {
     formatted: { description, counterparty, tradeAction, tradeResponse },
     counterparties,
     memo,
-    assets,
+    instruments,
     acceptTrade,
     executeTrade,
     acceptRequest,
@@ -70,7 +70,7 @@ export function ActivityRow({ item }) {
       </td>
       <td>
         {!transfers.length &&
-          assets?.map(
+          instruments?.map(
             ({ delta }, index) =>
               !!delta?.tokens?.number && (
                 <div
