@@ -1,6 +1,0 @@
-*
-!/lang-compiled
-!/lang
-!node_modules
-!/instrumentRenameIncludes
-!*.log
