@@ -31,7 +31,8 @@ export default function SelectAssetType({
   disabled,
 }) {
   const vaultId = usePrimaryVault()?.id;
-  const assetBalances = useFilteredBalances(vaultId, {
+  const assetBalances = useFilteredBalances({
+    vaultId,
     includeInactive: false,
   });
   const items = assetBalances?.data || [];
