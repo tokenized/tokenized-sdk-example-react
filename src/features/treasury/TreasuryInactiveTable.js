@@ -10,7 +10,8 @@ function TreasuryInactiveTable({ vaultId }) {
     dispatch(setCurrentFilter('inactive'));
   }, [dispatch]);
 
-  const balances = useFilteredBalances(vaultId, {
+  const balances = useFilteredBalances({
+    vaultId,
     includeInactive: true,
   });
 

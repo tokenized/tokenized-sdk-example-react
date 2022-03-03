@@ -5,7 +5,6 @@ import {
   useTokenizedApi,
   useIsLoading,
   useOwnFormattedName,
-  useCurrentProfileName,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 import SendButton from '../features/send/SendButton';
@@ -16,7 +15,6 @@ function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
   const ownFormattedName = useOwnFormattedName();
-  const profileName = useCurrentProfileName();
 
   const onLogOut = useCallback(() => {
     tokenizedApi.account.logOut();
@@ -132,7 +130,6 @@ function DashboardScreen({ children }) {
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item">
                   <strong>{ownFormattedName}</strong>
-                  {profileName && <span className="ml-2">{profileName}</span>}
                 </div>
                 <hr className="navbar-divider" />
                 <a className="navbar-item" onClick={onLogOut}>

@@ -10,7 +10,8 @@ function TreasuryLiabilitiesTable({ vaultId }) {
     dispatch(setCurrentFilter('liabilities'));
   }, [dispatch]);
 
-  const balances = useFilteredBalances(vaultId, {
+  const balances = useFilteredBalances({
+    vaultId,
     includeLiabilities: true,
     includeInactive: false,
   });

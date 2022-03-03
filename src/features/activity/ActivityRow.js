@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { FormattedDate, FormattedMessage } from 'react-intl';
+import { useActivityEvent } from '@tokenized/sdk-react-private';
 import FormatQuantity from '../../utils/FormatQuantity';
 
 export function ActivityHeader({ showAction }) {
@@ -27,8 +28,9 @@ export function ActivityHeader({ showAction }) {
   );
 }
 
-export function ActivityRow({
-  item: {
+export function ActivityRow({ item }) {
+  const activityEvent = useActivityEvent(item) || {};
+  const {
     txIds,
     dateModified,
     formatted: { description, counterparty, tradeAction, tradeResponse },
@@ -38,8 +40,8 @@ export function ActivityRow({
     acceptTrade,
     executeTrade,
     acceptRequest,
-  },
-}) {
+  } = activityEvent;
+
   let [{ transfers = [] } = {}] = counterparties || [];
 
   const [isLoading, setIsLoading] = useState(false);

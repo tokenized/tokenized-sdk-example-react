@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  NavLink,
-  Switch,
-  Route,
-  Redirect,
-  useRouteMatch,
-} from 'react-router-dom';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
 import {
@@ -24,17 +18,20 @@ function TreasuryPage() {
   const vaultId = vault?.id;
   const vaultName = vault?.name;
   const assetsCount =
-    useFilteredBalances(vaultId, {
+    useFilteredBalances({
+      vaultId,
       includeLiabilities: false,
       includeInactive: false,
     })?.data?.length || 0;
   const liabilitiesCount =
-    useFilteredBalances(vaultId, {
+    useFilteredBalances({
+      vaultId,
       includeLiabilities: true,
       includeInactive: false,
     })?.data?.length || 0;
   const inactiveCount =
-    useFilteredBalances(vaultId, {
+    useFilteredBalances({
+      vaultId,
       includeInactive: true,
     })?.data?.length || 0;
 
