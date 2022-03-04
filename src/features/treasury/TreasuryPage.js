@@ -16,7 +16,6 @@ function TreasuryPage() {
   const { url, path } = useRouteMatch();
   const vault = usePrimaryVault();
   const vaultId = vault?.id;
-  const vaultName = vault?.name;
   const assetsCount =
     useFilteredBalances({
       vaultId,
@@ -40,18 +39,10 @@ function TreasuryPage() {
   return (
     <section className="section">
       <h1 className="title">
-        {vaultName || (
-          <FormattedMessage
-            defaultMessage="Treasury"
-            description="Treasury page title (if no vault name)"
-          />
-        )}
-        <span className="tag is-info ml-4">
-          <FormattedMessage
-            defaultMessage="Primary vault"
-            description="Treasury primary vault tag"
-          />
-        </span>
+        <FormattedMessage
+          defaultMessage="Treasury"
+          description="Treasury page title (if no vault name)"
+        />
       </h1>
       <div className="tabs is-boxed">
         <ul>

@@ -279,12 +279,6 @@
       "value": "Memo"
     }
   ],
-  "D6bG5X": [
-    {
-      "type": 0,
-      "value": "Reserved"
-    }
-  ],
   "E0IEpB": [
     {
       "type": 0,
@@ -920,6 +914,12 @@
       "value": "name"
     }
   ],
+  "oKDTCs": [
+    {
+      "type": 0,
+      "value": "Available"
+    }
+  ],
   "oLcK9U": [
     {
       "type": 0,
@@ -930,12 +930,6 @@
     {
       "type": 0,
       "value": "Tokenized SDK demo"
-    }
-  ],
-  "oneuwr": [
-    {
-      "type": 0,
-      "value": "Primary vault"
     }
   ],
   "p1P+hQ": [

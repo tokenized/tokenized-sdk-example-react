@@ -156,10 +156,6 @@
   "D5NqQO": {
     "defaultMessage": "Memo"
   },
-  "D6bG5X": {
-    "defaultMessage": "Reserved",
-    "description": "Balance table column header: quantity of balance reserved"
-  },
   "E0IEpB": {
     "defaultMessage": "Amounts"
   },
@@ -528,6 +524,10 @@
     "defaultMessage": "Welcome {name}",
     "description": "Log-in screen progress title"
   },
+  "oKDTCs": {
+    "defaultMessage": "Available",
+    "description": "Balance table column header: quantity of balance available (not reserved)"
+  },
   "oLcK9U": {
     "defaultMessage": "Email",
     "description": "Login identification method selection: use your email address"
@@ -535,10 +535,6 @@
   "oWlHUa": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "Reset passphrase screen title"
-  },
-  "oneuwr": {
-    "defaultMessage": "Primary vault",
-    "description": "Treasury primary vault tag"
   },
   "p1P+hQ": {
     "defaultMessage": "Request"

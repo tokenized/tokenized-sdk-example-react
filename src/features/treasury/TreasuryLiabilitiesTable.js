@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFilteredBalances } from '@tokenized/sdk-react-private';
 import { setCurrentFilter } from './treasurySlice';
-import BalanceRow from './BalanceRow';
+import BalanceRow, { BalanceHeader } from './BalanceRow';
 
 function TreasuryLiabilitiesTable({ vaultId }) {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function TreasuryLiabilitiesTable({ vaultId }) {
     <div className="table-container">
       <table className="table is-hoverable">
         <thead>
-          <BalanceRow isHeader />
+          <BalanceHeader />
         </thead>
         <tbody>
           {balances?.data?.map?.((balance) => (
