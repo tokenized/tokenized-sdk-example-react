@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
 import TradeModal from './TradeModal';
 
 export default function TradeButton({ mode, children }) {
@@ -7,7 +6,7 @@ export default function TradeButton({ mode, children }) {
 
   return (
     <>
-      <button className="button is-light" onClick={() => setOpen(true)}>
+      <button className="button is-primary" onClick={() => setOpen(true)}>
         {children}
       </button>
       {open && <TradeModal mode={mode} close={() => setOpen(false)} />}

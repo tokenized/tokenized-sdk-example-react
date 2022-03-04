@@ -7,7 +7,7 @@ const SendButton = () => {
 
   return (
     <>
-      <button className="button is-light" onClick={() => setOpen(true)}>
+      <button className="button is-primary" onClick={() => setOpen(true)}>
         <FormattedMessage
           defaultMessage="Send"
           description="Label for button to open dialog to send instruments"

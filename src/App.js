@@ -74,9 +74,6 @@ function App() {
             <ContractsPage />
           </DashboardScreen>
         </PrivateRoute>
-        <PrivateRoute path="/relationships">
-          <DashboardScreen />
-        </PrivateRoute>
         <Route path="*">
           <Redirect to="/activity" />
         </Route>

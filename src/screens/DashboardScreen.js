@@ -88,38 +88,24 @@ function DashboardScreen({ children }) {
                 />
               </span>
             </NavLink>
-            <NavLink
-              to="/relationships"
-              className="navbar-item"
-              activeClassName="is-tab is-active"
-            >
-              <span>
-                <FormattedMessage
-                  description="Nav bar relationships tab"
-                  defaultMessage="Relationships"
-                />
-              </span>
-            </NavLink>
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
-              <TradeButton mode={MODE_REQUEST}>
-                <FormattedMessage
-                  defaultMessage="Request"
-                  description="Label for button to open dialog to request instruments"
-                />
-              </TradeButton>
-            </div>
-            <div className="navbar-item">
-              <TradeButton mode={MODE_TRADE}>
-                <FormattedMessage
-                  defaultMessage="Trade"
-                  description="Label for button to open dialog to trade instruments"
-                />
-              </TradeButton>
-            </div>
-            <div className="navbar-item">
-              <SendButton />
+              <div className="buttons">
+                <SendButton />
+                <TradeButton mode={MODE_TRADE}>
+                  <FormattedMessage
+                    defaultMessage="Trade"
+                    description="Label for button to open dialog to trade instruments"
+                  />
+                </TradeButton>
+                <TradeButton mode={MODE_REQUEST}>
+                  <FormattedMessage
+                    defaultMessage="Request"
+                    description="Label for button to open dialog to request instruments"
+                  />
+                </TradeButton>
+              </div>
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">

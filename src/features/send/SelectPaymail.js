@@ -8,7 +8,7 @@ function SelectPaymail({ input, meta, disabled }) {
   const [search, setSearch] = useState('');
 
   const handles = useHandles(search, { excludeSelf: true });
-  const items = handles?.data?.map(({ displayHandle }) => displayHandle) || [];
+  const items = handles?.map?.(({ displayHandle }) => displayHandle) || [];
 
   const { onBlur, onChange } = input;
   const {

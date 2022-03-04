@@ -4,20 +4,20 @@ import classNames from 'classnames';
 import {
   useFilteredBalances,
   usePrimaryVault,
+  useInstrumentWithDetails,
+  InstrumentAmount,
 } from '@tokenized/sdk-react-private';
 import { FormattedMessage } from 'react-intl';
-import FormatAmount from '../../utils/FormatAmount';
 
-function RenderInstrumentType({ instrumentType, showQuantity }) {
+function RenderInstrumentType({ balance, showQuantity }) {
+  const instrument = useInstrumentWithDetails(balance?.quantities?.available);
+
   return (
     <>
-      <span>{instrumentType.instrumentName}</span>
+      <span>{instrument.formatInstrumentName()}</span>
       {showQuantity && (
         <span>
-          <FormatAmount
-            quantity={instrumentType.quantities?.balance}
-            showCouponName={false}
-          />
+          <InstrumentAmount instrument={instrument} showCurrencyCode />
         </span>
       )}
     </>
@@ -46,10 +46,13 @@ export default function SelectInstrumentType({
     getItemProps,
   } = useSelect({
     items,
-    onSelectedItemChange: ({ selectedItem }) => input.onChange(selectedItem),
     itemToString: ({ instrumentName }) => instrumentName,
-    selectedItem: input.value,
+    onSelectedItemChange: ({ selectedItem }) =>
+      input.onChange(selectedItem?.instrumentId),
+    selectedItem:
+      items.find((balance) => balance.instrumentId === input.value) || null,
   });
+
   return (
     <div
       className={classNames('field', 'dropdown', isOpen && 'is-active')}
@@ -67,7 +70,7 @@ export default function SelectInstrumentType({
           <span className="is-flex-grow-1 is-flex is-justify-content-space-between">
             {selectedItem ? (
               <RenderInstrumentType
-                instrumentType={selectedItem}
+                balance={selectedItem}
                 showQuantity={showQuantity}
               />
             ) : (
@@ -96,7 +99,7 @@ export default function SelectInstrumentType({
               style={{ justifyContent: 'space-between', display: 'flex' }}
             >
               <RenderInstrumentType
-                instrumentType={item}
+                balance={item}
                 showQuantity={showQuantity}
               />
             </a>

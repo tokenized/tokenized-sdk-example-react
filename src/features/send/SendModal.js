@@ -15,7 +15,8 @@ import InputInstrumentMemo from './InputInstrumentMemo';
 import {
   useTokenizedApi,
   usePrimaryVault,
-  useAvailableAmount,
+  useInstrumentWithDetails,
+  useFilteredBalances,
 } from '@tokenized/sdk-react-private';
 import ChooseSendMax from './ChooseSendMax';
 import FormatAmount from '../../utils/FormatAmount';
@@ -72,16 +73,27 @@ const SendShowConfirmation = ({
 };
 
 const SendFormFields = ({
-  values: { instrumentType: { instrumentId } = {}, sendMax },
+  values: { instrumentType: instrumentId = {}, sendMax },
   disabled,
 }) => {
   const vaultId = usePrimaryVault()?.id;
   const validateRequired = useValidators(fieldIsRequired);
-  const sendMaximum = useAvailableAmount(vaultId, instrumentId);
+
+  let instrument = useInstrumentWithDetails(instrumentId);
+  const instrumentBalances = useFilteredBalances({
+    vaultId,
+    includeInactive: false,
+  });
+  const balance =
+    instrument.hasDetails &&
+    instrumentBalances?.data?.find?.(
+      (balance) => balance.instrumentId === instrument.instrumentId,
+    );
+  instrument = instrument.withQuantity(balance?.quantities?.available);
 
   const maxSendEstimateValidator = useMemo(
-    () => makeFieldIsNotMoreThan(sendMaximum),
-    [sendMaximum],
+    () => makeFieldIsNotMoreThan(instrument.amount),
+    [instrument.amount],
   );
   const validateQuantity = useValidators(
     fieldIsRequired,
@@ -110,7 +122,7 @@ const SendFormFields = ({
           render={InputInstrumentQuantity}
           disabled={sendMax}
           validate={validateQuantityWhenNotMax}
-          key={`${sendMax ? 'max' : sendMaximum}`}
+          key={`${sendMax ? 'max' : instrument.amount}`}
         />
       )}
       <Field name="instrumentMemo" render={InputInstrumentMemo} />
