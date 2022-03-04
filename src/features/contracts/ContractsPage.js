@@ -39,7 +39,7 @@ export default function ContractsPage() {
         <ul>
           <NavTab to={`${url}/active`}>
             <span className="icon is-small">
-              <i className="fas fa-history" aria-hidden="true"></i>
+              <i className="fas fa-play-circle" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage
@@ -53,7 +53,7 @@ export default function ContractsPage() {
           </NavTab>
           <NavTab to={`${url}/drafts`}>
             <span className="icon is-small">
-              <i className="fas fa-exclamation-circle" aria-hidden="true"></i>
+              <i className="fas fa-edit" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage
@@ -67,7 +67,7 @@ export default function ContractsPage() {
           </NavTab>
           <NavTab to={`${url}/ended`}>
             <span className="icon is-small">
-              <i className="fas fa-pause-circle" aria-hidden="true"></i>
+              <i className="fas fa-ban" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage

@@ -17,12 +17,6 @@
       "value": "Unable to sign in"
     }
   ],
-  "/lBke1": [
-    {
-      "type": 0,
-      "value": "Title"
-    }
-  ],
   "/zXPuJ": [
     {
       "type": 0,
@@ -205,6 +199,12 @@
     {
       "type": 0,
       "value": "Send instruments"
+    }
+  ],
+  "A2h1a8": [
+    {
+      "type": 0,
+      "value": "Title"
     }
   ],
   "BAN8L+": [
@@ -750,6 +750,12 @@
       "value": "Back"
     }
   ],
+  "bHgsDP": [
+    {
+      "type": 0,
+      "value": "Active"
+    }
+  ],
   "bzs/a8": [
     {
       "type": 0,
@@ -760,18 +766,6 @@
     {
       "type": 0,
       "value": "Account handle"
-    }
-  ],
-  "cnwMLl": [
-    {
-      "type": 0,
-      "value": "Type"
-    }
-  ],
-  "cxOmHD": [
-    {
-      "type": 0,
-      "value": "Issuer / counterparty"
     }
   ],
   "dihTKc": [
@@ -870,6 +864,18 @@
       "value": "Show phrase"
     }
   ],
+  "lodOBC": [
+    {
+      "type": 0,
+      "value": "Drafts"
+    }
+  ],
+  "ls7mFI": [
+    {
+      "type": 0,
+      "value": "Issuer / counterparty"
+    }
+  ],
   "m1czzY": [
     {
       "type": 0,
@@ -964,6 +970,12 @@
       "value": ", in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds."
     }
   ],
+  "pZjnir": [
+    {
+      "type": 0,
+      "value": "Last modified"
+    }
+  ],
   "qHI9UA": [
     {
       "type": 0,
@@ -980,6 +992,12 @@
     {
       "type": 0,
       "value": "Relationships"
+    }
+  ],
+  "qn8r85": [
+    {
+      "type": 0,
+      "value": "Editing"
     }
   ],
   "r+GVNN": [
@@ -1007,6 +1025,12 @@
     {
       "type": 0,
       "value": "Checking for previous session"
+    }
+  ],
+  "tbEszU": [
+    {
+      "type": 0,
+      "value": "Ended"
     }
   ],
   "uN85Mi": [

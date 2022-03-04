@@ -11,10 +11,6 @@
     "defaultMessage": "Unable to sign in",
     "description": "Login screen failed login error message title"
   },
-  "/lBke1": {
-    "defaultMessage": "Title",
-    "description": "Contracts table column header: contract title"
-  },
   "/zXPuJ": {
     "defaultMessage": "Maximum: {max}",
     "description": "Form field validation failure: number <= max is required"
@@ -117,6 +113,10 @@
   },
   "9xGR3s": {
     "defaultMessage": "Send instruments"
+  },
+  "A2h1a8": {
+    "defaultMessage": "Title",
+    "description": "Contracts table column header"
   },
   "BAN8L+": {
     "defaultMessage": "Issuer",
@@ -425,20 +425,16 @@
     "defaultMessage": "Back",
     "description": "Back up seed phrase show phrase again button"
   },
+  "bHgsDP": {
+    "defaultMessage": "Active",
+    "description": "Contracts tab"
+  },
   "bzs/a8": {
     "defaultMessage": "Offer expires after (hours)"
   },
   "cjeVpa": {
     "defaultMessage": "Account handle",
     "description": "Login input field label: handle"
-  },
-  "cnwMLl": {
-    "defaultMessage": "Type",
-    "description": "Contracts table column header: contract type"
-  },
-  "cxOmHD": {
-    "defaultMessage": "Issuer / counterparty",
-    "description": "Contracts table column header: contract issuer / counterparty"
   },
   "dihTKc": {
     "defaultMessage": "maximum",
@@ -502,6 +498,14 @@
     "defaultMessage": "Show phrase",
     "description": "Back up seed phrase confirm button"
   },
+  "lodOBC": {
+    "defaultMessage": "Drafts",
+    "description": "Contracts tab"
+  },
+  "ls7mFI": {
+    "defaultMessage": "Issuer / counterparty",
+    "description": "Contracts table column header"
+  },
   "m1czzY": {
     "defaultMessage": "Event"
   },
@@ -547,6 +551,10 @@
     "defaultMessage": "However, that means we can’t restore access for you if you forget your passphrase. It’s therefore <bold>essential that you record your digital key now</bold>, in the form of a 24-word recovery phrase that you can enter with a new passphrase to restore access to your funds.",
     "description": "Back up seed phrase intro 2"
   },
+  "pZjnir": {
+    "defaultMessage": "Last modified",
+    "description": "Contracts table column header"
+  },
   "qHI9UA": {
     "defaultMessage": "Cancel",
     "description": "Account recovery cancel button"
@@ -557,6 +565,10 @@
   "qZNWyi": {
     "defaultMessage": "Relationships",
     "description": "Nav bar relationships tab"
+  },
+  "qn8r85": {
+    "defaultMessage": "Editing",
+    "description": "Contracts list status for contract with edits in progress"
   },
   "r+GVNN": {
     "defaultMessage": "Cancel",
@@ -569,6 +581,10 @@
   "slLQlj": {
     "defaultMessage": "Checking for previous session",
     "description": "App loading screen subtitle (below animated progress bar)"
+  },
+  "tbEszU": {
+    "defaultMessage": "Ended",
+    "description": "Contracts tab"
   },
   "uN85Mi": {
     "defaultMessage": "Must be {max, number} characters or fewer",
