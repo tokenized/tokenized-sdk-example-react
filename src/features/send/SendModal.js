@@ -18,7 +18,7 @@ import {
   useAvailableAmount,
 } from '@tokenized/sdk-react-private';
 import ChooseSendMax from './ChooseSendMax';
-import FormatQuantity from '../../utils/FormatQuantity';
+import FormatAmount from '../../utils/FormatAmount';
 
 const SendShowConfirmation = ({
   values: {
@@ -65,7 +65,7 @@ const SendShowConfirmation = ({
       <div>
         <FormattedMessage defaultMessage="Fee" />
         {': '}
-        <FormatQuantity quantity={fee} />
+        <FormatAmount quantity={fee} />
       </div>
     </div>
   );

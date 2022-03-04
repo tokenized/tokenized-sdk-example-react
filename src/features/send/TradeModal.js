@@ -17,7 +17,7 @@ import {
   usePrimaryVault,
   useTokenizedApi,
 } from '@tokenized/sdk-react-private';
-import FormatQuantity from '../../utils/FormatQuantity';
+import FormatAmount from '../../utils/FormatAmount';
 import InputExpiry from './InputExpiry';
 import { hours } from '@tokenized/sdk-js-private/src/tokenized-api/modules/Service';
 
@@ -27,7 +27,10 @@ export const MODE_REQUEST = 'request';
 const SendFormFields = ({ mode, values: { sendInstrumentType }, pending }) => {
   const vaultId = usePrimaryVault()?.id;
 
-  const sendMaximum = useAvailableAmount(vaultId, sendInstrumentType?.instrumentId);
+  const sendMaximum = useAvailableAmount(
+    vaultId,
+    sendInstrumentType?.instrumentId,
+  );
 
   const validateRequired = useValidators(fieldIsRequired);
 
@@ -106,7 +109,7 @@ const SendFormFields = ({ mode, values: { sendInstrumentType }, pending }) => {
         <div>
           <FormattedMessage defaultMessage="Computed network fee" />
           {': '}
-          <FormatQuantity quantity={pending?.fee} />
+          <FormatAmount quantity={pending?.fee} />
         </div>
       )}
     </>

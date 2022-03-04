@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import FormatCurrency from '../../utils/FormatCurrency';
-import FormatQuantity from '../../utils/FormatQuantity';
+import FormatAmount from '../../utils/FormatAmount';
 
 function ChooseSendMax({ input, max, meta }) {
   return (
@@ -16,7 +16,7 @@ function ChooseSendMax({ input, max, meta }) {
               defaultMessage="max: {max} ≈ {converted}"
               description="Instrument transfer max quantity"
               values={{
-                max: <FormatQuantity quantity={max} />,
+                max: <FormatAmount quantity={max} />,
                 converted: <FormatCurrency currency={max?.displayCurrency} />,
               }}
             />
@@ -26,7 +26,7 @@ function ChooseSendMax({ input, max, meta }) {
               defaultMessage="max: {max}"
               description="Instrument transfer max quantity"
               values={{
-                max: <FormatQuantity quantity={max} />,
+                max: <FormatAmount quantity={max} />,
               }}
             />
           )}

@@ -6,7 +6,7 @@ import {
   usePrimaryVault,
 } from '@tokenized/sdk-react-private';
 import { FormattedMessage } from 'react-intl';
-import FormatQuantity from '../../utils/FormatQuantity';
+import FormatAmount from '../../utils/FormatAmount';
 
 function RenderInstrumentType({ instrumentType, showQuantity }) {
   return (
@@ -14,7 +14,7 @@ function RenderInstrumentType({ instrumentType, showQuantity }) {
       <span>{instrumentType.instrumentName}</span>
       {showQuantity && (
         <span>
-          <FormatQuantity
+          <FormatAmount
             quantity={instrumentType.quantities?.balance}
             showCouponName={false}
           />
@@ -95,7 +95,10 @@ export default function SelectInstrumentType({
               {...getItemProps({ item, index })}
               style={{ justifyContent: 'space-between', display: 'flex' }}
             >
-              <RenderInstrumentType instrumentType={item} showQuantity={showQuantity} />
+              <RenderInstrumentType
+                instrumentType={item}
+                showQuantity={showQuantity}
+              />
             </a>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import FormatCurrency from './FormatCurrency';
 
-export default function FormatQuantity({
+export default function FormatAmount({
   quantity: { tokens, instrumentCurrency } = {},
 }) {
   if (tokens) {

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { FormattedDate, FormattedMessage } from 'react-intl';
-import { useActivityEvent } from '@tokenized/sdk-react-private';
-import FormatQuantity from '../../utils/FormatQuantity';
+import {
+  useActivityEvent,
+  InstrumentAmount,
+} from '@tokenized/sdk-react-private';
 
 export function ActivityHeader({ showAction }) {
   return (
@@ -31,7 +33,6 @@ export function ActivityHeader({ showAction }) {
 export function ActivityRow({ item }) {
   const activityEvent = useActivityEvent(item) || {};
   const {
-    txIds,
     dateModified,
     formatted: { description, counterparty, tradeAction, tradeResponse },
     counterparties,
@@ -55,7 +56,6 @@ export function ActivityRow({ item }) {
       setError(e.toString());
     }
   };
-  const txId = txIds?.length ? txIds[txIds.length - 1] : null;
 
   return (
     <tr style={{ whiteSpace: 'nowrap' }}>
@@ -63,28 +63,43 @@ export function ActivityRow({ item }) {
         <div className="has-text-weight-bold">{description}</div>
         <div>{counterparty}</div>
       </td>
-      <td>
+      <td className="is-clipped" style={{ maxWidth: 400 }}>
         {!!tradeAction && <div>{tradeAction}</div>}
         {!!tradeResponse && <div>{tradeResponse}</div>}
-        {!!memo && <div>{memo}</div>}
+        {!!memo && (
+          <div
+            style={{
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+            }}
+          >
+            {memo}
+          </div>
+        )}
       </td>
       <td>
         {!transfers.length &&
-          instruments?.map(
+          instruments?.map?.(
             ({ delta }, index) =>
-              !!delta?.tokens?.number && (
+              !!delta && (
                 <div
                   key={index}
                   className={classNames({
-                    'has-text-danger-dark': delta?.tokens?.number < 0,
-                    'has-text-success-dark': delta?.tokens?.number > 0,
+                    'has-text-danger-dark': delta.amount < 0,
+                    'has-text-success-dark': delta.amount > 0,
                   })}
                 >
-                  <FormatQuantity quantity={delta} />
+                  <InstrumentAmount
+                    instrument={delta}
+                    showCurrencyCode
+                    showWhenZero={false}
+                    numberFormatOverrides={{ signDisplay: 'always' }}
+                  />
                 </div>
               ),
           )}
-        {transfers.map(({ quantity, direction }, index) => (
+        {transfers?.map?.(({ quantity, direction }, index) => (
           <div
             key={index}
             className={classNames({
@@ -92,7 +107,12 @@ export function ActivityRow({ item }) {
               'has-text-success-dark': direction === 'received',
             })}
           >
-            <FormatQuantity quantity={quantity} />
+            <InstrumentAmount
+              instrument={quantity}
+              showCurrencyCode
+              showWhenZero={false}
+              numberFormatOverrides={{ signDisplay: 'always' }}
+            />
           </div>
         ))}
       </td>
@@ -103,13 +123,6 @@ export function ActivityRow({ item }) {
             dateStyle="short"
             timeStyle="short"
           />
-        </div>
-        <div>
-          {txId && (
-            <a href={`https://whatsonchain.com/tx/${txId}`} title={txId}>
-              {txId.slice(0, 8) + '…'}
-            </a>
-          )}
         </div>
       </td>
       <td>
