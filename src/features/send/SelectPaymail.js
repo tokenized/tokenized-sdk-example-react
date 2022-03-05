@@ -4,7 +4,7 @@ import { useHandles } from '@tokenized/sdk-react-private';
 import classNames from 'classnames';
 import { FormattedMessage } from 'react-intl';
 
-function SelectPaymail({ input, meta, disabled }) {
+function SelectPaymail({ input, meta, disabled, placeholder }) {
   const [search, setSearch] = useState('');
 
   const handles = useHandles(search, { excludeSelf: true });
@@ -49,6 +49,7 @@ function SelectPaymail({ input, meta, disabled }) {
               className="input"
               type="text"
               {...getInputProps({ onBlur, onChange })}
+              placeholder={placeholder}
               disabled={disabled}
             />
           </div>

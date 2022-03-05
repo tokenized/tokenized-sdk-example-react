@@ -17,16 +17,6 @@
       "value": "Unable to sign in"
     }
   ],
-  "/zXPuJ": [
-    {
-      "type": 0,
-      "value": "Maximum: "
-    },
-    {
-      "type": 1,
-      "value": "max"
-    }
-  ],
   "0EfTim": [
     {
       "type": 0,
@@ -37,6 +27,12 @@
     {
       "type": 0,
       "value": "Last updated"
+    }
+  ],
+  "0OXrwi": [
+    {
+      "type": 0,
+      "value": "Enter amount"
     }
   ],
   "1G/gOd": [
@@ -87,16 +83,6 @@
     {
       "type": 0,
       "value": "Contracts"
-    }
-  ],
-  "2xwoem": [
-    {
-      "type": 0,
-      "value": "max: "
-    },
-    {
-      "type": 1,
-      "value": "max"
     }
   ],
   "2yLUnh": [
@@ -153,12 +139,6 @@
       "value": "Continue"
     }
   ],
-  "7zwGmp": [
-    {
-      "type": 0,
-      "value": "Computed network fee"
-    }
-  ],
   "84zKt1": [
     {
       "type": 0,
@@ -175,12 +155,6 @@
     {
       "type": 0,
       "value": "Display pairing code…"
-    }
-  ],
-  "8q60YO": [
-    {
-      "type": 0,
-      "value": "Send maximum quantity"
     }
   ],
   "9WRlF4": [
@@ -213,24 +187,6 @@
       "value": "Issuer"
     }
   ],
-  "BC/SA+": [
-    {
-      "type": 0,
-      "value": "max: "
-    },
-    {
-      "type": 1,
-      "value": "max"
-    },
-    {
-      "type": 0,
-      "value": " ≈ "
-    },
-    {
-      "type": 1,
-      "value": "converted"
-    }
-  ],
   "BDkKXS": [
     {
       "type": 0,
@@ -259,12 +215,6 @@
     {
       "type": 0,
       "value": "Confirmation code"
-    }
-  ],
-  "CBiAjw": [
-    {
-      "type": 0,
-      "value": "Request instruments"
     }
   ],
   "CYyLJH": [
@@ -315,12 +265,6 @@
     {
       "type": 0,
       "value": "Sign in…"
-    }
-  ],
-  "Ejt0VK": [
-    {
-      "type": 0,
-      "value": "Request"
     }
   ],
   "F347da": [
@@ -541,12 +485,6 @@
       "value": "Cancel"
     }
   ],
-  "QlsDcr": [
-    {
-      "type": 0,
-      "value": "Action"
-    }
-  ],
   "QoOTpE": [
     {
       "type": 0,
@@ -563,12 +501,6 @@
     {
       "type": 0,
       "value": "Create a new account"
-    }
-  ],
-  "REpsfK": [
-    {
-      "type": 0,
-      "value": "Trade instruments"
     }
   ],
   "RXjxnq": [
@@ -650,12 +582,6 @@
     {
       "type": 0,
       "value": "Sign in"
-    }
-  ],
-  "Waga+E": [
-    {
-      "type": 0,
-      "value": "Execute trade"
     }
   ],
   "Wefkn1": [
@@ -756,22 +682,16 @@
       "value": "Active"
     }
   ],
-  "bzs/a8": [
-    {
-      "type": 0,
-      "value": "Offer expires after (hours)"
-    }
-  ],
   "cjeVpa": [
     {
       "type": 0,
       "value": "Account handle"
     }
   ],
-  "dihTKc": [
+  "dO1Ib6": [
     {
       "type": 0,
-      "value": "maximum"
+      "value": "Enter recipient’s handle"
     }
   ],
   "eH9ssJ": [
@@ -852,6 +772,17 @@
       "value": "Select an instrument"
     }
   ],
+  "kEIuFa": [
+    {
+      "type": 0,
+      "value": "Maximum: "
+    },
+    {
+      "style": null,
+      "type": 2,
+      "value": "max"
+    }
+  ],
   "kYHpnu": [
     {
       "type": 0,
@@ -892,22 +823,10 @@
       "value": "name"
     }
   ],
-  "midrUq": [
-    {
-      "type": 0,
-      "value": "Accept request"
-    }
-  ],
   "n0cMeX": [
     {
       "type": 0,
       "value": "Doesn’t match entered passphrase"
-    }
-  ],
-  "nYvVZP": [
-    {
-      "type": 0,
-      "value": "Trade"
     }
   ],
   "narDvl": [
@@ -936,12 +855,6 @@
     {
       "type": 0,
       "value": "Tokenized SDK demo"
-    }
-  ],
-  "p1P+hQ": [
-    {
-      "type": 0,
-      "value": "Request"
     }
   ],
   "p8/WnA": [
@@ -986,12 +899,6 @@
     {
       "type": 0,
       "value": "Quantity"
-    }
-  ],
-  "qZNWyi": [
-    {
-      "type": 0,
-      "value": "Relationships"
     }
   ],
   "qn8r85": [
@@ -1070,12 +977,6 @@
     {
       "type": 0,
       "value": "My open items"
-    }
-  ],
-  "vnO22B": [
-    {
-      "type": 0,
-      "value": "Accept trade"
     }
   ],
   "w+J0Wq": [

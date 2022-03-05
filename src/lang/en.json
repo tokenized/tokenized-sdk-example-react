@@ -11,16 +11,16 @@
     "defaultMessage": "Unable to sign in",
     "description": "Login screen failed login error message title"
   },
-  "/zXPuJ": {
-    "defaultMessage": "Maximum: {max}",
-    "description": "Form field validation failure: number <= max is required"
-  },
   "0EfTim": {
     "defaultMessage": "Choose a unique ID for connecting with others and receiving payments",
     "description": "New account handle field help: explanation of paymail"
   },
   "0ICwq5": {
     "defaultMessage": "Last updated"
+  },
+  "0OXrwi": {
+    "defaultMessage": "Enter amount",
+    "description": "Instrument amount input field placeholder"
   },
   "1G/gOd": {
     "defaultMessage": "To restore full access to the account <bold>{identifier}</bold>, you’ll need to confirm your registered email, create a new passphrase, and sign in. Then enter your 24-word recovery phrase to complete the process.",
@@ -45,10 +45,6 @@
   "2vbsAo": {
     "defaultMessage": "Contracts",
     "description": "Contracts page title"
-  },
-  "2xwoem": {
-    "defaultMessage": "max: {max}",
-    "description": "Instrument transfer max quantity"
   },
   "2yLUnh": {
     "defaultMessage": "Account phone number",
@@ -85,9 +81,6 @@
     "defaultMessage": "Continue",
     "description": "New account continue button"
   },
-  "7zwGmp": {
-    "defaultMessage": "Computed network fee"
-  },
   "84zKt1": {
     "defaultMessage": "To",
     "description": "Instrument transfer: review details: label for send target"
@@ -99,10 +92,6 @@
   "8MXtG4": {
     "defaultMessage": "Display pairing code…",
     "description": "Login screen display pairing code button"
-  },
-  "8q60YO": {
-    "defaultMessage": "Send maximum quantity",
-    "description": "Field label (checkbox yes/no)"
   },
   "9WRlF4": {
     "defaultMessage": "Send"
@@ -121,10 +110,6 @@
   "BAN8L+": {
     "defaultMessage": "Issuer",
     "description": "Balance table column header: instrument issuer"
-  },
-  "BC/SA+": {
-    "defaultMessage": "max: {max} ≈ {converted}",
-    "description": "Instrument transfer max quantity"
   },
   "BDkKXS": {
     "defaultMessage": "Paymail handle",
@@ -145,9 +130,6 @@
   "C6R5We": {
     "defaultMessage": "Confirmation code",
     "description": "Forgot passphrase input field label: email confirmation code"
-  },
-  "CBiAjw": {
-    "defaultMessage": "Request instruments"
   },
   "CYyLJH": {
     "defaultMessage": "Loading…",
@@ -170,10 +152,6 @@
   "ETFPN0": {
     "defaultMessage": "Sign in…",
     "description": "New account screen back to sign in link"
-  },
-  "Ejt0VK": {
-    "defaultMessage": "Request",
-    "description": "Label for button to open dialog to request instruments"
   },
   "F347da": {
     "defaultMessage": "Checking for paired authenticator",
@@ -309,9 +287,6 @@
     "defaultMessage": "Cancel",
     "description": "Back up seed phrase cancel button"
   },
-  "QlsDcr": {
-    "defaultMessage": "Action"
-  },
   "QoOTpE": {
     "defaultMessage": "Cancel",
     "description": "New account cancel button"
@@ -322,9 +297,6 @@
   "RAmj2a": {
     "defaultMessage": "Create a new account",
     "description": "New account screen subtitle"
-  },
-  "REpsfK": {
-    "defaultMessage": "Trade instruments"
   },
   "RXjxnq": {
     "defaultMessage": "Confirm registered email",
@@ -369,9 +341,6 @@
   "Vt7Ozj": {
     "defaultMessage": "Sign in",
     "description": "Login screen sign in button"
-  },
-  "Waga+E": {
-    "defaultMessage": "Execute trade"
   },
   "Wefkn1": {
     "defaultMessage": "I’m ready to record my private recovery phrase, and nobody’s watching",
@@ -429,16 +398,13 @@
     "defaultMessage": "Active",
     "description": "Contracts tab"
   },
-  "bzs/a8": {
-    "defaultMessage": "Offer expires after (hours)"
-  },
   "cjeVpa": {
     "defaultMessage": "Account handle",
     "description": "Login input field label: handle"
   },
-  "dihTKc": {
-    "defaultMessage": "maximum",
-    "description": "Instrument transfer: review details: indicator that the maximum will be sent"
+  "dO1Ib6": {
+    "defaultMessage": "Enter recipient’s handle",
+    "description": "Placeholder for send recipient entry field"
   },
   "eH9ssJ": {
     "defaultMessage": "Enter a message for the recipient (optional)"
@@ -490,6 +456,10 @@
   "kChwAg": {
     "defaultMessage": "Select an instrument"
   },
+  "kEIuFa": {
+    "defaultMessage": "Maximum: {max, number}",
+    "description": "Form field validation failure: number <= max is required"
+  },
   "kYHpnu": {
     "defaultMessage": "Issued",
     "description": "Balance table column header: quantity issued by me"
@@ -513,16 +483,9 @@
     "defaultMessage": "Welcome {name}",
     "description": "Login screen mobile authentication prompt title"
   },
-  "midrUq": {
-    "defaultMessage": "Accept request"
-  },
   "n0cMeX": {
     "defaultMessage": "Doesn’t match entered passphrase",
     "description": "Form field validation failure: matching passphrase confirmation is required"
-  },
-  "nYvVZP": {
-    "defaultMessage": "Trade",
-    "description": "Label for button to open dialog to trade instruments"
   },
   "narDvl": {
     "defaultMessage": "Welcome {name}",
@@ -539,9 +502,6 @@
   "oWlHUa": {
     "defaultMessage": "Tokenized SDK demo",
     "description": "Reset passphrase screen title"
-  },
-  "p1P+hQ": {
-    "defaultMessage": "Request"
   },
   "p8/WnA": {
     "defaultMessage": "Checking credentials",
@@ -561,10 +521,6 @@
   },
   "qVGRIE": {
     "defaultMessage": "Quantity"
-  },
-  "qZNWyi": {
-    "defaultMessage": "Relationships",
-    "description": "Nav bar relationships tab"
   },
   "qn8r85": {
     "defaultMessage": "Editing",
@@ -604,9 +560,6 @@
   "vUD6Fj": {
     "defaultMessage": "My open items",
     "description": "All activity tab"
-  },
-  "vnO22B": {
-    "defaultMessage": "Accept trade"
   },
   "w+J0Wq": {
     "defaultMessage": "Value",

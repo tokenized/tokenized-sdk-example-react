@@ -1,18 +1,25 @@
 import { useCallback } from 'react';
 import { useIntl } from 'react-intl';
+import { Instrument } from '@tokenized/sdk-js-private';
 
 export function useValidators(...validators) {
   const intl = useIntl();
+  const actualValidators = validators.filter((validator) => !!validator);
   return useCallback(
     // Try a list of validators (passing intl as the first
-    // aeg to each one), and return the first error, or
+    // arg to each one), and return the first error, or
     // undefined if they all pass
     (...validateArgs) =>
-      validators.reduce(
-        (error, validator) => error || validator(intl, ...validateArgs),
+      actualValidators.reduce(
+        (error, validator) =>
+          // eslint-disable-next-line promise/no-promise-in-callback
+          error?.then?.(() => validator(intl, ...validateArgs)) ||
+          error ||
+          validator(intl, ...validateArgs),
         undefined,
       ),
-    [intl, validators],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [intl, ...validators],
   );
 }
 
@@ -25,16 +32,13 @@ export const fieldIsRequired = (intl, value) =>
         description: 'Form field validation failure: a value is required',
       });
 
-// Any number, or any string that converts to a number
+// Any Instrument (with a qunatity), number, or any string that converts to a number
 export const fieldIsNumber = (intl, value) => {
-  if (typeof value === 'number') {
+  value = Instrument.toAmount(value);
+  if (typeof value === 'number' && !isNaN(value)) {
     return undefined;
   }
-  if (
-    typeof value === 'string' &&
-    value !== '' &&
-    !Number.isNaN(Number(value))
-  ) {
+  if (typeof value === 'string' && value !== '' && !isNaN(value)) {
     return undefined;
   }
   return intl.formatMessage({
@@ -51,6 +55,7 @@ export function makeFieldIsNotLessThan(min) {
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
+    value = Instrument.toAmount(value);
     if (Number(value) >= Number(min)) {
       return undefined;
     }
@@ -72,15 +77,16 @@ export function makeFieldIsNotMoreThan(max) {
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
+    value = Instrument.toAmount(value);
     if (Number(value) <= Number(max)) {
       return undefined;
     }
     return intl.formatMessage(
       {
-        defaultMessage: 'Maximum: {max}',
+        defaultMessage: 'Maximum: {max, number}',
         description: 'Form field validation failure: number <= max is required',
       },
-      { max: `${max}` },
+      { max },
     );
   };
 }
@@ -93,6 +99,7 @@ export function makeFieldIsMoreThan(min) {
     if (errorIfNotNumber) {
       return errorIfNotNumber;
     }
+    value = Instrument.toAmount(value);
     if (Number(value) > Number(min)) {
       return undefined;
     }

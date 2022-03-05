@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import {
@@ -6,7 +6,7 @@ import {
   InstrumentAmount,
 } from '@tokenized/sdk-react-private';
 
-export function ActivityHeader({ showAction }) {
+export function ActivityHeader() {
   return (
     <tr>
       <th className="has-text-left">
@@ -21,11 +21,6 @@ export function ActivityHeader({ showAction }) {
       <th className="has-text-left">
         <FormattedMessage defaultMessage="Last updated" />
       </th>
-      {showAction && (
-        <th className="has-text-left">
-          <FormattedMessage defaultMessage="Action" />
-        </th>
-      )}
     </tr>
   );
 }
@@ -38,24 +33,9 @@ export function ActivityRow({ item }) {
     counterparties,
     memo,
     instruments,
-    acceptTrade,
-    executeTrade,
-    acceptRequest,
   } = activityEvent;
 
   let [{ transfers = [] } = {}] = counterparties || [];
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
-  const buttonClass = classNames('button', isLoading && 'is-loading');
-  const load = (fn) => async () => {
-    setIsLoading(true);
-    try {
-      await fn();
-    } catch (e) {
-      setError(e.toString());
-    }
-  };
 
   return (
     <tr style={{ whiteSpace: 'nowrap' }}>
@@ -124,24 +104,6 @@ export function ActivityRow({ item }) {
             timeStyle="short"
           />
         </div>
-      </td>
-      <td>
-        {error}
-        {!error && acceptTrade && (
-          <button className={buttonClass} onClick={load(acceptTrade)}>
-            <FormattedMessage defaultMessage="Accept trade" />
-          </button>
-        )}
-        {!error && executeTrade && (
-          <button className={buttonClass} onClick={load(executeTrade)}>
-            <FormattedMessage defaultMessage="Execute trade" />
-          </button>
-        )}
-        {!error && acceptRequest && (
-          <button className={buttonClass} onClick={load(acceptRequest)}>
-            <FormattedMessage defaultMessage="Accept request" />
-          </button>
-        )}
       </td>
     </tr>
   );

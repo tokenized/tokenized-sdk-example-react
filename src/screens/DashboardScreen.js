@@ -8,8 +8,6 @@ import {
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 import SendButton from '../features/send/SendButton';
-import TradeButton from '../features/send/TradeButton';
-import { MODE_REQUEST, MODE_TRADE } from '../features/send/TradeModal';
 
 function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
@@ -91,21 +89,7 @@ function DashboardScreen({ children }) {
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
-              <div className="buttons">
-                <SendButton />
-                <TradeButton mode={MODE_TRADE}>
-                  <FormattedMessage
-                    defaultMessage="Trade"
-                    description="Label for button to open dialog to trade instruments"
-                  />
-                </TradeButton>
-                <TradeButton mode={MODE_REQUEST}>
-                  <FormattedMessage
-                    defaultMessage="Request"
-                    description="Label for button to open dialog to request instruments"
-                  />
-                </TradeButton>
-              </div>
+              <SendButton />
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">

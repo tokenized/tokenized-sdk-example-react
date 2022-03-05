@@ -1,36 +1,26 @@
-import React, { useMemo, useState } from 'react';
-import SelectPaymail from './SelectPaymail';
-import SelectInstrumentType from './SelectInstrumentType';
-import InputInstrumentQuantity from './InputInstrumentQuantity';
+import React, { useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
-import {
-  fieldIsRequired,
-  fieldIsMoreThanZero,
-  makeFieldIsNotMoreThan,
-  useValidators,
-} from '../../utils/validators';
-import { FormattedMessage } from 'react-intl';
-import InputInstrumentMemo from './InputInstrumentMemo';
+import { OnChange } from 'react-final-form-listeners';
+import { FormattedMessage, useIntl } from 'react-intl';
 import {
   useTokenizedApi,
   usePrimaryVault,
   useInstrumentWithDetails,
-  useFilteredBalances,
 } from '@tokenized/sdk-react-private';
-import ChooseSendMax from './ChooseSendMax';
+import { fieldIsRequired, useValidators } from '../../utils/validators';
 import FormatAmount from '../../utils/FormatAmount';
+import SelectPaymail from './SelectPaymail';
+import SelectInstrument from './SelectInstrument';
+import InstrumentAmountFormField from './InstrumentAmountFormField';
+import InputInstrumentMemo from './InputInstrumentMemo';
 
 const SendShowConfirmation = ({
-  values: {
-    instrumentType: { instrumentName } = {},
-    instrumentQuantity,
-    instrumentMemo,
-    sendMax,
-    to,
-  },
+  values: { instrumentId, amount, instrumentMemo, to },
   fee,
 }) => {
+  let instrument = useInstrumentWithDetails(instrumentId);
+
   return (
     <div>
       <div>
@@ -44,19 +34,12 @@ const SendShowConfirmation = ({
       <div>
         <FormattedMessage defaultMessage="Instrument" />
         {': '}
-        {instrumentName}
+        {instrument.formatInstrumentName()}
       </div>
       <div>
         <FormattedMessage defaultMessage="Quantity" />
         {': '}
-        {sendMax ? (
-          <FormattedMessage
-            defaultMessage="maximum"
-            description="Instrument transfer: review details: indicator that the maximum will be sent"
-          />
-        ) : (
-          instrumentQuantity
-        )}
+        {amount}
       </div>
       <div>
         <FormattedMessage defaultMessage="Memo" />
@@ -72,59 +55,40 @@ const SendShowConfirmation = ({
   );
 };
 
-const SendFormFields = ({
-  values: { instrumentType: instrumentId = {}, sendMax },
-  disabled,
-}) => {
-  const vaultId = usePrimaryVault()?.id;
+const SendFormFields = ({ form, values: { instrumentId }, disabled }) => {
+  const intl = useIntl();
+
   const validateRequired = useValidators(fieldIsRequired);
-
-  let instrument = useInstrumentWithDetails(instrumentId);
-  const instrumentBalances = useFilteredBalances({
-    vaultId,
-    includeInactive: false,
-  });
-  const balance =
-    instrument.hasDetails &&
-    instrumentBalances?.data?.find?.(
-      (balance) => balance.instrumentId === instrument.instrumentId,
-    );
-  instrument = instrument.withQuantity(balance?.quantities?.available);
-
-  const maxSendEstimateValidator = useMemo(
-    () => makeFieldIsNotMoreThan(instrument.amount),
-    [instrument.amount],
-  );
-  const validateQuantity = useValidators(
-    fieldIsRequired,
-    fieldIsMoreThanZero,
-    maxSendEstimateValidator,
-  );
-  const validateQuantityWhenNotMax = sendMax ? undefined : validateQuantity;
 
   return (
     <>
-      <Field name="to" validate={validateRequired} render={SelectPaymail} />
+      <Field name="to" validate={validateRequired}>
+        {({ ...props }) => (
+          <SelectPaymail
+            {...props}
+            placeholder={intl.formatMessage({
+              defaultMessage: 'Enter recipient’s handle',
+              description: 'Placeholder for send recipient entry field',
+            })}
+          />
+        )}
+      </Field>
       <h2 className="label">
         <FormattedMessage defaultMessage="Send" />
       </h2>
       <Field
-        name="instrumentType"
+        name="instrumentId"
         validate={validateRequired}
-        render={SelectInstrumentType}
+        render={SelectInstrument}
         disabled={disabled}
       />
-      <Field name="sendMax" render={ChooseSendMax} type="checkbox" />
-
-      {!sendMax && (
-        <Field
-          name="instrumentQuantity"
-          render={InputInstrumentQuantity}
-          disabled={sendMax}
-          validate={validateQuantityWhenNotMax}
-          key={`${sendMax ? 'max' : instrument.amount}`}
-        />
-      )}
+      <OnChange name="instrumentId">
+        {() => {
+          form.change('amount', undefined);
+          return null;
+        }}
+      </OnChange>
+      <InstrumentAmountFormField name="amount" instrumentId={instrumentId} />
       <Field name="instrumentMemo" render={InputInstrumentMemo} />
     </>
   );
@@ -136,15 +100,15 @@ const SendModal = ({ close }) => {
 
   const [pending, setPending] = useState(null);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (values) => {
     try {
-      const instrumentId = data.instrumentType.instrumentId;
-      const memo = data.instrumentMemo;
+      const instrumentId = values.instrumentId;
+      const memo = values.instrumentMemo;
       const recipients = [
         {
-          handle: data.to,
-          amount: Number(data.instrumentQuantity),
-          sendMax: data.sendMax,
+          handle: values.to,
+          amount: Number(values.amount),
+          sendMax: values.sendMax,
         },
       ];
       const sendOptions = {
@@ -175,6 +139,7 @@ const SendModal = ({ close }) => {
     <Form
       onSubmit={onSubmit}
       render={({
+        form,
         handleSubmit,
         hasValidationErrors,
         submitting,
@@ -202,7 +167,7 @@ const SendModal = ({ close }) => {
                 {pending ? (
                   <SendShowConfirmation values={values} />
                 ) : (
-                  <SendFormFields values={values} />
+                  <SendFormFields form={form} values={values} />
                 )}
                 {submitError && (
                   <div className="has-text-danger">{submitError}</div>

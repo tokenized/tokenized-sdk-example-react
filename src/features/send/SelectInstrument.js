@@ -9,13 +9,13 @@ import {
 } from '@tokenized/sdk-react-private';
 import { FormattedMessage } from 'react-intl';
 
-function RenderInstrumentType({ balance, showQuantity }) {
+function RenderInstrument({ balance, showAvailableBalance }) {
   const instrument = useInstrumentWithDetails(balance?.quantities?.available);
 
   return (
     <>
       <span>{instrument.formatInstrumentName()}</span>
-      {showQuantity && (
+      {showAvailableBalance && (
         <span>
           <InstrumentAmount instrument={instrument} showCurrencyCode />
         </span>
@@ -24,10 +24,10 @@ function RenderInstrumentType({ balance, showQuantity }) {
   );
 }
 
-export default function SelectInstrumentType({
+export default function SelectInstrument({
   input,
   meta,
-  showQuantity = true,
+  showAvailableBalance = true,
   disabled,
 }) {
   const vaultId = usePrimaryVault()?.id;
@@ -69,9 +69,9 @@ export default function SelectInstrumentType({
         >
           <span className="is-flex-grow-1 is-flex is-justify-content-space-between">
             {selectedItem ? (
-              <RenderInstrumentType
+              <RenderInstrument
                 balance={selectedItem}
-                showQuantity={showQuantity}
+                showAvailableBalance={showAvailableBalance}
               />
             ) : (
               <FormattedMessage defaultMessage="Select an instrument" />
@@ -98,9 +98,9 @@ export default function SelectInstrumentType({
               {...getItemProps({ item, index })}
               style={{ justifyContent: 'space-between', display: 'flex' }}
             >
-              <RenderInstrumentType
+              <RenderInstrument
                 balance={item}
-                showQuantity={showQuantity}
+                showAvailableBalance={showAvailableBalance}
               />
             </a>
           ))}
