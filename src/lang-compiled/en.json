@@ -461,6 +461,12 @@
       "value": "Liability"
     }
   ],
+  "QAU+Uh": [
+    {
+      "type": 0,
+      "value": "Total assets"
+    }
+  ],
   "QaB4nu": [
     {
       "type": 0,
@@ -688,6 +694,12 @@
       "value": "Enter a message for the recipient (optional)"
     }
   ],
+  "eapthl": [
+    {
+      "type": 0,
+      "value": "Total liabilities"
+    }
+  ],
   "ez0GyO": [
     {
       "type": 0,
@@ -815,6 +827,12 @@
     {
       "type": 1,
       "value": "name"
+    }
+  ],
+  "mWd42r": [
+    {
+      "type": 0,
+      "value": "Net equity"
     }
   ],
   "n0cMeX": [
@@ -971,12 +989,6 @@
     {
       "type": 0,
       "value": " characters or fewer"
-    }
-  ],
-  "uQj7Yo": [
-    {
-      "type": 0,
-      "value": "Treasury"
     }
   ],
   "vELQTJ": [

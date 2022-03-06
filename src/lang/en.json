@@ -272,6 +272,10 @@
     "defaultMessage": "Liability",
     "description": "Balance table column header: liability (owed on issued instruments)"
   },
+  "QAU+Uh": {
+    "defaultMessage": "Total assets",
+    "description": "Treasury totals label"
+  },
   "QaB4nu": {
     "defaultMessage": "In vault",
     "description": "Balance table column header: quantity held in vault"
@@ -402,6 +406,10 @@
   "eH9ssJ": {
     "defaultMessage": "Enter a message for the recipient (optional)"
   },
+  "eapthl": {
+    "defaultMessage": "Total liabilities",
+    "description": "Treasury totals label"
+  },
   "ez0GyO": {
     "defaultMessage": "Send",
     "description": "Label for button to open dialog to send instruments"
@@ -480,6 +488,10 @@
     "defaultMessage": "Welcome {name}",
     "description": "Login screen mobile authentication prompt title"
   },
+  "mWd42r": {
+    "defaultMessage": "Net equity",
+    "description": "Treasury totals label"
+  },
   "n0cMeX": {
     "defaultMessage": "Doesn’t match entered passphrase",
     "description": "Form field validation failure: matching passphrase confirmation is required"
@@ -551,10 +563,6 @@
   "uN85Mi": {
     "defaultMessage": "Must be {max, number} characters or fewer",
     "description": "Form field validation failure: max characters or fewer required"
-  },
-  "uQj7Yo": {
-    "defaultMessage": "Treasury",
-    "description": "Treasury page title (if no vault name)"
   },
   "vELQTJ": {
     "defaultMessage": "Verify your email",

@@ -5,6 +5,10 @@ import { FormattedMessage, FormattedNumber } from 'react-intl';
 import {
   usePrimaryVault,
   useFilteredBalances,
+  useAssetsTotal,
+  useLiabilitiesTotal,
+  useNetEquity,
+  InstrumentAmount,
 } from '@tokenized/sdk-react-private';
 import NavTab from '../../utils/NavTab';
 import TreasuryAssetsTable from './TreasuryAssetsTable';
@@ -16,6 +20,11 @@ function TreasuryPage() {
   const { url, path } = useRouteMatch();
   const vault = usePrimaryVault();
   const vaultId = vault?.id;
+
+  const assetsTotal = useAssetsTotal(vaultId);
+  const liabilitiesTotal = useLiabilitiesTotal(vaultId);
+  const netEquity = useNetEquity(vaultId);
+
   const assetsCount =
     useFilteredBalances({
       vaultId,
@@ -38,12 +47,47 @@ function TreasuryPage() {
 
   return (
     <section className="section">
-      <h1 className="title">
-        <FormattedMessage
-          defaultMessage="Treasury"
-          description="Treasury page title (if no vault name)"
-        />
-      </h1>
+      <div className="tile is-ancestor">
+        <div className="tile is-parent">
+          <div className="tile is-child notification is-success">
+            <p className="title">
+              <InstrumentAmount instrument={assetsTotal} />
+            </p>
+            <p className="subtitle">
+              <FormattedMessage
+                defaultMessage="Total assets"
+                description="Treasury totals label"
+              />
+            </p>
+          </div>
+        </div>
+        <div className="tile is-parent">
+          <div className="tile is-child notification is-warning">
+            <p className="title">
+              <InstrumentAmount instrument={liabilitiesTotal} />
+            </p>
+            <p className="subtitle">
+              <FormattedMessage
+                defaultMessage="Total liabilities"
+                description="Treasury totals label"
+              />
+            </p>
+          </div>
+        </div>
+        <div className="tile is-parent">
+          <div className="tile is-child notification is-info">
+            <p className="title">
+              <InstrumentAmount instrument={netEquity} />
+            </p>
+            <p className="subtitle">
+              <FormattedMessage
+                defaultMessage="Net equity"
+                description="Treasury totals label"
+              />
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="tabs is-boxed">
         <ul>
           <NavTab to={`${url}/assets`}>

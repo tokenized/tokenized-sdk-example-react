@@ -110,8 +110,8 @@ export default function SendDialog({ close: closeDialog }) {
   const close = () => {
     if (waitForMfa) {
       tokenizedApi.mfa.cancelMFA();
-      closeDialog();
     }
+    closeDialog();
   };
 
   const send = async (values) => {
