@@ -33,11 +33,6 @@ function SelectPaymail({ input, meta, disabled, placeholder }) {
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         <div className="dropdown-trigger" {...getComboboxProps()}>
-          {meta.touched && meta.error && (
-            <span className="has-text-danger is-pulled-right">
-              {meta.error}
-            </span>
-          )}
           <label className="label" {...getLabelProps()}>
             <FormattedMessage
               defaultMessage="To"
@@ -46,13 +41,19 @@ function SelectPaymail({ input, meta, disabled, placeholder }) {
           </label>
           <div className="control">
             <input
-              className="input"
+              className={classNames(
+                'input',
+                meta.touched && meta.error && 'is-danger',
+              )}
               type="text"
               {...getInputProps({ onBlur, onChange })}
               placeholder={placeholder}
               disabled={disabled}
             />
           </div>
+          {meta.touched && meta.error && (
+            <p className="help is-danger">{meta.error}</p>
+          )}
         </div>
         <div className="dropdown-menu" style={{ right: 0 }}>
           <div

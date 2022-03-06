@@ -81,10 +81,6 @@
     "defaultMessage": "Continue",
     "description": "New account continue button"
   },
-  "84zKt1": {
-    "defaultMessage": "To",
-    "description": "Instrument transfer: review details: label for send target"
-  },
   "8HgVfG": {
     "defaultMessage": "Are you sure? Taking an account backup only takes a few minutes, and without it your funds will be permanently lost if you ever forget your passphrase",
     "description": "Postpone seed phrase backup risks 1"
@@ -256,9 +252,6 @@
     "defaultMessage": "Last name",
     "description": "New account input field label: last name"
   },
-  "N2IrpM": {
-    "defaultMessage": "Confirm"
-  },
   "N6Mi0p": {
     "defaultMessage": "Begin recovery",
     "description": "Forgot passphrase start button"
@@ -290,9 +283,6 @@
   "QoOTpE": {
     "defaultMessage": "Cancel",
     "description": "New account cancel button"
-  },
-  "R+J5ox": {
-    "defaultMessage": "Review"
   },
   "RAmj2a": {
     "defaultMessage": "Create a new account",
@@ -406,6 +396,9 @@
     "defaultMessage": "Enter recipient’s handle",
     "description": "Placeholder for send recipient entry field"
   },
+  "drJdjj": {
+    "defaultMessage": "Send now"
+  },
   "eH9ssJ": {
     "defaultMessage": "Enter a message for the recipient (optional)"
   },
@@ -436,6 +429,10 @@
   "gHRR9x": {
     "defaultMessage": "Required",
     "description": "Form field validation failure: a value is required"
+  },
+  "gf+juC": {
+    "defaultMessage": "Confirm the transfer with your authenticator app",
+    "description": "Send instruments confirmation prompt subtitle"
   },
   "iA3+G9": {
     "defaultMessage": "Tokenized SDK demo",
@@ -519,8 +516,9 @@
     "defaultMessage": "Cancel",
     "description": "Account recovery cancel button"
   },
-  "qVGRIE": {
-    "defaultMessage": "Quantity"
+  "qaE3Uh": {
+    "defaultMessage": "“{memo}”",
+    "description": "Send instruments confirmation memo in quotes"
   },
   "qn8r85": {
     "defaultMessage": "Editing",
@@ -542,6 +540,10 @@
     "defaultMessage": "Ended",
     "description": "Contracts tab"
   },
+  "tqcxp0": {
+    "defaultMessage": "to {name}",
+    "description": "Send instruments confirmation recipient (below amount and instrument)"
+  },
   "uN85Mi": {
     "defaultMessage": "Must be {max, number} characters or fewer",
     "description": "Form field validation failure: max characters or fewer required"
@@ -549,9 +551,6 @@
   "uQj7Yo": {
     "defaultMessage": "Treasury",
     "description": "Treasury page title (if no vault name)"
-  },
-  "uT4OlP": {
-    "defaultMessage": "Fee"
   },
   "vELQTJ": {
     "defaultMessage": "Verify your email",
@@ -576,9 +575,6 @@
   "wXoUed": {
     "defaultMessage": "Scan this code in the Tokenized authenticator app to pair with account {name} and approve sign in",
     "description": "Login screen mobile authenticator pairing subtitle"
-  },
-  "wduJme": {
-    "defaultMessage": "Instrument"
   },
   "wejkZs": {
     "defaultMessage": "Assets",

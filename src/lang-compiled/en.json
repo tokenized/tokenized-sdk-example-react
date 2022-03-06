@@ -139,12 +139,6 @@
       "value": "Continue"
     }
   ],
-  "84zKt1": [
-    {
-      "type": 0,
-      "value": "To"
-    }
-  ],
   "8HgVfG": [
     {
       "type": 0,
@@ -437,12 +431,6 @@
       "value": "Last name"
     }
   ],
-  "N2IrpM": [
-    {
-      "type": 0,
-      "value": "Confirm"
-    }
-  ],
   "N6Mi0p": [
     {
       "type": 0,
@@ -489,12 +477,6 @@
     {
       "type": 0,
       "value": "Cancel"
-    }
-  ],
-  "R+J5ox": [
-    {
-      "type": 0,
-      "value": "Review"
     }
   ],
   "RAmj2a": [
@@ -694,6 +676,12 @@
       "value": "Enter recipient’s handle"
     }
   ],
+  "drJdjj": [
+    {
+      "type": 0,
+      "value": "Send now"
+    }
+  ],
   "eH9ssJ": [
     {
       "type": 0,
@@ -740,6 +728,12 @@
     {
       "type": 0,
       "value": "Required"
+    }
+  ],
+  "gf+juC": [
+    {
+      "type": 0,
+      "value": "Confirm the transfer with your authenticator app"
     }
   ],
   "iA3+G9": [
@@ -895,10 +889,18 @@
       "value": "Cancel"
     }
   ],
-  "qVGRIE": [
+  "qaE3Uh": [
     {
       "type": 0,
-      "value": "Quantity"
+      "value": "“"
+    },
+    {
+      "type": 1,
+      "value": "memo"
+    },
+    {
+      "type": 0,
+      "value": "”"
     }
   ],
   "qn8r85": [
@@ -940,6 +942,16 @@
       "value": "Ended"
     }
   ],
+  "tqcxp0": [
+    {
+      "type": 0,
+      "value": "to "
+    },
+    {
+      "type": 1,
+      "value": "name"
+    }
+  ],
   "uN85Mi": [
     {
       "type": 0,
@@ -959,12 +971,6 @@
     {
       "type": 0,
       "value": "Treasury"
-    }
-  ],
-  "uT4OlP": [
-    {
-      "type": 0,
-      "value": "Fee"
     }
   ],
   "vELQTJ": [
@@ -1009,12 +1015,6 @@
     {
       "type": 0,
       "value": " and approve sign in"
-    }
-  ],
-  "wduJme": [
-    {
-      "type": 0,
-      "value": "Instrument"
     }
   ],
   "wejkZs": [

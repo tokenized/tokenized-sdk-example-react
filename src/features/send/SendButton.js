@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import SendModal from './SendModal';
+import SendDialog from './SendDialog';
 
 const SendButton = () => {
   const [open, setOpen] = useState(false);
@@ -13,7 +13,7 @@ const SendButton = () => {
           description="Label for button to open dialog to send instruments"
         />
       </button>
-      {open && <SendModal close={() => setOpen(false)} />}
+      {open && <SendDialog close={() => setOpen(false)} />}
     </>
   );
 };

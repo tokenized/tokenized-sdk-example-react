@@ -57,14 +57,14 @@ export default function InstrumentAmountFormField({
   );
 
   return (
-    <div className="field">
-      <Field
-        name={name}
-        format={Instrument.formatEditableAmount}
-        validate={validateQuantity}
-      >
-        {({ input, meta }) => (
-          <div className="control">
+    <Field
+      name={name}
+      format={Instrument.formatEditableAmount}
+      validate={validateQuantity}
+    >
+      {({ input, meta }) => (
+        <div className="field has-addons">
+          <div className="control is-expanded">
             <input
               disabled={disabled}
               type="text"
@@ -78,7 +78,6 @@ export default function InstrumentAmountFormField({
               })}
               {...input}
               value={meta.active ? amountEdit : input.value}
-              inputSuffix={disabled ? undefined : quantitySymbol}
               onChange={(event) => {
                 const newValue = event?.target?.value;
                 setAmountEdit(newValue);
@@ -94,8 +93,13 @@ export default function InstrumentAmountFormField({
               <p className="help is-danger">{meta.error}</p>
             )}
           </div>
-        )}
-      </Field>
-    </div>
+          {!disabled && (
+            <div className="control">
+              <span className="button is-static">{quantitySymbol}</span>
+            </div>
+          )}
+        </div>
+      )}
+    </Field>
   );
 }
