@@ -512,6 +512,10 @@
     "defaultMessage": "Last modified",
     "description": "Contracts table column header"
   },
+  "qBZchj": {
+    "defaultMessage": "Cash",
+    "description": "Nav bar cash total label"
+  },
   "qHI9UA": {
     "defaultMessage": "Cancel",
     "description": "Account recovery cancel button"

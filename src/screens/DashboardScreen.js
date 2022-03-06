@@ -5,6 +5,9 @@ import {
   useTokenizedApi,
   useIsLoading,
   useOwnFormattedName,
+  usePrimaryVault,
+  useCashTotal,
+  InstrumentAmount,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 import SendButton from '../features/send/SendButton';
@@ -14,9 +17,12 @@ function DashboardScreen({ children }) {
   const isLoading = useIsLoading();
   const ownFormattedName = useOwnFormattedName();
 
-  const onLogOut = useCallback(() => {
+  const logOut = () => {
     tokenizedApi.account.logOut();
-  }, [tokenizedApi]);
+  };
+
+  const vaultId = usePrimaryVault()?.id;
+  const cashTotal = useCashTotal(vaultId);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -73,6 +79,19 @@ function DashboardScreen({ children }) {
                   defaultMessage="Treasury"
                 />
               </span>
+              {!!cashTotal?.amount > 0 && (
+                <span class="tags has-addons ml-2">
+                  <span class="tag is-medium is-rounded is-white">
+                    <FormattedMessage
+                      defaultMessage="Cash"
+                      description="Nav bar cash total label"
+                    />
+                  </span>
+                  <span class="tag is-medium is-rounded is-info has-text-weight-semibold">
+                    <InstrumentAmount instrument={cashTotal} />
+                  </span>
+                </span>
+              )}
             </NavLink>
             <NavLink
               to="/contracts"
@@ -102,7 +121,7 @@ function DashboardScreen({ children }) {
                   <strong>{ownFormattedName}</strong>
                 </div>
                 <hr className="navbar-divider" />
-                <a className="navbar-item" onClick={onLogOut}>
+                <a className="navbar-item" onClick={logOut}>
                   <span className="icon">
                     <i className="fas fa-sign-out-alt"></i>
                   </span>
