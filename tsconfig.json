@@ -19,9 +19,11 @@
 
     "baseUrl": "./",
     "paths": {
-      "@tokenized/sdk-js-private": ["nexus-desktop/tokenized-sdk-js-private"],
+      "@tokenized/sdk-js-private": [
+        "../nexus-desktop/packages/tokenized-sdk-js-private"
+      ],
       "@tokenized/sdk-react-private": [
-        "nexus-desktop/tokenized-sdk-react-private"
+        "../nexus-desktop/packages/tokenized-sdk-react-private"
       ]
     }
   },

@@ -58,6 +58,7 @@ module.exports = {
     publicPath: '/',
   },
   devtool: 'inline-source-map',
+  stats: 'minimal',
   devServer: {
     static: {
       publicPath: absolute('public'),
