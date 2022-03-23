@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "target": "es2015",
+
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+
+    "baseUrl": "./",
+    "paths": {
+      "@tokenized/sdk-js-private": ["nexus-desktop/tokenized-sdk-js-private"],
+      "@tokenized/sdk-react-private": [
+        "nexus-desktop/tokenized-sdk-react-private"
+      ]
+    }
+  },
+  "include": ["./src"]
+}
