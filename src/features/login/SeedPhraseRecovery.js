@@ -83,7 +83,7 @@ function SeedPhraseRecovery() {
                     <div className="message-header">
                       <p>
                         <span className="icon mr-2">
-                          <i className="fas fa-unlock-alt"></i>
+                          <i className="fa-solid fa-unlock-alt"></i>
                         </span>
                         <FormattedMessage
                           tagName="span"
@@ -139,7 +139,7 @@ function SeedPhraseRecovery() {
                     >
                       {valid && (
                         <span className="icon is-small">
-                          <i className="fas fa-check"></i>
+                          <i className="fa-solid fa-check"></i>
                         </span>
                       )}
                       <FormattedMessage
@@ -162,7 +162,7 @@ function SeedPhraseRecovery() {
             <div className="message-header">
               <p>
                 <span className="icon mr-2">
-                  <i className="fas fa-exclamation-triangle"></i>
+                  <i className="fa-solid fa-exclamation-triangle"></i>
                 </span>
                 <FormattedMessage
                   tagName="span"
@@ -197,7 +197,7 @@ function SeedPhraseRecovery() {
               className="button is-primary"
             >
               <span className="icon is-small">
-                <i className="fas fa-chevron-left"></i>
+                <i className="fa-solid fa-chevron-left"></i>
               </span>
               <FormattedMessage
                 tagName="span"

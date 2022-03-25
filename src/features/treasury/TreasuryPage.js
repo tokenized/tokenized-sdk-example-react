@@ -92,7 +92,7 @@ function TreasuryPage() {
         <ul>
           <NavTab to={`${url}/assets`}>
             <span className="icon is-small">
-              <i className="fas fa-folder-plus" aria-hidden="true"></i>
+              <i className="fa-solid fa-folder-plus" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage
@@ -106,7 +106,7 @@ function TreasuryPage() {
           </NavTab>
           <NavTab to={`${url}/liabilities`}>
             <span className="icon is-small">
-              <i className="fas fa-folder-minus" aria-hidden="true"></i>
+              <i className="fa-solid fa-folder-minus" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage
@@ -120,7 +120,7 @@ function TreasuryPage() {
           </NavTab>
           <NavTab to={`${url}/inactive`}>
             <span className="icon is-small">
-              <i className="fas fa-ban" aria-hidden="true"></i>
+              <i className="fa-solid fa-ban" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage

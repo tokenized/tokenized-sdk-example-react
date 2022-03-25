@@ -5,7 +5,7 @@
     "email": "admin@tokenized.com",
     "url": "https://tokenized.com/"
   },
-  "version": "0.6.1",
+  "version": "0.7.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.17.8",
-    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-free": "^6.1.1",
     "@reduxjs/toolkit": "^1.8.0",
     "@tokenized/sdk-js-private": "^0.6.1",
     "@tokenized/sdk-react-private": "^0.6.1",
@@ -26,7 +26,7 @@
     "react-final-form": "^6.5.8",
     "react-final-form-listeners": "^1.0.3",
     "react-intl": "^5.24.7",
-    "react-query": "^3.34.16",
+    "react-query": "^3.34.17",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "redux": "^4.1.2"
@@ -112,8 +112,7 @@
     "eslint-plugin-formatjs": "^3.0.0",
     "eslint-plugin-react": "^7.29.4",
     "html-webpack-plugin": "^5.5.0",
-    "jsdoc-to-markdown": "^7.1.1",
-    "prettier": "^2.6.0",
+    "prettier": "^2.6.1",
     "process": "^0.11.10",
     "react-refresh": "^0.11.0",
     "stream-browserify": "^3.0.0",

@@ -78,7 +78,7 @@ export default function SelectInstrument({
             )}
           </span>
           <span className="icon is-small ml-3">
-            <i className="fas fa-angle-down" aria-hidden="true"></i>
+            <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
           </span>
         </button>
       </div>

@@ -197,7 +197,9 @@ function NewPassphrase({
                     <span className="icon">
                       <i
                         className={
-                          showPassphrases ? 'fas fa-eye' : 'fas fa-eye-slash'
+                          showPassphrases
+                            ? 'fa-solid fa-eye'
+                            : 'fa-solid fa-eye-slash'
                         }
                       ></i>
                     </span>
@@ -245,7 +247,9 @@ function NewPassphrase({
                     <span className="icon">
                       <i
                         className={
-                          showPassphrases ? 'fas fa-eye' : 'fas fa-eye-slash'
+                          showPassphrases
+                            ? 'fa-solid fa-eye'
+                            : 'fa-solid fa-eye-slash'
                         }
                       ></i>
                     </span>

@@ -113,7 +113,7 @@ function DashboardScreen({ children }) {
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">
                 <span className="icon">
-                  <i className="fas fa-user"></i>
+                  <i className="fa-solid fa-user"></i>
                 </span>
               </a>
               <div className="navbar-dropdown is-right">
@@ -123,7 +123,7 @@ function DashboardScreen({ children }) {
                 <hr className="navbar-divider" />
                 <a className="navbar-item" onClick={logOut}>
                   <span className="icon">
-                    <i className="fas fa-sign-out-alt"></i>
+                    <i className="fa-solid fa-sign-out-alt"></i>
                   </span>
                   <span>
                     <FormattedMessage

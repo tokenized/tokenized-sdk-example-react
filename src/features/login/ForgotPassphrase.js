@@ -72,7 +72,7 @@ function ForgotPassphrase() {
                   <div className="message-header">
                     <p>
                       <span className="icon mr-2">
-                        <i className="fas fa-unlock-alt"></i>
+                        <i className="fa-solid fa-unlock-alt"></i>
                       </span>
                       <FormattedMessage
                         tagName="span"
@@ -119,7 +119,7 @@ function ForgotPassphrase() {
                       description="Forgot passphrase start button"
                     />
                     <span className="icon is-small">
-                      <i className="fas fa-chevron-right"></i>
+                      <i className="fa-solid fa-chevron-right"></i>
                     </span>
                   </button>
                 </div>
@@ -197,7 +197,7 @@ function ForgotPassphrase() {
                           description="Forgot passphrase confirm email continue button"
                         />
                         <span className="icon is-small">
-                          <i className="fas fa-chevron-right"></i>
+                          <i className="fa-solid fa-chevron-right"></i>
                         </span>
                       </button>
                     </div>
