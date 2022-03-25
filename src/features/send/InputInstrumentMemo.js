@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-function InputAssetMemo({ input, meta, disabled }) {
+function InputInstrumentMemo({ input, meta, disabled }) {
   return (
     <div className="field">
       {meta.touched && meta.error && (
@@ -20,4 +20,4 @@ function InputAssetMemo({ input, meta, disabled }) {
   );
 }
 
-export default InputAssetMemo;
+export default InputInstrumentMemo;

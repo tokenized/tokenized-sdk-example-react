@@ -5,22 +5,24 @@ import {
   useTokenizedApi,
   useIsLoading,
   useOwnFormattedName,
-  useCurrentProfileName,
+  usePrimaryVault,
+  useCashTotal,
+  InstrumentAmount,
 } from '@tokenized/sdk-react-private';
 import LoadingScreen from './LoadingScreen';
 import SendButton from '../features/send/SendButton';
-import TradeButton from '../features/send/TradeButton';
-import { MODE_REQUEST, MODE_TRADE } from '../features/send/TradeModal';
 
 function DashboardScreen({ children }) {
   const tokenizedApi = useTokenizedApi();
   const isLoading = useIsLoading();
   const ownFormattedName = useOwnFormattedName();
-  const profileName = useCurrentProfileName();
 
-  const onLogOut = useCallback(() => {
+  const logOut = () => {
     tokenizedApi.account.logOut();
-  }, [tokenizedApi]);
+  };
+
+  const vaultId = usePrimaryVault()?.id;
+  const cashTotal = useCashTotal(vaultId);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -77,6 +79,19 @@ function DashboardScreen({ children }) {
                   defaultMessage="Treasury"
                 />
               </span>
+              {!!cashTotal?.amount > 0 && (
+                <span class="tags has-addons ml-2">
+                  <span class="tag is-medium is-rounded is-white">
+                    <FormattedMessage
+                      defaultMessage="Cash"
+                      description="Nav bar cash total label"
+                    />
+                  </span>
+                  <span class="tag is-medium is-rounded is-info has-text-weight-semibold">
+                    <InstrumentAmount instrument={cashTotal} />
+                  </span>
+                </span>
+              )}
             </NavLink>
             <NavLink
               to="/contracts"
@@ -90,54 +105,25 @@ function DashboardScreen({ children }) {
                 />
               </span>
             </NavLink>
-            <NavLink
-              to="/relationships"
-              className="navbar-item"
-              activeClassName="is-tab is-active"
-            >
-              <span>
-                <FormattedMessage
-                  description="Nav bar relationships tab"
-                  defaultMessage="Relationships"
-                />
-              </span>
-            </NavLink>
           </div>
           <div className="navbar-end">
-            <div className="navbar-item">
-              <TradeButton mode={MODE_REQUEST}>
-                <FormattedMessage
-                  defaultMessage="Request"
-                  description="Label for button to open dialog to request assets"
-                />
-              </TradeButton>
-            </div>
-            <div className="navbar-item">
-              <TradeButton mode={MODE_TRADE}>
-                <FormattedMessage
-                  defaultMessage="Trade"
-                  description="Label for button to open dialog to trade assets"
-                />
-              </TradeButton>
-            </div>
             <div className="navbar-item">
               <SendButton />
             </div>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">
                 <span className="icon">
-                  <i className="fas fa-user"></i>
+                  <i className="fa-solid fa-user"></i>
                 </span>
               </a>
               <div className="navbar-dropdown is-right">
                 <div className="navbar-item">
                   <strong>{ownFormattedName}</strong>
-                  {profileName && <span className="ml-2">{profileName}</span>}
                 </div>
                 <hr className="navbar-divider" />
-                <a className="navbar-item" onClick={onLogOut}>
+                <a className="navbar-item" onClick={logOut}>
                   <span className="icon">
-                    <i className="fas fa-sign-out-alt"></i>
+                    <i className="fa-solid fa-sign-out-alt"></i>
                   </span>
                   <span>
                     <FormattedMessage

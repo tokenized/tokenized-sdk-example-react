@@ -17,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
         include: [
           absolute('src'),
           ...packages.map((path) => absolute(join(packageRoot, path, 'src'))),
@@ -45,7 +45,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     fallback: {
       crypto: require.resolve('crypto-browserify'),
       stream: require.resolve('stream-browserify'),
@@ -58,6 +58,7 @@ module.exports = {
     publicPath: '/',
   },
   devtool: 'inline-source-map',
+  stats: 'minimal',
   devServer: {
     static: {
       publicPath: absolute('public'),

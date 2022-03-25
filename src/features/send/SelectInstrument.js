@@ -4,37 +4,38 @@ import classNames from 'classnames';
 import {
   useFilteredBalances,
   usePrimaryVault,
+  useInstrumentWithDetails,
+  InstrumentAmount,
 } from '@tokenized/sdk-react-private';
 import { FormattedMessage } from 'react-intl';
-import FormatQuantity from '../../utils/FormatQuantity';
 
-function RenderAssetType({ assetType, showQuantity }) {
+function RenderInstrument({ balance, showAvailableBalance }) {
+  const instrument = useInstrumentWithDetails(balance?.quantities?.available);
+
   return (
     <>
-      <span>{assetType.assetName}</span>
-      {showQuantity && (
+      <span>{instrument.formatInstrumentName()}</span>
+      {showAvailableBalance && (
         <span>
-          <FormatQuantity
-            quantity={assetType.quantities?.balance}
-            showCouponName={false}
-          />
+          <InstrumentAmount instrument={instrument} showCurrencyCode />
         </span>
       )}
     </>
   );
 }
 
-export default function SelectAssetType({
+export default function SelectInstrument({
   input,
   meta,
-  showQuantity = true,
+  showAvailableBalance = true,
   disabled,
 }) {
   const vaultId = usePrimaryVault()?.id;
-  const assetBalances = useFilteredBalances(vaultId, {
+  const instrumentBalances = useFilteredBalances({
+    vaultId,
     includeInactive: false,
   });
-  const items = assetBalances?.data || [];
+  const items = instrumentBalances?.data || [];
 
   const {
     isOpen,
@@ -45,10 +46,13 @@ export default function SelectAssetType({
     getItemProps,
   } = useSelect({
     items,
-    onSelectedItemChange: ({ selectedItem }) => input.onChange(selectedItem),
-    itemToString: ({ assetName }) => assetName,
-    selectedItem: input.value,
+    itemToString: ({ instrumentName }) => instrumentName,
+    onSelectedItemChange: ({ selectedItem }) =>
+      input.onChange(selectedItem?.instrumentId),
+    selectedItem:
+      items.find((balance) => balance.instrumentId === input.value) || null,
   });
+
   return (
     <div
       className={classNames('field', 'dropdown', isOpen && 'is-active')}
@@ -65,16 +69,16 @@ export default function SelectAssetType({
         >
           <span className="is-flex-grow-1 is-flex is-justify-content-space-between">
             {selectedItem ? (
-              <RenderAssetType
-                assetType={selectedItem}
-                showQuantity={showQuantity}
+              <RenderInstrument
+                balance={selectedItem}
+                showAvailableBalance={showAvailableBalance}
               />
             ) : (
-              <FormattedMessage defaultMessage="Select an asset" />
+              <FormattedMessage defaultMessage="Select an instrument" />
             )}
           </span>
           <span className="icon is-small ml-3">
-            <i className="fas fa-angle-down" aria-hidden="true"></i>
+            <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
           </span>
         </button>
       </div>
@@ -90,11 +94,14 @@ export default function SelectAssetType({
                 'dropdown-item',
                 highlightedIndex === index && 'is-active',
               )}
-              key={item.assetName}
+              key={item.instrumentName}
               {...getItemProps({ item, index })}
               style={{ justifyContent: 'space-between', display: 'flex' }}
             >
-              <RenderAssetType assetType={item} showQuantity={showQuantity} />
+              <RenderInstrument
+                balance={item}
+                showAvailableBalance={showAvailableBalance}
+              />
             </a>
           ))}
         </div>

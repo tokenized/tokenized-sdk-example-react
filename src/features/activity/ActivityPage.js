@@ -39,7 +39,7 @@ export default function ActivityPage() {
         <ul>
           <NavTab to={`${url}/history`}>
             <span className="icon is-small">
-              <i className="fas fa-history" aria-hidden="true"></i>
+              <i className="fa-solid fa-history" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage
@@ -50,7 +50,10 @@ export default function ActivityPage() {
           </NavTab>
           <NavTab to={`${url}/open`}>
             <span className="icon is-small">
-              <i className="fas fa-exclamation-circle" aria-hidden="true"></i>
+              <i
+                className="fa-solid fa-exclamation-circle"
+                aria-hidden="true"
+              ></i>
             </span>
             <span>
               <FormattedMessage
@@ -64,7 +67,7 @@ export default function ActivityPage() {
           </NavTab>
           <NavTab to={`${url}/pending`}>
             <span className="icon is-small">
-              <i className="fas fa-pause-circle" aria-hidden="true"></i>
+              <i className="fa-solid fa-pause-circle" aria-hidden="true"></i>
             </span>
             <span>
               <FormattedMessage

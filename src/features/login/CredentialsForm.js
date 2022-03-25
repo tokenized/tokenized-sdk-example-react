@@ -92,7 +92,10 @@ function CredentialsForm({ identifierType }) {
                     }}
                   >
                     <span className="icon is-small">
-                      <i className="fas fa-id-badge" aria-hidden="true"></i>
+                      <i
+                        className="fa-solid fa-id-badge"
+                        aria-hidden="true"
+                      ></i>
                     </span>
                     <span>
                       <FormattedMessage
@@ -114,7 +117,7 @@ function CredentialsForm({ identifierType }) {
                     }}
                   >
                     <span className="icon is-small">
-                      <i className="fas fa-at" aria-hidden="true"></i>
+                      <i className="fa-solid fa-at" aria-hidden="true"></i>
                     </span>
                     <span>
                       <FormattedMessage
@@ -136,7 +139,10 @@ function CredentialsForm({ identifierType }) {
                     }}
                   >
                     <span className="icon is-small">
-                      <i className="fas fa-mobile-alt" aria-hidden="true"></i>
+                      <i
+                        className="fa-solid fa-mobile-alt"
+                        aria-hidden="true"
+                      ></i>
                     </span>
                     <span>
                       <FormattedMessage

@@ -71,7 +71,7 @@ function BackUpSeedPhrase() {
             <div className="message-header">
               <p>
                 <span className="icon mr-2">
-                  <i className="fas fa-key"></i>
+                  <i className="fa-solid fa-key"></i>
                 </span>
                 <FormattedMessage
                   tagName="span"
@@ -142,7 +142,7 @@ function BackUpSeedPhrase() {
                 description="Back up seed phrase confirm button"
               />
               <span className="icon is-small">
-                <i className="fas fa-chevron-right"></i>
+                <i className="fa-solid fa-chevron-right"></i>
               </span>
             </button>
           </div>
@@ -155,7 +155,7 @@ function BackUpSeedPhrase() {
             <div className="message-header">
               <p>
                 <span className="icon mr-2">
-                  <i className="fas fa-exclamation-triangle"></i>
+                  <i className="fa-solid fa-exclamation-triangle"></i>
                 </span>
                 <FormattedMessage
                   tagName="span"
@@ -190,7 +190,7 @@ function BackUpSeedPhrase() {
               className="button is-primary"
             >
               <span className="icon is-small">
-                <i className="fas fa-chevron-left"></i>
+                <i className="fa-solid fa-chevron-left"></i>
               </span>
               <FormattedMessage
                 tagName="span"
@@ -220,7 +220,7 @@ function BackUpSeedPhrase() {
             <div className="message-header">
               <p>
                 <span className="icon mr-2">
-                  <i className="fas fa-key"></i>
+                  <i className="fa-solid fa-key"></i>
                 </span>
                 <FormattedMessage
                   tagName="span"
@@ -273,7 +273,7 @@ function BackUpSeedPhrase() {
                 description="Back up seed phrase next button"
               />
               <span className="icon is-small">
-                <i className="fas fa-chevron-right"></i>
+                <i className="fa-solid fa-chevron-right"></i>
               </span>
             </button>
           </div>
@@ -290,7 +290,7 @@ function BackUpSeedPhrase() {
                     <div className="message-header">
                       <p>
                         <span className="icon mr-2">
-                          <i className="fas fa-clipboard-check"></i>
+                          <i className="fa-solid fa-clipboard-check"></i>
                         </span>
                         <FormattedMessage
                           tagName="span"
@@ -317,7 +317,7 @@ function BackUpSeedPhrase() {
                       onClick={onShowPhrase}
                     >
                       <span className="icon is-small">
-                        <i className="fas fa-chevron-left"></i>
+                        <i className="fa-solid fa-chevron-left"></i>
                       </span>
                       <FormattedMessage
                         tagName="span"
@@ -352,7 +352,7 @@ function BackUpSeedPhrase() {
                       />
                       {valid && (
                         <span className="icon is-small">
-                          <i className="fas fa-check"></i>
+                          <i className="fa-solid fa-check"></i>
                         </span>
                       )}
                     </button>

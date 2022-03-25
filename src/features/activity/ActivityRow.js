@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { FormattedDate, FormattedMessage } from 'react-intl';
-import FormatQuantity from '../../utils/FormatQuantity';
+import {
+  useActivityEvent,
+  InstrumentAmount,
+} from '@tokenized/sdk-react-private';
 
-export function ActivityHeader({ showAction }) {
+export function ActivityHeader() {
   return (
     <tr>
       <th className="has-text-left">
@@ -18,42 +21,21 @@ export function ActivityHeader({ showAction }) {
       <th className="has-text-left">
         <FormattedMessage defaultMessage="Last updated" />
       </th>
-      {showAction && (
-        <th className="has-text-left">
-          <FormattedMessage defaultMessage="Action" />
-        </th>
-      )}
     </tr>
   );
 }
 
-export function ActivityRow({
-  item: {
-    txIds,
+export function ActivityRow({ item }) {
+  const activityEvent = useActivityEvent(item) || {};
+  const {
     dateModified,
     formatted: { description, counterparty, tradeAction, tradeResponse },
     counterparties,
     memo,
-    assets,
-    acceptTrade,
-    executeTrade,
-    acceptRequest,
-  },
-}) {
-  let [{ transfers = [] } = {}] = counterparties || [];
+    instruments,
+  } = activityEvent;
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState();
-  const buttonClass = classNames('button', isLoading && 'is-loading');
-  const load = (fn) => async () => {
-    setIsLoading(true);
-    try {
-      await fn();
-    } catch (e) {
-      setError(e.toString());
-    }
-  };
-  const txId = txIds?.length ? txIds[txIds.length - 1] : null;
+  let [{ transfers = [] } = {}] = counterparties || [];
 
   return (
     <tr style={{ whiteSpace: 'nowrap' }}>
@@ -61,28 +43,43 @@ export function ActivityRow({
         <div className="has-text-weight-bold">{description}</div>
         <div>{counterparty}</div>
       </td>
-      <td>
+      <td className="is-clipped" style={{ maxWidth: 400 }}>
         {!!tradeAction && <div>{tradeAction}</div>}
         {!!tradeResponse && <div>{tradeResponse}</div>}
-        {!!memo && <div>{memo}</div>}
+        {!!memo && (
+          <div
+            style={{
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+            }}
+          >
+            {memo}
+          </div>
+        )}
       </td>
       <td>
         {!transfers.length &&
-          assets?.map(
+          instruments?.map?.(
             ({ delta }, index) =>
-              !!delta?.tokens?.number && (
+              !!delta && (
                 <div
                   key={index}
                   className={classNames({
-                    'has-text-danger-dark': delta?.tokens?.number < 0,
-                    'has-text-success-dark': delta?.tokens?.number > 0,
+                    'has-text-danger-dark': delta.amount < 0,
+                    'has-text-success-dark': delta.amount > 0,
                   })}
                 >
-                  <FormatQuantity quantity={delta} />
+                  <InstrumentAmount
+                    instrument={delta}
+                    showCurrencyCode
+                    showWhenZero={false}
+                    numberFormatOverrides={{ signDisplay: 'always' }}
+                  />
                 </div>
               ),
           )}
-        {transfers.map(({ quantity, direction }, index) => (
+        {transfers?.map?.(({ quantity, direction }, index) => (
           <div
             key={index}
             className={classNames({
@@ -90,7 +87,12 @@ export function ActivityRow({
               'has-text-success-dark': direction === 'received',
             })}
           >
-            <FormatQuantity quantity={quantity} />
+            <InstrumentAmount
+              instrument={quantity}
+              showCurrencyCode
+              showWhenZero={false}
+              numberFormatOverrides={{ signDisplay: 'always' }}
+            />
           </div>
         ))}
       </td>
@@ -102,31 +104,6 @@ export function ActivityRow({
             timeStyle="short"
           />
         </div>
-        <div>
-          {txId && (
-            <a href={`https://whatsonchain.com/tx/${txId}`} title={txId}>
-              {txId.slice(0, 8) + '…'}
-            </a>
-          )}
-        </div>
-      </td>
-      <td>
-        {error}
-        {!error && acceptTrade && (
-          <button className={buttonClass} onClick={load(acceptTrade)}>
-            <FormattedMessage defaultMessage="Accept trade" />
-          </button>
-        )}
-        {!error && executeTrade && (
-          <button className={buttonClass} onClick={load(executeTrade)}>
-            <FormattedMessage defaultMessage="Execute trade" />
-          </button>
-        )}
-        {!error && acceptRequest && (
-          <button className={buttonClass} onClick={load(acceptRequest)}>
-            <FormattedMessage defaultMessage="Accept request" />
-          </button>
-        )}
       </td>
     </tr>
   );

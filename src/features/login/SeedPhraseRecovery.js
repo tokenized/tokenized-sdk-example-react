@@ -83,7 +83,7 @@ function SeedPhraseRecovery() {
                     <div className="message-header">
                       <p>
                         <span className="icon mr-2">
-                          <i className="fas fa-unlock-alt"></i>
+                          <i className="fa-solid fa-unlock-alt"></i>
                         </span>
                         <FormattedMessage
                           tagName="span"
@@ -139,7 +139,7 @@ function SeedPhraseRecovery() {
                     >
                       {valid && (
                         <span className="icon is-small">
-                          <i className="fas fa-check"></i>
+                          <i className="fa-solid fa-check"></i>
                         </span>
                       )}
                       <FormattedMessage
@@ -162,7 +162,7 @@ function SeedPhraseRecovery() {
             <div className="message-header">
               <p>
                 <span className="icon mr-2">
-                  <i className="fas fa-exclamation-triangle"></i>
+                  <i className="fa-solid fa-exclamation-triangle"></i>
                 </span>
                 <FormattedMessage
                   tagName="span"
@@ -173,7 +173,7 @@ function SeedPhraseRecovery() {
             </div>
             <div className="message-body">
               <FormattedMessage
-                defaultMessage="Please be aware that you’ll be able to see your activity and treasury, but all asset transfers and contract operations will fail."
+                defaultMessage="Please be aware that you’ll be able to see your activity and treasury, but all instrument transfers and contract operations will fail."
                 description="Confirm skip account restore description"
               />
             </div>
@@ -197,7 +197,7 @@ function SeedPhraseRecovery() {
               className="button is-primary"
             >
               <span className="icon is-small">
-                <i className="fas fa-chevron-left"></i>
+                <i className="fa-solid fa-chevron-left"></i>
               </span>
               <FormattedMessage
                 tagName="span"

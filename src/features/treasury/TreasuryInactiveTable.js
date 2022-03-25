@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useFilteredBalances } from '@tokenized/sdk-react-private';
 import { setCurrentFilter } from './treasurySlice';
-import BalanceRow from './BalanceRow';
+import BalanceRow, { BalanceHeader } from './BalanceRow';
 
 function TreasuryInactiveTable({ vaultId }) {
   const dispatch = useDispatch();
@@ -10,7 +10,8 @@ function TreasuryInactiveTable({ vaultId }) {
     dispatch(setCurrentFilter('inactive'));
   }, [dispatch]);
 
-  const balances = useFilteredBalances(vaultId, {
+  const balances = useFilteredBalances({
+    vaultId,
     includeInactive: true,
   });
 
@@ -21,11 +22,11 @@ function TreasuryInactiveTable({ vaultId }) {
     <div className="table-container">
       <table className="table is-hoverable">
         <thead>
-          <BalanceRow isHeader />
+          <BalanceHeader />
         </thead>
         <tbody>
           {balances?.data?.map?.((balance) => (
-            <BalanceRow key={balance.assetId} balance={balance} />
+            <BalanceRow key={balance.instrumentId} balance={balance} />
           ))}
         </tbody>
       </table>
