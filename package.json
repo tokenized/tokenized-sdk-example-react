@@ -31,8 +31,8 @@
     "redux": "^4.1.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --config webpack.config.js --mode development --progress --hot",
-    "build": "webpack --mode=production --config webpack.config.js",
+    "start": "echo 'This project is deprecated. Do not use.'",
+    "build": "echo 'This project is deprecated. Do not use.'",
     "update-strings": "formatjs extract 'src/**/*.js' --out-file src/lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]' && npm run compile-translations",
     "compile-translations": "formatjs compile-folder --ast src/lang src/lang-compiled",
     "generate-files": "npm run update-strings",
